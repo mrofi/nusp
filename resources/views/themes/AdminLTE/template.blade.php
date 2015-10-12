@@ -74,11 +74,11 @@
 
 @section('header')
        <header class="main-header">
-        <nav class="navbar navbar-static-top">
+        <nav class="navbar navbar-static-top bg-white">
           <div class="container">
             <div class="navbar-header">
               <a href="{{ nusp_asset('dashboard') }}" class="navbar-brand">
-                <img src="{{ nusp_asset('images/logo.jpg') }}" style="height: 50px; margin-top: -15px;" alt="">
+                <img src="{{ nusp_asset('images/logo.jpg') }}" class="logo-grayscale" style="height: 40px; margin-top: -10px;" alt="">
               </a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>

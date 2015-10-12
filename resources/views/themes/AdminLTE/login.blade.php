@@ -30,7 +30,7 @@
     <div class="login-box">
       <div class="login-logo text-gray">
         <a href="{{ nusp_asset('') }}">
-          <img src="{{ nusp_asset('images/logo.jpg') }}" style="width: 60%; margin-top: -15px;" alt="">
+          <img src="{{ nusp_asset('images/logo.jpg') }}" class="logo-invert" style="width: 60%;" alt="">
         </a>
       </div><!-- /.login-logo -->
       <div class="login-box-body text-gray">
@@ -57,7 +57,7 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn bg-gray btn-block btn-flat">Login</button>
+              <button type="submit" class="btn bg-yellow-v2 btn-block btn-flat">Login</button>
             </div><!-- /.col -->
           </div>
         </form>
