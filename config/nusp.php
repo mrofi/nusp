@@ -9,7 +9,7 @@ return [
     'frontend' => ENV('NUSP_FRONTEND', false),
     'salt' => ENV('NUSP_SALT', '##SALT##__password__##SALT##'), //this_just_example_salt__password__to_make_strong    
     'theme' => ENV('NUSP_THEME', 'AdminLTE'),
-    'company' => ENV('NUSP_COMPANY', 'Neighbourhood Upgrade Shelter Project Phase 2'),
+    'company' => ENV('NUSP_COMPANY', 'Neighborhood Upgrading and Shelter Project Phase 2'),
     'companyaddress' => ENV('NUSP_COMPANY_ADDRESS', ''),
     'title' => ENV('NUSP_TITLE', '<b>NUSP 2 - 2015</b>'),
     'shorttitle' => ENV('NUSP_SHORTTITLE', '<b>NUSP</b>'),

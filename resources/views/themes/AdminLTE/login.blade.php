@@ -29,8 +29,9 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo text-gray">
-        <a href="{{ nusp_asset('') }}">{!! config('nusp.title') !!}</a>
-        <h5>{{ config('nusp.company') }}</h5>
+        <a href="{{ nusp_asset('') }}">
+          <img src="{{ nusp_asset('images/logo.jpg') }}" style="width: 60%; margin-top: -15px;" alt="">
+        </a>
       </div><!-- /.login-logo -->
       <div class="login-box-body text-gray">
         <p class="login-box-msg">Silakan Login Dahulu</p>
