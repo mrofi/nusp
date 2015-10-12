@@ -54,6 +54,13 @@ class Seeder_data_awal extends Seeder
         	'induk' => '337503'
         ]);
 
+        $user0 = User::create([
+            'username' => 'su',
+            'password' => bcrypt(nusp_password('12345')),
+            'nama_lengkap' => 'Super Admin',
+            'email' => 'su@nusp.dev',
+        ]);
+
         $user1 = User::create([
         	'username' => 'nmc',
         	'password' => bcrypt(nusp_password('12345')),
@@ -80,6 +87,12 @@ class Seeder_data_awal extends Seeder
         	'user_id' => $user1->id,
         	'kode_wilayah' => '0',
         	'role_id' => $role_m->id
+        ]);
+
+        UserWilayahRole::create([
+            'user_id' => $user0->id,
+            'kode_wilayah' => '0',
+            'role_id' => $role_a->id
         ]);
 
         UserWilayahRole::create([
