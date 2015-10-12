@@ -8,14 +8,14 @@
     background-color: #FFF500!important;
 }
 
-.logo-invert {
-	filter: grayscale(100%) invert(80%);
-	-moz-filter: grayscale(100%) invert(80%);
-	-ms-filter: grayscale(100%) invert(80%);
-	-webkit-filter: grayscale(100%) invert(80%);
+.logo-invert:hover {
+	filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
 }
 
-.logo-invert:hover {
+.logo-invert {
 	filter: none;
 	-moz-filter: none;
 	-ms-filter: none;

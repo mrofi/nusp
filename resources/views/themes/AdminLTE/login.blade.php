@@ -17,7 +17,7 @@
         <!-- Theme style -->
     <link rel="stylesheet" href="{{ nusp_themeAsset('dist/css/skins/skin-yellow-v2.min.css') }}">
     <!-- iCheck -->
-    <link rel="stylesheet" href="{{ nusp_themeAsset('plugins/iCheck/square/grey.css') }}">
+    <link rel="stylesheet" href="{{ nusp_themeAsset('plugins/iCheck/square/blue.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,12 +28,12 @@
   </head>
   <body class="hold-transition login-page">
     <div class="login-box">
-      <div class="login-logo text-gray">
+      <div class="login-logo text-black">
         <a href="{{ nusp_asset('') }}">
           <img src="{{ nusp_asset('images/logo.jpg') }}" class="logo-invert" style="width: 60%;" alt="">
         </a>
       </div><!-- /.login-logo -->
-      <div class="login-box-body text-gray">
+      <div class="login-box-body text-black">
         <p class="login-box-msg">Silakan Login Dahulu</p>
         @if ($errors->any())
             {!! implode('', $errors->all('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-exclamation-circle"></i></strong> :message </div>')) !!}
@@ -78,8 +78,8 @@
     <script>
       $(function () {
         $('input').iCheck({
-          checkboxClass: 'icheckbox_square-grey',
-          radioClass: 'iradio_square-grey',
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
           increaseArea: '20%' // optional
         });
       });
