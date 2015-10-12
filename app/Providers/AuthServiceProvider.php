@@ -24,7 +24,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(GateContract $gate)
     {
-        $this->registerPolicies($gate);
+        parent::registerPolicies($gate);
+        
+        $gate->define('api-authorization', function ($user, $area) {
+            return ! $user->hasForbidden($area);
+        });
 
         //
     }

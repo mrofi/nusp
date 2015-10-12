@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -23,6 +24,8 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    protected $redirectTo = '/dashboard';
+    
     /**
      * Create a new authentication controller instance.
      *
@@ -61,5 +64,27 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function postLogging(Request $request)
+    {
+        $credential = $request->input('credential', '');
+        $thepassword = $request->input('thepassword', '');
+        $password = nusp_password($thepassword);
+        
+        if ($credential == '') return redirect($this->loginPath())->withInput($request->except('thepassword'))
+                        ->withErrors(['credential' => 'Username / Email Salah']);
+                        
+        if ($thepassword == '') return redirect($this->loginPath())->withInput($request->except('thepassword'))
+                        ->withErrors(['credential' => 'Password Tidak boleh kosong']);
+        
+        $validator = Validator::make($request->only('credential'), ['credential' => 'email']);
+        $this->username = $credential_type = (! $validator->fails() && config('livepos.useremail')) ? 'email' : 'username';
+        
+        $request->session()->flash('credential', $credential_type);
+        
+        $request->merge($credentials = [$credential_type => $credential, 'password' => $password]);
+        
+        return $this->postLogin($request);
     }
 }
