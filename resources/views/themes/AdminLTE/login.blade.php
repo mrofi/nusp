@@ -25,8 +25,69 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Tambahan untuk VIdeo -->
+    <style>
+      video#bgvid { 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        background: url({{ nusp_asset('media/lalu_lintas.png') }}) no-repeat;
+        background-size: cover;
+        opacity: .4;
+        filter: alpha(opacity=40);
+        filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+        -ms-filter:'progid:DXImageTransform.Microsoft.Alpha(Opacity=40)';
+
+      }
+      
+      video { display: block; }
+
+      video#bgvid {
+          transition: 1s opacity;
+      }
+
+      .stopfade { opacity: .5; }
+
+      .login-box, .login-box-body {
+        background-color: #fff!important;
+      }
+
+      .login-page {
+        background-color: #333;
+      }
+
+      @media screen and (max-device-width: 800px) {
+          html {
+               background: url({{ nusp_asset('media/lalu_lintas.png') }}) #000 no-repeat center center fixed;
+          }
+          #bgvid {
+              display: none;
+          }
+      }
+    </style>
+    <!-- akhir tambahan  video -->
   </head>
   <body class="hold-transition login-page">
+    
+    <!-- tambahan video -->
+    <video autoplay loop poster="{{ nusp_asset('media/lalu_lintas.png') }}" id="bgvid">
+      <source src="{{ nusp_asset('media/lalu_lintas.mp4') }}" type="video/mp4">
+    </video>
+    <!--[if lt IE 9]>
+    <script>
+      document.createElement('video');
+    </script>
+    <![endif]-->
+    <button id="vidpause">Pause</button>
+    <!-- Akhir tambahan video -->
+
     <div class="login-box">
       <div class="login-logo text-black">
         <a href="{{ nusp_asset('') }}">
@@ -41,11 +102,11 @@
         <form action="{{ nusp_asset('auth/logging') }}" method="post">
           {!! csrf_field() !!}
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="credential" placeholder="Username / Email" value="{{ old(session('credential', 'credential')) }}">
+            <input type="text" class="form-control text-black bg-white" name="credential" placeholder="Username / Email" value="{{ old(session('credential', 'credential')) }}">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" name="thepassword" placeholder="Password">
+            <input type="password" class="form-control text-black bg-white" name="thepassword" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -83,6 +144,28 @@
           increaseArea: '20%' // optional
         });
       });
+
+      var vid = document.getElementById("bgvid"),
+      pauseButton = document.getElementById("vidpause");
+      function vidFade() {
+          vid.classList.add("stopfade");
+      }
+      vid.addEventListener('ended', function() {
+          // only functional if "loop" is removed 
+           vid.pause();
+        // to capture IE10
+        vidFade();
+      });
+      pauseButton.addEventListener("click", function() {
+          vid.classList.toggle("stopfade");
+        if (vid.paused) {
+      vid.play();
+          pauseButton.innerHTML = "Pause";
+        } else {
+              vid.pause();
+              pauseButton.innerHTML = "Paused";
+        }
+      })
     </script>
   </body>
 </html>

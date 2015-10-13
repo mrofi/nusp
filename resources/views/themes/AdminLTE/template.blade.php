@@ -64,7 +64,7 @@
 
 @section('mid')
   </head>
-  <body class="layout-top-nav @yield('bodyClass', 'hold-transition skin-yellow')">
+  <body class="layout-top-nav fixed @yield('bodyClass', 'hold-transition skin-yellow')">
 @endsection
 
 @section('bodyInit')
@@ -74,8 +74,8 @@
 
 @section('header')
        <header class="main-header">
-        <nav class="navbar navbar-static-top bg-white">
-          <div class="container">
+        <nav class="navbar navbar-fixed-top bg-white">
+          <div class="container-fluid">
             <div class="navbar-header">
               <a href="{{ nusp_asset('dashboard') }}" class="navbar-brand">
                 <img src="{{ nusp_asset('images/logo.jpg') }}" class="logo-grayscale" style="height: 40px; margin-top: -10px;" alt="">
@@ -112,7 +112,7 @@
                     <img src="/themes/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     <p>
                       {{ auth()->user()->nama_lengkap }}
-                      <small>Member since {{ auth()->user()->created_at->format('d F Y') }}</small>
+                      <small>{{ auth()->user()->email }}</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
@@ -164,8 +164,9 @@
             @yield('pageTitle', 'Blank page')
             <small>@yield('subTitle', 'it all starts here')</small>
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="{{ nusp_asset('dashboard') }}" title="@yield('pageTitle')"><i class="fa fa-dashboard"></i> {!! config('nusp.title') !!}</a></li>
+          <hr>
+          <ol class="breadcrumb hidden-xs">
+            <li><a href="{{ nusp_asset('dashboard') }}" title="@yield('pageTitle')">{!! config('nusp.title') !!}</a></li>
             <!--<li><a href="#">Examples</a></li>-->
             <li class="active">@yield('pageTitle')</li>
           </ol>
@@ -386,7 +387,9 @@
     <script src="/themes/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="/themes/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
-    <!-- SlimScroll -->
+    <!-- List JS -->
+    <script src="/themes/AdminLTE/plugins/listjs/v1.1.1/dist/list.min.js"></script>
+     <!-- SlimScroll -->
     <script src="/themes/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="/themes/AdminLTE/plugins/fastclick/fastclick.min.js"></script>

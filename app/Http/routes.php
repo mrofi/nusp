@@ -21,9 +21,19 @@ Route::get('/', ['as' => 'home', function()
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'Backend'], function()
 {
+    Route::get('/', function() 
+    {
+    	$thePage = 'Beranda';
+    	return view('backend.beranda', compact('thePage'));
+    });
 
-    Route::controller('/', 'Dashboard');
+    Route::get('isian/sosialisasi', function() 
+    {
+    	$thePage = 'Isian Data / Sosialisasi Kabupaten - Kota';
+    	return view('backend.isian', compact('thePage'));
+    });
 	
+    // Route::controller('/', 'Dashboard');
 });
 
 Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api'], function()
