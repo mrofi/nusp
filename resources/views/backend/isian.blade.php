@@ -85,7 +85,7 @@
           <!-- small box -->
           <div class="small-box bg-navy">
             <div class="inner">
-              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Semarang <span class="caret"></span></a></h2>
+              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kabupaten Tegal<span class="caret"></span></a></h2>
               <hr>
               <p></p>
             </div>
