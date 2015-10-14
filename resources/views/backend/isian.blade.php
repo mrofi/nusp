@@ -49,7 +49,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Semarang <span class="caret"></span></a></h2>
+              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Pekalongan <span class="caret"></span></a></h2>
               <hr>
               <p></p>
             </div>
@@ -66,6 +66,24 @@
         <li class="col-lg-3 col-sm-6">
           <!-- small box -->
           <div class="small-box bg-red">
+            <div class="inner">
+              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kabupaten Pekalongan <span class="caret"></span></a></h2>
+              <hr>
+              <p></p>
+            </div>
+            <div id="content-kota-semarang" class="inner">
+              <ul class="list-unstyled list content-desa-kel">
+                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Desa Apalah Gitu <span class="caret"></span></a></li>
+                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Desa Slawi <span class="caret"></span></a></li>
+                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Kel. Indah <span class="caret"></span></a></li>
+                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Desa Apalah Gitu <span class="caret"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li><!-- ./col -->
+        <li class="col-lg-3 col-sm-6">
+          <!-- small box -->
+          <div class="small-box bg-navy">
             <div class="inner">
               <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Semarang <span class="caret"></span></a></h2>
               <hr>
@@ -87,7 +105,7 @@
   </li>
   <li id="propinsi-jawa-tengah" class="content-propinsi">
     <div class="content-header">
-      <h2 class="propinsi">Jawa Tengah</h2>
+      <h2 class="propinsi">Jawa Timur</h2>
     </div>
     <div id="content-jawa-tengah" class="content-body">
       <ul class="list-unstyled row list">
@@ -95,7 +113,7 @@
           <!-- small box -->
           <div class="small-box bg-fuchsia">
             <div class="inner">
-              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Semarang <span class="caret"></span></a></h2>
+              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Surabaya <span class="caret"></span></a></h2>
               <hr>
               <p></p>
             </div>
@@ -113,7 +131,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kabupaten Semarang <span class="caret"></span></a></h2>
+              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kabupaten Malang <span class="caret"></span></a></h2>
               <hr>
               <p></p>
             </div>
@@ -131,25 +149,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Semarang <span class="caret"></span></a></h2>
-              <hr>
-              <p></p>
-            </div>
-            <div id="content-kota-semarang" class="inner">
-              <ul class="list-unstyled list content-desa-kel">
-                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Desa Apalah Gitu <span class="caret"></span></a></li>
-                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Desa Slawi <span class="caret"></span></a></li>
-                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Kel. Indah <span class="caret"></span></a></li>
-                <li><a href="#" class="dropdown-toggle nusp-data-link desa-kel" data-toggle="dropdown" data-target="#dropdown-desa-kel">Desa Apalah Gitu <span class="caret"></span></a></li>
-              </ul>
-            </div>
-          </div>
-        </li><!-- ./col -->
-        <li class="col-lg-3 col-sm-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kota Semarang <span class="caret"></span></a></h2>
+              <h2 class="kab-kota"><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota">Kabupaten Sidoarjo<span class="caret"></span></a></h2>
               <hr>
               <p></p>
             </div>
@@ -187,18 +187,6 @@
 </ul>
 </div>
 
-<div id="hacker-list">
-  <ul class="list">
-    <li>
-       <h3 class="name">Jonny</h3>
-       <p class="city">Stockholm</p>
-    </li>
-    <li>
-      <h3 class="name">Jonas</h3>
-      <p class="city">Berlin</p>
-    </li>
-  </ul>
-</div>
 <!-- Main content -->
 
 @endsection
