@@ -48,6 +48,25 @@
           border: none;
           color: #ddd;
       }
+
+      .content-propinsi .content-header {
+        padding-bottom: 10px;
+      }
+
+      .content-desa-kel li {
+          padding: 5px;
+          width: 100%;
+          text-align: left;
+          font-size: 1.2em;
+      }
+
+      .nusp-data-link {
+        display: block;
+      }
+
+      .nusp-data-link:hover {
+        color: rgba(255,255,255,0.8)!important;
+      }
     </style>
     
     <!--pace-->
@@ -203,7 +222,7 @@
 @section('footer')
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>v.</b> 0.3.0 alpha <b><a href="https://twitter.com/m_rofi">MR</a></b>
+          <b>v.</b> 0.3.0 alpha <b><a href="https://github.com/mrofi/nusp">MR</a></b>
         </div>
         <strong class="hidden-xs">&copy; 2015 {!! 2015 < ($year = \Carbon::now()->format('Y')) ? "- $year" : ""  !!} - Supported by <a href="AMRI">AMRI</a>.</strong>
       </footer>
