@@ -78,4 +78,39 @@ class User extends BaseModel implements AuthenticatableContract,
         
         return false;
     }
+
+    public function getWilayahAttribute()
+    {
+        $wilayah_user = array_flatten(UserWilayahRole::where('user_id', $this->id)->get(['kode_wilayah'])->toArray());
+
+        // $wilayah_user = ['127404', '1274051003'];
+
+        $wilayah = Wilayah::orderBy('induk')->orderBy('nama_wilayah');
+        
+        if (in_array('0', $wilayah_user))
+        {
+            $wilayah = $wilayah->get()->toArray();
+        }
+        else
+        {
+            foreach ($wilayah_user as $kode_wilayah) 
+            {
+                $wilayah->orWhere('kode', $kode_wilayah)->orWhere('induk', 'like', $kode_wilayah.'%')->orWhere('kode', substr($kode_wilayah, 0, 2))->orWhere('kode', substr($kode_wilayah, 0, 4))->orWhere('kode', substr($kode_wilayah, 0, 6));
+            }
+
+            $wilayah = $wilayah->get()->toArray();
+        }
+
+        $wilayahs = [];
+
+        foreach ($wilayah as $w) 
+        {
+            if (substr($w['tingkat'], 0, 1) == '1') $wilayahs[$w['kode']] = $w;
+            if (substr($w['tingkat'], 0, 1) == '2') $wilayahs[$w['induk']]['kabKotas'][$w['kode']] = $w;
+            if (substr($w['tingkat'], 0, 1) == '3') $wilayahs[substr($w['induk'], 0, 2)]['kabKotas'][substr($w['induk'], 0, 4)]['kecs'][$w['kode']] = $w;
+            if (substr($w['tingkat'], 0, 1) == '4') $wilayahs[substr($w['induk'], 0, 2)]['kabKotas'][substr($w['induk'], 0, 4)]['kecs'][substr($w['induk'], 0, 6)]['desaKels'][$w['kode']] = $w;
+        }
+
+        return $wilayahs;
+    }
 }

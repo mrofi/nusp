@@ -4,6 +4,7 @@
 
 <div id="regional-wrapper" class="">  
   <ul class="list-unstyled content-propinsi text-white"></ul>
+  <div class="content">&nbsp;</div>
 </div>
 
 <div id="dropdown-kab-kota">
@@ -44,98 +45,115 @@ var options1 = {
 };
 
 var options2 = {
-  item: '<li class="col-lg-3 col-sm-6"> <div class="small-box"> <div class="inner"> <h2><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-kab-kota"><span class="kabKota"></span> <span class="caret"></span></a></h2> <hr> <p></p> </div> <div class="inner inner-kab-kota"> <ul class="list-unstyled content-desa-kel"> </ul> </div> </div> </li>',
+  item: '<li class="col-lg-3 col-sm-6"> <div class="small-box"> <div class="inner"> <h2><a href="#" class="dropdown-toggle nusp-data-link kab-kota-link" data-toggle="dropdown" data-target="#dropdown-kab-kota"><span class="kabKota"></span> <span class="caret"></span></a></h2> <hr> <p></p> </div> <div class="inner inner-kab-kota"> <ul class="list-unstyled content-desa-kel"> </ul> </div> </div> </li>',
   listClass: 'list-unstyled'
 };
 
 var options3 = {
-  item: '<li><a href="#" class="dropdown-toggle nusp-data-link" data-toggle="dropdown" data-target="#dropdown-desa-kel"><span class="desaKel"></span><span class="caret"></span></a></li>',
+  item: '<li><a href="#" class="dropdown-toggle nusp-data-link desa-kel-link" data-toggle="dropdown" data-target="#dropdown-desa-kel"><span class="desaKel"></span><span class="caret"></span></a></li>',
   listClass: 'list-unstyled'
 }
 
+$.get('{{ nusp_asset("tes") }}', {}, function(regionalList){
 
-var regionalList = [
-  { 
-    propinsi: 'Jawa Tengah', 
-    slug: 'content-jawa-tengah',
-    kabKotas: [
-      {
-        kabKota: 'Kota Semarang',
-        slug: 'content-kota-semarang',
-        desaKels: [
-          {
-            desaKel: 'Desa Gemuk',
-            slug: 'content-desa-gemuk'
-          },
-          {
-            desaKel: 'Desa Podoudan',
-            slug: 'content-desa-podoudan'
-          },
-        ]
-      },
-      {
-        kabKota: 'Kota Pekalongan',
-        slug: 'content-kota-pekalongan',
-        desaKels:  [
-          {
-            desaKel: 'Desa Kandang Panjang',
-            slug: 'content-desa-kandang-panjang'
-          },
-          {
-            desaKel: 'Desa Kraton Pasir Sari',
-            slug: 'content-desa-kraton-pasir-sari'
-          },
-        ]
-      }
-    ]
-  },
-  { 
-    propinsi: 'Jawa Barat', 
-    slug: 'content-jawa-barat',
-    kabKotas: [
-      {
-        kabKota: 'Kota Bandung',
-        slug: 'content-kota-bandung',
-        desaKels: [
-          {
-            desaKel: 'Desa Anyar',
-            slug: 'content-desa-anyar'
-          },
-          {
-            desaKel: 'Desa Lama',
-            slug: 'content-desa-lama'
-          },
-        ]
-      },
-      {
-        kabKota: 'Kota Sukabumi',
-        slug: 'content-kota-sukabumi',
-        desaKels:  [
-          {
-            desaKel: 'Desa SUka sari',
-            slug: 'content-desa-suka-sari'
-          },
-          {
-            desaKel: 'Desa Prambanan',
-            slug: 'content-desa-prambanan'
-          },
-        ]
-      }
-    ]
-  }
-];
+
+// var regionalList = [
+//   { 
+//     propinsi: 'Jawa Tengah', 
+//     slug: 'content-jawa-tengah',
+//     id: '1',
+//     kabKotas: [
+//       {
+//         kabKota: 'Kota Semarang',
+//         slug: 'content-kota-semarang',
+//         id: '1',
+//         desaKels: [
+//           {
+//             desaKel: 'Desa Gemuk',
+//             slug: 'content-desa-gemuk',
+//             id: '1',
+//           },
+//           {
+//             desaKel: 'Desa Podoudan',
+//             slug: 'content-desa-podoudan',
+//             id: '1',
+//           },
+//         ]
+//       },
+//       {
+//         kabKota: 'Kota Pekalongan',
+//         slug: 'content-kota-pekalongan',
+//         id: '1',
+//         desaKels:  [
+//           {
+//             desaKel: 'Desa Kandang Panjang',
+//             slug: 'content-desa-kandang-panjang',
+//             id: '1',
+//           },
+//           {
+//             desaKel: 'Desa Kraton Pasir Sari',
+//             slug: 'content-desa-kraton-pasir-sari',
+//             id: '1',
+//           },
+//         ]
+//       }
+//     ]
+//   },
+//   { 
+//     propinsi: 'Jawa Barat', 
+//     slug: 'content-jawa-barat',
+//     id: '1',
+//     kabKotas: [
+//       {
+//         kabKota: 'Kota Bandung',
+//         slug: 'content-kota-bandung',
+//         id: '1',
+//         desaKels: [
+//           {
+//             desaKel: 'Desa Anyar',
+//             slug: 'content-desa-anyar',
+//             id: '1',
+//           },
+//           {
+//             desaKel: 'Desa Lama',
+//             slug: 'content-desa-lama',
+//             id: '1',
+//           },
+//         ]
+//       },
+//       {
+//         kabKota: 'Kota Sukabumi',
+//         slug: 'content-kota-sukabumi',
+//         id: '1',
+//         desaKels:  [
+//           {
+//             desaKel: 'Desa SUka sari',
+//             slug: 'content-desa-suka-sari',
+//             id: '1',
+//           },
+//           {
+//             desaKel: 'Desa Prambanan',
+//             slug: 'content-desa-prambanan',
+//             id: '1',
+//           },
+//         ]
+//       }
+//     ]
+//   }
+// ];
 
 var regional = new List('regional-wrapper', options1);
 
 var propinsis = [];
 for (x in regionalList) {
   propinsi = regionalList[x];
-  propinsis.push({propinsi: propinsi.propinsi, slug: propinsi.slug});
+  propinsis.push({propinsi: propinsi.propinsi, slug: propinsi.slug, id: propinsi.id});
 }
 
 regional.add(propinsis, function(lists) {
   for (x in lists) {
     slugPropinsi = lists[x]._values.slug;
+    idPropinsi = lists[x]._values.id;
     $(lists[x].elm).find('.content-body').attr('id', slugPropinsi);
   }
 });
@@ -147,13 +165,15 @@ for (x in regionalList) {
   kabKotas = [];
   for (y in propinsi.kabKotas) {
     kabKota = propinsi.kabKotas[y];
-    kabKotas.push({kabKota: kabKota.kabKota, slug: kabKota.slug});
+    kabKotas.push({kabKota: kabKota.kabKota, slug: kabKota.slug, id: kabKota.id});
   }
 
   propinsi.func.add(kabKotas, function(lists) {
     for (x in lists) {
       slugKabKota = lists[x]._values.slug;
+      idKabKota = lists[x]._values.id;
       $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota)
+      .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id)
       .end().find('.small-box').addClass(getBoxColor());
     }
   })
@@ -165,20 +185,26 @@ for (x in regionalList) {
     desaKels = [];
     for (z in kabKota.desaKels) {
       desaKel = kabKota.desaKels[z];
-      desaKels.push({desaKel: desaKel.desaKel, slug: desaKel.slug});
+      desaKels.push({desaKel: desaKel.desaKel, slug: desaKel.slug, id: desaKel.id});
     }
 
-    kabKota.func.add(desaKels);
+    kabKota.func.add(desaKels, function(lists) {
+      for (x in lists) {
+        idDesaKel = lists[x]._values.id;
+        $(lists[x].elm).find('.desa-kel-link').attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
+        .attr('data-kab-kota-id', kabKota.id).attr('data-propinsi-id', propinsi.id)
+      }
+    });
 
   }
 
-
-
 }
-  console.log(regionalList);
+
+
+}, 'json')
 
 $(function() {
-$('.nusp-data-link').click(function(e) {
+$('#regional-wrapper').on('click', '.nusp-data-link', function(e) {
     e.preventDefault();
     var that = $(this);
     var p = that.offset();

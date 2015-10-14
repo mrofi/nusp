@@ -50,3 +50,37 @@ Route::get('buat_password/{urut}', function($urut) {
 		$user->save();
 	}
 });
+
+Route::get('tes', function() {
+	$wilayah =  auth()->user()->wilayah;
+	// return $wilayah;
+
+	$propinsis = [];
+	foreach ($wilayah as $kode_p => $propinsi) 
+	{
+		$kabKotas = [];
+		foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
+		{
+			$desaKels = [];
+			foreach ($kabKota['kecs'] as $kode_k => $kec) 
+			{
+				if (!isset($kec['desaKels'])) continue;
+				foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
+				{
+					$newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('content '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode']];
+					$desaKels[] = $newDesaKel;
+				}
+			}
+
+			$newKabKota = ['kabKota' => $kabKota['nama_wilayah'], 'slug' => str_slug('content '.$kabKota['nama_wilayah']), 'id' => $kabKota['kode'], 'desaKels' => $desaKels];
+			
+			$kabKotas[] = $newKabKota;
+		}
+
+		$newPropinsi = ['propinsi' => $propinsi['nama_wilayah'], 'slug' => str_slug('content '.$propinsi['nama_wilayah']), 'id' => $propinsi['kode'], 'kabKotas' => $kabKotas];
+
+		$propinsis[] = $newPropinsi;
+	}
+
+	return $propinsis;
+});
