@@ -30,7 +30,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'B
     Route::get('isian/sosialisasi', function() 
     {
     	$thePage = 'Isian Data / Sosialisasi Kabupaten - Kota';
-    	return view('backend.isian', compact('thePage'));
+    	$forms = with(new \App\SosialisasiKabKota)->get_forms();
+    	return view('backend.isian', compact('thePage', 'forms'));
     });
 	
     // Route::controller('/', 'Dashboard');
@@ -39,6 +40,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'B
 Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api'], function()
 {        
     Route::resource('user', 'User'); 
+
+    Route::resource('sosialisasi', 'SosialisasiKabKota');
 });
 
 Route::controller('auth', 'Auth\AuthController');
@@ -58,9 +61,11 @@ Route::get('tes', function() {
 	$propinsis = [];
 	foreach ($wilayah as $kode_p => $propinsi) 
 	{
+		if (!isset($propinsi['kabKotas'])) continue;
 		$kabKotas = [];
 		foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
 		{
+			if (!isset($kabKota['kecs'])) continue;
 			$desaKels = [];
 			foreach ($kabKota['kecs'] as $kode_k => $kec) 
 			{

@@ -10,7 +10,7 @@
 <div id="dropdown-kab-kota">
 <ul class="dropdown-menu" role="menu">
   <li class="active"><a href="javascript:;"></a></li>
-  <li><a href="#">Sosialisasi Kab / Kota</a></li>
+  <li><a href="#" data-target="#modal-sosialisasi" data-toggle="modal">Sosialisasi Kab / Kota</a></li>
   <li><a href="#">Penetapan Lokasi</a></li>
 </ul>
 </div>
@@ -24,6 +24,8 @@
   <li><a href="#">Fisik &amp; Keuangan</a></li>
 </ul>
 </div>
+
+@include('modal.sosialisasi')
 
 <!-- Main content -->
 
@@ -56,6 +58,97 @@ var options3 = {
 
 $.get('{{ nusp_asset("tes") }}', {}, function(regionalList){
 
+  var regional = new List('regional-wrapper', options1);
+
+  var propinsis = [];
+  for (x in regionalList) {
+    propinsi = regionalList[x];
+    propinsis.push({propinsi: propinsi.propinsi, slug: propinsi.slug, id: propinsi.id});
+  }
+
+  regional.add(propinsis, function(lists) {
+    for (x in lists) {
+      slugPropinsi = lists[x]._values.slug;
+      idPropinsi = lists[x]._values.id;
+      $(lists[x].elm).find('.content-body').attr('id', slugPropinsi);
+    }
+  });
+
+  for (x in regionalList) {
+    propinsi = regionalList[x];
+    propinsi.func = new List(propinsi.slug, options2);
+
+    kabKotas = [];
+    for (y in propinsi.kabKotas) {
+      kabKota = propinsi.kabKotas[y];
+      kabKotas.push({kabKota: kabKota.kabKota, slug: kabKota.slug, id: kabKota.id});
+    }
+
+    propinsi.func.add(kabKotas, function(lists) {
+      for (x in lists) {
+        slugKabKota = lists[x]._values.slug;
+        idKabKota = lists[x]._values.id;
+        $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota)
+        .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id)
+        .end().find('.small-box').addClass(getBoxColor());
+      }
+    })
+
+    for (y in propinsi.kabKotas) {
+      kabKota = propinsi.kabKotas[y];
+      kabKota.func = new List(kabKota.slug, options3);
+
+      desaKels = [];
+      for (z in kabKota.desaKels) {
+        desaKel = kabKota.desaKels[z];
+        desaKels.push({desaKel: desaKel.desaKel, slug: desaKel.slug, id: desaKel.id});
+      }
+
+      kabKota.func.add(desaKels, function(lists) {
+        for (x in lists) {
+          idDesaKel = lists[x]._values.id;
+          $(lists[x].elm).find('.desa-kel-link').attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
+          .attr('data-kab-kota-id', kabKota.id).attr('data-propinsi-id', propinsi.id)
+        }
+      });
+
+    }
+
+  }
+
+}, 'json')
+
+$(function() {
+
+$('#dropdown-kab-kota').on('show.bs.dropdown', function(e) {
+  var button = $(e.relatedTarget);
+  $(this).data(button.data());
+})
+
+$('#regional-wrapper').on('click', '.nusp-data-link', function(e) {
+    e.preventDefault();
+    var that = $(this);
+    var p = that.offset();
+    var $target = $(that.data('target'));
+    var $targetMenu = $target.find('.dropdown-menu');
+        
+    //check if open
+    isOpen = $target.hasClass('open');
+      
+    if( isOpen ) {
+        that.dropdown('toggle');
+    }
+
+    $targetMenu.find('.active a').html('<h4>'+that.text() + ' :</h4>').css('background-color', that.parents('.small-box').css('background-color'));
+
+    var pLeft = e.pageX + $targetMenu.width() > $(window).width();
+    leftX = (pLeft) ? p.left : e.pageX - 10;
+    $target.offset({ top: (p.top + 2 + that[0].offsetHeight), left: leftX });
+    if (pLeft) $targetMenu.css('min-width', that[0].offsetWidth);
+
+});
+
+})
 
 // var regionalList = [
 //   { 
@@ -141,93 +234,6 @@ $.get('{{ nusp_asset("tes") }}', {}, function(regionalList){
 //     ]
 //   }
 // ];
-
-var regional = new List('regional-wrapper', options1);
-
-var propinsis = [];
-for (x in regionalList) {
-  propinsi = regionalList[x];
-  propinsis.push({propinsi: propinsi.propinsi, slug: propinsi.slug, id: propinsi.id});
-}
-
-regional.add(propinsis, function(lists) {
-  for (x in lists) {
-    slugPropinsi = lists[x]._values.slug;
-    idPropinsi = lists[x]._values.id;
-    $(lists[x].elm).find('.content-body').attr('id', slugPropinsi);
-  }
-});
-
-for (x in regionalList) {
-  propinsi = regionalList[x];
-  propinsi.func = new List(propinsi.slug, options2);
-
-  kabKotas = [];
-  for (y in propinsi.kabKotas) {
-    kabKota = propinsi.kabKotas[y];
-    kabKotas.push({kabKota: kabKota.kabKota, slug: kabKota.slug, id: kabKota.id});
-  }
-
-  propinsi.func.add(kabKotas, function(lists) {
-    for (x in lists) {
-      slugKabKota = lists[x]._values.slug;
-      idKabKota = lists[x]._values.id;
-      $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota)
-      .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id)
-      .end().find('.small-box').addClass(getBoxColor());
-    }
-  })
-
-  for (y in propinsi.kabKotas) {
-    kabKota = propinsi.kabKotas[y];
-    kabKota.func = new List(kabKota.slug, options3);
-
-    desaKels = [];
-    for (z in kabKota.desaKels) {
-      desaKel = kabKota.desaKels[z];
-      desaKels.push({desaKel: desaKel.desaKel, slug: desaKel.slug, id: desaKel.id});
-    }
-
-    kabKota.func.add(desaKels, function(lists) {
-      for (x in lists) {
-        idDesaKel = lists[x]._values.id;
-        $(lists[x].elm).find('.desa-kel-link').attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
-        .attr('data-kab-kota-id', kabKota.id).attr('data-propinsi-id', propinsi.id)
-      }
-    });
-
-  }
-
-}
-
-
-}, 'json')
-
-$(function() {
-$('#regional-wrapper').on('click', '.nusp-data-link', function(e) {
-    e.preventDefault();
-    var that = $(this);
-    var p = that.offset();
-    var $target = $(that.data('target'));
-    var $targetMenu = $target.find('.dropdown-menu');
-        
-    //check if open
-    isOpen = $target.hasClass('open');
-      
-    if( isOpen ) {
-        that.dropdown('toggle');
-    }
-
-    $targetMenu.find('.active a').html('<h4>'+that.text() + ' :</h4>').css('background-color', that.parents('.small-box').css('background-color'));
-
-    var pLeft = e.pageX + $targetMenu.width() > $(window).width();
-    leftX = (pLeft) ? p.left : e.pageX - 10;
-    $target.offset({ top: (p.top + 2 + that[0].offsetHeight), left: leftX });
-    if (pLeft) $targetMenu.css('min-width', that[0].offsetWidth);
-
-});
-
-})
 </script>
 
 @endpush

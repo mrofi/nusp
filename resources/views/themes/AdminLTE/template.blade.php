@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="/themes/AdminLTE/plugins/datepicker/datepicker3.css">
     <!-- datatables -->
     <link rel="stylesheet" href="/themes/AdminLTE/plugins/datatables/datatables.bootstrap.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/themes/AdminLTE/plugins/select2/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/themes/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -420,6 +422,10 @@
     <script src="/themes/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <!-- Bootstrap Typeahead -->
     <script src="/themes/AdminLTE/plugins/bootstrap-typeahead/bootstrap3-typeahead.min.js"></script>
+    <!-- Select2 -->
+    <script src="/themes/AdminLTE/plugins/select2/select2.full.min.js"></script>
+    <!-- autonumeric -->
+    <script src="/themes/AdminLTE/plugins/autoNumeric/autoNumeric-min.js"></script>
     <!-- AdminLTE App -->
     <script src="/themes/AdminLTE/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -431,7 +437,7 @@
         e=function(f){return f.split('').reverse().join('')};b=e(parseInt(this,10).toString());for(c=0,d='';c<b.length;c++){d+=b[c];if((c+1)%3===0&&c!==(b.length-1)){d+='.';}}return(a?a:'Rp.\t')+e(d);
       }
       $(function() {
-        $.fn.datepicker.defaults.format = "{{ config('nusp.dateformat') }}";
+        // $.fn.datepicker.defaults.format = "{{ config('nusp.dateformat') }}";
         $.fn.datepicker.defaults.language = "id";
         $.fn.datepicker.defaults.todayHighlight = true;
 
@@ -442,6 +448,15 @@
         });
 
         $.fn.modal.Constructor.DEFAULTS.backdrop = 'static';
+
+        $.fn.nuspCurrency = {aSep: '.', aDec: ',', aSign: 'Rp. ', lZero: 'deny'};
+        $.fn.nuspNumeric = {aSep: '.', aDec: ',', aSign: '', mDec: '0', lZero: 'deny'};
+
+        $('select').select2({width: '100%'});              
+        
+        $('.input-mask-currency').autoNumeric('init', $.fn.nuspCurrency);
+        $('.input-mask-numeric').autoNumeric('init', $.fn.nuspNumeric);
+
 
           var slideToTop = $("<div />");
           slideToTop.html('<i class="fa fa-chevron-up"></i>');

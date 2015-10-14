@@ -106,3 +106,146 @@ function nusp_activeMenu($page, $thePage)
 {
     if ($page == $thePage) return 'active';
 }
+
+function nusp_studlyToStr($studly = '')
+{
+    return implode(' ', explode('_', $studly));
+}
+
+function nusp_form($name, $format = '', $bsCols = '')
+{
+    if ($format == '') return '';
+
+    $formats = ['required' => false];
+
+    foreach(explode('|', $format) as $f)
+    {
+        if ($f == 'required') 
+        {
+            $formats['required'] = true;
+            continue;
+        }
+        
+        $f = explode(':', $f);
+        
+        if (count($f) == 2) 
+        {
+            $formats[$f[0]] = $f[1];
+        }
+    }
+
+    extract($formats);
+
+    if (!isset($type)) return '';
+
+    if (!isset($caption)) $caption = ucwords(nusp_studlyToStr($name));
+
+    if (!isset($default)) $default = '';
+
+    $label = \Form::label($name, $caption, ['class' => 'control-label col-sm-4', 'placeholder' => $caption, 'required' => $required]);
+
+    if ($type == 'hidden')
+    {
+        return \Form::hidden($name, $default);
+    }
+
+    if ($type == 'numeric') 
+    {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::text($name, $default, ['class' => 'form-control input-mask-numeric', 'placeholder' => $caption, 'required' => $required]).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'currency') 
+    {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::text($name, $default, ['class' => 'form-control input-mask-currency', 'placeholder' => $caption, 'required' => $required]).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'string')
+    {
+        if ($bsCols == '') $bsCols = 'col-sm-8';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::text($name, $default, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'text') {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::textarea($name, $default, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'date') {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::text($name, $default, ['data-provide' => 'datepicker', 'class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'image') {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::file($name, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'file') {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::file($name, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                </div>
+            </div>
+        ';
+    }
+
+}
+
+function nusp_forms($formats = [])
+{
+    if ($formats == '') return '';
+    $forms = '';
+    foreach ($formats as $name => $format) 
+    {
+        $forms .= nusp_form($name, $format);
+    }
+
+    return $forms;
+}
