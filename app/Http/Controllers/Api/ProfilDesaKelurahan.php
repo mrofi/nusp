@@ -52,8 +52,9 @@ class ProfilDesaKelurahan extends ApiController
      */
     public function show(Request $request, $id)
     {
-        $profil =  Model::with('wilayah')->where('kode_wilayah', $id)->first();
-        if (!$profil) return new Model(['kode_wilayah' => $id]);
+        $profil =  Model::where('kode_wilayah', $id)->first();
+        if (!$profil) return array_merge((new Model(['kode_wilayah' => $id]))->toArray(), ['wilayah' => \App\Wilayah::get_desa_kel($id)]);
+        $profil->wilayah = $profil->wilayah;
         return $profil;
     }
 

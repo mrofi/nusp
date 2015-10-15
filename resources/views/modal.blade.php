@@ -15,7 +15,9 @@
 
     if (button.data()) {
       $.get('@yield($namespace.".modal.form.action")/'+button.data().id, function( data ) {
-        
+        for (x in data.wilayah) {
+          $('#'+x).text(data.wilayah[x].nama_wilayah);
+        }
         for (x in data) {
           var value = data[x];
           var input = form.find('#'+ x);

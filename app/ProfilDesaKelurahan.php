@@ -69,6 +69,9 @@ class ProfilDesaKelurahan extends BaseModel
         'jumlah_pah_unit' => 0,
     ];
 
-
+    public function getWilayahAttribute()
+    {
+    	return Wilayah::get_desa_kel($this->kode_wilayah);
+    }
 
 }
