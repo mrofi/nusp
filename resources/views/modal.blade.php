@@ -1,5 +1,5 @@
 @section($namespace.'.modal.on.hide')
-  $("#@yield($namespace.'.modal.id')").on('hide.bs.modal', function(e) {
+  $("#@yield($namespace.'.modal.id')").on('hidden.bs.modal', function(e) {
     var form = $(this).find('form');
     form[0].reset();
     form.find('.form-control-static').parents('.row').addClass('hide');
@@ -10,6 +10,9 @@
   $("#@yield($namespace.'.modal.id')").on('show.bs.modal', function(e) {
     var button = $(e.relatedTarget);
     var form = $(this).find('form');
+    form.find('.error-label').remove().end()
+        .find('.form-group').removeClass('has-warning').end()
+        .find('.alert.cloned').remove();
     
     var dropdown = button.parents('.dropdown-menu').parent();
     if (dropdown) button = dropdown;
@@ -41,6 +44,9 @@
   $("#@yield($namespace.'.modal.id')").find('form').on('submit', function(e) {
     e.preventDefault();
     form = $(this);
+    form.find('.error-label').remove().end()
+        .find('.form-group').removeClass('has-warning').end()
+        .find('.alert.cloned').remove();
     $.post(form.attr('action'), form.autoNumeric('getString'), function( data ) {
       if (data.message == 'ok') {
         $("#@yield($namespace.'.modal.id')").modal('hide');

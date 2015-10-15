@@ -14,6 +14,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="/themes/AdminLTE/bootstrap/css/bootstrap.min.css">
+    <!-- Jasny Bootstrap -->
+    <link rel="stylesheet" href="/themes/AdminLTE/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/themes/AdminLTE/plugins/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -408,6 +410,8 @@
     <script src="/themes/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="/themes/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Jasny Bootstrap -->
+    <script src="/themes/AdminLTE/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
     <!-- List JS -->
     <script src="/themes/AdminLTE/plugins/listjs/v1.1.1/dist/list.min.js"></script>
      <!-- SlimScroll -->
@@ -461,28 +465,6 @@
         $('.input-mask-numeric').autoNumeric('init', $.fn.nuspNumeric);
         $('.input-mask-decimal').autoNumeric('init', $.fn.nuspDecimal);
 
-        // $('.input-date').datepicker();
-        $('.input-date').on('show', function(e){
-          console.log($(this));
-          console.log('show');
-          console.log($(this).val());
-            
-        });
-
-        $('.input-date').on('hide', function(e){
-          console.log('hide');
-          console.log($(this).val());
-        });
-
-        $('.input-date').on('clearDate', function(e){
-          console.log('clearDate');
-          console.log($(this).val());
-        });
-
-        $('.input-date').on('changeDate', function(e){
-          console.log('changeDate');
-          console.log($(this).val());
-        });
 
           var slideToTop = $("<div />");
           slideToTop.html('<i class="fa fa-chevron-up"></i>');
@@ -525,7 +507,7 @@
             }, 500);
           });
 
-          $('a[href*=#]:not([href=#])').click(function() {
+          $('a[href*=#]:not([href=#])').on('click', function() {
             if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
               var target = $(this.hash);
               target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
