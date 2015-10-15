@@ -142,7 +142,7 @@ function nusp_form($name, $format = '', $bsCols = '')
 
     if (!isset($default)) $default = '';
 
-    $label = \Form::label($name, $caption, ['class' => 'control-label col-sm-4', 'placeholder' => $caption, 'required' => $required]);
+    $label = \Form::label($name, $caption, ['class' => 'control-label col-sm-4', 'placeholder' => $caption]);
 
     if ($type == 'hidden')
     {
@@ -156,7 +156,7 @@ function nusp_form($name, $format = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['class' => 'form-control input-mask-numeric', 'placeholder' => $caption, 'required' => $required]).'
+                    '.\Form::text($name, $default, ['class' => 'form-control input-mask-numeric', 'placeholder' => $caption]).'
                 </div>
             </div>
         ';
@@ -169,7 +169,7 @@ function nusp_form($name, $format = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['class' => 'form-control input-mask-currency', 'placeholder' => $caption, 'required' => $required]).'
+                    '.\Form::text($name, $default, ['class' => 'form-control input-mask-currency', 'placeholder' => $caption]).'
                 </div>
             </div>
         ';
@@ -182,7 +182,7 @@ function nusp_form($name, $format = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                    '.\Form::text($name, $default, ['class' => 'form-control', 'placeholder' => $caption]).'
                 </div>
             </div>
         ';
@@ -194,7 +194,7 @@ function nusp_form($name, $format = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::textarea($name, $default, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                    '.\Form::textarea($name, $default, ['class' => 'form-control', 'placeholder' => $caption]).'
                 </div>
             </div>
         ';
@@ -206,7 +206,7 @@ function nusp_form($name, $format = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['data-provide' => 'datepicker', 'class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                    '.\Form::text($name, $default, ['data-provide' => 'datepicker', 'class' => 'form-control input-date', 'placeholder' => $caption, 'autocomplete' => 'off']).'
                 </div>
             </div>
         ';
@@ -218,7 +218,7 @@ function nusp_form($name, $format = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::file($name, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                    '.\Form::file($name, ['class' => 'form-control', 'placeholder' => $caption]).'
                 </div>
             </div>
         ';
@@ -230,7 +230,7 @@ function nusp_form($name, $format = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::file($name, ['class' => 'form-control', 'placeholder' => $caption, 'required' => $required]).'
+                    '.\Form::file($name, ['class' => 'form-control', 'placeholder' => $caption]).'
                 </div>
             </div>
         ';

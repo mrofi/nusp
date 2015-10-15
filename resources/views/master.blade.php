@@ -40,6 +40,7 @@
                 <li><a href="{{ nusp_asset('') }}">Fisik &amp; Keuangan</a></li>
               </ul>
             </li>
+            <li><a href="#" data-target="#modal-sosialisasi" data-toggle="modal">Tess</a></li>
           
 @endsection
 

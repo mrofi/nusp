@@ -437,9 +437,11 @@
         e=function(f){return f.split('').reverse().join('')};b=e(parseInt(this,10).toString());for(c=0,d='';c<b.length;c++){d+=b[c];if((c+1)%3===0&&c!==(b.length-1)){d+='.';}}return(a?a:'Rp.\t')+e(d);
       }
       $(function() {
-        // $.fn.datepicker.defaults.format = "{{ config('nusp.dateformat') }}";
+        
+        $.fn.datepicker.defaults.format = "{{ config('nusp.dateformat') }}";
         $.fn.datepicker.defaults.language = "id";
         $.fn.datepicker.defaults.todayHighlight = true;
+        $.fn.datepicker.defaults.autoclose = true;
 
         $.ajaxSetup({
           headers: {
@@ -457,6 +459,28 @@
         $('.input-mask-currency').autoNumeric('init', $.fn.nuspCurrency);
         $('.input-mask-numeric').autoNumeric('init', $.fn.nuspNumeric);
 
+        // $('.input-date').datepicker();
+        $('.input-date').on('show', function(e){
+          console.log($(this));
+          console.log('show');
+          console.log($(this).val());
+            
+        });
+
+        $('.input-date').on('hide', function(e){
+          console.log('hide');
+          console.log($(this).val());
+        });
+
+        $('.input-date').on('clearDate', function(e){
+          console.log('clearDate');
+          console.log($(this).val());
+        });
+
+        $('.input-date').on('changeDate', function(e){
+          console.log('changeDate');
+          console.log($(this).val());
+        });
 
           var slideToTop = $("<div />");
           slideToTop.html('<i class="fa fa-chevron-up"></i>');

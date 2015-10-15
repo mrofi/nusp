@@ -15,7 +15,7 @@ class BuatTabelProfilDesaKelurahan extends Migration
         Schema::create('profil_desa_kelurahans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
-            $table->integer('luas_wilayah')->unsigned(); // dalam stauan ha
+            $table->decimal('luas_wilayah', 10, 3)->unsigned(); // dalam stauan ha
             $table->integer('jumlah_penduduk')->unsigned();
             $table->integer('jumlah_penduduk_laki_laki')->unsigned();
             $table->integer('jumlah_penduduk_perempuan')->unsigned();

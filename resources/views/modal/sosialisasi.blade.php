@@ -1,11 +1,10 @@
-@extends('modal')
 
-@section('modal.id', 'modal-sosialisasi')
-@section('modal.title', 'Sosialisasi Kabupaten / Kota')
-@section('modal.form.action', nusp_asset('api/sosialisasi'))
+@section('sosialisasi.modal.id', 'modal-sosialisasi')
+@section('sosialisasi.modal.title', 'Sosialisasi Kabupaten / Kota')
+@section('sosialisasi.modal.form.action', nusp_asset('api/sosialisasi'))
 
-@section('modal.body')
-	{!! nusp_forms(array_except($forms, ['foto_id'])) !!}
+@section('sosialisasi.modal.body')
+	{!! nusp_forms(array_except($formSosialisasi, ['foto_id'])) !!}
 	<div class="form-group">
 		<label for="foto_id" class="control-label col-sm-4">Foto</label>
 		<div class="col-sm-6">
@@ -14,3 +13,5 @@
 		</div>
 	</div>
 @endsection
+
+@include('modal', ['namespace' => 'sosialisasi'])

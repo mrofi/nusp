@@ -18,13 +18,14 @@
 <div id="dropdown-desa-kel">
 <ul class="dropdown-menu" role="menu">
   <li class="active"><a href="javascript:;"></a></li>
-  <li><a href="#">Profil Kelurahan</a></li>
+  <li><a href="#" data-target="#modal-profil-desa-kel" data-toggle="modal">Profil Kelurahan</a></li>
   <li><a href="#">Tahapan Kegiatan</a></li>
   <li><a href="#">Kontrak, Lahan &amp; Pemanfaat</a></li>
   <li><a href="#">Fisik &amp; Keuangan</a></li>
 </ul>
 </div>
 
+@include('modal.profilDesaKel')
 @include('modal.sosialisasi')
 
 <!-- Main content -->
@@ -121,6 +122,11 @@ $.get('{{ nusp_asset("tes") }}', {}, function(regionalList){
 $(function() {
 
 $('#dropdown-kab-kota').on('show.bs.dropdown', function(e) {
+  var button = $(e.relatedTarget);
+  $(this).data(button.data());
+})
+
+$('#dropdown-desa-kel').on('show.bs.dropdown', function(e) {
   var button = $(e.relatedTarget);
   $(this).data(button.data());
 })

@@ -30,8 +30,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'B
     Route::get('isian/sosialisasi', function() 
     {
     	$thePage = 'Isian Data / Sosialisasi Kabupaten - Kota';
-    	$forms = with(new \App\SosialisasiKabKota)->get_forms();
-    	return view('backend.isian', compact('thePage', 'forms'));
+    	$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
+    	$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
+    	return view('backend.isian', compact('thePage', 'formSosialisasi', 'formProfilDesaKel'));
     });
 	
     // Route::controller('/', 'Dashboard');
@@ -42,6 +43,8 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
     Route::resource('user', 'User'); 
 
     Route::resource('sosialisasi', 'SosialisasiKabKota');
+
+    Route::resource('profil-desa-kelurahan', 'ProfilDesaKelurahan');
 });
 
 Route::controller('auth', 'Auth\AuthController');
@@ -52,6 +55,12 @@ Route::get('buat_password/{urut}', function($urut) {
 		$user->password = bcrypt(nusp_password($user->password));
 		$user->save();
 	}
+});
+
+Route::get('tess', function() {
+    $forms = with(new \App\SosialisasiKabKota)->get_forms();
+    return view('backend.tes', compact('forms'));
+
 });
 
 Route::get('tes', function() {

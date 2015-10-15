@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\SosialisasiKabKota as Model;
+use App\ProfilDesaKelurahan as Model;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\ApiController;
 
-class SosialisasiKabKota extends ApiController
+class ProfilDesaKelurahan extends ApiController
 {
     public function __construct(Model $model)
     {
@@ -52,9 +52,9 @@ class SosialisasiKabKota extends ApiController
      */
     public function show(Request $request, $id)
     {
-        $sosialisasi =  Model::where('kode_wilayah', $id)->first();
-        if (!$sosialisasi) return new Model(['kode_wilayah' => $id]);
-        return $sosialisasi;
+        $profil =  Model::where('kode_wilayah', $id)->first();
+        if (!$profil) return new Model(['kode_wilayah' => $id]);
+        return $profil;
     }
 
     /**
