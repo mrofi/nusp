@@ -314,26 +314,26 @@ UserWilayahRole::create(['user_id' => $user65->id, 'kode_wilayah' => 52, 'role_i
 UserWilayahRole::create(['user_id' => $user65->id, 'kode_wilayah' => 74, 'role_id' => 2]);
 UserWilayahRole::create(['user_id' => $user65->id, 'kode_wilayah' => 81, 'role_id' => 2]);
 
-UserWilayahRole::create(['user_id' => $user66->id, 'kode_wilayah' => 2171, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user67->id, 'kode_wilayah' => 1274, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user68->id, 'kode_wilayah' => 1671, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user69->id, 'kode_wilayah' => 1771, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user70->id, 'kode_wilayah' => 1871, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user71->id, 'kode_wilayah' => 1506, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user72->id, 'kode_wilayah' => 6203, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user73->id, 'kode_wilayah' => 6271, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user74->id, 'kode_wilayah' => 6371, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user75->id, 'kode_wilayah' => 3272, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user76->id, 'kode_wilayah' => 3673, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user77->id, 'kode_wilayah' => 3374, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user78->id, 'kode_wilayah' => 3375, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user79->id, 'kode_wilayah' => 3575, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user80->id, 'kode_wilayah' => 7371, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user81->id, 'kode_wilayah' => 7308, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user82->id, 'kode_wilayah' => 7373, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user83->id, 'kode_wilayah' => 7471, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user84->id, 'kode_wilayah' => 5272, 'role_id' => 2]);
-UserWilayahRole::create(['user_id' => $user85->id, 'kode_wilayah' => 8171, 'role_id' => 2]);
+UserWilayahRole::create(['user_id' => $user66->id, 'kode_wilayah' => 2171, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user67->id, 'kode_wilayah' => 1274, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user68->id, 'kode_wilayah' => 1671, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user69->id, 'kode_wilayah' => 1771, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user70->id, 'kode_wilayah' => 1871, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user71->id, 'kode_wilayah' => 1506, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user72->id, 'kode_wilayah' => 6203, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user73->id, 'kode_wilayah' => 6271, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user74->id, 'kode_wilayah' => 6371, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user75->id, 'kode_wilayah' => 3272, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user76->id, 'kode_wilayah' => 3673, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user77->id, 'kode_wilayah' => 3374, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user78->id, 'kode_wilayah' => 3375, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user79->id, 'kode_wilayah' => 3575, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user80->id, 'kode_wilayah' => 7371, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user81->id, 'kode_wilayah' => 7308, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user82->id, 'kode_wilayah' => 7373, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user83->id, 'kode_wilayah' => 7471, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user84->id, 'kode_wilayah' => 5272, 'role_id' => 1]);
+UserWilayahRole::create(['user_id' => $user85->id, 'kode_wilayah' => 8171, 'role_id' => 1]);
 
 
 
