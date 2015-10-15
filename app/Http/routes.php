@@ -27,6 +27,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'B
     	return view('backend.beranda', compact('thePage'));
     });
 
+    Route::get('all', function() 
+    {
+    	$thePage = 'Data Semua Wilayah';
+    	$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
+    	$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
+    	return view('backend.isian', compact('thePage', 'formSosialisasi', 'formProfilDesaKel'));
+    });
+
     Route::get('isian/sosialisasi', function() 
     {
     	$thePage = 'Isian Data / Sosialisasi Kabupaten - Kota';

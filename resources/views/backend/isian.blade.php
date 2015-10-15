@@ -1,5 +1,7 @@
 @extends('master')
 
+@section('contentHeader', ' ')
+
 @section('contentMain')
 
 <div id="regional-wrapper" class="">  
@@ -27,7 +29,9 @@
 
 @include('modal.profilDesaKel')
 @include('modal.profilDesaKel', ['allowed' => true])
+
 @include('modal.sosialisasi')
+@include('modal.sosialisasi', ['allowed' => true])
 
 <!-- Main content -->
 

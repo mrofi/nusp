@@ -124,20 +124,20 @@
                   <!-- Notifications Menu -->
                   <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-user"></i>
+                  <i class="ion ion-person fa-lg"></i>
                   <span class="hidden-xs">{{ auth()->user()->nama_lengkap }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                      <i class="text-white fa fa-user fa-5x"></i>
+                      <i class="text-white ion ion-person fa-5x"></i>
                     <p>
                       {{ auth()->user()->nama_lengkap }}
                       <small>{{ auth()->user()->email }}</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
+                  <li class="user-body hide">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>

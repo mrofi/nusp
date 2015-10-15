@@ -31,4 +31,9 @@ class SosialisasiKabKota extends BaseModel
     	'peserta_perempuan' => '',
     	'foto_id' => '',
     ];
+
+    public function getWilayahAttribute()
+    {
+        return Wilayah::get_kab_kota($this->kode_wilayah);
+    }
 }

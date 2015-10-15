@@ -41,7 +41,27 @@ class SosialisasiKabKota extends ApiController
      */
     public function store(Request $request)
     {
-        return new Model();
+        $request->merge(array_map('trim', $request->all()));
+
+            $kode_wilayah = $request->get('kode_wilayah', '');
+
+            $ada = $this->model->where('kode_wilayah', $kode_wilayah)->first();
+
+            if ($ada) return $this->update($request, $ada->id);
+
+            // validation
+            $this->validate($request, $this->model->get_rules(), $this->model->get_error_messages(), $this->model->get_attributes());
+            
+            // adding user
+            $request->merge(['created_by' => auth()->user()->id, 'updated_by' => auth()->user()->id]);
+            // insert data
+            $create = $this->model->create($request->all());
+
+            if ($create['error']) return $create;
+
+            $create = nusp_arrayMapRecursive('nusp_round', $create->toArray());
+
+            return ['message' => 'ok', 'created' => $create];
     }
 
     /**
@@ -53,7 +73,8 @@ class SosialisasiKabKota extends ApiController
     public function show(Request $request, $id)
     {
         $sosialisasi =  Model::where('kode_wilayah', $id)->first();
-        if (!$sosialisasi) return new Model(['kode_wilayah' => $id]);
+        if (!$sosialisasi) return array_merge((new Model(['kode_wilayah' => $id]))->toArray(), ['wilayah' => \App\Wilayah::get_kab_kota($id)]);
+        $sosialisasi->wilayah = $sosialisasi->wilayah;
         return $sosialisasi;
     }
 
@@ -77,7 +98,25 @@ class SosialisasiKabKota extends ApiController
      */
     public function update(Request $request, $id)
     {
-        //
+        // find record
+            $update = $this->model->findOrFail($id);
+            
+            $new_data = array_merge($update->toArray(), $request->all());
+
+            $request->merge($new_data);
+
+            // validation
+            $this->validate($request, $this->model->get_rules($id), $this->model->get_error_messages(), $this->model->get_attributes());
+            
+            // adding user
+            $request->merge(['updated_by' => auth()->user()->id]);
+            
+            // update data
+            $update->update($request->all());
+
+            $update = nusp_arrayMapRecursive('nusp_round', $update->toArray());
+
+            return ['message' => 'ok', 'updated' => $update];
     }
 
     /**

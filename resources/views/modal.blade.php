@@ -2,6 +2,7 @@
   $("#@yield($namespace.'.modal.id')").on('hide.bs.modal', function(e) {
     var form = $(this).find('form');
     form[0].reset();
+    form.find('.form-control-static').parents('.row').addClass('hide');
   });
 @endsection
 
@@ -16,7 +17,7 @@
     if (button.data()) {
       $.get('@yield($namespace.".modal.form.action")/'+button.data().id, function( data ) {
         for (x in data.wilayah) {
-          form.find('#'+x).text(data.wilayah[x].nama_wilayah);
+          form.find('#'+x).text(data.wilayah[x].nama_wilayah).parents('.row').removeClass('hide');
         }
         for (x in data) {
           var value = data[x];
@@ -98,7 +99,7 @@ $(function() {
         </div>
         <div class="modal-footer bg-navy">
           <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">@yield($namespace.'.modal.close', 'Batal')</button>
-          <button type="submit" class="btn btn-primary">@yield($namespace.'.modal.submit', 'Simpan')</button>
+          <button type="submit" class="btn btn-primary @yield($namespace.'.modal.submit.class')">@yield($namespace.'.modal.submit', 'Simpan')</button>
         </div>
       </form>
     </div><!-- /.modal-content -->
