@@ -22,7 +22,7 @@ class ProfilDesaKelurahan extends BaseModel
         'jumlah_mck_bilik',
         'jumlah_sumur_gali_unit',
         'jumlah_sumur_pompa_unit',
-        'jumlah_sambungan_pdam_sr',
+        // 'jumlah_sambungan_pdam_sr',
         'jumlah_kran_umum_unit',
         'jumlah_pah_unit'
     ];
@@ -43,7 +43,7 @@ class ProfilDesaKelurahan extends BaseModel
         'jumlah_mck_bilik' => 'type:numeric|caption:&sum; MCK (Bilik)',
         'jumlah_sumur_gali_unit' => 'type:numeric|caption:&sum; Sumur Gali (Unit)',
         'jumlah_sumur_pompa_unit' => 'type:numeric|caption:&sum; Pompa (Unit)',
-        'jumlah_sambungan_pdam_sr' => 'type:numeric|caption:&sum; Sambungan PDAM (SR)',
+        // 'jumlah_sambungan_pdam_sr' => 'type:numeric|caption:&sum; Sambungan PDAM (SR)',
         'jumlah_kran_umum_unit' => 'type:numeric|caption:&sum; Kran Umum (Unit)',
         'jumlah_pah_unit' => 'type:numeric|caption:&sum; Penampungan Air Hujan (Unit)',
     ];
@@ -64,7 +64,7 @@ class ProfilDesaKelurahan extends BaseModel
         'jumlah_mck_bilik' => 0,
         'jumlah_sumur_gali_unit' => 0,
         'jumlah_sumur_pompa_unit' => 0,
-        'jumlah_sambungan_pdam_sr' => 0,
+        // 'jumlah_sambungan_pdam_sr' => 0,
         'jumlah_kran_umum_unit' => 0,
         'jumlah_pah_unit' => 0,
     ];

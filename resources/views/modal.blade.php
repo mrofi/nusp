@@ -39,7 +39,7 @@
   $("#@yield($namespace.'.modal.id')").find('form').on('submit', function(e) {
     e.preventDefault();
     form = $(this);
-    $.post(form.attr('action'), form.serialize(), function( data ) {
+    $.post(form.attr('action'), form.autoNumeric('getString'), function( data ) {
       if (data.message == 'ok') {
         $("#@yield($namespace.'.modal.id')").modal('hide');
       } else {

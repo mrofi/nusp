@@ -41,7 +41,27 @@ class ProfilDesaKelurahan extends ApiController
      */
     public function store(Request $request)
     {
-        return new Model();
+        $request->merge(array_map('trim', $request->all()));
+
+            $kode_wilayah = $request->get('kode_wilayah', '');
+
+            $ada = $this->model->where('kode_wilayah', $kode_wilayah)->first();
+
+            if ($ada) return $this->update($request, $ada->id);
+
+            // validation
+            $this->validate($request, $this->model->get_rules(), $this->model->get_error_messages(), $this->model->get_attributes());
+            
+            // adding user
+            $request->merge(['created_by' => auth()->user()->id, 'updated_by' => auth()->user()->id]);
+            // insert data
+            $create = $this->model->create($request->all());
+
+            if ($create['error']) return $create;
+
+            $create = nusp_arrayMapRecursive('nusp_round', $create->toArray());
+
+            return ['message' => 'ok', 'created' => $create];
     }
 
     /**
@@ -78,7 +98,26 @@ class ProfilDesaKelurahan extends ApiController
      */
     public function update(Request $request, $id)
     {
-        //
+        // find record
+            $update = $this->model->findOrFail($id);
+            
+            $new_data = array_merge($update->toArray(), $request->all());
+
+            $request->merge($new_data);
+
+            // validation
+            $this->validate($request, $this->model->get_rules($id), $this->model->get_error_messages(), $this->model->get_attributes());
+            
+            // adding user
+            $request->merge(['updated_by' => auth()->user()->id]);
+            
+            // update data
+            $update->update($request->all());
+
+            $update = nusp_arrayMapRecursive('nusp_round', $update->toArray());
+
+            return ['message' => 'ok', 'updated' => $update];
+
     }
 
     /**

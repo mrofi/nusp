@@ -29,7 +29,7 @@ class BuatTabelProfilDesaKelurahan extends Migration
             $table->integer('jumlah_mck_bilik')->unsigned();
             $table->integer('jumlah_sumur_gali_unit')->unsigned();
             $table->integer('jumlah_sumur_pompa_unit')->unsigned();
-            $table->integer('jumlah_sambungan_pdam_sr')->unsigned();
+            // $table->integer('jumlah_sambungan_pdam_sr')->unsigned();
             $table->integer('jumlah_kran_umum_unit')->unsigned();
             $table->integer('jumlah_pah_unit')->unsigned();
             $table->timestamps();
