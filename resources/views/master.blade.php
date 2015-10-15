@@ -2,7 +2,6 @@
 
 @section('menubar')
             <li class="{{ nusp_activeMenu(true, request()->is('dashboard')) }}"><a href="{{ nusp_asset('') }}"><i class="fa-fw fa-lg ion ion-home"></i><span class="visible-xs">Beranda</span></a></li>
-            @if(auth()->user()->isAdmin())
             <li class="dropdown {{ nusp_activeMenu(true, request()->is('dashboard/all*')) }}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa-fw fa-lg ion ion-ios-location"></i> <span class="hidden-sm">A-Z</span></a>
               <ul class="dropdown-menu" role="menu">
@@ -37,7 +36,6 @@
                 </li>
               </ul>
             </li>
-            @endif
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa-fw fa-lg ion ion-ios-pulse"></i> <span class="hidden-sm">Laporan / Monitoring</span></a>
               <ul class="dropdown-menu" role="menu">
