@@ -112,8 +112,9 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
 
       kabKota.func.add(desaKels, function(lists) {
         for (x in lists) {
+          slugDesaKel = lists[x]._values.slug;
           idDesaKel = lists[x]._values.id;
-          $(lists[x].elm).find('.desa-kel-link').attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
+          $(lists[x].elm).find('.desa-kel-link').attr('id', slugDesaKel).attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
           .attr('data-kab-kota-id', kabKota.id).attr('data-propinsi-id', propinsi.id)
         }
       });
