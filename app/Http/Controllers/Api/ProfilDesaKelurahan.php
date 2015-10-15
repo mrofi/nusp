@@ -52,7 +52,7 @@ class ProfilDesaKelurahan extends ApiController
      */
     public function show(Request $request, $id)
     {
-        $profil =  Model::where('kode_wilayah', $id)->first();
+        $profil =  Model::with('wilayah')->where('kode_wilayah', $id)->first();
         if (!$profil) return new Model(['kode_wilayah' => $id]);
         return $profil;
     }

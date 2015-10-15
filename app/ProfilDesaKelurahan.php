@@ -70,4 +70,5 @@ class ProfilDesaKelurahan extends BaseModel
     ];
 
 
+
 }

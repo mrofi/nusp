@@ -124,13 +124,13 @@
                   <!-- Notifications Menu -->
                   <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/themes/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <i class="fa fa-user"></i>
                   <span class="hidden-xs">{{ auth()->user()->nama_lengkap }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="/themes/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      <i class="text-white fa fa-user fa-5x"></i>
                     <p>
                       {{ auth()->user()->nama_lengkap }}
                       <small>{{ auth()->user()->email }}</small>

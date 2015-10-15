@@ -6,7 +6,7 @@
 @endsection
 
 @section($namespace.'.modal.on.show')
-  $("#@yield($namespace.'.modal.id')").on('shown.bs.modal', function(e) {
+  $("#@yield($namespace.'.modal.id')").on('show.bs.modal', function(e) {
     var button = $(e.relatedTarget);
     var form = $(this).find('form');
     
