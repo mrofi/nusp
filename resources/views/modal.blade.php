@@ -16,7 +16,7 @@
     if (button.data()) {
       $.get('@yield($namespace.".modal.form.action")/'+button.data().id, function( data ) {
         for (x in data.wilayah) {
-          $('#'+x).text(data.wilayah[x].nama_wilayah);
+          form.find('#'+x).text(data.wilayah[x].nama_wilayah);
         }
         for (x in data) {
           var value = data[x];
@@ -27,6 +27,7 @@
             else placer.text(value);
           }
           if (input.is(':input')) input.val(value);
+          if (input.is('.input-mask-currency, .input-mask-numeric, .input-mask-decimal')) input.autoNumeric('set', value);
         }
         
       }, 'json');

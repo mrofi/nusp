@@ -26,6 +26,7 @@
 </div>
 
 @include('modal.profilDesaKel')
+@include('modal.profilDesaKel', ['allowed' => true])
 @include('modal.sosialisasi')
 
 <!-- Main content -->

@@ -162,6 +162,19 @@ function nusp_form($name, $format = '', $bsCols = '')
         ';
     }
 
+    if ($type == 'decimal') 
+    {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::text($name, $default, ['class' => 'form-control input-mask-decimal', 'placeholder' => $caption]).'
+                </div>
+            </div>
+        ';
+    }
+
     if ($type == 'currency') 
     {
         if ($bsCols == '') $bsCols = 'col-sm-4';
@@ -245,6 +258,61 @@ function nusp_forms($formats = [])
     foreach ($formats as $name => $format) 
     {
         $forms .= nusp_form($name, $format);
+    }
+
+    return $forms;
+}
+
+function nusp_staticForm($name, $format = '', $bsCols = '')
+{
+    if ($format == '') return '';
+
+    $formats = ['required' => false];
+
+    foreach(explode('|', $format) as $f)
+    {
+        if ($f == 'required') 
+        {
+            $formats['required'] = true;
+            continue;
+        }
+        
+        $f = explode(':', $f);
+        
+        if (count($f) == 2) 
+        {
+            $formats[$f[0]] = $f[1];
+        }
+    }
+
+    extract($formats);
+
+    if (!isset($type)) return '';
+
+    if (!isset($caption)) $caption = ucwords(nusp_studlyToStr($name));
+
+    if (!isset($default)) $default = '';
+
+    $label = \Form::label($name, $caption, ['class' => 'control-label col-sm-4', 'placeholder' => $caption]);
+
+    return '
+        <div class="form-group">
+            '.$label.'
+            <div class="'.$bsCols.'">
+                <p class="form-control-static" id="'.$name.'"></p>
+            </div>
+        </div>
+    ';    
+
+}
+
+function nusp_staticForms($formats = [])
+{
+    if ($formats == '') return '';
+    $forms = '';
+    foreach ($formats as $name => $format) 
+    {
+        $forms .= nusp_staticForm($name, $format);
     }
 
     return $forms;

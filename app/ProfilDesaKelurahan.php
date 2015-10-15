@@ -29,7 +29,7 @@ class ProfilDesaKelurahan extends BaseModel
 
     protected $forms = [
     	'kode_wilayah' => 'required|type:hidden',
-    	'luas_wilayah' => 'type:numeric|caption:Luas Wilayah (ha)',
+    	'luas_wilayah' => 'type:decimal|caption:Luas Wilayah (ha)',
     	'jumlah_penduduk' => 'type:numeric|caption:&sum; Penduduk',
         'jumlah_penduduk_laki_laki' => 'type:numeric|caption:&sum; Penduduk Laki-laki',
         'jumlah_penduduk_perempuan' => 'type:numeric|caption:&sum; Perempuan',

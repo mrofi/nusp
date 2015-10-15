@@ -453,11 +453,13 @@
 
         $.fn.nuspCurrency = {aSep: '.', aDec: ',', aSign: 'Rp. ', lZero: 'deny'};
         $.fn.nuspNumeric = {aSep: '.', aDec: ',', aSign: '', mDec: '0', lZero: 'deny'};
+        $.fn.nuspDecimal = {aSep: '.', aDec: ',', aSign: '', mDec: '2', lZero: 'deny'};
 
         $('select').select2({width: '100%'});              
         
         $('.input-mask-currency').autoNumeric('init', $.fn.nuspCurrency);
         $('.input-mask-numeric').autoNumeric('init', $.fn.nuspNumeric);
+        $('.input-mask-decimal').autoNumeric('init', $.fn.nuspDecimal);
 
         // $('.input-date').datepicker();
         $('.input-date').on('show', function(e){
