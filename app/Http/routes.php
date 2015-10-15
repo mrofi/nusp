@@ -53,6 +53,58 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
     Route::resource('sosialisasi', 'SosialisasiKabKota');
 
     Route::resource('profil-desa-kelurahan', 'ProfilDesaKelurahan');
+
+    Route::get('all', function() {
+		$wilayah =  auth()->user()->wilayah;
+		// return $wilayah;
+
+		$propinsis = [];
+		foreach ($wilayah as $kode_p => $propinsi) 
+		{
+			if (!isset($propinsi['kabKotas'])) continue;
+			$kabKotas = [];
+			foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
+			{
+				if (!isset($kabKota['kecs'])) continue;
+				$desaKels = [];
+				foreach ($kabKota['kecs'] as $kode_k => $kec) 
+				{
+					if (!isset($kec['desaKels'])) continue;
+					foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
+					{
+						$newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('wilayah '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode']];
+						$desaKels[] = $newDesaKel;
+					}
+				}
+
+				$newKabKota = ['kabKota' => $kabKota['nama_wilayah'], 'slug' => str_slug($kabKota['nama_wilayah']), 'id' => $kabKota['kode'], 'desaKels' => $desaKels];
+				
+				$kabKotas[] = $newKabKota;
+			}
+
+			$newPropinsi = ['propinsi' => $propinsi['nama_wilayah'], 'slug' => str_slug('propinsi '.$propinsi['nama_wilayah']), 'id' => $propinsi['kode'], 'kabKotas' => $kabKotas];
+
+			$propinsis[] = $newPropinsi;
+		}
+
+		return $propinsis;
+	});
+
+	Route::get('propinsi', function() 
+	{
+		return auth()->user()->propinsi;
+	});
+
+	Route::get('kab-kota', function() 
+	{
+		return auth()->user()->kabKota;	
+	});
+
+	Route::get('desa-kel', function() 
+	{	
+		return auth()->user()->desaKel;
+	});
+
 });
 
 Route::controller('auth', 'Auth\AuthController');
@@ -71,38 +123,3 @@ Route::get('tess', function() {
 
 });
 
-Route::get('tes', function() {
-	$wilayah =  auth()->user()->wilayah;
-	// return $wilayah;
-
-	$propinsis = [];
-	foreach ($wilayah as $kode_p => $propinsi) 
-	{
-		if (!isset($propinsi['kabKotas'])) continue;
-		$kabKotas = [];
-		foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
-		{
-			if (!isset($kabKota['kecs'])) continue;
-			$desaKels = [];
-			foreach ($kabKota['kecs'] as $kode_k => $kec) 
-			{
-				if (!isset($kec['desaKels'])) continue;
-				foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
-				{
-					$newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('content '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode']];
-					$desaKels[] = $newDesaKel;
-				}
-			}
-
-			$newKabKota = ['kabKota' => $kabKota['nama_wilayah'], 'slug' => str_slug('content '.$kabKota['nama_wilayah']), 'id' => $kabKota['kode'], 'desaKels' => $desaKels];
-			
-			$kabKotas[] = $newKabKota;
-		}
-
-		$newPropinsi = ['propinsi' => $propinsi['nama_wilayah'], 'slug' => str_slug('content '.$propinsi['nama_wilayah']), 'id' => $propinsi['kode'], 'kabKotas' => $kabKotas];
-
-		$propinsis[] = $newPropinsi;
-	}
-
-	return $propinsis;
-});

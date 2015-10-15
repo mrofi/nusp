@@ -8,9 +8,33 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{{ nusp_asset('dashboard/all') }}">Semua Wilayah (A-Z)</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Berdasarkan Propinsi (A-Z)</a></li>
-                <li><a href="#">Berdasarkan Kabupaten / Kota (A-Z)</a></li>
-                <li><a href="#">Berdasarkan Desa / Kelurahan (A-Z)</a></li>
+                <li class="dropdown-submenu"><a href="#"><strong>Propinsi (A-Z)</strong></a>
+                  @if($propinsis = auth()->user()->propinsi)
+                  <ul class="dropdown-menu" role="menu">
+                    @foreach($propinsis as $propinsi)
+                    <li><a href="{{ nusp_asset('dashboard/all') }}#{{ $propinsi['slug'] }}">{{ $propinsi['propinsi'] }}</a></li>
+                    @endforeach
+                  </ul>
+                  @endif
+                </li>
+                <li class="dropdown-submenu"><a href="#"><strong>Kabupaten / Kota (A-Z)</strong></a>
+                  @if($kabKotas = auth()->user()->kabKota)
+                  <ul class="dropdown-menu" role="menu">
+                    @foreach($kabKotas as $kabKota)
+                    <li><a href="{{ nusp_asset('dashboard/all') }}#{{ $kabKota['slug'] }}">{{ $kabKota['kabKota'] }}</a></li>
+                    @endforeach
+                  </ul>
+                  @endif
+                </li>
+                <li class="dropdown-submenu"><a href="#"><strong>Desa / Kelurahan (A-Z)</strong></a>
+                  @if($desaKels = auth()->user()->desaKel)
+                  <ul class="dropdown-menu" role="menu">
+                    @foreach($desaKels as $desaKel)
+                    <li><a href="{{ nusp_asset('dashboard/all') }}#{{ $desaKel['slug'] }}">{{ $desaKel['desaKel'] }}</a></li>
+                    @endforeach
+                  </ul>
+                  @endif
+                </li>
               </ul>
             </li>
             @endif

@@ -62,7 +62,7 @@ var options3 = {
   listClass: 'list-unstyled'
 }
 
-$.get('{{ nusp_asset("tes") }}', {}, function(regionalList){
+$.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
 
   var regional = new List('regional-wrapper', options1);
 

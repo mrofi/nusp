@@ -113,4 +113,69 @@ class User extends BaseModel implements AuthenticatableContract,
 
         return $wilayahs;
     }
+
+    public function getPropinsiAttribute()
+    {
+        $wilayah =  $this->wilayah;
+        // return $wilayah;
+
+        $propinsis = [];
+        foreach ($wilayah as $kode_p => $propinsi) 
+        {
+            $newPropinsi = ['propinsi' => $propinsi['nama_wilayah'], 'slug' => str_slug('propinsi '.$propinsi['nama_wilayah']), 'id' => $propinsi['kode']];
+
+            $propinsis[] = $newPropinsi;
+        }
+
+        return $propinsis;
+    }
+
+    public function getKabKotaAttribute()
+    {
+        $wilayah =  $this->wilayah;
+        // return $wilayah;
+
+        $kabKotas = [];
+        foreach ($wilayah as $kode_p => $propinsi) 
+        {
+            if (!isset($propinsi['kabKotas'])) continue;
+            foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
+            {
+                $newKabKota = ['kabKota' => $kabKota['nama_wilayah'], 'slug' => str_slug($kabKota['nama_wilayah']), 'id' => $kabKota['kode']];
+                
+                $kabKotas[] = $newKabKota;
+            }
+
+        }
+
+        return $kabKotas;
+    }
+
+    public function getDesaKelAttribute()
+    {
+        $wilayah =  $this->wilayah;
+        // return $wilayah;
+
+        $desaKels = [];
+        foreach ($wilayah as $kode_p => $propinsi) 
+        {
+            if (!isset($propinsi['kabKotas'])) continue;
+            foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
+            {
+                if (!isset($kabKota['kecs'])) continue;
+                foreach ($kabKota['kecs'] as $kode_k => $kec) 
+                {
+                    if (!isset($kec['desaKels'])) continue;
+                    foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
+                    {
+                        $newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('wilayah '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode']];
+                        $desaKels[] = $newDesaKel;
+                    }
+                }
+            }
+
+        }
+
+        return $desaKels;
+    }
 }
