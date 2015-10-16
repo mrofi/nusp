@@ -102,7 +102,7 @@
         <form action="{{ nusp_asset('auth/logging') }}" method="post">
           {!! csrf_field() !!}
           <div class="form-group has-feedback">
-            <input type="text" class="form-control text-black bg-white" name="credential" placeholder="Username / Email" value="{{ old(session('credential', 'credential')) }}">
+            <input type="text" class="form-control text-black bg-white" name="credential" placeholder="Username" value="{{ old(session('credential', 'credential')) }}">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">

@@ -4,7 +4,8 @@
 
 <!-- Main content -->
 <section class="content">
-	<div class="row">
+  <h1>Rekap (Idle)</h1>
+	<div class="row hide">
         <div class="col-lg-3 col-sm-6">
           <!-- small box -->
           <div class="small-box bg-aqua">

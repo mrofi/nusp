@@ -12,8 +12,8 @@
 <div id="dropdown-kab-kota">
 <ul class="dropdown-menu" role="menu">
   <li class="active"><a href="javascript:;"></a></li>
-  <li><a href="#" data-target="#modal-sosialisasi" data-toggle="modal">Sosialisasi Kab / Kota</a></li>
-  <li><a href="#" data-target="#modal-penetapan-lokasi" data-toggle="modal">Penetapan Lokasi</a></li>
+  <li><a href="#" data-target="#modal-sosialisasi"  data-target-b="#modal-report-sosialisasi" data-toggle="modal">Sosialisasi Kab / Kota</a></li>
+  <li><a href="#" data-target="#modal-penetapan-lokasi" data-target-b="#modal-report-penetapan-lokasi" data-toggle="modal">Penetapan Lokasi</a></li>
 </ul>
 </div>
 
@@ -72,14 +72,15 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
   var propinsis = [];
   for (x in regionalList) {
     propinsi = regionalList[x];
-    propinsis.push({propinsi: propinsi.propinsi, slug: propinsi.slug, id: propinsi.id});
+    propinsis.push({propinsi: propinsi.propinsi, slug: propinsi.slug, role_id: propinsi.role_id, id: propinsi.id});
   }
 
   regional.add(propinsis, function(lists) {
     for (x in lists) {
       slugPropinsi = lists[x]._values.slug;
+      role_id = lists[x]._values.role_id;
       idPropinsi = lists[x]._values.id;
-      $(lists[x].elm).find('.content-body').attr('id', slugPropinsi);
+      $(lists[x].elm).find('.content-body').attr('id', slugPropinsi).attr('data-role_id', role_id);
     }
   });
 
@@ -90,14 +91,15 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
     kabKotas = [];
     for (y in propinsi.kabKotas) {
       kabKota = propinsi.kabKotas[y];
-      kabKotas.push({kabKota: kabKota.kabKota, slug: kabKota.slug, id: kabKota.id});
+      kabKotas.push({kabKota: kabKota.kabKota, slug: kabKota.slug, role_id: kabKota.role_id, id: kabKota.id});
     }
 
     propinsi.func.add(kabKotas, function(lists) {
       for (x in lists) {
         slugKabKota = lists[x]._values.slug;
+        role_id = lists[x]._values.role_id;
         idKabKota = lists[x]._values.id;
-        $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota)
+        $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota).attr('data-role_id', role_id)
         .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id)
         .end().find('.small-box').addClass(getBoxColor());
       }
@@ -110,14 +112,15 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
       desaKels = [];
       for (z in kabKota.desaKels) {
         desaKel = kabKota.desaKels[z];
-        desaKels.push({desaKel: desaKel.desaKel, slug: desaKel.slug, id: desaKel.id});
+        desaKels.push({desaKel: desaKel.desaKel, slug: desaKel.slug, role_id: desaKel.role_id, id: desaKel.id});
       }
 
       kabKota.func.add(desaKels, function(lists) {
         for (x in lists) {
           slugDesaKel = lists[x]._values.slug;
+          role_id = lists[x]._values.role_id;
           idDesaKel = lists[x]._values.id;
-          $(lists[x].elm).find('.desa-kel-link').attr('id', slugDesaKel).attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
+          $(lists[x].elm).find('.desa-kel-link').attr('id', slugDesaKel).attr('data-role_id', role_id).attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
           .attr('data-kab-kota-id', kabKota.id).attr('data-propinsi-id', propinsi.id)
         }
       });
