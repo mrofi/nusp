@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use Storage;
-use App\Foto as Model;
+use App\File as Model;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\ApiController;
 
-class Foto extends ApiController
+class File extends ApiController
 {
     public function __construct(Model $model)
     {
@@ -20,30 +20,30 @@ class Foto extends ApiController
         $fileX = $request->file('fileInput');
         $caption = $request->get('caption');
         $caption .= ' by '.auth()->user()->username;
-        $foto = Model::create(['caption' => $caption]);
-        $foto->filename = $filename = str_slug($foto->id.' '.$caption, '_').'.'.strtolower($fileX->getClientOriginalExtension());
-        $foto->save();
+        $file = Model::create(['caption' => $caption]);
+        $file->filename = $filename = str_slug($file->id.' '.$caption, '_').'.'.strtolower($fileX->getClientOriginalExtension());
+        $file->save();
 
         Storage::put(
-            'uploads/foto/'.$filename,
+            'uploads/file/'.$filename,
             file_get_contents($fileX->getRealPath())
         );
 
-        return ['message' => 'ok', 'created' => $foto];
+        return ['message' => 'ok', 'created' => $file];
     }
 
     public function get(Request $request, $id)
     {
-        $foto = Model::find($id);
+        $file = Model::find($id);
 
-        $filename = 'uploads/foto/'.$foto->filename;
+        $filename = 'uploads/file/'.$file->filename;
 
         $file_path = storage_path().'/app/'.$filename;
 
         if (file_exists($file_path))
         {
             // Send Download
-            return response()->download($file_path, $foto->filename, [
+            return response()->download($file_path, $file->filename, [
                 'Content-Length: '. filesize($file_path),
             ]);
         }

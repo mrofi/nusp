@@ -190,7 +190,7 @@ function nusp_form($name, $format = '', $bsCols = '')
 
     if ($type == 'string')
     {
-        if ($bsCols == '') $bsCols = 'col-sm-8';
+        if ($bsCols == '') $bsCols = 'col-sm-6';
         return '
             <div class="form-group">
                 '.$label.'

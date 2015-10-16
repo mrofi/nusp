@@ -1,9 +1,9 @@
 
-@section('sosialisasi.modal.id', 'modal-sosialisasi')
-@section('sosialisasi.modal.title', 'Sosialisasi Kabupaten / Kota')
-@section('sosialisasi.modal.form.action', nusp_asset('api/sosialisasi'))
+@section('penetapanLokasi.modal.id', 'modal-penetapan-lokasi')
+@section('penetapanLokasi.modal.title', 'Penetapan Lokasi')
+@section('penetapanLokasi.modal.form.action', nusp_asset('api/penetapan-lokasi'))
 
-@section('sosialisasi.modal.body')
+@section('penetapanLokasi.modal.body')
 	<div class="row hide">
 		<label for="" class="control-label col-sm-4">Desa / Kelurahan</label>
 		<div class="col-sm-8">
@@ -28,15 +28,16 @@
 			<p class="form-control-static" id="propinsi"></p>
 		</div>
 	</div>
-	{!! nusp_forms(array_except($formSosialisasi, ['foto_id'])) !!}
+	{!! nusp_forms(array_except($formPenetapanLokasi, ['file_id'])) !!}
 	<div class="form-group">
-		<label for="foto_id" class="control-label col-sm-4">Foto</label>
+		<label for="file_id" class="control-label col-sm-4">File</label>
 		<div class="col-sm-4">
-			<input type="hidden" name="foto_id" id="foto_id">			
-			<div class="fileinput fileinput-new" data-provides="fileinput" data-action="{{ nusp_asset('api/foto') }}" data-target="#foto_id">
+			<p class="form-control-static file-placer hide" id="file"></p>
+			<input type="hidden" name="file_id" id="file_id">			
+			<div class="fileinput fileinput-new" data-provides="fileinput" data-action="{{ nusp_asset('api/file') }}" data-target="#file_id">
 			  <div class="fileinput-preview thumbnail hide" data-trigger="fileinput" style="max-height: 150px;"></div>
 			  <div>
-			    <span class="btn btn-default btn-file" style="background-color: #fff; border: 0"><span class="fileinput-new">Pilih Foto</span><span class="fileinput-exists hide">Ganti</span><input type="file"></span>
+			    <span class="btn btn-default btn-file" style="background-color: #fff; border: 0"><span class="fileinput-new">Pilih File</span><span class="fileinput-exists hide">Ganti</span><input type="file"></span>
 			    <a href="#" class="btn btn-default fileinput-exists hide" data-dismiss="fileinput">Hapus</a>
 			  </div>
 			</div>
@@ -53,11 +54,11 @@
 @endsection
 
 
-@section('reportOnly.sosialisasi.modal.id', 'modal-report-sosialisasi')
-@section('reportOnly.sosialisasi.modal.title', 'Sosialisasi Kabupaten / Kota')
-@section('reportOnly.sosialisasi.modal.form.action', nusp_asset(''))
+@section('reportOnly.penetapanLokasi.modal.id', 'modal-report-penetapan-lokasi')
+@section('reportOnly.penetapanLokasi.modal.title', 'PenetapanLokasi Kabupaten / Kota')
+@section('reportOnly.penetapanLokasi.modal.form.action', nusp_asset(''))
 
-@section('reportOnly.sosialisasi.modal.body')
+@section('reportOnly.penetapanLokasi.modal.body')
 	<div class="row hide">
 		<label for="" class="control-label col-sm-4">Desa / Kelurahan</label>
 		<div class="col-sm-8">
@@ -82,13 +83,13 @@
 			<p class="form-control-static" id="propinsi"></p>
 		</div>
 	</div>
-	{!! nusp_forms(array_except($formSosialisasi, ['foto_id'])) !!}
+	{!! nusp_forms(array_except($formPenetapanLokasi, ['file_id'])) !!}
 	<div class="form-group">
-		<label for="foto_id" class="control-label col-sm-4">Foto</label>
+		<label for="foto_id" class="control-label col-sm-4">File</label>
 		<div class="col-sm-6">
-			<div class="form-control-static fileinput-preview hide" data-trigger="fileinput" style="max-height: 150px;"></div>
+			<p class="form-control-static file-placer hide" id="file"></p>
 		</div>
 	</div>
 @endsection
 
-@include('modal', ['namespace' => (isset($allowed) && $allowed == true) ? 'sosialisasi' : 'reportOnly.sosialisasi'])
+@include('modal', ['namespace' => (isset($allowed) && $allowed == true) ? 'penetapanLokasi' : 'reportOnly.penetapanLokasi'])

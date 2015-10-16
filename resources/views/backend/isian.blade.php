@@ -13,7 +13,7 @@
 <ul class="dropdown-menu" role="menu">
   <li class="active"><a href="javascript:;"></a></li>
   <li><a href="#" data-target="#modal-sosialisasi" data-toggle="modal">Sosialisasi Kab / Kota</a></li>
-  <li><a href="#">Penetapan Lokasi</a></li>
+  <li><a href="#" data-target="#modal-penetapan-lokasi" data-toggle="modal">Penetapan Lokasi</a></li>
 </ul>
 </div>
 
@@ -32,6 +32,9 @@
 
 @include('modal.sosialisasi')
 @include('modal.sosialisasi', ['allowed' => true])
+
+@include('modal.penetapanLokasi')
+@include('modal.penetapanLokasi', ['allowed' => true])
 
 <!-- Main content -->
 

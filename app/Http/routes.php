@@ -31,8 +31,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'B
     {
     	$thePage = 'Data Semua Wilayah';
     	$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
+    	$formPenetapanLokasi = with(new \App\PenetapanLokasi)->get_forms();
     	$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
-    	return view('backend.isian', compact('thePage', 'formSosialisasi', 'formProfilDesaKel'));
+    	return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
     });
 
     Route::get('isian/sosialisasi', function() 
@@ -51,6 +52,8 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
     Route::resource('user', 'User'); 
 
     Route::resource('sosialisasi', 'SosialisasiKabKota');
+
+    Route::resource('penetapan-lokasi', 'PenetapanLokasi');
 
     Route::resource('profil-desa-kelurahan', 'ProfilDesaKelurahan');
 
@@ -108,6 +111,10 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
 	Route::post('foto', 'Foto@upload');
 
 	Route::get('foto/{id}', 'Foto@get');
+
+	Route::post('file', 'File@upload');
+
+	Route::get('file/{id}', 'File@get');
 
 });
 

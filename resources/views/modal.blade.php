@@ -15,7 +15,8 @@
         .find('.alert.cloned').remove();
     var fileinput = form.find('.fileinput');
     fileinput.removeClass('fileinput-exists').addClass('fileinput-new');
-    fileinput.find('.fileinput-preview').addClass('hide').html('');
+    form.find('.fileinput-preview').addClass('hide').html('');
+    form.find('.form-control-static.file-placer').addClass('hide').html('');
     
     var dropdown = button.parents('.dropdown-menu').parent();
     if (dropdown) button = dropdown;
@@ -30,8 +31,13 @@
           var input = form.find('#'+ x);
           
           if (input.is('#foto_id') && value != '') {
+            form.find('.fileinput-preview').removeClass('hide').html('<img src="{{ nusp_asset('api/foto/') }}'+value+'" style="max-height: 140px;">');
             fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
-            fileinput.find('.fileinput-preview').removeClass('hide').html('<img src="{{ nusp_asset('api/foto/') }}'+value+'" style="max-height: 140px;">');
+            fileinput.find('.fileinput-exists').removeClass('hide');
+          }
+          if (input.is('#file_id') && value != '') {
+            form.find('.form-control-static.file-placer').removeClass('hide').html('<a href="{{ nusp_asset('api/file/') }}'+value+'" target="_blank">Download SK</a>');
+            fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
             fileinput.find('.fileinput-exists').removeClass('hide');
           }
           else if (input.is('.input-mask-currency, .input-mask-numeric, .input-mask-decimal')) { input.autoNumeric('set', value); }
@@ -74,6 +80,12 @@
   })
 
   var error_handling = function(_form, data) {
+    form.find('.input-date').each(function(i, e) {
+      v = $(this).val();
+      var from = v.split("-");
+      var f = [from[2], from[1], from[0]].join('-');
+      $(this).val(f);
+    })
     for (x in data) {
       err = data[x];
       _form.find('#'+x).after('<label class="error-label control-label" for="inputError"><i class="fa fa-times-circle-o"></i> '+err[0]+'</label>')
@@ -102,6 +114,7 @@ $(function() {
     var fd = new FormData();
     var theXFiles = fileinput.find(':file')[0].files[0];
     fd.append( "fileInput", theXFiles);
+    fd.append( "caption", "@yield($namespace.'.modal.title')");
 
     $.ajax({
       url: fileinput.data('action'),
