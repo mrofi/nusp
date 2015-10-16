@@ -105,6 +105,10 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
 		return auth()->user()->desaKel;
 	});
 
+	Route::post('foto', 'Foto@upload');
+
+	Route::get('foto/{id}', 'Foto@get');
+
 });
 
 Route::controller('auth', 'Auth\AuthController');

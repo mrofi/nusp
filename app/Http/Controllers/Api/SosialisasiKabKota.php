@@ -104,7 +104,7 @@ class SosialisasiKabKota extends ApiController
             $new_data = array_merge($update->toArray(), $request->all());
 
             $request->merge($new_data);
-
+            
             // validation
             $this->validate($request, $this->model->get_rules($id), $this->model->get_error_messages(), $this->model->get_attributes());
             

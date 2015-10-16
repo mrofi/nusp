@@ -18,7 +18,7 @@ class SosialisasiKabKota extends BaseModel
 
     protected $rules = [
     	'kode_wilayah' => 'required|numeric',
-    	'tanggal' => 'required|date',
+    	'tanggal' => 'required',
     	'peserta' => 'required|numeric',
     	'peserta_perempuan' => 'required|numeric',
     	'foto_id' => 'numeric',

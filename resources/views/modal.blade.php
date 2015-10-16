@@ -13,6 +13,9 @@
     form.find('.error-label').remove().end()
         .find('.form-group').removeClass('has-warning').end()
         .find('.alert.cloned').remove();
+    var fileinput = form.find('.fileinput');
+    fileinput.removeClass('fileinput-exists').addClass('fileinput-new');
+    fileinput.find('.fileinput-preview').addClass('hide').html('');
     
     var dropdown = button.parents('.dropdown-menu').parent();
     if (dropdown) button = dropdown;
@@ -25,13 +28,19 @@
         for (x in data) {
           var value = data[x];
           var input = form.find('#'+ x);
-          if (input.is('[type=file]')) {
-            var placer = input.parents('form-group').find('.file-place');
-            if (placer.is('img')) placer.prop('src', value);
-            else placer.text(value);
+          
+          if (input.is('#foto_id') && value != '') {
+            fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
+            fileinput.find('.fileinput-preview').removeClass('hide').html('<img src="{{ nusp_asset('api/foto/') }}'+value+'" style="max-height: 140px;">');
+            fileinput.find('.fileinput-exists').removeClass('hide');
           }
-          if (input.is(':input')) input.val(value);
-          if (input.is('.input-mask-currency, .input-mask-numeric, .input-mask-decimal')) input.autoNumeric('set', value);
+          else if (input.is('.input-mask-currency, .input-mask-numeric, .input-mask-decimal')) { input.autoNumeric('set', value); }
+          else if (input.is('.input-date')) {
+            var from = value.split("-");
+            var f = [from[2], from[1], from[0]].join('-');
+            input.val(f);
+          }
+          else if (input.is(':input')) {input.val(value);}
         }
         
       }, 'json');
@@ -47,6 +56,12 @@
     form.find('.error-label').remove().end()
         .find('.form-group').removeClass('has-warning').end()
         .find('.alert.cloned').remove();
+    form.find('.input-date').each(function(i, e) {
+      v = $(this).val();
+      var from = v.split("-");
+      var f = [from[2], from[1], from[0]].join('-');
+      $(this).val(f);
+    })
     $.post(form.attr('action'), form.autoNumeric('getString'), function( data ) {
       if (data.message == 'ok') {
         $("#@yield($namespace.'.modal.id')").modal('hide');
@@ -78,6 +93,71 @@ $(function() {
   @yield($namespace.'.modal.on.hide')
 
   @yield($namespace.'.modal.form.on.submit')
+
+
+  $("#@yield($namespace.'.modal.id')").find('form .fileinput').on('change.bs.fileinput', function(e) {
+    var fileinput = $(this);
+    fileinput.find('.fileinput-exists').addClass('hide');
+    fileinput.find('.fileinput-preview').addClass('hide');
+    var fd = new FormData();
+    var theXFiles = fileinput.find(':file')[0].files[0];
+    fd.append( "fileInput", theXFiles);
+
+    $.ajax({
+      url: fileinput.data('action'),
+      xhr: function() { // custom xhr (is the best)
+
+           var xhr = new XMLHttpRequest();
+           var total = 0;
+
+           // Get the total size of files
+           // $.each(document.getElementById('files').files, function(i, file) {
+           //        total += file.size;
+           // });
+
+            total = theXFiles.size;
+
+           // Called when upload progress changes. xhr2
+           xhr.upload.addEventListener("progress", function(evt) {
+                  // show progress like example
+                  var loaded = (evt.loaded / total).toFixed(2)*100; // percent
+
+                  var progress = fileinput.siblings('.progress-upload');
+                  progress.removeClass('hide').find('.progress-bar').attr('aria-valuenow', loaded).css('width', loaded+'%')
+                  .find('.sr-only').text(loaded+'% Complete');
+                  
+                  var status = progress.find('.progress-status');
+                  if (loaded < 20) status.text('Mulai mengupload...' + loaded + '%' );
+                  if (loaded < 80) status.text('Mengupload... ' + loaded + '%' );
+                  if (loaded >= 80) status.text('hampir selesai... ' + loaded + '%' );
+                  if (loaded > 100) progress.addClass('hide');
+           }, false);
+
+           return xhr;
+      },
+      type: 'post',
+      processData: false,
+      contentType: false,
+      data: fd,
+      success: function(data) {
+        if (data.message == 'ok') {
+           fileinput.find('.fileinput-exists').removeClass('hide');
+           fileinput.find('.fileinput-preview').removeClass('hide');
+           fileinput.siblings('.progress-upload').addClass('hide');
+           fileinput.parents('.form-group').find(fileinput.data('target')).val(data.created.id);
+           fileinput.data(data.created);
+        }
+      }
+    });
+
+  }).on('clear.bs.fileinput', function(e) {
+    var fileinput = $(this);
+    fileinput.find('.fileinput-exists').addClass('hide');
+    fileinput.find('.fileinput-preview').addClass('hide');
+    fileinput.siblings('.progress-upload').addClass('hide');
+    fileinput.parents('.form-group').find(fileinput.data('target')).val('');
+  })
+
 });
 </script>
 @endsection

@@ -74,4 +74,6 @@ class BaseModel extends Model
         $this->get_model_config();
         return $this->init_data;
     }
+
+
 }
