@@ -139,7 +139,6 @@ $('#dropdown-kab-kota').on('show.bs.dropdown', function(e) {
   var role_id = $(this).data('role_id');
   var link = $(this).find('[data-toggle]'); 
   link.each(function(i, e) {
-    console.log($(this).data());
     $(this).attr('data-target', $(this).data('target_'+role_id));
   })
 })

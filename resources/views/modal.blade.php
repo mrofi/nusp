@@ -2,7 +2,7 @@
   $("#@yield($namespace.'.modal.id')").on('hidden.bs.modal', function(e) {
     var form = $(this).find('form');
     form[0].reset();
-    form.find('.form-control-static').parents('.row').addClass('hide');
+    form.find('.form-control-static').parents('.row').not('.form-group-static').addClass('hide');
   });
 @endsection
 

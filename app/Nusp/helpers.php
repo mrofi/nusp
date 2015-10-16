@@ -287,7 +287,7 @@ function nusp_staticForm($name, $format = '', $bsCols = '')
 
     extract($formats);
 
-    if (!isset($type)) return '';
+    if (!isset($type) || $type == 'hidden') return '';
 
     if (!isset($caption)) $caption = ucwords(nusp_studlyToStr($name));
 
@@ -295,6 +295,42 @@ function nusp_staticForm($name, $format = '', $bsCols = '')
 
     $label = \Form::label($name, $caption, ['class' => 'control-label col-sm-4', 'placeholder' => $caption]);
     if ($bsCols == '') $bsCols = 'col-sm-8';
+
+    if ($type == 'numeric') return '
+        <div class="row form-group-static">
+            '.$label.'
+            <div class="'.$bsCols.'">
+                <p class="form-control-static input-mask-numeric" id="'.$name.'"></p>
+            </div>
+        </div>
+    '; 
+
+    if ($type == 'decimal') return '
+        <div class="row form-group-static">
+            '.$label.'
+            <div class="'.$bsCols.'">
+                <p class="form-control-static input-mask-decimal" id="'.$name.'"></p>
+            </div>
+        </div>
+    ';    
+
+    if ($type == 'currency') return '
+        <div class="row form-group-static">
+            '.$label.'
+            <div class="'.$bsCols.'">
+                <p class="form-control-static input-mask-currency" id="'.$name.'"></p>
+            </div>
+        </div>
+    ';    
+
+    if ($type == 'date') return '
+        <div class="row form-group-static">
+            '.$label.'
+            <div class="'.$bsCols.'">
+                <p class="form-control-static input-date" id="'.$name.'"></p>
+            </div>
+        </div>
+    ';    
 
     return '
         <div class="row form-group-static">
