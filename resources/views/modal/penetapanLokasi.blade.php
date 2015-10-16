@@ -56,7 +56,7 @@
 
 @section('reportOnly.penetapanLokasi.modal.id', 'modal-report-penetapan-lokasi')
 @section('reportOnly.penetapanLokasi.modal.title', 'PenetapanLokasi Kabupaten / Kota')
-@section('reportOnly.penetapanLokasi.modal.form.action', nusp_asset(''))
+@section('reportOnly.penetapanLokasi.modal.form.action', nusp_asset('api/penetapan-lokasi'))
 
 @section('reportOnly.penetapanLokasi.modal.body')
 	<div class="row hide">
@@ -83,7 +83,7 @@
 			<p class="form-control-static" id="propinsi"></p>
 		</div>
 	</div>
-	{!! nusp_forms(array_except($formPenetapanLokasi, ['file_id'])) !!}
+	{!! nusp_staticForms(array_except($formPenetapanLokasi, ['file_id'])) !!}
 	<div class="form-group">
 		<label for="foto_id" class="control-label col-sm-4">File</label>
 		<div class="col-sm-6">

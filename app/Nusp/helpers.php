@@ -294,9 +294,10 @@ function nusp_staticForm($name, $format = '', $bsCols = '')
     if (!isset($default)) $default = '';
 
     $label = \Form::label($name, $caption, ['class' => 'control-label col-sm-4', 'placeholder' => $caption]);
+    if ($bsCols == '') $bsCols = 'col-sm-8';
 
     return '
-        <div class="form-group">
+        <div class="row form-group-static">
             '.$label.'
             <div class="'.$bsCols.'">
                 <p class="form-control-static" id="'.$name.'"></p>

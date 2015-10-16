@@ -120,17 +120,16 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
 
 Route::controller('auth', 'Auth\AuthController');
 
-Route::get('buat_password/{urut}', function($urut) {
-	$users = \App\User::where('id', '>=', $urut)->get();
-	foreach ($users as $user) {
-		$user->password = bcrypt(nusp_password($user->password));
-		$user->save();
-	}
-});
+// Route::get('buat_password/{urut}', function($urut) {
+// 	$users = \App\User::where('id', '>=', $urut)->get();
+// 	foreach ($users as $user) {
+// 		$user->password = bcrypt(nusp_password($user->password));
+// 		$user->save();
+// 	}
+// });
 
 Route::get('tess', function() {
-    $forms = with(new \App\SosialisasiKabKota)->get_forms();
-    return view('backend.tes', compact('forms'));
+    return auth()->user()->getWilayahPerRole('1');
 
 });
 

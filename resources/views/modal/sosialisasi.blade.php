@@ -55,7 +55,7 @@
 
 @section('reportOnly.sosialisasi.modal.id', 'modal-report-sosialisasi')
 @section('reportOnly.sosialisasi.modal.title', 'Sosialisasi Kabupaten / Kota')
-@section('reportOnly.sosialisasi.modal.form.action', nusp_asset(''))
+@section('reportOnly.sosialisasi.modal.form.action', nusp_asset('api/sosialisasi'))
 
 @section('reportOnly.sosialisasi.modal.body')
 	<div class="row hide">
@@ -82,7 +82,7 @@
 			<p class="form-control-static" id="propinsi"></p>
 		</div>
 	</div>
-	{!! nusp_forms(array_except($formSosialisasi, ['foto_id'])) !!}
+	{!! nusp_staticForms(array_except($formSosialisasi, ['foto_id'])) !!}
 	<div class="form-group">
 		<label for="foto_id" class="control-label col-sm-4">Foto</label>
 		<div class="col-sm-6">

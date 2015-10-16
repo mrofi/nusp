@@ -12,15 +12,15 @@
 <div id="dropdown-kab-kota">
 <ul class="dropdown-menu" role="menu">
   <li class="active"><a href="javascript:;"></a></li>
-  <li><a href="#" data-target="#modal-sosialisasi"  data-target-b="#modal-report-sosialisasi" data-toggle="modal">Sosialisasi Kab / Kota</a></li>
-  <li><a href="#" data-target="#modal-penetapan-lokasi" data-target-b="#modal-report-penetapan-lokasi" data-toggle="modal">Penetapan Lokasi</a></li>
+  <li><a href="#" data-target_1="#modal-sosialisasi"  data-target_2="#modal-report-sosialisasi" data-toggle="modal">Sosialisasi Kab / Kota</a></li>
+  <li><a href="#" data-target_1="#modal-penetapan-lokasi" data-target_2="#modal-report-penetapan-lokasi" data-toggle="modal">Penetapan Lokasi</a></li>
 </ul>
 </div>
 
 <div id="dropdown-desa-kel">
 <ul class="dropdown-menu" role="menu">
   <li class="active"><a href="javascript:;"></a></li>
-  <li><a href="#" data-target="#modal-profil-desa-kel" data-toggle="modal">Profil Kelurahan</a></li>
+  <li><a href="#" data-target_1="#modal-profil-desa-kel" data-target_2="#modal-report-profil-desa-kel" data-toggle="modal">Profil Kelurahan</a></li>
   <li><a href="#">Tahapan Kegiatan</a></li>
   <li><a href="#">Kontrak, Lahan &amp; Pemanfaat</a></li>
   <li><a href="#">Fisik &amp; Keuangan</a></li>
@@ -99,8 +99,8 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
         slugKabKota = lists[x]._values.slug;
         role_id = lists[x]._values.role_id;
         idKabKota = lists[x]._values.id;
-        $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota).attr('data-role_id', role_id)
-        .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id)
+        $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota)
+        .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-role_id', role_id).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id)
         .end().find('.small-box').addClass(getBoxColor());
       }
     })
@@ -136,11 +136,22 @@ $(function() {
 $('#dropdown-kab-kota').on('show.bs.dropdown', function(e) {
   var button = $(e.relatedTarget);
   $(this).data(button.data());
+  var role_id = $(this).data('role_id');
+  var link = $(this).find('[data-toggle]'); 
+  link.each(function(i, e) {
+    console.log($(this).data());
+    $(this).attr('data-target', $(this).data('target_'+role_id));
+  })
 })
 
 $('#dropdown-desa-kel').on('show.bs.dropdown', function(e) {
   var button = $(e.relatedTarget);
   $(this).data(button.data());
+  var role_id = $(this).data('role_id');
+  var link = $(this).find('a[data-toggle]'); 
+  link.each(function(i, e) {
+    $(this).attr('data-target', $(this).data('target_'+role_id));
+  })
 })
 
 $('#regional-wrapper').on('click', '.nusp-data-link', function(e) {

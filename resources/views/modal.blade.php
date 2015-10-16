@@ -47,6 +47,7 @@
             input.val(f);
           }
           else if (input.is(':input')) {input.val(value);}
+          else if (input.is('.form-control-static')) {input.text(value);}
         }
         
       }, 'json');

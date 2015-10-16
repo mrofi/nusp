@@ -80,10 +80,11 @@ class User extends BaseModel implements AuthenticatableContract,
         return false;
     }
 
-    private function getWilayahPerRole($role_id)
+    public function getWilayahPerRole($role_id)
     {
-        $wilayah_user = array_flatten(UserWilayahRole::where('user_id', $this->id)->get(['kode_wilayah'])->toArray());
+        $wilayah_user = array_flatten(UserWilayahRole::where('user_id', $this->id)->where('role_id', $role_id)->get(['kode_wilayah'])->toArray());
 
+        if (!$wilayah_user) return [];
         // $wilayah_user = ['127404', '1274051003'];
 
         $wilayah = Wilayah::orderBy('induk')->orderBy('nama_wilayah');

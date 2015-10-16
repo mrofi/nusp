@@ -35,7 +35,7 @@
 
 @section('reportOnly.profil.modal.id', 'modal-report-profil-desa-kel')
 @section('reportOnly.profil.modal.title', 'Profil Desa / Kelurahan')
-@section('reportOnly.profil.modal.form.action', nusp_asset(''))
+@section('reportOnly.profil.modal.form.action', nusp_asset('api/profil-desa-kelurahan'))
 @section('reportOnly.profil.modal.close', 'Tutup')
 @section('reportOnly.profil.modal.submit.class', 'hide')
 
