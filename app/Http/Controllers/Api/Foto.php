@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use DB;
 use Storage;
 use App\Foto as Model;
 use Illuminate\Http\Request;
@@ -17,17 +18,25 @@ class Foto extends ApiController
 
     public function upload(Request $request)
     {
-        $fileX = $request->file('fileInput');
-        $caption = $request->get('caption');
-        $caption .= ' by '.auth()->user()->username;
-        $foto = Model::create(['caption' => $caption]);
-        $foto->filename = $filename = str_slug($foto->id.' '.$caption, '_').'.'.strtolower($fileX->getClientOriginalExtension());
-        $foto->save();
+        DB::beginTransaction();
+            $fileX = $request->file('fileInput');
+            $caption = $request->get('caption');
+            $caption .= ' by '.auth()->user()->username;
+            $foto = Model::create(['caption' => $caption]);
+            $foto->filename = $filename = str_slug($foto->id.' '.$caption, '_').'.'.strtolower($fileX->getClientOriginalExtension());
+            $foto->save();
 
-        Storage::put(
-            'uploads/foto/'.$filename,
-            file_get_contents($fileX->getRealPath())
-        );
+            if (!file_exists($fileX->getRealPath())) 
+            {
+                DB::rollback();
+                return ['error' => 'Upload Gagal'];
+            } 
+
+            Storage::put(
+                'uploads/foto/'.$filename,
+                file_get_contents($fileX->getRealPath())
+            );
+        DB::commit();
 
         return ['message' => 'ok', 'created' => $foto];
     }

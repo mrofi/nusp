@@ -156,7 +156,7 @@ $(function() {
       success: function(data) {
         if (data.message == 'ok') {
            fileinput.find('.fileinput-exists').removeClass('hide');
-           fileinput.find('.fileinput-preview').removeClass('hide');
+           fileinput.find('.fileinput-preview').removeClass('hide').find('img').css('max-height', '140px');
            fileinput.siblings('.progress-upload').addClass('hide');
            fileinput.parents('.form-group').find(fileinput.data('target')).val(data.created.id);
            fileinput.data(data.created);
@@ -193,6 +193,30 @@ $(function() {
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h4><i class="icon fa fa-warning"></i> Alert!</h4>
             <span class="message"></span>
+          </div>
+          <div class="row hide">
+            <label for="" class="control-label col-sm-4">Desa / Kelurahan</label>
+            <div class="col-sm-8">
+              <p class="form-control-static" id="desaKel"></p>
+            </div>
+          </div>
+          <div class="row hide">
+            <label for="" class="control-label col-sm-4">Kecamatan</label>
+            <div class="col-sm-8">
+              <p class="form-control-static" id="kec"></p>
+            </div>
+          </div>
+          <div class="row hide">
+            <label for="" class="control-label col-sm-4">Kabupaten / Kota</label>
+            <div class="col-sm-8">
+              <p class="form-control-static" id="kabKota"></p>
+            </div>
+          </div>
+          <div class="row hide">
+            <label for="" class="control-label col-sm-4">Propinsi</label>
+            <div class="col-sm-8">
+              <p class="form-control-static" id="propinsi"></p>
+            </div>
           </div>
           @yield($namespace.'.modal.body')    
           <div class="row">&nbsp;</div>

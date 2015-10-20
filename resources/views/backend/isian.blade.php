@@ -5,7 +5,7 @@
 @section('contentMain')
 
 <div id="regional-wrapper" class="">  
-  <ul class="list-unstyled content-propinsi text-white"></ul>
+  <ul class="list-unstyled row content-propinsi text-white"></ul>
   <div class="content">&nbsp;</div>
 </div>
 
@@ -51,12 +51,12 @@ var getBoxColor = function() {
 };
 
 var options1 = {
-  item: '<li><div class="content-header"><h2 class="propinsi"></h2></div><div class="content-body"><ul class="list-unstyled row content-kab-kota"></ul></div></li>',
+  item: '<li><div class="content-header"><h2 class="propinsi"></h2></div><div class="content-body"><ul class="list-unstyled content-kab-kota"></ul></div></li>',
   listClass: 'list-unstyled'
 };
 
 var options2 = {
-  item: '<li class="col-lg-3 col-sm-6"> <div class="small-box"> <div class="inner"> <h2><a href="#" class="dropdown-toggle nusp-data-link kab-kota-link" data-toggle="dropdown" data-target="#dropdown-kab-kota"><span class="kabKota"></span> <span class="caret"></span></a></h2> <hr> <p></p> </div> <div class="inner inner-kab-kota"> <ul class="list-unstyled content-desa-kel"> </ul> </div> </div> </li>',
+  item: '<li> <div class="small-box"> <div class="inner"> <h2><a href="#" class="dropdown-toggle nusp-data-link kab-kota-link" data-toggle="dropdown" data-target="#dropdown-kab-kota"><span class="kabKota"></span> <span class="caret"></span></a></h2> <hr> </div> <div class="inner inner-kab-kota"> <ul class="list-unstyled content-desa-kel"> </ul> </div> </div> </li>',
   listClass: 'list-unstyled'
 };
 
@@ -84,6 +84,7 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
     }
   });
 
+
   for (x in regionalList) {
     propinsi = regionalList[x];
     propinsi.func = new List(propinsi.slug, options2);
@@ -95,15 +96,22 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
     }
 
     propinsi.func.add(kabKotas, function(lists) {
+      var jumlahKabKota = lists.length;
+      var colLg = 'col-lg-' + ((jumlahKabKota > 4) ? 3 : 12 / jumlahKabKota); // 1 -> 12, 2 -> 6, 3 -> 4, 4 -> 3, 5 -> 3
+      var colSm = 'col-sm-' + ((jumlahKabKota > 2) ? 6 : 12 / jumlahKabKota); // 1 -> 12, 2 -> 6, 3 -> 6, 4 -> 6, 5 -> 6 
+      var colLgParent = 'col-lg-' + ((jumlahKabKota > 4) ? 12 : jumlahKabKota * 3); // 1 -> 12, 2 -> 6, 3 -> 4, 4 -> 3, 5 -> 3
+      var colSmParent = 'col-sm-' + ((jumlahKabKota > 2) ? 12 : jumlahKabKota * 6); // 1 -> 12, 2 -> 6, 3 -> 6, 4 -> 6, 5 -> 6 
       for (x in lists) {
         slugKabKota = lists[x]._values.slug;
         role_id = lists[x]._values.role_id;
         idKabKota = lists[x]._values.id;
-        $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota)
+        $(lists[x].elm).addClass(colLg).addClass(colSm).find('.inner-kab-kota').attr('id', slugKabKota)
         .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-role_id', role_id).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id)
-        .end().find('.small-box').addClass(getBoxColor());
+        .end().find('.small-box').addClass(getBoxColor())
+        .end().parents('li').addClass(colLgParent).addClass(colSmParent);
       }
     })
+
 
     for (y in propinsi.kabKotas) {
       kabKota = propinsi.kabKotas[y];
@@ -128,6 +136,71 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
     }
 
   }
+    
+  window.saveSearchP = {};
+  window.saveSearchK = {};
+  window.saveSearchD = {};
+
+  var searchList = function(keyword) {
+    window.saveSearchP.search  && window.saveSearchP.search('');
+    window.saveSearchK.search  && window.saveSearchK.search('');
+    window.saveSearchD.search  && window.saveSearchD.search('');
+
+    if (keyword == '') return;
+
+    hasilP = regional.search(keyword);
+    if (hasilP.length) {
+      window.saveSearchP = regional;
+      return;
+    }
+
+    regional.search('');
+    for (p in regionalList) {
+      rPropinsi = regionalList[p];
+      hasilK = rPropinsi.func.search(keyword);
+
+      if (hasilK.length) {
+        window.saveSearchP = regional;
+        window.saveSearchP.search(rPropinsi.propinsi);
+
+        window.saveSearchK = rPropinsi.func;
+        window.saveSearchK.search(keyword);
+
+        return;
+      }
+
+      rPropinsi.func.search('');
+      for (k in rPropinsi.kabKotas) {
+        rKabKota = rPropinsi.kabKotas[k];
+        hasilD = rKabKota.func.search(keyword);
+
+        if (hasilD.length) {
+          window.saveSearchP = regional;
+          window.saveSearchP.search(rPropinsi.propinsi);
+
+          window.saveSearchK = rPropinsi.func;
+          window.saveSearchK.search(rKabKota.kabKota);
+
+          window.saveSearchD = rKabKota.func;
+          window.saveSearchD.search(keyword);
+
+          return;
+        }
+
+        rKabKota.func.search('');
+      }
+    }
+
+    window.saveSearchP = regional;
+    regional.search('no result');
+
+  }
+
+  $('#navbar-search-input').on('keyup', function(e) {
+    val = $(this).val();
+    if (val.length < 2) return searchList('');
+    searchList(val);
+  })
 
 }, 'json')
 

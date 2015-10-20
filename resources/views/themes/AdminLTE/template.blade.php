@@ -71,6 +71,29 @@
       .nusp-data-link:hover {
         color: rgba(255,255,255,0.8)!important;
       }
+
+      .small-box hr {
+          margin: 0!important;
+      }
+
+      h2.propinsi {
+          border-bottom: 1px solid;
+          padding-bottom: 10px;
+      }
+
+      .form-control-static {
+          padding-bottom: 0;
+          border-bottom: 1px dotted;
+          margin-bottom: 4px;
+          display: inline-block;
+          padding-right: 10px;
+          min-width: 50px;
+      }
+
+      .form-group {
+        margin-bottom: 8px;
+      }
+
     </style>
     
     <!--pace-->
@@ -113,11 +136,13 @@
               <ul class="nav navbar-nav">
                 @yield('menubar')
               </ul>
+              @if(request()->is('dashboard'))
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                  <input type="search" class="form-control" id="navbar-search-input" placeholder="Cari Wilayah">
                 </div>
               </form>
+              @endif
             </div><!-- /.navbar-collapse -->
             <!-- Navbar Right Menu -->
               <div class="navbar-custom-menu">

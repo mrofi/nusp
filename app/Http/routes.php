@@ -23,12 +23,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'B
 {
     Route::get('/', function() 
     {
-    	$thePage = 'Beranda';
-    	return view('backend.beranda', compact('thePage'));
-    });
-
-    Route::get('all', function() 
-    {
     	$thePage = 'Data Semua Wilayah';
     	$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
     	$formPenetapanLokasi = with(new \App\PenetapanLokasi)->get_forms();
@@ -36,15 +30,15 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'B
     	return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
     });
 
-    Route::get('isian/sosialisasi', function() 
+    Route::get('sosialisasi-kabupaten-kota', function() 
     {
-    	$thePage = 'Isian Data / Sosialisasi Kabupaten - Kota';
+    	$thePage = 'Laporan Sosialisasi Kabupaten / Kota';
     	$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
+    	$formPenetapanLokasi = with(new \App\PenetapanLokasi)->get_forms();
     	$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
-    	return view('backend.isian', compact('thePage', 'formSosialisasi', 'formProfilDesaKel'));
+    	return view('report.sosialisasi', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
     });
-	
-    // Route::controller('/', 'Dashboard');
+
 });
 
 Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api'], function()

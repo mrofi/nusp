@@ -20,7 +20,13 @@ class SosialisasiKabKota extends ApiController
      */
     public function index(Request $request)
     {
-        //
+        $wilayah = auth()->user()->kabKota;
+        foreach ($wilayah as $k => $w) 
+        {
+            $wilayah[$k]['sosialisasi'] = Model::where('kode_wilayah', $w['id'])->first();
+        }
+
+        return $wilayah;
     }
 
     /**
