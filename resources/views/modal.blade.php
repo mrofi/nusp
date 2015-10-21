@@ -179,8 +179,37 @@ $(function() {
 @yield($namespace.'.modal.js')
 @endpush
 
+@section($namespace.'.modal.form.body')
+<div class="row hide">
+  <label for="" class="control-label col-sm-4">Desa / Kelurahan</label>
+  <div class="col-sm-8">
+    <p class="form-control-static" id="desaKel"></p>
+  </div>
+</div>
+<div class="row hide">
+  <label for="" class="control-label col-sm-4">Kecamatan</label>
+  <div class="col-sm-8">
+    <p class="form-control-static" id="kec"></p>
+  </div>
+</div>
+<div class="row hide">
+  <label for="" class="control-label col-sm-4">Kabupaten / Kota</label>
+  <div class="col-sm-8">
+    <p class="form-control-static" id="kabKota"></p>
+  </div>
+</div>
+<div class="row hide">
+  <label for="" class="control-label col-sm-4">Propinsi</label>
+  <div class="col-sm-8">
+    <p class="form-control-static" id="propinsi"></p>
+  </div>
+</div>
+@yield($namespace.'.modal.body')  
+@endsection
+
+
 <div class="modal text-black fade" id="@yield($namespace.'.modal.id')">
-  <div class="modal-dialog">
+  <div class="modal-dialog @yield($namespace.'.modal.class')">
     <div class="modal-content">
       <div class="modal-header bg-yellow-v2">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -194,31 +223,7 @@ $(function() {
             <h4><i class="icon fa fa-warning"></i> Alert!</h4>
             <span class="message"></span>
           </div>
-          <div class="row hide">
-            <label for="" class="control-label col-sm-4">Desa / Kelurahan</label>
-            <div class="col-sm-8">
-              <p class="form-control-static" id="desaKel"></p>
-            </div>
-          </div>
-          <div class="row hide">
-            <label for="" class="control-label col-sm-4">Kecamatan</label>
-            <div class="col-sm-8">
-              <p class="form-control-static" id="kec"></p>
-            </div>
-          </div>
-          <div class="row hide">
-            <label for="" class="control-label col-sm-4">Kabupaten / Kota</label>
-            <div class="col-sm-8">
-              <p class="form-control-static" id="kabKota"></p>
-            </div>
-          </div>
-          <div class="row hide">
-            <label for="" class="control-label col-sm-4">Propinsi</label>
-            <div class="col-sm-8">
-              <p class="form-control-static" id="propinsi"></p>
-            </div>
-          </div>
-          @yield($namespace.'.modal.body')    
+          @yield($namespace.'.modal.form.body')
           <div class="row">&nbsp;</div>
         </div>
         <div class="modal-footer bg-navy">

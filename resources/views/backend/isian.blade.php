@@ -57,13 +57,13 @@
 </ul>
 </div>
 
-@include('modal.profilDesaKel')
-@include('modal.profilDesaKel', ['allowed' => true])
-
 @include('modal.sosialisasi')
 @include('modal.sosialisasi', ['allowed' => true])
 
 @include('modal.penetapanLokasi')
+@include('modal.profilDesaKel')
+
+@include('modal.profilDesaKel', ['allowed' => true])
 @include('modal.penetapanLokasi', ['allowed' => true])
 
 <!-- Main content -->
