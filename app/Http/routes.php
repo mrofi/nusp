@@ -11,32 +11,27 @@
 |
 */
 
-Route::get('/', ['as' => 'home', function()
+Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function()
 {
-    if (!config('nusp.frontend')) return redirect('dashboard');
-    
-    // frontend view        
-    return 'frontend';
-}]);
-
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'namespace' => 'Backend'], function()
-{
-    Route::get('/', function() 
+    Route::get('/', ['as' => 'home', function() 
     {
-    	$thePage = 'Data Semua Wilayah';
-    	$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
-    	$formPenetapanLokasi = with(new \App\PenetapanLokasi)->get_forms();
-    	$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
-    	return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
-    });
+	    if (config('nusp.frontend')) return 'frontend';
+	    // frontend view        
 
-    Route::get('sosialisasi-kabupaten-kota', function() 
+		$thePage = 'Data Semua Wilayah';
+		$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
+		$formPenetapanLokasi = with(new \App\PenetapanLokasi)->get_forms();
+		$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
+		return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
+    }]);
+
+    Route::get('report', function() 
     {
     	$thePage = 'Laporan Sosialisasi Kabupaten / Kota';
     	$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
     	$formPenetapanLokasi = with(new \App\PenetapanLokasi)->get_forms();
     	$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
-    	return view('report.sosialisasi', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
+    	return view('report.laporan', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
     });
 
 });

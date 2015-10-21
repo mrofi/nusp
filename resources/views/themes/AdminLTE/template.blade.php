@@ -140,8 +140,8 @@
               <ul class="nav navbar-nav">
                 @yield('menubar')
               </ul>
-              @if(request()->is('dashboard'))
-              <form class="navbar-form navbar-left" role="search">
+              @if(request()->is('/'))
+              <form class="navbar-form form-search navbar-left" role="search">
                 <div class="form-group">
                   <input type="search" class="form-control" id="navbar-search-input" placeholder="Cari Wilayah">
                 </div>
@@ -549,6 +549,14 @@
             }
           });
 
+          $('.search-button').click(function() {
+            $('#navbar-search-input').focus();
+          })
+
+          $('.form-search').on('submit',  function(e) {
+            e.preventDefault();
+            $('.navbar-collapse').removeClass('in');
+          })
       })
     </script>
     

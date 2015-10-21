@@ -4,6 +4,36 @@
 
 @section('contentMain')
 
+<div id="search-wrapper" class="hide">
+  <div class="col-md-8">
+      <h1>
+        <i class="fa fa-search"></i> Mencari 
+        <abbr title="" class="initialism"></abbr>
+        <small class="pull-right"><a href="#" class="text-white show-all-wilayah"><i class="fa fa-times"></i> <span class="hidden-xs hidden-sm">Hapus Pencarian</span></a></small>
+      </h1>
+  </div>
+  <div class="col-md-4"></div>
+  <div class="row"></div>
+  <hr>
+</div>
+
+<div id="search-no-result" class="content hide">
+  <div class="col-md-12">
+    <h1><i class="fa fa-search"></i> Tidak Menemukan Hasil</h1>
+    <hr>
+    <h3>Untuk mendapatkan hasil yang tepat : </h3>
+    <ul class="list">
+      <li><h3>Pastikan Anda mempunyai hak untuk mengakses wilayah tersebut</h3></li>
+      <li><h3>Ketikkan minimal 1 kata dengan tepat</h3></li>
+      <li><h3>Pencarian ini Mendukung semua nama wilayah (propinsi, kabupaten, kota, desa dan kelurahan)</h3></li>
+      <li><h3>Jika tidak berhasil, coba pencarian dengan browser Anda (ketik Ctrl + F)</h3></li>
+    </ul>
+    <a href="#" class="show-all-wilayah btn btn-lg bg-blue">Tampilkan Semua Wilayah</a>
+  </div>
+</div>
+
+
+
 <div id="regional-wrapper" class="">  
   <ul class="list-unstyled row content-propinsi text-white"></ul>
   <div class="content">&nbsp;</div>
@@ -65,6 +95,11 @@ var options3 = {
   item: '<li><a href="#" class="dropdown-toggle nusp-data-link desa-kel-link" data-toggle="dropdown" data-target="#dropdown-desa-kel"><span class="desaKel"></span><span class="caret"></span></a></li>',
   listClass: 'list-unstyled'
 }
+
+$('.show-all-wilayah').click(function(e) {
+  e.preventDefault();
+  $('#navbar-search-input').val('').keyup().focus();
+})
 
 $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
 
@@ -147,7 +182,12 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
     window.saveSearchK.search  && window.saveSearchK.search('');
     window.saveSearchD.search  && window.saveSearchD.search('');
 
+    $('#search-wrapper').addClass('hide');
+    $('#search-no-result').addClass('hide');
+
     if (keyword == '') return;
+
+    $('#search-wrapper abbr').text(keyword);
 
     hasilP = regional.search(keyword);
     if (hasilP.length) {
@@ -198,6 +238,12 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
   }
 
   regional.on('updated', function(list) {
+    $('#search-wrapper').addClass('hide');
+    $('#search-no-result').addClass('hide');
+    if (list.searched == true) {
+      if (list.matchingItems.length) $('#search-wrapper').removeClass('hide');
+      else $('#search-no-result').removeClass('hide');
+    }
     var all = $('.content-propinsi>li');
     var top = [];
     var topObj = [];
@@ -234,7 +280,7 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
     val = $(this).val();
     if (val.length < 2) return searchList('');
     searchList(val);
-  })
+  }).focus();
 
 }, 'json')
 
@@ -282,6 +328,7 @@ $('#regional-wrapper').on('click', '.nusp-data-link', function(e) {
     if (pLeft) $targetMenu.css('min-width', that[0].offsetWidth);
 
 });
+
 
 })
 
