@@ -45,6 +45,7 @@
 <script>
 
 var boxs = ['bg-maroon', 'bg-purple', 'bg-orange', 'bg-olive', 'bg-yellow', 'bg-red', 'bg-green', 'bg-aqua'];
+// var boxs = ['bg-blue'];
 
 var getBoxColor = function() {
   return boxs[Math.floor(Math.random() * 100) % boxs.length];
@@ -195,6 +196,39 @@ $.get('{{ nusp_asset("api/all") }}', {}, function(regionalList){
     regional.search('no result');
 
   }
+
+  regional.on('updated', function(list) {
+    var all = $('.content-propinsi>li');
+    var top = [];
+    var topObj = [];
+    var height = [];
+    all.each(function(i, e) {
+      var b = $(e);
+      top.push(b.offset().top);
+      if (topObj[b.offset().top]) topObj[b.offset().top].push(e);
+      else topObj[b.offset().top] = [e];
+      height.push(b[0].clientHeight);
+    })
+
+    for (t in topObj) {
+      var oo = topObj[t];
+      var oi = {};
+      for (o in oo) {
+        var ooo = oo[o];
+        if (oi.clientHeight == undefined || (oi.clientHeight > 0 && oi.clientHeight < ooo.clientHeight)) {
+          oi = ooo;
+          continue;
+        }
+      }
+      var h = $(oi).find('.small-box')[0].clientHeight;
+      for (o in oo) {
+        var ooo = oo[o];
+        $(ooo).find('.small-box').height(h);
+      }
+    }
+  })
+
+  regional.search('');
 
   $('#navbar-search-input').on('keyup', function(e) {
     val = $(this).val();

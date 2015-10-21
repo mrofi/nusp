@@ -94,6 +94,10 @@
         margin-bottom: 8px;
       }
 
+      .fixed .content-wrapper, .fixed .right-side {
+         padding-top: 50px!important; 
+      }
+
     </style>
     
     <!--pace-->
