@@ -23,7 +23,7 @@
     <!-- datatables -->
     <link rel="stylesheet" href="/themes/AdminLTE/plugins/datepicker/datepicker3.css">
     <!-- datatables -->
-    <link rel="stylesheet" href="/themes/AdminLTE/plugins/datatables/datatables.bootstrap.css">
+    <link rel="stylesheet" href="/themes/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="/themes/AdminLTE/plugins/select2/select2.min.css">
     <!-- Theme style -->
