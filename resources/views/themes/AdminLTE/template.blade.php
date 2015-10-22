@@ -255,9 +255,9 @@
 @section('footer')
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>v.</b> 0.3.0 alpha <b><a href="https://github.com/mrofi/nusp">MR</a></b>
+          <b>v.</b> 0.3.0 alpha <b><a href="https://twitter.com/m_rofi">MR</a></b>
         </div>
-        <strong class="hidden-xs">&copy; 2015 {!! 2015 < ($year = \Carbon::now()->format('Y')) ? "- $year" : ""  !!} - Supported by <a href="AMRI">AMRI</a>.</strong>
+        <strong class="hidden-xs">&copy; 2015 {!! 2015 < ($year = \Carbon::now()->format('Y')) ? "- $year" : ""  !!} - Supported by <a href="https://github.com/mrofi/nusp">AMRI</a>.</strong>
       </footer>
 @endsection
 
@@ -442,7 +442,7 @@
     <!-- Jasny Bootstrap -->
     <script src="/themes/AdminLTE/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
     <!-- List JS -->
-    <script src="/themes/AdminLTE/plugins/listjs/v1.1.1/dist/list.js"></script>
+    <script src="/themes/AdminLTE/plugins/listjs/v1.1.1/dist/list.min.js"></script>
      <!-- SlimScroll -->
     <script src="/themes/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->

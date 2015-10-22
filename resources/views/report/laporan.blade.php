@@ -220,8 +220,7 @@
 		  			</ul>
 		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
 		  			<div class="list-format-2 hide"><li class="report-item-kabkota"><h2 class="kabkota"></h2><ul class="list-unstyled report-row row"></ul></li></div>
-		  			<div class="list-format-3 hide"><li class="report-item-desakel"><h2 class="desakel"></h2><ul class="list-unstyled report-row row"></ul></li></div>
-		  			<div class="list-format-4 hide"><li><div class="col-md-4 report-item text-left no-left-border desakel"></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Luas Wilayah (m<sup>2</sup>)</div><div class="col-xs-7 col-md-12 luas_wilayah"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk</div><div class="col-xs-7 col-md-12 jumlah_penduduk"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Laki-laki</div><div class="col-xs-7 col-md-12 jumlah_penduduk_laki_laki"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Perempuan</div><div class="col-xs-7 col-md-12 jumlah_penduduk_perempuan"></div></div></div> </li> </div>
+		  			<div class="list-format-3 hide"><li><div class="col-md-4 report-item text-left no-left-border desakel"></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Luas Wilayah (m<sup>2</sup>)</div><div class="col-xs-7 col-md-12 luas_wilayah"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk</div><div class="col-xs-7 col-md-12 jumlah_penduduk"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Laki-laki</div><div class="col-xs-7 col-md-12 jumlah_penduduk_laki_laki"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Perempuan</div><div class="col-xs-7 col-md-12 jumlah_penduduk_perempuan"></div></div></div> </li> </div>
 
 	  			</div>
 	  			<div id="tahapan-kegiatan" class="tab-pane fade">	  				
@@ -351,6 +350,16 @@
 			$('.navsidebar').removeClass('affix');
 		})
 
+		window.sosialisasiAction = function(elm, item) {
+			var foto_id = item.foto_id;
+			if (foto_id != '-') $(elm).find('.foto_id').html('<img src="{{ nusp_asset('api/foto/') }}'+foto_id+'" style="max-height:100%; max-width: 90%;">');
+		}
+
+		window.penetapanAction = function(elm, item) {
+			var file_id = item.file_id;
+			if (file_id != '-') $(elm).find('.file_id').html('<a href="{{ nusp_asset('api/file/') }}'+file_id+'">Download</a>');
+		}
+
 		window.allList = [];
 
 		$('ul.sidenav li > a').click(function(e) {
@@ -400,7 +409,10 @@
 			    }
 			  });
 
-			  if (deep == '1') return;
+			  	if (deep == '1') { 
+			  		window[name+'Action'] && window[name+'Action']();
+			  		return;
+			  	}
 
 			  for (x in regionalList) {
 			    propinsi = regionalList[x];
@@ -426,8 +438,9 @@
 			        slugKabKota = lists[x]._values.slug;
 			        role_id = lists[x]._values.role_id;
 			        idKabKota = lists[x]._values.id;
-			        $(lists[x].elm).find('.inner-kab-kota').attr('id', slugKabKota)
-			        .end().find('.kab-kota-link').attr('data-id', idKabKota).attr('data-role_id', role_id).attr('data-kab-kota-id', idKabKota).attr('data-propinsi-id', propinsi.id);
+			        $(lists[x].elm).attr('id', slugKabKota);
+			  		
+			  		if (deep == '2') window[name+'Action'] && window[name+'Action'](lists[x].elm, lists[x]._values);
 			      }
 			    })
 
@@ -453,21 +466,19 @@
 
 
 			      kabKota.func.add(desaKels, function(lists) {
-			      	console.log(lists)
-			        // for (x in lists) {
-			        //   slugDesaKel = lists[x]._values.slug;
-			        //   role_id = lists[x]._values.role_id;
-			        //   idDesaKel = lists[x]._values.id;
-			        //   $(lists[x].elm).find('.desa-kel-link').attr('id', slugDesaKel).attr('data-role_id', role_id).attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
-			        //   .attr('data-kab-kota-id', kabKota.id).attr('data-propinsi-id', propinsi.id)
-			        // }
+			        for (x in lists) {
+			          slugDesaKel = lists[x]._values.slug;
+			          role_id = lists[x]._values.role_id;
+			          idDesaKel = lists[x]._values.id;
+			          $(lists[x].elm).find('.desa-kel-link').attr('id', slugDesaKel).attr('data-role_id', role_id).attr('data-id', idDesaKel).attr('data-desa-kel-id', idDesaKel)
+			          .attr('data-kab-kota-id', kabKota.id).attr('data-propinsi-id', propinsi.id)
+			  		  if (deep == '3') window[name+'Action'] && window[name+'Action'](lists[x].elm, lists[x]._values);
+			        }
 			      });
 
 			    }
 
-			  }
-			    
-			  
+			  }			  
 
 			}, 'json')
 		})

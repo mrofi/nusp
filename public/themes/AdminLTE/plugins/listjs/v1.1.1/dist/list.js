@@ -798,7 +798,6 @@ var List = function(id, options, values) {
                 item.reload();
             } else {
                 notCreate = (self.items.length > self.page) ? true : false;
-                console.log(values[i])
                 item = new Item(values[i], undefined, notCreate);
             }
             self.items.push(item);
