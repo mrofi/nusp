@@ -442,7 +442,7 @@
     <!-- Jasny Bootstrap -->
     <script src="/themes/AdminLTE/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
     <!-- List JS -->
-    <script src="/themes/AdminLTE/plugins/listjs/v1.1.1/dist/list.min.js"></script>
+    <script src="/themes/AdminLTE/plugins/listjs/v1.1.1/dist/list.js"></script>
      <!-- SlimScroll -->
     <script src="/themes/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->

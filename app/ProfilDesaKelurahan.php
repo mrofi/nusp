@@ -29,7 +29,7 @@ class ProfilDesaKelurahan extends BaseModel
 
     protected $forms = [
     	'kode_wilayah' => 'required|type:hidden',
-    	'luas_wilayah' => 'type:decimal|caption:Luas Wilayah (ha)',
+    	'luas_wilayah' => 'type:decimal|caption:Luas Wilayah (m<sup>2</sup>)',
     	'jumlah_penduduk' => 'type:numeric|caption:&sum; Penduduk',
         'jumlah_penduduk_laki_laki' => 'type:numeric|caption:&sum; Penduduk Laki-laki',
         'jumlah_penduduk_perempuan' => 'type:numeric|caption:&sum; Perempuan',
@@ -42,7 +42,7 @@ class ProfilDesaKelurahan extends BaseModel
         'jumlah_mck_unit' => 'type:numeric|caption:&sum; MCK (unit)',
         'jumlah_mck_bilik' => 'type:numeric|caption:&sum; MCK (Bilik)',
         'jumlah_sumur_gali_unit' => 'type:numeric|caption:&sum; Sumur Gali (Unit)',
-        'jumlah_sumur_pompa_unit' => 'type:numeric|caption:&sum; Pompa (Unit)',
+        'jumlah_sumur_pompa_unit' => 'type:numeric|caption:&sum; Sumur Pompa (Unit)',
         // 'jumlah_sambungan_pdam_sr' => 'type:numeric|caption:&sum; Sambungan PDAM (SR)',
         'jumlah_kran_umum_unit' => 'type:numeric|caption:&sum; Kran Umum (Unit)',
         'jumlah_pah_unit' => 'type:numeric|caption:&sum; Penampungan Air Hujan (Unit)',
