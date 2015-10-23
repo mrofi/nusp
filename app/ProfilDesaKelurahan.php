@@ -63,7 +63,7 @@ class ProfilDesaKelurahan extends BaseModel
     protected $attributes = [
     	'kode_wilayah' => '',
     	'luas_wilayah' => 0,
-    	'jumlah_penduduk' => 0,
+    	// 'jumlah_penduduk' => 0,
         'jumlah_penduduk_laki_laki' => 0,
         'jumlah_penduduk_perempuan' => 0,
         'jumlah_kk' => 0,
