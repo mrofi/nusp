@@ -9,7 +9,7 @@ class ProfilDesaKelurahan extends BaseModel
     protected $fillable = [
     	'kode_wilayah',
     	'luas_wilayah',
-    	'jumlah_penduduk',
+    	// 'jumlah_penduduk',
         'jumlah_penduduk_laki_laki',
         'jumlah_penduduk_perempuan',
         'jumlah_kk',
@@ -24,13 +24,19 @@ class ProfilDesaKelurahan extends BaseModel
         'jumlah_sumur_pompa_unit',
         // 'jumlah_sambungan_pdam_sr',
         'jumlah_kran_umum_unit',
-        'jumlah_pah_unit'
+        'jumlah_pah_unit',
+        'nama_bkm',
+        'status_keberdayaan_bkm',
+        'luas_kawasan',
+        'tipografi_karakteristik',
+        'koordinat_latitude',
+        'koordinat_longitude',
     ];
 
     protected $forms = [
     	'kode_wilayah' => 'required|type:hidden',
     	'luas_wilayah' => 'type:decimal|caption:Luas Wilayah (m<sup>2</sup>)',
-    	'jumlah_penduduk' => 'type:numeric|caption:&sum; Penduduk',
+    	// 'jumlah_penduduk' => 'type:numeric|caption:&sum; Penduduk',
         'jumlah_penduduk_laki_laki' => 'type:numeric|caption:&sum; Penduduk Laki-laki',
         'jumlah_penduduk_perempuan' => 'type:numeric|caption:&sum; Perempuan',
         'jumlah_kk' => 'type:numeric|caption:&sum; KK',
@@ -46,6 +52,12 @@ class ProfilDesaKelurahan extends BaseModel
         // 'jumlah_sambungan_pdam_sr' => 'type:numeric|caption:&sum; Sambungan PDAM (SR)',
         'jumlah_kran_umum_unit' => 'type:numeric|caption:&sum; Kran Umum (Unit)',
         'jumlah_pah_unit' => 'type:numeric|caption:&sum; Penampungan Air Hujan (Unit)',
+        'nama_bkm' => 'type:string|caption:Nama BKM',
+        'status_keberdayaan_bkm' => 'type:string|caption:Status Keberdayaan BKM',
+        'luas_kawasan' => 'type:decimal|caption:Luas Kawasan (Ha)',
+        'tipografi_karakteristik' => 'type:string|caption:Tipografi / Karakteristik',
+        'koordinat_latitude' => 'type:string',
+        'koordinat_longitude' => 'type:string',
     ];
 
     protected $attributes = [
@@ -67,6 +79,12 @@ class ProfilDesaKelurahan extends BaseModel
         // 'jumlah_sambungan_pdam_sr' => 0,
         'jumlah_kran_umum_unit' => 0,
         'jumlah_pah_unit' => 0,
+        'nama_bkm' => '',
+        'status_keberdayaan_bkm' => '',
+        'luas_kawasan' => 0,
+        'tipografi_karakteristik' => '',
+        'koordinat_latitude' => 0,
+        'koordinat_longitude' => 0,
     ];
 
     public function getWilayahAttribute()

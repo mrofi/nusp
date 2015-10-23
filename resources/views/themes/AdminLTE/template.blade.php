@@ -81,6 +81,16 @@
           padding-bottom: 10px;
       }
 
+      .form-control {
+          padding: 0 12px!important;
+          height: 29px;
+          font-size: 16px;
+      }
+
+      .control-label {
+          padding-top: 4px!important;
+      }
+
       .form-control-static {
           padding-bottom: 0;
           border-bottom: 1px dotted;

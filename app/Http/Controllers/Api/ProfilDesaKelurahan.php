@@ -38,6 +38,7 @@ class ProfilDesaKelurahan extends ApiController
                     foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
                     {
                         $newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('wilayah '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode'], 'role_id' => $desaKel['role_id'], 'profil' =>  Model::where('kode_wilayah', $desaKel['kode'])->first()];
+                        if ($newDesaKel['profil']) $newDesaKel['profil']['jumlah_penduduk'] = $newDesaKel['profil']['jumlah_penduduk_laki_laki'] + $newDesaKel['profil']['jumlah_penduduk_perempuan'];
                         $desaKels[] = $newDesaKel;
                     }
                 }

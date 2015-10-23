@@ -34,10 +34,10 @@
 	<div class="row">
 		<div class="col-md-6">
 			@yield('profil.modal.form.plain')
-			{!! nusp_forms(array_only($formProfilDesaKel, ['luas_wilayah', 'jumlah_penduduk', 'jumlah_penduduk_laki_laki', 'jumlah_penduduk_perempuan', 'jumlah_kk', 'jumlah_kk_miskin'])) !!}
+			{!! nusp_forms(array_only($formProfilDesaKel, ['luas_wilayah', 'jumlah_penduduk_laki_laki', 'jumlah_penduduk_perempuan', 'jumlah_kk', 'jumlah_kk_miskin', 'jumlah_rw_dusun_lingkungan', 'jumlah_rt', 'jumlah_jamban_kk', 'jumlah_septik_tank'])) !!}
 		</div>
 		<div class="col-md-6">
-			{!! nusp_forms(array_only($formProfilDesaKel, ['jumlah_rw_dusun_lingkungan', 'jumlah_rt', 'jumlah_jamban_kk', 'jumlah_septik_tank', 'jumlah_mck_unit', 'jumlah_mck_bilik', 'jumlah_sumur_gali_unit', 'jumlah_sumur_pompa_unit', 'jumlah_kran_umum_unit', 'jumlah_pah_unit'])) !!}
+			{!! nusp_forms(array_only($formProfilDesaKel, ['jumlah_mck_unit', 'jumlah_mck_bilik', 'jumlah_sumur_gali_unit', 'jumlah_sumur_pompa_unit', 'jumlah_kran_umum_unit', 'jumlah_pah_unit', 'nama_bkm', 'status_keberdayaan_bkm', 'luas_kawasan', 'tipografi_karakteristik', 'koordinat_latitude', 'koordinat_longitude'])) !!}
 		</div>
 	</div>
 @endsection
@@ -51,7 +51,15 @@
 @section('reportOnly.profil.modal.submit.class', 'hide')
 
 @section('reportOnly.profil.modal.form.body')	
-	{!! nusp_staticForms($formProfilDesaKel) !!}
+	<div class="row">
+		<div class="col-md-6">
+			@yield('profil.modal.form.plain')
+			{!! nusp_staticForms(array_only($formProfilDesaKel, ['luas_wilayah', 'jumlah_penduduk_laki_laki', 'jumlah_penduduk_perempuan', 'jumlah_kk', 'jumlah_kk_miskin', 'jumlah_rw_dusun_lingkungan', 'jumlah_rt', 'jumlah_jamban_kk', 'jumlah_septik_tank'])) !!}
+		</div>
+		<div class="col-md-6">
+			{!! nusp_staticForms(array_only($formProfilDesaKel, ['jumlah_mck_unit', 'jumlah_mck_bilik', 'jumlah_sumur_gali_unit', 'jumlah_sumur_pompa_unit', 'jumlah_kran_umum_unit', 'jumlah_pah_unit', 'nama_bkm', 'status_keberdayaan_bkm', 'luas_kawasan', 'tipografi_karakteristik', 'koordinat_latitude', 'koordinat_longitude'])) !!}
+		</div>
+	</div>
 @endsection
 
 
