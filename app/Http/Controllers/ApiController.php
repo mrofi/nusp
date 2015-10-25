@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
+use App\Role;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -20,11 +21,9 @@ class ApiController extends Controller
         $this->model = $model;
     }
     
-    protected function userAuthorize($method, Closure $next)
+    protected function userAuthorize($role_id, $kode_wilayah, Closure $next)
     {
-        $class = new \ReflectionClass($this->model);
-        $area = $class->getShortName().'.'.$method;
-        if (Gate::denies('api-authorization', $area)) return response(['error' => 'Unauthorized.'], 401);
+        if (Gate::denies('api-authorization', [$role_id, $kode_wilayah])) return response(['error' => 'Unauthorized.'], 401);
         
         return $next();
     }
@@ -35,12 +34,9 @@ class ApiController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->userAuthorize('index', function() use ($request)
-        {
-            $data = $this->model->all()->toArray();  
+        // $data = $this->model->all()->toArray();  
             
-            return nusp_arrayMapRecursive('nusp_round', $data);
-        });
+        // return nusp_arrayMapRecursive('nusp_round', $data);
     }
 
     /**
@@ -52,8 +48,18 @@ class ApiController extends Controller
     public function store(Request $request)
     {
         $request->merge(array_map('trim', $request->all()));
-        return $this->userAuthorize('store', function() use ($request)
+        
+        $kode_wilayah = $request->get('kode_wilayah', null);
+
+        $role = Role::where('role', 'admin')->first();
+        
+        return $this->userAuthorize($role->id, $kode_wilayah, function() use ($request, $kode_wilayah)
         {
+            // validation
+            $ada = $this->model->where('kode_wilayah', $kode_wilayah)->first();
+
+            if ($ada) return $this->update($request, $ada->id);
+
             // validation
             $this->validate($request, $this->model->get_rules(), $this->model->get_error_messages(), $this->model->get_attributes());
             
@@ -76,20 +82,16 @@ class ApiController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $kode_wilayah)
     {        
-        return $this->userAuthorize('show', function() use ($request, $id)
+        return $this->userAuthorize(null, $kode_wilayah, function() use ($request, $kode_wilayah)
         {
-            $show = $this->model->with($this->model->get_dependencies())->find($id);
-
-            if (! $show) return ['error' => 'no data'];
-
-            foreach ($this->model->additionalAttributes as $att) {
-                $show->$att = $show->$att;
-            }
+            $show =  $this->model->where('kode_wilayah', $kode_wilayah)->first();
             
-            $show = nusp_arrayMapRecursive('nusp_round', $show->toArray());
-
+            if (!$show) return array_merge((new $this->model(['kode_wilayah' => $kode_wilayah]))->toArray(), ['wilayah' => \App\Wilayah::get_wilayah($kode_wilayah)]);
+            
+            $show->wilayah = $show->wilayah;
+            
             return $show;
         });
     }
@@ -104,8 +106,12 @@ class ApiController extends Controller
     public function update(Request $request, $id)
     {
         $request->merge(array_map('trim', $request->all()));
+
+        $kode_wilayah = $request->get('kode_wilayah', null);
+
+        $role = Role::where('role', 'admin')->first();
      
-        return $this->userAuthorize('update', function() use ($request, $id)
+        return $this->userAuthorize($role->id, $kode_wilayah, function() use ($request, $id)
         {
             // find record
             $update = $this->model->findOrFail($id);
@@ -113,7 +119,7 @@ class ApiController extends Controller
             $new_data = array_merge($update->toArray(), $request->all());
 
             $request->merge($new_data);
-
+            
             // validation
             $this->validate($request, $this->model->get_rules($id), $this->model->get_error_messages(), $this->model->get_attributes());
             

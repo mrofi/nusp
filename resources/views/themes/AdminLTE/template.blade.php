@@ -108,6 +108,18 @@
          padding-top: 50px!important; 
       }
 
+      .bg-gray-light.text-navy a {
+          color: #001f3f !important;
+      }
+
+      a.kab-kota-link.text-white {
+        color: #fff!important;
+      }
+
+      .inner > h2 {
+        margin-top: 10px;
+      }
+
     </style>
     
     <!--pace-->
@@ -504,6 +516,10 @@
         $('.input-mask-numeric').autoNumeric('init', $.fn.nuspNumeric);
         $('.input-mask-decimal').autoNumeric('init', $.fn.nuspDecimal);
 
+        $(document).ajaxError(function( event, jqxhr, settings, thrownError ) {
+          if (jqxhr.status == '401') location.reload();
+
+        })
 
           var slideToTop = $("<div />");
           slideToTop.html('<i class="fa fa-chevron-up"></i>');

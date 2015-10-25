@@ -26,8 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         parent::registerPolicies($gate);
         
-        $gate->define('api-authorization', function ($user, $area) {
-            return ! $user->hasForbidden($area);
+        $gate->define('api-authorization', function ($user, $role_id, $kode_wilayah) {
+            return $user->hasRole($role_id, $kode_wilayah);
         });
 
         //

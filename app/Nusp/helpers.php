@@ -148,7 +148,7 @@ function nusp_form($name, $format = '', $bsCols = '')
 
     if ($type == 'hidden')
     {
-        return \Form::hidden($name, $default);
+        return \Form::hidden($name, $default, ['id' => $name]);
     }
 
     if ($type == 'numeric') 

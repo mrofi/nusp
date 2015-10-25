@@ -51,32 +51,51 @@ class User extends BaseModel implements AuthenticatableContract,
     {
         $admin = Role::where('role', $adminName == '' ? 'Admin' : $adminName)->first();
 
-        return $this->hasRole($admin, $wilayah);
+        return $this->hasRole($admin->id, $wilayah);
     }
 
-    public function hasRole(Role $role, $wilayah = null)
+    public function hasRole($role_id = null, $kode_wilayah = null)
     {
-        $userRole = UserWilayahRole::where('user_id', $this->id)->where('role_id', $role->id);
+        if ($role_id == null && $kode_wilayah == null) return false;
 
-        if ($wilayah == null) return $userRole->first() != null;
+        $userRole = UserWilayahRole::where('user_id', $this->id);
 
-        return $userRole->where('kode_wilayah', $wilayah)->first() != null;
+        if ($kode_wilayah == null) return $userRole->where('role_id', $role_id)->first() != null;
+
+        $wilayahs = [];
+
+        if ($role_id == null)
+        {
+
+            $roles = Role::all();
+            foreach ($roles as $role) 
+            {
+                $wilayahs = array_merge($wilayahs, $this->getWilayahPerRole($role->id));    
+            }
+        }
+        else
+        {
+            $wilayahs = $this->getWilayahPerRole($role_id);
+        }
+
+        return array_search($kode_wilayah, array_column($wilayahs, 'kode')) !== false;
+    }
+
+    public function hasForbidden($role_id = null, $kode_wilayah = null)
+    {
+        return ! $this->hasRole($role_id, $kode_wilayah);
     }
     
     public static function getUserByKey($public_key = null, $api_key = null, $password = null)
     {
-        if ($user = parent::where('api_key', $api_key)->where('password', $password)->first()) 
+        $password = bcrypt(nusp_password($password));
+
+        if ($user = parent::where('username', $api_key)->where('password', $password)->first()) 
         {
             static::$api_type = 'private';
             return $user;
         }
-        
-        if ($user = parent::where('public_key', $public_key)->first())
-        {
-            static::$api_type = 'public';
-            return $user;
-        }
-        
+                
         return false;
     }
 

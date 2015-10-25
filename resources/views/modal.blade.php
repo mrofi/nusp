@@ -3,6 +3,7 @@
     var form = $(this).find('form');
     form[0].reset();
     form.find('.form-control-static').parents('.row').not('.form-group-static').addClass('hide');
+    form.find('.modal-body').addClass('hide');
   });
 @endsection
 
@@ -19,9 +20,12 @@
     form.find('.form-control-static.file-placer').addClass('hide').html('');
     
     var dropdown = button.parents('.dropdown-menu').parent();
-    if (dropdown) button = dropdown;
+    if (dropdown.length) button = dropdown;
 
     if (button.data()) {
+
+      form.find('.data-transport').data(button.data());
+
       $.get('@yield($namespace.".modal.form.action")/'+button.data().id, function( data ) {
         for (x in data.wilayah) {
           form.find('#'+x).text(data.wilayah[x].nama_wilayah).parents('.row').removeClass('hide');
@@ -50,8 +54,12 @@
           else if (input.is('.form-control-static')) {input.text(value);}
         }
         
+        form.find('.modal-body').removeClass('hide');
+
       }, 'json');
     }
+
+    button.parents('.modal').modal('hide');
 
   })
 @endsection
@@ -217,7 +225,7 @@ $(function() {
       </div>
       <form id="form-edit-product" class="form-horizontal" action="@yield($namespace.'.modal.form.action')" method="post">
         <input type="hidden" name="_method" value="post">
-        <div class="modal-body">
+        <div class="modal-body hide">
           <div class="alert alert-warning alert-dismissable hide">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h4><i class="icon fa fa-warning"></i> Alert!</h4>

@@ -118,6 +118,7 @@ Route::controller('auth', 'Auth\AuthController');
 // });
 
 Route::get('tess', function() {
+	return var_dump(auth()->user()->hasRole(null, '3673'));
     return auth()->user()->getWilayahPerRole('1');
 
 });
