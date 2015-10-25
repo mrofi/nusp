@@ -57,6 +57,8 @@
 </ul>
 </div>
 
+@include('modalScript')
+
 @include('modal.sosialisasi')
 @include('modal.sosialisasi', ['allowed' => true])
 

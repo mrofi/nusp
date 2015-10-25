@@ -1,5 +1,4 @@
 @section('profil.modal.form.plain')
-<a data-target="#modal-sosialisasi" class="data-transport" data-toggle="modal">ijkjkjk</a>						
 <div class="row hide">
   <label for="" class="control-label col-sm-4">Desa / Kelurahan</label>
   <div class="col-sm-8">
