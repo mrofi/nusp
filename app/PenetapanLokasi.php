@@ -13,7 +13,7 @@ class PenetapanLokasi extends BaseModel
     	'tanggal_sk' => 'required|type:date',
     	'nomor_sk' => 'required|type:string',
     	'jumlah_lokasi' => 'required|type:numeric',
-    	'file_id' => 'type:image|caption:File'
+    	'file_id' => 'type:file|caption:File'
     ];
 
     protected $rules = [

@@ -44,7 +44,7 @@ $('.modal-nusp').each(function(i, e) {
             fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
             fileinput.find('.fileinput-exists').removeClass('hide');
           }
-          if (input.is('#file_id') && value != '') {
+          else if (input.is('#file_id') && value != '') {
             form.find('.form-control-static.file-placer').removeClass('hide').html('<a href="{{ nusp_asset('api/file/') }}'+value+'" target="_blank">Download SK</a>');
             fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
             fileinput.find('.fileinput-exists').removeClass('hide');
@@ -52,8 +52,8 @@ $('.modal-nusp').each(function(i, e) {
           else if (input.is('.input-mask-currency, .input-mask-numeric, .input-mask-decimal')) { input.autoNumeric('set', value); }
           else if (input.is('.input-date')) {
             var from = value.split("-");
-            var f = [from[2], from[1], from[0]].join('-');
-            input.val(f);
+            var f = value == '' ? '' : [from[2], from[1], from[0]].join('-');
+            input.is(':input') ? input.val(f) : input.text(f);
           }
           else if (input.is(':input')) {input.val(value);}
           else if (input.is('.form-control-static')) {input.text(value);}

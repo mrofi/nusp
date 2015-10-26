@@ -12,7 +12,7 @@ class TahapPerencanaanPenyusunanVerifikasiDanFinalisasiDokumenRkm extends Migrat
      */
     public function up()
     {
-        Schema::create('tahap_perencanaan_penyusunan_verifikasi_finalisasi_dokumen_rkms', function (Blueprint $table) {
+        Schema::create('tahap_perencanaan_verifikasi_finalisasi_dokumen_rkms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
             $table->date('tanggal_mulai');
@@ -33,6 +33,6 @@ class TahapPerencanaanPenyusunanVerifikasiDanFinalisasiDokumenRkm extends Migrat
      */
     public function down()
     {
-        Schema::drop('tahap_perencanaan_penyusunan_verifikasi_finalisasi_dokumen_rkms');
+        Schema::drop('tahap_perencanaan_verifikasi_finalisasi_dokumen_rkms');
     }
 }

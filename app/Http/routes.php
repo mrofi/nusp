@@ -22,7 +22,28 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function()
 		$formSosialisasi = with(new \App\SosialisasiKabKota)->get_forms();
 		$formPenetapanLokasi = with(new \App\PenetapanLokasi)->get_forms();
 		$formProfilDesaKel = with(new \App\ProfilDesaKelurahan)->get_forms();
-		return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel'));
+		$formTahapPersiapanSosialisasiKelurahan = with(new \App\TahapPersiapanSosialisasiKelurahan)->get_forms();
+		$formTahapPersiapanIdentifikasiKelembagaan  = with(new \App\TahapPersiapanIdentifikasiKelembagaan)->get_forms();
+		$formTahapPersiapanRembugKhususPerempuanPertama  = with(new \App\TahapPersiapanRembugKhususPerempuanPertama)->get_forms();
+		$formTahapPersiapanMusyawarahKelurahanPertama  = with(new \App\TahapPersiapanMusyawarahKelurahanPertama)->get_forms();
+		$formTahapPerencanaanOjtTimSks  = with(new \App\TahapPerencanaanOjtTimSks)->get_forms();
+		$formTahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis  = with(new \App\TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis)->get_forms();
+		$formTahapPerencanaanMusyawarahKelurahanKedua  = with(new \App\TahapPerencanaanMusyawarahKelurahanKedua)->get_forms();
+		$formTahapPerencanaanPenyusunanDokumenNuap  = with(new \App\TahapPerencanaanPenyusunanDokumenNuap)->get_forms();
+		$formTahapPerencanaanVerifikasiDanKonsolidasiNuap  = with(new \App\TahapPerencanaanVerifikasiDanKonsolidasiNuap)->get_forms();
+		$formTahapPerencanaanRevisiDokumenNuap  = with(new \App\TahapPerencanaanRevisiDokumenNuap)->get_forms();
+		$formTahapPerencanaanMusyawarahKelurahanKetiga  = with(new \App\TahapPerencanaanMusyawarahKelurahanKetiga)->get_forms();
+		$formTahapPerencanaanPenyusunanRkm  = with(new \App\TahapPerencanaanPenyusunanRkm)->get_forms();
+		$formTahapPerencanaanVerifikasiFinalisasiDokumenRkm  = with(new \App\TahapPerencanaanVerifikasiFinalisasiDokumenRkm)->get_forms();
+		$formTahapKonstruksiKontrakSp3  = with(new \App\TahapKonstruksiKontrakSp3)->get_forms();
+		$formTahapKonstruksiRembugKhususPerempuanKedua  = with(new \App\TahapKonstruksiRembugKhususPerempuanKedua)->get_forms();
+		$formTahapKonstruksiMusyawarahKelurahanKeempat  = with(new \App\TahapKonstruksiMusyawarahKelurahanKeempat)->get_forms();
+		$formTahapKonstruksiPelaksanaanFisik  = with(new \App\TahapKonstruksiPelaksanaanFisik)->get_forms();
+		$formTahapPascaKonstruksiMusyawarahKelurahanKelima  = with(new \App\TahapPascaKonstruksiMusyawarahKelurahanKelima)->get_forms();
+		$formTahapPascaKonstruksiSerahTerimaPekerjaan  = with(new \App\TahapPascaKonstruksiSerahTerimaPekerjaan)->get_forms();
+		$formTahapPascaKonstruksiPemanfaatan  = with(new \App\TahapPascaKonstruksiPemanfaatan)->get_forms();
+		$formTahapPascaKonstruksiPemeliharaan  = with(new \App\TahapPascaKonstruksiPemeliharaan)->get_forms();
+		return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel', 'formTahapPersiapanSosialisasiKelurahan', 'formTahapPersiapanIdentifikasiKelembagaan', 'formTahapPersiapanRembugKhususPerempuanPertama', 'formTahapPersiapanMusyawarahKelurahanPertama', 'formTahapPerencanaanOjtTimSks', 'formTahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis', 'formTahapPerencanaanMusyawarahKelurahanKedua', 'formTahapPerencanaanPenyusunanDokumenNuap', 'formTahapPerencanaanVerifikasiDanKonsolidasiNuap', 'formTahapPerencanaanRevisiDokumenNuap', 'formTahapPerencanaanMusyawarahKelurahanKetiga', 'formTahapPerencanaanPenyusunanRkm', 'formTahapPerencanaanVerifikasiFinalisasiDokumenRkm', 'formTahapKonstruksiKontrakSp3', 'formTahapKonstruksiRembugKhususPerempuanKedua', 'formTahapKonstruksiMusyawarahKelurahanKeempat', 'formTahapKonstruksiPelaksanaanFisik', 'formTahapPascaKonstruksiMusyawarahKelurahanKelima', 'formTahapPascaKonstruksiSerahTerimaPekerjaan', 'formTahapPascaKonstruksiPemanfaatan', 'formTahapPascaKonstruksiPemeliharaan'));
     }]);
 
     Route::get('report', function() 
@@ -46,6 +67,29 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
 
     Route::resource('profil-desa-kelurahan', 'ProfilDesaKelurahan');
 
+    Route::resource('tahap-1/sosialisasi-kelurahan', 'TahapPersiapanSosialisasiKelurahan');
+    Route::resource('tahap-1/sosialisasi-kelurahan', 'TahapPersiapanSosialisasiKelurahan');
+    Route::resource('tahap-1/identifikasi-kelembagaan', 'TahapPersiapanIdentifikasiKelembagaan');
+    Route::resource('tahap-1/rembug-perempuan-1', 'TahapPersiapanRembugKhususPerempuanPertama');
+    Route::resource('tahap-1/musyawarah-kelurahan-1', 'TahapPersiapanMusyawarahKelurahanPertama');
+    Route::resource('tahap-2/ojt-tim-sks', 'TahapPerencanaanOjtTimSks');
+    Route::resource('tahap-2/survey-review-pjm-pronangkis', 'TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis');
+    Route::resource('tahap-2/musyawarah-kelurahan-2', 'TahapPerencanaanMusyawarahKelurahanKedua');
+    Route::resource('tahap-2/penyusunan-dokumen-nuap', 'TahapPerencanaanPenyusunanDokumenNuap');
+    Route::resource('tahap-2/revisi-dokumen-nuap', 'TahapPerencanaanVerifikasiDanKonsolidasiNuap');
+    Route::resource('tahap-2/musyawarah-kelurahan-3', 'TahapPerencanaanRevisiDokumenNuap');
+    Route::resource('tahap-2/penyusunan-rkm', 'TahapPerencanaanMusyawarahKelurahanKetiga');
+    Route::resource('tahap-2/verifikasi-finalisasi-rkm', 'TahapPerencanaanPenyusunanRkm');
+    Route::resource('tahap-3/kontrak-sp3', 'TahapPerencanaanVerifikasiFinalisasiDokumenRkm');
+    Route::resource('tahap-3/rembug-perempuan-2', 'TahapKonstruksiKontrakSp3');
+    Route::resource('tahap-3/musyawarah-kelurahan-4', 'TahapKonstruksiRembugKhususPerempuanKedua');
+    Route::resource('tahap-3/pelaksanaan-fisik', 'TahapKonstruksiMusyawarahKelurahanKeempat');
+    Route::resource('tahap-4/musyawarah-kelurahan-5', 'TahapKonstruksiPelaksanaanFisik');
+    Route::resource('tahap-4/serah-terima-pekerjaan', 'TahapPascaKonstruksiMusyawarahKelurahanKelima');
+    Route::resource('tahap-4/pemanfaatan', 'TahapPascaKonstruksiSerahTerimaPekerjaan');
+    Route::resource('tahap-4/pemeliharaan', 'TahapPascaKonstruksiPemanfaatan');
+
+    
     Route::get('all', function() {
 		$wilayah =  auth()->user()->wilayah;
 		// return $wilayah;

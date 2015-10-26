@@ -51,7 +51,27 @@
 <ul class="dropdown-menu" role="menu">
   <li class="active"><a href="javascript:;"></a></li>
   <li><a href="#" data-target_1="#modal-profil-desa-kel" data-target_2="#modal-report-profil-desa-kel" data-toggle="modal">Profil Kelurahan</a></li>
-  <li><a href="#">Tahapan Kegiatan</a></li>
+  <li class="sub-menu"><a href="javascript:;">Tahap Persiapan :</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-1-sosialisasi-kelurahan" data-target_2="#modal-report-tahap-1-sosialisasi-kelurahan" data-toggle="modal">Sosialisasi Kelurahan</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-1-identifikasi-kelembagaan" data-target_2="#modal-report-tahap-1-identifikasi-kelembagaan" data-toggle="modal">Identifikasi Kelembagaan</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-1-rembug-perempuan-1" data-target_2="#modal-report-tahap-1-rembug-perempuan-1" data-toggle="modal">Rembug Perempuan I</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-1-musyawarah-kelurahan-1" data-target_2="#modal-report-tahap-1-musyawarah-kelurahan-1" data-toggle="modal">Musyawarah Kelurahan I</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-ojt-tim-sks" data-target_2="#modal-report-tahap-2-ojt-tim-sks" data-toggle="modal">OJT TIm SKS</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-survey-kampung-sendiri-review-pjm-pronangkis" data-target_2="#modal-report-tahap-2-survey-kampung-sendiri-review-pjm-pronangkis" data-toggle="modal">Survey Kampung Sendiri &amp; Review RJM Pronangkis</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-musyawarah-kelurahan-2" data-target_2="#modal-report-tahap-2-musyawarah-kelurahan-2" data-toggle="modal">Musyawarah Kelurahan II</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-penyusunan-dokumen-nuap" data-target_2="#modal-report-tahap-2-penyusunan-dokumen-nuap" data-toggle="modal">Penyusunan Dokumen NUAP</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-revisi-dokumen-nuap" data-target_2="#modal-report-tahap-2-revisi-dokumen-nuap" data-toggle="modal">Revisi Dokumen NUAP</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-musyawarah-kelurahan-3" data-target_2="#modal-report-tahap-2-musyawarah-kelurahan-3" data-toggle="modal">Musyawarah Kelurahan III</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-penyusunan-rkm" data-target_2="#modal-report-tahap-2-penyusunan-rkm" data-toggle="modal">Penyusunan Dokumen RKM</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-2-verifikasi-finalisasi-rkm" data-target_2="#modal-report-tahap-2-verifikasi-finalisasi-rkm" data-toggle="modal">Verifikasi &amp; Finalisasi Dokumen RKM</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-3-kontrak-sp3" data-target_2="#modal-report-tahap-3-kontrak-sp3" data-toggle="modal">Kontak SP 3</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-3-rembug-perempuan-2" data-target_2="#modal-report-tahap-1-re3bug-perempuan-2" data-toggle="modal">Rembug Perempuan II</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-3-musyawarah-kelurahan-4" data-target_2="#modal-report-tahap-3-musyawarah-kelurahan-4" data-toggle="modal">Musyawarah Kelurahan IV</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-3-pelaksanaan-fisik" data-target_2="#modal-report-tahap-3-pelaksanaan-fisik" data-toggle="modal">Pelaksanaan Fisik</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-4-musyawarah-kelurahan-5" data-target_2="#modal-report-tahap-4-musyawarah-kelurahan-5" data-toggle="modal">Musyawarah Kelurahan V</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-4-serah-terima-pekerjaan" data-target_2="#modal-report-tahap-4-serah-terima-pekerjaan" data-toggle="modal">Serah Terima Pekerjaan</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-4-pemanfaatan" data-target_2="#modal-report-tahap-4-pemanfaatan" data-toggle="modal">Pemanfaatan</a></li>
+  <li><a href="#" data-target_1="#modal-tahap-4-pemeliharaan" data-target_2="#modal-report-tahap-4-pemeliharaan" data-toggle="modal">Pemeliharaan</a></li>
   <li><a href="#">Kontrak, Lahan &amp; Pemanfaat</a></li>
   <li><a href="#">Fisik &amp; Keuangan</a></li>
 </ul>
@@ -59,14 +79,58 @@
 
 @include('modalScript')
 
-@include('modal.sosialisasi')
-@include('modal.sosialisasi', ['allowed' => true])
 
+@include('modal.sosialisasi')
 @include('modal.penetapanLokasi')
 @include('modal.profilDesaKel')
+@include('modal.tahapPersiapanSosialisasiKelurahan')
+@include('modal.tahapPersiapanIdentifikasiKelembagaan')
+@include('modal.tahapPersiapanRembugKhususPerempuanPertama')
+@include('modal.tahapPersiapanMusyawarahKelurahanPertama')
+@include('modal.tahapPerencanaanOjtTimSks')
+@include('modal.tahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis')
+@include('modal.tahapPerencanaanMusyawarahKelurahanKedua')
+@include('modal.tahapPerencanaanPenyusunanDokumenNuap')
+@include('modal.tahapPerencanaanVerifikasiDanKonsolidasiNuap')
+@include('modal.tahapPerencanaanRevisiDokumenNuap')
+@include('modal.tahapPerencanaanMusyawarahKelurahanKetiga')
+@include('modal.tahapPerencanaanPenyusunanRkm')
+@include('modal.tahapPerencanaanVerifikasiFinalisasiDokumenRkm')
+@include('modal.tahapKonstruksiKontrakSp3')
+@include('modal.tahapKonstruksiRembugKhususPerempuanKedua')
+@include('modal.tahapKonstruksiMusyawarahKelurahanKeempat')
+@include('modal.tahapKonstruksiPelaksanaanFisik')
+@include('modal.tahapPascaKonstruksiMusyawarahKelurahanKelima')
+@include('modal.tahapPascaKonstruksiSerahTerimaPekerjaan')
+@include('modal.tahapPascaKonstruksiPemanfaatan')
+@include('modal.tahapPascaKonstruksiPemeliharaan')
 
-@include('modal.profilDesaKel', ['allowed' => true])
+
+@include('modal.sosialisasi', ['allowed' => true])
 @include('modal.penetapanLokasi', ['allowed' => true])
+@include('modal.profilDesaKel', ['allowed' => true])
+@include('modal.tahapPersiapanSosialisasiKelurahan', ['allowed' => true])
+@include('modal.tahapPersiapanIdentifikasiKelembagaan', ['allowed' => true])
+@include('modal.tahapPersiapanRembugKhususPerempuanPertama', ['allowed' => true])
+@include('modal.tahapPersiapanMusyawarahKelurahanPertama', ['allowed' => true])
+@include('modal.tahapPerencanaanOjtTimSks', ['allowed' => true])
+@include('modal.tahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis', ['allowed' => true])
+@include('modal.tahapPerencanaanMusyawarahKelurahanKedua', ['allowed' => true])
+@include('modal.tahapPerencanaanPenyusunanDokumenNuap', ['allowed' => true])
+@include('modal.tahapPerencanaanVerifikasiDanKonsolidasiNuap', ['allowed' => true])
+@include('modal.tahapPerencanaanRevisiDokumenNuap', ['allowed' => true])
+@include('modal.tahapPerencanaanMusyawarahKelurahanKetiga', ['allowed' => true])
+@include('modal.tahapPerencanaanPenyusunanRkm', ['allowed' => true])
+@include('modal.tahapPerencanaanVerifikasiFinalisasiDokumenRkm', ['allowed' => true])
+@include('modal.tahapKonstruksiKontrakSp3', ['allowed' => true])
+@include('modal.tahapKonstruksiRembugKhususPerempuanKedua', ['allowed' => true])
+@include('modal.tahapKonstruksiMusyawarahKelurahanKeempat', ['allowed' => true])
+@include('modal.tahapKonstruksiPelaksanaanFisik', ['allowed' => true])
+@include('modal.tahapPascaKonstruksiMusyawarahKelurahanKelima', ['allowed' => true])
+@include('modal.tahapPascaKonstruksiSerahTerimaPekerjaan', ['allowed' => true])
+@include('modal.tahapPascaKonstruksiPemanfaatan', ['allowed' => true])
+@include('modal.tahapPascaKonstruksiPemeliharaan', ['allowed' => true])
+
 
 <!-- Main content -->
 
