@@ -27,7 +27,7 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.fileinput-preview').addClass('hide').html('');
     form.find('.form-control-static.file-placer').addClass('hide').html('');
     form.find('.btn-input').removeClass('btn-success').addClass('bg-gray-light').find('.check').addClass('hide');
-    form.find('.knob').knob();
+    form.find('.knob').val('0').trigger('change');
 
     var dropdown = button.parents('.dropdown-menu').parent();
     if (dropdown.length) button = dropdown;
@@ -66,8 +66,7 @@ $('.modal-nusp').each(function(i, e) {
         }
         
         form.find('.modal-body').removeClass('hide');
-
-        form.find('.knob').knob();
+        form.find('.knob').trigger('change');
 
       }, 'json');
     }
