@@ -67,7 +67,12 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
 
     Route::resource('profil-desa-kelurahan', 'ProfilDesaKelurahan');
 
-    Route::resource('tahap-1/sosialisasi-kelurahan', 'TahapPersiapanSosialisasiKelurahan');
+    Route::get('tahap-kegiatan/{kode_wilayah}', 'TahapKegiatan@all');
+    Route::get('tahap-persiapan/{kode_wilayah}', 'TahapKegiatan@persiapan');
+    Route::get('tahap-perencanaan/{kode_wilayah}', 'TahapKegiatan@perencanaan');
+    Route::get('tahap-konstruksi/{kode_wilayah}', 'TahapKegiatan@konstruksi');
+    Route::get('tahap-pasca-konstruksi/{kode_wilayah}', 'TahapKegiatan@pascaKonstruksi');
+
     Route::resource('tahap-1/sosialisasi-kelurahan', 'TahapPersiapanSosialisasiKelurahan');
     Route::resource('tahap-1/identifikasi-kelembagaan', 'TahapPersiapanIdentifikasiKelembagaan');
     Route::resource('tahap-1/rembug-perempuan-1', 'TahapPersiapanRembugKhususPerempuanPertama');
@@ -76,19 +81,19 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
     Route::resource('tahap-2/survey-review-pjm-pronangkis', 'TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis');
     Route::resource('tahap-2/musyawarah-kelurahan-2', 'TahapPerencanaanMusyawarahKelurahanKedua');
     Route::resource('tahap-2/penyusunan-dokumen-nuap', 'TahapPerencanaanPenyusunanDokumenNuap');
-    Route::resource('tahap-2/revisi-dokumen-nuap', 'TahapPerencanaanVerifikasiDanKonsolidasiNuap');
-    Route::resource('tahap-2/musyawarah-kelurahan-3', 'TahapPerencanaanRevisiDokumenNuap');
-    Route::resource('tahap-2/penyusunan-rkm', 'TahapPerencanaanMusyawarahKelurahanKetiga');
-    Route::resource('tahap-2/verifikasi-finalisasi-rkm', 'TahapPerencanaanPenyusunanRkm');
-    Route::resource('tahap-3/kontrak-sp3', 'TahapPerencanaanVerifikasiFinalisasiDokumenRkm');
-    Route::resource('tahap-3/rembug-perempuan-2', 'TahapKonstruksiKontrakSp3');
-    Route::resource('tahap-3/musyawarah-kelurahan-4', 'TahapKonstruksiRembugKhususPerempuanKedua');
-    Route::resource('tahap-3/pelaksanaan-fisik', 'TahapKonstruksiMusyawarahKelurahanKeempat');
-    Route::resource('tahap-4/musyawarah-kelurahan-5', 'TahapKonstruksiPelaksanaanFisik');
-    Route::resource('tahap-4/serah-terima-pekerjaan', 'TahapPascaKonstruksiMusyawarahKelurahanKelima');
-    Route::resource('tahap-4/pemanfaatan', 'TahapPascaKonstruksiSerahTerimaPekerjaan');
-    Route::resource('tahap-4/pemeliharaan', 'TahapPascaKonstruksiPemanfaatan');
-
+    Route::resource('tahap-2/verifikasi-konsolidasi-nuap', 'TahapPerencanaanVerifikasiDanKonsolidasiNuap');
+    Route::resource('tahap-2/revisi-dokumen-nuap', 'TahapPerencanaanRevisiDokumenNuap');
+    Route::resource('tahap-2/musyawarah-kelurahan-3', 'TahapPerencanaanMusyawarahKelurahanKetiga');
+    Route::resource('tahap-2/penyusunan-rkm', 'TahapPerencanaanPenyusunanRkm');
+    Route::resource('tahap-2/verifikasi-finalisasi-rkm', 'TahapPerencanaanVerifikasiFinalisasiDokumenRkm');
+    Route::resource('tahap-3/kontrak-sp3', 'TahapKonstruksiKontrakSp3');
+    Route::resource('tahap-3/rembug-perempuan-2', 'TahapKonstruksiRembugKhususPerempuanKedua');
+    Route::resource('tahap-3/musyawarah-kelurahan-4', 'TahapKonstruksiMusyawarahKelurahanKeempat');
+    Route::resource('tahap-3/pelaksanaan-fisik', 'TahapKonstruksiPelaksanaanFisik');
+    Route::resource('tahap-4/musyawarah-kelurahan-5', 'TahapPascaKonstruksiMusyawarahKelurahanKelima');
+    Route::resource('tahap-4/serah-terima-pekerjaan', 'TahapPascaKonstruksiSerahTerimaPekerjaan');
+    Route::resource('tahap-4/pemanfaatan', 'TahapPascaKonstruksiPemanfaatan');
+    Route::resource('tahap-4/pemeliharaan', 'TahapPascaKonstruksiPemeliharaan');
     
     Route::get('all', function() {
 		$wilayah =  auth()->user()->wilayah;

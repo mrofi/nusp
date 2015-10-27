@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis extends BaseModel
 {
+    protected $table = 'tahap_perencanaan_survey_kampung_sendiri_review_pjm_pronangkiss';
+    
     protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'jumlah_peserta_laki-laki', 'jumlah_peserta_perempuan', 'jumlah_peserta_warga_miskin', 'foto_id', 'file_id'];
 
     protected $forms = [

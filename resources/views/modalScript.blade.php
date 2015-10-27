@@ -5,6 +5,7 @@ $(function() {
 $('.modal-nusp').each(function(i, e) {
 
   var nuspModal = $(this);
+
   nuspModal.on('hidden.bs.modal', function(e) {
     var form = $(this).find('form');
     form[0].reset();
@@ -15,6 +16,8 @@ $('.modal-nusp').each(function(i, e) {
 
   nuspModal.on('show.bs.modal', function(e) {
     var button = $(e.relatedTarget);
+    
+
     var form = $(this).find('form');
     form.find('.error-label').remove().end()
         .find('.form-group').removeClass('has-warning').end()
@@ -23,7 +26,9 @@ $('.modal-nusp').each(function(i, e) {
     fileinput.removeClass('fileinput-exists').addClass('fileinput-new');
     form.find('.fileinput-preview').addClass('hide').html('');
     form.find('.form-control-static.file-placer').addClass('hide').html('');
-    
+    form.find('.btn-input').removeClass('btn-success').addClass('bg-gray-light').find('.check').addClass('hide');
+    form.find('.knob').knob();
+
     var dropdown = button.parents('.dropdown-menu').parent();
     if (dropdown.length) button = dropdown;
 
@@ -57,9 +62,12 @@ $('.modal-nusp').each(function(i, e) {
           }
           else if (input.is(':input')) {input.val(value);}
           else if (input.is('.form-control-static')) {input.text(value);}
+          else if (input.is('.btn-input') && value != null) {input.removeClass('bg-gray-light').addClass('btn-success').find('.check').removeClass('hide')}
         }
         
         form.find('.modal-body').removeClass('hide');
+
+        form.find('.knob').knob();
 
       }, 'json');
     }
@@ -81,12 +89,12 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.input-date').each(function(i, e) {
       v = $(this).val();
       var from = v.split("-");
-      var f = [from[2], from[1], from[0]].join('-');
+      var f = v == '' ? '' : [from[2], from[1], from[0]].join('-');
       $(this).val(f);
     })
     $.post(form.attr('action'), form.autoNumeric('getString'), function( data ) {
       if (data.message == 'ok') {
-        nuspModal.modal('hide');
+        form.find('button[type=reset]').click();
       } else {
         error_handling(form, data);
       }

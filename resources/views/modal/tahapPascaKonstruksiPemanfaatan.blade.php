@@ -1,16 +1,18 @@
 @section('tahap4.pemanfaatan.modal.id', 'modal-tahap-4-pemanfaatan')
 @section('tahap4.pemanfaatan.modal.title', 'Pemanfaatan')
-@section('tahap4.pemanfaatan.modal.form.action', nusp_asset('api/tahap-4-pemanfaatan'))
+@section('tahap4.pemanfaatan.modal.form.action', nusp_asset('api/tahap-4/pemanfaatan'))
 
 @section('tahap4.pemanfaatan.modal.body')	
 	{!! nusp_forms($formTahapPascaKonstruksiPemanfaatan) !!}
 @endsection
 
+@section('tahap4.pemanfaatan.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-pasca-konstruksi"')
+@section('reportOnly.tahap4.pasca-konstruksi.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-pasca-konstruksi"')
 
 
 @section('reportOnly.tahap4.pemanfaatan.modal.id', 'modal-report-tahap-4-pemanfaatan')
 @section('reportOnly.tahap4.pemanfaatan.modal.title', 'Pemanfaatan')
-@section('reportOnly.tahap4.pemanfaatan.modal.form.action', nusp_asset('api/tahap-4-pemanfaatan'))
+@section('reportOnly.tahap4.pemanfaatan.modal.form.action', nusp_asset('api/tahap-4/pemanfaatan'))
 @section('reportOnly.tahap4.pemanfaatan.modal.close', 'Tutup')
 @section('reportOnly.tahap4.pemanfaatan.modal.submit.class', 'hide')
 

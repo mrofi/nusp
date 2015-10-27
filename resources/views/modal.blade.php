@@ -46,7 +46,7 @@
           <div class="row">&nbsp;</div>
         </div>
         <div class="modal-footer bg-navy">
-          <button type="reset" class="btn btn-default pull-left" data-dismiss="modal">@yield($namespace.'.modal.close', 'Batal')</button>
+          <button type="reset" class="btn btn-default data-transport pull-left"  @yield($namespace.'.modal.close.prop', 'data-dismiss="modal"') >@yield($namespace.'.modal.close', 'Batal')</button>
           <button type="submit" class="btn btn-primary @yield($namespace.'.modal.submit.class')">@yield($namespace.'.modal.submit', 'Simpan')</button>
         </div>
       </form>

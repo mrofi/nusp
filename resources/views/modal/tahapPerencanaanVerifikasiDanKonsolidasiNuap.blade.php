@@ -1,16 +1,18 @@
 @section('tahap2.verifikasi.konsolidasi.nuap.modal.id', 'modal-tahap-2-verifikasi-konsolidasi-nuap')
 @section('tahap2.verifikasi.konsolidasi.nuap.modal.title', 'Verifikasi dan Konsolidasi NUAP')
-@section('tahap2.verifikasi.konsolidasi.nuap.modal.form.action', nusp_asset('api/tahap-2-verifikasi-konsolidasi-nuap'))
+@section('tahap2.verifikasi.konsolidasi.nuap.modal.form.action', nusp_asset('api/tahap-2/verifikasi-konsolidasi-nuap'))
 
 @section('tahap2.verifikasi.konsolidasi.nuap.modal.body')	
 	{!! nusp_forms($formTahapPerencanaanVerifikasiDanKonsolidasiNuap) !!}
 @endsection
 
+@section('tahap2.verifikasi.konsolidasi.nuap.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-perencanaan"')
+@section('reportOnly.tahap2.verifikasi.konsolidasi.nuap.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-perencanaan"')
 
 
 @section('reportOnly.tahap2.verifikasi.konsolidasi.nuap.modal.id', 'modal-report-tahap-2-verifikasi-konsolidasi-nuap')
 @section('reportOnly.tahap2.verifikasi.konsolidasi.nuap.modal.title', 'Verifikasi dan Konsolidasi NUAP')
-@section('reportOnly.tahap2.verifikasi.konsolidasi.nuap.modal.form.action', nusp_asset('api/tahap-2-verifikasi-konsolidasi-nuap'))
+@section('reportOnly.tahap2.verifikasi.konsolidasi.nuap.modal.form.action', nusp_asset('api/tahap-2/verifikasi-konsolidasi-nuap'))
 @section('reportOnly.tahap2.verifikasi.konsolidasi.nuap.modal.close', 'Tutup')
 @section('reportOnly.tahap2.verifikasi.konsolidasi.nuap.modal.submit.class', 'hide')
 

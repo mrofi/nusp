@@ -98,6 +98,7 @@
           display: inline-block;
           padding-right: 10px;
           min-width: 50px;
+          padding-top: 0;
       }
 
       .form-group {
@@ -481,6 +482,8 @@
     <script src="/themes/AdminLTE/plugins/select2/select2.full.min.js"></script>
     <!-- autonumeric -->
     <script src="/themes/AdminLTE/plugins/autoNumeric/autoNumeric-min.js"></script>
+    <!-- Knob JS -->
+    <script src="/themes/AdminLTE/plugins/knob/jquery.knob.js"></script>
     <!-- AdminLTE App -->
     <script src="/themes/AdminLTE/dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -520,6 +523,8 @@
           if (jqxhr.status == '401') location.reload();
 
         })
+
+        $('.knob').knob();
 
           var slideToTop = $("<div />");
           slideToTop.html('<i class="fa fa-chevron-up"></i>');
