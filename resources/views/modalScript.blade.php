@@ -60,13 +60,13 @@ $('.modal-nusp').each(function(i, e) {
             var f = value == '' ? '' : [from[2], from[1], from[0]].join('-');
             input.is(':input') ? input.val(f) : input.text(f);
           }
+          else if (input.is('.knob')) {input.val(value+'%').trigger('change').val(value+'%');}
           else if (input.is(':input')) {input.val(value);}
           else if (input.is('.form-control-static')) {input.text(value);}
           else if (input.is('.btn-input') && value != null) {input.removeClass('bg-gray-light').addClass('btn-success').find('.check').removeClass('hide')}
         }
         
         form.find('.modal-body').removeClass('hide');
-        form.find('.knob').trigger('change');
 
       }, 'json');
     }
