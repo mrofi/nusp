@@ -3,7 +3,13 @@
 @section('tahap.pasca-konstruksi.modal.form.action', nusp_asset('api/tahap-pasca-konstruksi'))
 
 @section('tahap.pasca-konstruksi.modal.body')	
-	<div class="row">&nbsp;</div>	
+	<div class="row">&nbsp;</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<label class="control-label">Klik salah satu tahapan di bawah :</label>
+		</div>
+	</div>		
+	<div class="row">&nbsp;</div>
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div id="tahappascakonstruksimusyawarahkelurahankelima" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-4-musyawarah-kelurahan-5" data-toggle="modal">

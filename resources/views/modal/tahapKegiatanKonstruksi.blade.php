@@ -5,6 +5,12 @@
 @section('tahap.konstruksi.modal.body')	
 	<div class="row">&nbsp;</div>	
 	<div class="row">
+		<div class="col-md-12 text-center">
+			<label class="control-label">Klik salah satu tahapan di bawah :</label>
+		</div>
+	</div>	
+	<div class="row">&nbsp;</div>
+	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div id="tahapkonstruksikontraksp3" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-3-kontrak-sp3" data-toggle="modal">
 				<span class="pull-left check hide"><i class="fa fa-lg fa-check"></i></span>
