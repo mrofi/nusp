@@ -67,6 +67,7 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
 
     Route::resource('profil-desa-kelurahan', 'ProfilDesaKelurahan');
 
+    Route::get('tahap-kegiatan', 'TahapKegiatan@index');
     Route::get('tahap-kegiatan/{kode_wilayah}', 'TahapKegiatan@all');
     Route::get('tahap-persiapan/{kode_wilayah}', 'TahapKegiatan@persiapan');
     Route::get('tahap-perencanaan/{kode_wilayah}', 'TahapKegiatan@perencanaan');

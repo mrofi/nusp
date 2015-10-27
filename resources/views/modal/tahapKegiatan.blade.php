@@ -31,7 +31,7 @@
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport" data-target="#modal-tahap-pasca-konstruksi" data-toggle="modal">
 				<input type="text" class="knob" id="pascaKonstruksi" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Pasca Konstuksi</h3>
+	            <h3 class="knob-label">Pasca Konstruksi</h3>
 			</div>
 		</div>
 	</div>

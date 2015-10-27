@@ -68,8 +68,18 @@
 		cursor: auto!important;
 	}
 
+	.report-row > li {
+		width: 100%;
+		overflow: hidden;
+		border-bottom: 1px dotted;
+	}
+
+	.no-top-border {
+		border-top: none!important;
+	}
+
 	.report-row .report-item {
-	    /*border-top: 1px dotted;*/
+	    border-top: 1px dotted;
 	    border-bottom: 1px dotted;
 		display: block;
 	    vertical-align: middle;
@@ -78,7 +88,8 @@
 	    text-align: left;
 	    border-left: 1px dotted;
 	    padding-top: 10px;
-	    padding-bottom: 10px;
+	    padding-bottom: 99999px;
+	    margin-bottom: -99979px;
 	}
 
 	.text-left {
@@ -88,10 +99,6 @@
 	.report-item .col-xs-5 {
 		font-weight: 600;
 		text-align: right;
-	}
-
-	.report-row {
-	    border-bottom: 1px dotted;
 	}
 
 	.report-header.affix {
@@ -158,8 +165,8 @@
 	}
 	
 	.report-row .report-item {
+	    border-bottom: none;
 	    text-align: center;
-	    height: 100px;
 	    vertical-align: top;
 	    border-top: none; 
 	    border-right: none!important; 
@@ -189,7 +196,7 @@
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/sosialisasi/') }}" data-deep="2" data-name="sosialisasi" data-attrs="kode_wilayah,tanggal,peserta,peserta_perempuan,foto_id" href="#sosialisasi-kabupaten-kota">Sosialisasi Kabupaten / Kota</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/penetapan-lokasi') }}" data-deep="2" data-name="penetapan" data-attrs="kode_wilayah,tanggal_sk,nomor_sk,jumlah_lokasi,file_id" href="#penetapan-lokasi">Penetapan Lokasi</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/profil-desa-kelurahan') }}" data-deep="3" data-name="profil" data-attrs="kode_wilayah,luas_wilayah,jumlah_penduduk,jumlah_penduduk_laki_laki,jumlah_penduduk_perempuan,jumlah_kk,jumlah_kk_miskin,jumlah_rw_dusun_lingkungan,jumlah_rt,jumlah_jamban_kk,jumlah_septik_tank,jumlah_mck_unit,jumlah_mck_bilik,jumlah_sumur_gali_unit,jumlah_sumur_pompa_unit,jumlah_kran_umum_unit,jumlah_pah_unit,koordinat_latitude,koordinat_longitude"  href="#profil-desa-kelurahan">Profil Desa / Kelurahan</a></li>
-		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#tahapan-kegiatan">Tahapan Kegiatan</a></li>
+		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/tahap-kegiatan') }}" href="#tahapan-kegiatan" data-deep="3" data-name="tahapan" data-attrs="kode_wilayah,persiapan,perencanaan,konstruksi,pasca_konstruksi">Tahapan Kegiatan</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#kontrak-lahan-pemanfaat">Kontrak, Lahan &amp; Pemanfaat</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#fisik-keuangan">Fisik &amp; Keuangan</a></li>
 					</ul>
@@ -209,7 +216,7 @@
 		  			<ul class="report-content list-unstyled">
 		  			</ul>
 		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
-		  			<div class="list-format-2 hide"><li><div class="col-md-4 report-item text-left no-left-border kabkota"></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12 tanggal"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Peserta</div><div class="col-xs-7 col-md-12 peserta"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Peserta Perempuan</div><div class="col-xs-7 col-md-12 peserta_perempuan"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Foto</div><div class="col-xs-7 col-md-12 foto_id"></div></div></div> </li> </div>
+		  			<div class="list-format-2 hide"><li><div class="col-md-4 report-item text-left no-left-border no-top-border kabkota"></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12 tanggal"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Peserta</div><div class="col-xs-7 col-md-12 peserta"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Peserta Perempuan</div><div class="col-xs-7 col-md-12 peserta_perempuan"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Foto</div><div class="col-xs-7 col-md-12 foto_id"></div></div></div> </li> </div>
 	  			</div>
 	  			<div id="penetapan-lokasi" class="tab-pane fade">	  				
 		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
@@ -224,7 +231,7 @@
 		  			<ul class="report-content list-unstyled">
 		  			</ul>
 		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
-		  			<div class="list-format-2 hide"><li><div class="col-md-4 report-item text-left no-left-border kabkota"></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal SK</div><div class="col-xs-7 col-md-12 tanggal_sk"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Nomor SK</div><div class="col-xs-7 col-md-12 nomor_sk"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Jumlah Lokasi</div><div class="col-xs-7 col-md-12 jumlah_lokasi"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">File SK</div><div class="col-xs-7 col-md-12 file_id"></div></div></div> </li> </div>
+		  			<div class="list-format-2 hide"><li><div class="col-md-4 report-item text-left no-left-border  no-top-border kabkota"></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal SK</div><div class="col-xs-7 col-md-12 tanggal_sk"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Nomor SK</div><div class="col-xs-7 col-md-12 nomor_sk"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Jumlah Lokasi</div><div class="col-xs-7 col-md-12 jumlah_lokasi"></div></div></div><div class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">File SK</div><div class="col-xs-7 col-md-12 file_id"></div></div></div> </li> </div>
 	  			</div>
 	  			<div id="profil-desa-kelurahan" class="tab-pane fade">	  				
 		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
@@ -278,7 +285,7 @@
 		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
 		  			<div class="list-format-2 hide"><li class="report-item-kabkota"><h2 class="kabkota"></h2><ul class="list-unstyled report-row row"></ul></li></div>
 		  			<div class="list-format-3 hide"><li>
-		  				<div class="col-md-4 report-item text-left no-left-border">
+		  				<div class="col-md-4 report-item text-left no-left-border no-top-border">
 		  					<div class="desakel"></div>
 		  					<div class="koordinat">
 		  						Koordinat : 	
@@ -312,37 +319,44 @@
 	  			<div id="tahapan-kegiatan" class="tab-pane fade">	  				
 		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
 						<ul class="row list-unstyled">
-			  				<li class="col-md-4 header-item no-left-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-calendar fa-2x"></i><br>Tanggal</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>Peserta</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-female fa-2x"></i><br>Peserta Perempuan</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-image fa-2x"></i><br>Foto</li>
-						</li>
+			  				<li data-target="#tahap-rekap" data-toggle="tab" class="col-md-4 header-item no-left-border"><i class="fa fa-eye fa-2x"></i><br>Summary</li>
+			  				<li data-target="#tahap-persiapan" data-toggle="tab" class="col-md-2 header-item"><i class="fa fa-pie-chart fa-2x"></i><br>Persiapan</li>
+			  				<li data-target="#tahap-perencanaan" data-toggle="tab" class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>Perencanaan</li>
+			  				<li data-target="#tahap-konstruksi" data-toggle="tab" class="col-md-2 header-item"><i class="fa fa-leaf fa-2x"></i><br>Konstruksi</li>
+			  				<li data-target="#tahap-pasca_konstruksi" data-toggle="tab" class="col-md-2 header-item"><i class="fa fa-tint fa-2x"></i><br>Pasca Konstruksi</li>
+						</ul>
+						<div class="tab-pane row hide">
+							<div class="col-md-4 text-center"><p><i class="ion ion-ios-location"></i> Wilayah</p></div>
+							<div class="col-md-8 text-center"><p><i class="ion ion-ios-location"></i> Tahapan Kegiatan yang Sudah Dikerjakan</p></div>
+						</div>
 		  			</div>
 		  			<ul class="report-content list-unstyled">
-		  				<li class="report-item-propinsi">
-		  					<h2>Jawa Tengah</h2>
-		  					<ul class="list-unstyled report-row row">
-			  					<li class="col-md-4 report-item text-left no-left-border">Kota Pekalongan</li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-		  					</ul>
-		  					<ul class="list-unstyled report-row row">
-			  					<li class="col-md-4 report-item text-left no-left-border">Kota Semarang</li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-		  					</ul>
-		  				</li>
 		  			</ul>
+		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+		  			<div class="list-format-2 hide"><li class="report-item-kabkota"><h2 class="kabkota"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+		  			<div class="list-format-3 hide"><li>
+		  				<div class="col-md-4 text-left report-item no-left-border">
+		  					<div class="desakel"></div>
+		  				</div>
+	  					<div class="col-md-8 detail-content">
+	  						<div class="row report-item tahap-rekap hide">
+	  						</div>
+	  						<div class="row report-item tahap-persiapan">
+	  						</div>
+	  						<div class="row report-item tahap-perencanaan hide">
+	  						</div>
+	  						<div class="row report-item tahap-konstruksi hide">
+	  						</div>
+	  						<div class="row report-item tahap-pasca_konstruksi hide">
+	  						</div>
+		  				</div>
+	  					<div class="row visible-xs visible-sm">&nbsp;</div>
+		  			</li></div>
 	  			</div>
 	  			<div id="kontrak-lahan-pemanfaat" class="tab-pane fade">	  				
 		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
 						<ul class="row list-unstyled">
-			  				<li class="col-md-4 header-item no-left-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
+			  				<li class="col-md-4 header-item no-left-border no-top-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
 			  				<li class="col-md-2 header-item"><i class="fa fa-calendar fa-2x"></i><br>Tanggal</li>
 			  				<li class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>Peserta</li>
 			  				<li class="col-md-2 header-item"><i class="fa fa-female fa-2x"></i><br>Peserta Perempuan</li>
@@ -456,6 +470,33 @@
 
 		window.profilAction = function(elm, item) {
 			$('#profil-desa-kelurahan .header-item').eq(1).tab('show');
+		}
+
+		window.tahapanAction = function(elm, item) {
+			var tahapans = ['persiapan', 'perencanaan', 'konstruksi', 'pasca_konstruksi'];
+			for (t in tahapans) {
+				var tt = tahapans[t];
+				if (item[tt] == '-') item[tt] = null;
+
+				for (x in item[tt]) {
+					var p = item[tt][x];
+					var c = '<ul>';
+					for (s in p) {
+						if (s != 'kode_wilayah' && s != 'created_at' && s != 'updated_at' && s != 'file_id' && s != 'foto_id') c += '<li><strong>'+s+'</strong> : '+p[s]+'</li>';
+					}
+					c += '</ul>';
+					var i = '<div class="col-sm-6 col-md-3"> <a href="#" tabindex="0" role="button" data-trigger="focus" data-placement="top" data-toggle="popover" data-html="true" data-title="title" data-content="'+c+'"><div class="panel panel-info"> <div class="panel-heading text-center"> <h3 class="panel-title">'+p.tanggal_selesai+'</h3> </div> <div class="panel-body"><small>'+p.title+'</small></div> </div></a> </div> ';
+					var ii = $(i);
+					if (p.length) ii.data(p);
+					$(elm).find('.detail-content > .tahap-'+tt).append(ii);
+					ii.find('a').on('shown.bs.popover', function(e) {
+						console.log('sssssss')
+						ii.find('.popover').css('top', '0');
+					})
+				}
+			}
+			$('[data-toggle=popover]').popover();
+
 		}
 
 		window.allList = [];
