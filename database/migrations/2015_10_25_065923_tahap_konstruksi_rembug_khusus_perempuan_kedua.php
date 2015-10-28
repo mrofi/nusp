@@ -17,7 +17,7 @@ class TahapKonstruksiRembugKhususPerempuanKedua extends Migration
             $table->string('kode_wilayah', 20);
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->integer('jumlah_peserta_laki-laki')->unsigned();
+            $table->integer('jumlah_peserta')->unsigned();
             $table->integer('jumlah_peserta_perempuan')->unsigned();
             $table->integer('jumlah_peserta_warga_miskin')->unsigned();
             $table->integer('foto_id')->unsigned()->nullable();

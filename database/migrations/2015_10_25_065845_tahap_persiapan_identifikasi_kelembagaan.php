@@ -15,13 +15,18 @@ class TahapPersiapanIdentifikasiKelembagaan extends Migration
         Schema::create('tahap_persiapan_identifikasi_kelembagaans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_selesai');
-            $table->integer('jumlah_peserta_laki-laki')->unsigned();
-            $table->integer('jumlah_peserta_perempuan')->unsigned();
-            $table->integer('jumlah_peserta_warga_miskin')->unsigned();
-            $table->integer('foto_id')->unsigned()->nullable();
-            $table->integer('file_id')->unsigned()->nullable();
+            $table->string('nama_bkm', 50);
+            $table->date('tanggal_pembentukan');
+            $table->string('nama_koordinator', 50);
+            $table->integer('jumlah_pengurus_bkm');
+            $table->integer('jumlah_perempuan_pengurus_bkm');
+            $table->string('alamat_bkm');
+            $table->string('telepon_hp', 50);
+            $table->date('tanggal_pengesahan_notaris');
+            $table->string('nomor_pengesahan', 30);
+            $table->string('nama_notaris', 50);
+            $table->string('nama_bank', 20); 
+            $table->string('no_rekening_bank', 20);
             $table->timestamps();
         });
     }

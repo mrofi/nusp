@@ -15,13 +15,18 @@ class TahapPascaKonstruksiPemanfaatan extends Migration
         Schema::create('tahap_pasca_konstruksi_pemanfaatans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_selesai');
-            $table->integer('jumlah_peserta_laki-laki')->unsigned();
-            $table->integer('jumlah_peserta_perempuan')->unsigned();
-            $table->integer('jumlah_peserta_warga_miskin')->unsigned();
-            $table->integer('foto_id')->unsigned()->nullable();
-            $table->integer('file_id')->unsigned()->nullable();
+            $table->text('jenis_kegiatan');
+            $table->integer('jumlah_kk')->unsigned();
+            $table->integer('jumlah_kk_miskin')->unsigned();
+            $table->integer('jumlah_pemanfaat')->unsigned();
+            $table->integer('jumlah_perempuan')->unsigned();
+            $table->integer('jumlah_warga_miskin')->unsigned();
+            $table->text('realisasi_jenis_kegiatan');
+            $table->integer('realisasi_jumlah_kk')->unsigned();
+            $table->integer('realisasi_jumlah_kk_miskin')->unsigned();
+            $table->integer('realisasi_jumlah_pemanfaat')->unsigned();
+            $table->integer('realisasi_jumlah_perempuan')->unsigned();
+            $table->integer('realisasi_jumlah_warga_miskin')->unsigned();
             $table->timestamps();
         });
     }

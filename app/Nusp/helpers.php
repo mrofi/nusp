@@ -204,7 +204,7 @@ function nusp_form($name, $format = '', $bsCols = '')
     }
 
     if ($type == 'text') {
-        if ($bsCols == '') $bsCols = 'col-sm-4';
+        if ($bsCols == '') $bsCols = 'col-sm-7';
         return '
             <div class="form-group">
                 '.$label.'
@@ -222,6 +222,29 @@ function nusp_form($name, $format = '', $bsCols = '')
                 '.$label.'
                 <div class="'.$bsCols.'">
                     '.\Form::text($name, $default, ['data-provide' => 'datepicker', 'id' => $name, 'class' => 'form-control input-date', 'placeholder' => $caption, 'autocomplete' => 'off']).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'combo') {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        $list = [];
+        if (isset($value)) 
+        {
+            $values = explode(',', $value);
+            foreach ($values as $v) 
+            {
+                $av = explode('=', $v);
+                $list[$av[0]] = count($av) > 1 ? $av[1] : $av[0];
+
+            }
+        }
+        return '
+            <div class="form-group">
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::select($name, $list, $default, ['id' => $name, 'class' => 'form-control', 'placeholder' => $caption]).'
                 </div>
             </div>
         ';

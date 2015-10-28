@@ -12,34 +12,39 @@ class TahapKegiatan extends ApiController
 	protected $model;
 
 	protected $tahapanPersiapan = [
-		\App\TahapPersiapanSosialisasiKelurahan::class,
-		\App\TahapPersiapanIdentifikasiKelembagaan::class,
-		\App\TahapPersiapanRembugKhususPerempuanPertama::class,
-		\App\TahapPersiapanMusyawarahKelurahanPertama::class,
-	];
-	protected $tahapanPerencanaan = [
-		\App\TahapPerencanaanOjtTimSks::class,
-		\App\TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis::class,
-		\App\TahapPerencanaanMusyawarahKelurahanKedua::class,
-		\App\TahapPerencanaanPenyusunanDokumenNuap::class,
-		\App\TahapPerencanaanVerifikasiDanKonsolidasiNuap::class,
-		\App\TahapPerencanaanRevisiDokumenNuap::class,
-		\App\TahapPerencanaanMusyawarahKelurahanKetiga::class,
-		\App\TahapPerencanaanPenyusunanRkm::class,
-		\App\TahapPerencanaanVerifikasiFinalisasiDokumenRkm::class,
-	];
-	protected $tahapanKonstruksi = [
-		\App\TahapKonstruksiKontrakSp3::class,
-		\App\TahapKonstruksiRembugKhususPerempuanKedua::class,
-		\App\TahapKonstruksiMusyawarahKelurahanKeempat::class,
-		\App\TahapKonstruksiPelaksanaanFisik::class,
-	];
-	protected $tahapanPascaKonstruksi = [
-		\App\TahapPascaKonstruksiMusyawarahKelurahanKelima::class,
-		\App\TahapPascaKonstruksiSerahTerimaPekerjaan::class,
-		\App\TahapPascaKonstruksiPemanfaatan::class,
-		\App\TahapPascaKonstruksiPemeliharaan::class,
-	];
+        \App\TahapPersiapanSosialisasiKelurahan::class,
+        \App\TahapPersiapanIdentifikasiKelembagaan::class,
+        \App\TahapPersiapanRembugKhususPerempuanPertama::class,
+        \App\TahapPersiapanMusyawarahKelurahanPertama::class,
+    ];
+    protected $tahapanPerencanaan = [
+        \App\TahapPerencanaanPelatihanBkm::class,
+        \App\TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis::class,
+        \App\TahapPerencanaanMusyawarahKelurahanKedua::class,
+        \App\TahapPerencanaanPenyusunanDokumenNuap::class,
+        \App\TahapPerencanaanVerifikasiDanKonsolidasiNuap::class,
+        \App\TahapPerencanaanRevisiDokumenNuap::class,
+        \App\TahapPerencanaanMusyawarahKelurahanKetiga::class,
+        \App\TahapPerencanaanPenyusunanRkm::class,
+        \App\TahapPerencanaanVerifikasiFinalisasiDokumenRkm::class,
+        \App\TahapPerencanaanPembentukanTppi::class,
+        \App\TahapPerencanaanPembentukanKpp::class,
+    ];
+    protected $tahapanKonstruksi = [
+        \App\TahapKonstruksiKontrakSp3::class,
+        \App\TahapKonstruksiRembugKhususPerempuanKedua::class,
+        \App\TahapKonstruksiMusyawarahKelurahanKeempat::class,
+        \App\TahapKonstruksiPelaksanaanFisik::class,
+        \App\TahapKonstruksiTahap1::class,
+        \App\TahapKonstruksiTahap2::class,
+    ];
+    protected $tahapanPascaKonstruksi = [
+        \App\TahapPascaKonstruksiMusyawarahKelurahanKelima::class,
+        \App\TahapPascaKonstruksiSerahTerimaPekerjaan::class,
+        \App\TahapPascaKonstruksiPemanfaatan::class,
+        \App\TahapPascaKonstruksiPemeliharaan::class,
+        \App\TahapPascaKonstruksiTahap3::class,
+    ];
 
     
     public function __construct(Model $model)
@@ -53,18 +58,25 @@ class TahapKegiatan extends ApiController
     {
     	$tahapans = [];
     	// persiapan
-    	foreach($this->tahapanPersiapan as $tahap)
-    	{
-    		$class = new \ReflectionClass($tahap);
-    		$className = $class->getShortName();
-    		$tahapan = with(new $tahap)->all()->toArray();
+        $counter = [];
+        foreach($this->tahapanPersiapan as $tahap)
+        {
+            $class = new \ReflectionClass($tahap);
+            $className = $class->getShortName();
+            $tahapan = with(new $tahap)->all()->toArray();
     		foreach ($tahapan as $t) 
     		{
-    			$tahapans[$t['kode_wilayah']]['persiapan'][$className] = $t;
+                $t['title'] = $tahap::$title;
+                $tahapans[$t['kode_wilayah']]['persiapan'][$className] = $t;
+                if (!isset($persentase[$t['kode_wilayah']])) $persentase[$t['kode_wilayah']] = [];
+                if (!isset($counter[$t['kode_wilayah']])) $counter[$t['kode_wilayah']] = 0;
+                $counter[$t['kode_wilayah']]++;
+                $persentase[$t['kode_wilayah']]['persiapan'] = floor($counter[$t['kode_wilayah']] / count($this->tahapanPersiapan) * 100);
     		}
     	}  
 
-    	// perencanaan
+        // perencanaan
+        $counter = [];
     	foreach($this->tahapanPerencanaan as $tahap)
     	{
     		$class = new \ReflectionClass($tahap);
@@ -72,11 +84,17 @@ class TahapKegiatan extends ApiController
     		$tahapan = with(new $tahap)->all();
     		foreach ($tahapan as $t) 
     		{
+                $t['title'] = $tahap::$title;
     			$tahapans[$t['kode_wilayah']]['perencanaan'][$className] = $t;
-    		}
+                if (!isset($persentase[$t['kode_wilayah']])) $persentase[$t['kode_wilayah']] = [];
+                if (!isset($counter[$t['kode_wilayah']])) $counter[$t['kode_wilayah']] = 0;
+                $counter[$t['kode_wilayah']]++;
+                $persentase[$t['kode_wilayah']]['perencanaan'] = floor($counter[$t['kode_wilayah']] / count($this->tahapanPerencanaan) * 100);
+            }
     	}         
 
     	// konstruksi
+        $counter = [];
     	foreach($this->tahapanKonstruksi as $tahap)
     	{
     		$class = new \ReflectionClass($tahap);
@@ -84,11 +102,17 @@ class TahapKegiatan extends ApiController
     		$tahapan = with(new $tahap)->all();
     		foreach ($tahapan as $t) 
     		{
+                $t['title'] = $tahap::$title;
     			$tahapans[$t['kode_wilayah']]['konstruksi'][$className] = $t;
+                if (!isset($persentase[$t['kode_wilayah']])) $persentase[$t['kode_wilayah']] = [];
+                if (!isset($counter[$t['kode_wilayah']])) $counter[$t['kode_wilayah']] = 0;
+                $counter[$t['kode_wilayah']]++;
+                $persentase[$t['kode_wilayah']]['konstruksi'] = floor($counter[$t['kode_wilayah']] / count($this->tahapanKonstruksi) * 100);
     		}
     	}  
 
     	// persiapan
+        $counter = [];
     	foreach($this->tahapanPascaKonstruksi as $tahap)
     	{
     		$class = new \ReflectionClass($tahap);
@@ -96,7 +120,12 @@ class TahapKegiatan extends ApiController
     		$tahapan = with(new $tahap)->all();
     		foreach ($tahapan as $t) 
     		{
+                $t['title'] = $tahap::$title;
     			$tahapans[$t['kode_wilayah']]['pasca_konstruksi'][$className] = $t;
+                if (!isset($counter[$t['kode_wilayah']])) $counter[$t['kode_wilayah']] = 0;
+                if (!isset($persentase[$t['kode_wilayah']])) $persentase[$t['kode_wilayah']] = [];
+                $counter[$t['kode_wilayah']]++;
+                $persentase[$t['kode_wilayah']]['pasca_konstruksi'] = floor($counter[$t['kode_wilayah']] / count($this->tahapanPascaKonstruksi) * 100);
     		}
     	}  
 
@@ -117,8 +146,8 @@ class TahapKegiatan extends ApiController
                     if (!isset($kec['desaKels'])) continue;
                     foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
                     {
-                        $newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('wilayah '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode'], 'role_id' => $desaKel['role_id'], 'tahapan' =>  array_key_exists($desaKel['kode'], $tahapans) ? $tahapans[$desaKel['kode']] : null];
-                        // if ($newDesaKel['tahapan']) $newDesaKel['tahapan']['jumlah_penduduk'] = $newDesaKel['tahapan']['jumlah_penduduk_laki_laki'] + $newDesaKel['tahapan']['jumlah_penduduk_perempuan'];
+                        $newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('wilayah '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode'], 'role_id' => $desaKel['role_id'], 'tahapan' =>  array_key_exists($desaKel['kode'], $tahapans) ? $tahapans[$desaKel['kode']] : []];
+                        $newDesaKel['tahapan']['persentase'] = isset($persentase[$desaKel['kode']]) ? $persentase[$desaKel['kode']] : [];
                         $desaKels[] = $newDesaKel;
                     }
                 }

@@ -106,7 +106,7 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.input-date').each(function(i, e) {
       v = $(this).val();
       var from = v.split("-");
-      var f = [from[2], from[1], from[0]].join('-');
+      var f = v == '' ? '' : [from[2], from[1], from[0]].join('-');
       $(this).val(f);
     })
     for (x in data) {

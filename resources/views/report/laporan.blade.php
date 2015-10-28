@@ -155,6 +155,11 @@
 		font-size: 0.9em;
 	}
 
+	.panel small {
+	    font-size: .7em;
+	    line-height: .5em;
+	}
+
 @media (min-width: 992px) {
 
 	.navsidebar.affix {
@@ -196,7 +201,7 @@
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/sosialisasi/') }}" data-deep="2" data-name="sosialisasi" data-attrs="kode_wilayah,tanggal,peserta,peserta_perempuan,foto_id" href="#sosialisasi-kabupaten-kota">Sosialisasi Kabupaten / Kota</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/penetapan-lokasi') }}" data-deep="2" data-name="penetapan" data-attrs="kode_wilayah,tanggal_sk,nomor_sk,jumlah_lokasi,file_id" href="#penetapan-lokasi">Penetapan Lokasi</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/profil-desa-kelurahan') }}" data-deep="3" data-name="profil" data-attrs="kode_wilayah,luas_wilayah,jumlah_penduduk,jumlah_penduduk_laki_laki,jumlah_penduduk_perempuan,jumlah_kk,jumlah_kk_miskin,jumlah_rw_dusun_lingkungan,jumlah_rt,jumlah_jamban_kk,jumlah_septik_tank,jumlah_mck_unit,jumlah_mck_bilik,jumlah_sumur_gali_unit,jumlah_sumur_pompa_unit,jumlah_kran_umum_unit,jumlah_pah_unit,koordinat_latitude,koordinat_longitude"  href="#profil-desa-kelurahan">Profil Desa / Kelurahan</a></li>
-		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/tahap-kegiatan') }}" href="#tahapan-kegiatan" data-deep="3" data-name="tahapan" data-attrs="kode_wilayah,persiapan,perencanaan,konstruksi,pasca_konstruksi">Tahapan Kegiatan</a></li>
+		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/tahap-kegiatan') }}" href="#tahapan-kegiatan" data-deep="3" data-name="tahapan" data-attrs="kode_wilayah,persiapan,perencanaan,konstruksi,pasca_konstruksi,persentase">Tahapan Kegiatan</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#kontrak-lahan-pemanfaat">Kontrak, Lahan &amp; Pemanfaat</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#fisik-keuangan">Fisik &amp; Keuangan</a></li>
 					</ul>
@@ -327,7 +332,7 @@
 						</ul>
 						<div class="tab-pane row hide">
 							<div class="col-md-4 text-center"><p><i class="ion ion-ios-location"></i> Wilayah</p></div>
-							<div class="col-md-8 text-center"><p><i class="ion ion-ios-location"></i> Tahapan Kegiatan yang Sudah Dikerjakan</p></div>
+							<div class="col-md-8 text-center"><p class="title">Tahapan Kegiatan yang Sudah Dikerjakan</p></div>
 						</div>
 		  			</div>
 		  			<ul class="report-content list-unstyled">
@@ -339,9 +344,9 @@
 		  					<div class="desakel"></div>
 		  				</div>
 	  					<div class="col-md-8 detail-content">
-	  						<div class="row report-item tahap-rekap hide">
+	  						<div class="row report-item tahap-rekap active">
 	  						</div>
-	  						<div class="row report-item tahap-persiapan">
+	  						<div class="row report-item tahap-persiapan hide">
 	  						</div>
 	  						<div class="row report-item tahap-perencanaan hide">
 	  						</div>
@@ -452,7 +457,8 @@
 
 		window.sosialisasiAction = function(elm, item) {
 			var foto_id = item.foto_id;
-			if (foto_id != '-') $(elm).find('.foto_id').html('<img src="{{ nusp_asset('api/foto/') }}'+foto_id+'" style="max-height:100%; max-width: 90%;">');
+			// if (foto_id != '-') $(elm).find('.foto_id').html('<img src="{{ nusp_asset('api/foto/') }}'+foto_id+'" style="max-height:100%; max-width: 90%;">');
+			if (foto_id != '-') $(elm).find('.foto_id').html('<a target="_blank" href="{{ nusp_asset('api/foto/') }}'+foto_id+'" >Lihat Foto</a>');
 		}
 
 		window.penetapanAction = function(elm, item) {
@@ -472,7 +478,16 @@
 			$('#profil-desa-kelurahan .header-item').eq(1).tab('show');
 		}
 
+		$('#tahapan-kegiatan .header-item').on('show.bs.tab', function(e) {
+			var cur = $(e.target);
+			var classCur = cur.data('target').substr(1);
+
+			$('.report-content .detail-content > .active').addClass('hide').removeClass('active');
+			$('.report-content .'+classCur).addClass('active').removeClass('hide');
+		})
+
 		window.tahapanAction = function(elm, item) {
+			var titles = ['Persiapan', 'Perencanaan', 'Konstruksi', 'Pasca Konstruksi'];
 			var tahapans = ['persiapan', 'perencanaan', 'konstruksi', 'pasca_konstruksi'];
 			for (t in tahapans) {
 				var tt = tahapans[t];
@@ -482,20 +497,32 @@
 					var p = item[tt][x];
 					var c = '<ul>';
 					for (s in p) {
-						if (s != 'kode_wilayah' && s != 'created_at' && s != 'updated_at' && s != 'file_id' && s != 'foto_id') c += '<li><strong>'+s+'</strong> : '+p[s]+'</li>';
+						if (s != 'id' && s != 'kode_wilayah' && s != 'created_at' && s != 'updated_at' && s != 'file_id' && s != 'foto_id' && s != 'title') c += '<li><strong>'+s+'</strong> : '+p[s]+'</li>';
 					}
 					c += '</ul>';
-					var i = '<div class="col-sm-6 col-md-3"> <a href="#" tabindex="0" role="button" data-trigger="focus" data-placement="top" data-toggle="popover" data-html="true" data-title="title" data-content="'+c+'"><div class="panel panel-info"> <div class="panel-heading text-center"> <h3 class="panel-title">'+p.tanggal_selesai+'</h3> </div> <div class="panel-body"><small>'+p.title+'</small></div> </div></a> </div> ';
+					var i = '<div class="col-sm-6 col-md-3"> <a href="#" tabindex="0" role="button" data-trigger="focus" data-placement="top" data-toggle="popover" data-html="true" data-title="'+p.title+'" data-content="'+c+'"><div class="panel panel-info"><small>'+p.title+'</small></div></a> </div> ';
 					var ii = $(i);
 					if (p.length) ii.data(p);
 					$(elm).find('.detail-content > .tahap-'+tt).append(ii);
 					ii.find('a').on('shown.bs.popover', function(e) {
-						console.log('sssssss')
-						ii.find('.popover').css('top', '0');
+						$(this).parent().find('.popover').css('top', '0');
 					})
 				}
+
+				var ps = (item.persentase == undefined || item.persentase.length == 0 || item.persentase[tt] == undefined) ? '0%' : item.persentase[tt]+'%';
+				var f = '<div class="col-sm-6 col-md-3"><input type="text" class="knob" value="'+ps+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <h3 class="knob-label">'+titles[t]+'</h3></div>';
+				var ff = $(f);
+				$(elm).find('.detail-content > .tahap-rekap').append(ff);
+
+				$(elm).find('.knob').knob().trigger('change').each(function(){
+					$(this).val($(this).val()+'%');
+				});
+
+
 			}
 			$('[data-toggle=popover]').popover();
+
+			$('#tahapan-kegiatan .header-item').eq(0).tab('show');
 
 		}
 

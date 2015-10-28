@@ -15,13 +15,10 @@ class TahapKonstruksiKontrakSp3 extends Migration
         Schema::create('tahap_konstruksi_kontrak_sp3s', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_selesai');
-            $table->integer('jumlah_peserta_laki-laki')->unsigned();
-            $table->integer('jumlah_peserta_perempuan')->unsigned();
-            $table->integer('jumlah_peserta_warga_miskin')->unsigned();
-            $table->integer('foto_id')->unsigned()->nullable();
-            $table->integer('file_id')->unsigned()->nullable();
+            $table->string('no_kontrak', 30);
+            $table->date('tanggal_kontrak');
+            $table->integer('kontrak_sp3')->unsigned()->nullable(); // file
+            $table->integer('ringkasan_kontrak')->unsigned()->nullable(); // file
             $table->timestamps();
         });
     }

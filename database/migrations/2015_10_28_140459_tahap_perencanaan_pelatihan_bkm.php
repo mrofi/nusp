@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TahapPerencanaanOjtTimSks extends Migration
+class TahapPerencanaanPelatihanBkm extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class TahapPerencanaanOjtTimSks extends Migration
      */
     public function up()
     {
-        Schema::create('tahap_perencanaan_ojt_tim_skss', function (Blueprint $table) {
+        Schema::create('tahap_perencanaan_pelatihan_bkms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->integer('jumlah_peserta_laki-laki')->unsigned();
+            $table->integer('jumlah_peserta')->unsigned();
             $table->integer('jumlah_peserta_perempuan')->unsigned();
             $table->integer('jumlah_peserta_warga_miskin')->unsigned();
             $table->integer('foto_id')->unsigned()->nullable();
@@ -33,6 +33,6 @@ class TahapPerencanaanOjtTimSks extends Migration
      */
     public function down()
     {
-        Schema::drop('tahap_perencanaan_ojt_tim_skss');
+        Schema::drop('tahap_perencanaan_pelatihan_bkms');
     }
 }

@@ -1,28 +1,5 @@
 @section($namespace.'.modal.form.body')
-<div class="row hide">
-  <label for="" class="control-label col-sm-4">Desa / Kelurahan</label>
-  <div class="col-sm-8">
-    <p class="form-control-static" id="desaKel"></p>
-  </div>
-</div>
-<div class="row hide">
-  <label for="" class="control-label col-sm-4">Kecamatan</label>
-  <div class="col-sm-8">
-    <p class="form-control-static" id="kec"></p>
-  </div>
-</div>
-<div class="row hide">
-  <label for="" class="control-label col-sm-4">Kabupaten / Kota</label>
-  <div class="col-sm-8">
-    <p class="form-control-static" id="kabKota"></p>
-  </div>
-</div>
-<div class="row hide">
-  <label for="" class="control-label col-sm-4">Propinsi</label>
-  <div class="col-sm-8">
-    <p class="form-control-static" id="propinsi"></p>
-  </div>
-</div>
+@include('modal.formPlain')  
 @yield($namespace.'.modal.body')  
 @endsection
 
@@ -46,6 +23,7 @@
           <div class="row">&nbsp;</div>
         </div>
         <div class="modal-footer bg-navy">
+          <input type="hidden" class="input-mask-numeric" name="numeric">
           <button type="reset" class="btn btn-default data-transport pull-left"  @yield($namespace.'.modal.close.prop', 'data-dismiss="modal"') >@yield($namespace.'.modal.close', 'Batal')</button>
           <button type="submit" class="btn btn-primary @yield($namespace.'.modal.submit.class')">@yield($namespace.'.modal.submit', 'Simpan')</button>
         </div>

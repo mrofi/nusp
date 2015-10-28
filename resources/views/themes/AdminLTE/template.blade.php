@@ -120,7 +120,10 @@
       .inner > h2 {
         margin-top: 10px;
       }
-
+      
+      textarea.form-control {
+        height: 80px;
+      }
     </style>
     
     <!--pace-->
