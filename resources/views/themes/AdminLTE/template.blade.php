@@ -124,6 +124,10 @@
       textarea.form-control {
         height: 80px;
       }
+
+      .btn-knob {
+        width: 100%;
+      }
     </style>
     
     <!--pace-->

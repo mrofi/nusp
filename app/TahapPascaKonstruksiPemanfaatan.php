@@ -30,12 +30,12 @@ class TahapPascaKonstruksiPemanfaatan extends BaseModel
         'jumlah_pemanfaat' => 'required|type:numeric',
         'jumlah_perempuan' => 'required|type:numeric',
         'jumlah_warga_miskin' => 'required|type:numeric',
-        'relaisasi_jenis_kegiatan' => 'required|type:text',
-        'relaisasi_jumlah_kk' => 'required|type:numeric',
-        'relaisasi_jumlah_kk_miskin' => 'required|type:numeric',
-        'relaisasi_jumlah_pemanfaat' => 'required|type:numeric',
-        'relaisasi_jumlah_perempuan' => 'required|type:numeric',
-        'relaisasi_jumlah_warga_miskin' => 'required|type:numeric',
+        'realisasi_jenis_kegiatan' => 'required|type:text',
+        'realisasi_jumlah_kk' => 'required|type:numeric',
+        'realisasi_jumlah_kk_miskin' => 'required|type:numeric',
+        'realisasi_jumlah_pemanfaat' => 'required|type:numeric',
+        'realisasi_jumlah_perempuan' => 'required|type:numeric',
+        'realisasi_jumlah_warga_miskin' => 'required|type:numeric',
     ];
 
     protected $rules = [
@@ -46,12 +46,12 @@ class TahapPascaKonstruksiPemanfaatan extends BaseModel
         'jumlah_pemanfaat' => 'required|numeric',
         'jumlah_perempuan' => 'required|numeric',
         'jumlah_warga_miskin' => 'required|numeric',
-        'relaisasi_jenis_kegiatan' => 'required',
-        'relaisasi_jumlah_kk' => 'required|numeric',
-        'relaisasi_jumlah_kk_miskin' => 'required|numeric',
-        'relaisasi_jumlah_pemanfaat' => 'required|numeric',
-        'relaisasi_jumlah_perempuan' => 'required|numeric',
-        'relaisasi_jumlah_warga_miskin' => 'required|numeric',
+        'realisasi_jenis_kegiatan' => 'required',
+        'realisasi_jumlah_kk' => 'required|numeric',
+        'realisasi_jumlah_kk_miskin' => 'required|numeric',
+        'realisasi_jumlah_pemanfaat' => 'required|numeric',
+        'realisasi_jumlah_perempuan' => 'required|numeric',
+        'realisasi_jumlah_warga_miskin' => 'required|numeric',
     ];
 
     protected $attributes = [
@@ -62,12 +62,12 @@ class TahapPascaKonstruksiPemanfaatan extends BaseModel
         'jumlah_pemanfaat' => '0',
         'jumlah_perempuan' => '0',
         'jumlah_warga_miskin' => '0',
-        'relaisasi_jenis_kegiatan' => '',
-        'relaisasi_jumlah_kk' => '0',
-        'relaisasi_jumlah_kk_miskin' => '0',
-        'relaisasi_jumlah_pemanfaat' => '0',
-        'relaisasi_jumlah_perempuan' => '0',
-        'relaisasi_jumlah_warga_miskin' => '0',
+        'realisasi_jenis_kegiatan' => '',
+        'realisasi_jumlah_kk' => '0',
+        'realisasi_jumlah_kk_miskin' => '0',
+        'realisasi_jumlah_pemanfaat' => '0',
+        'realisasi_jumlah_perempuan' => '0',
+        'realisasi_jumlah_warga_miskin' => '0',
     ];
 
     public static $title = 'Pemanfaatan';
