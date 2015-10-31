@@ -112,7 +112,7 @@ function nusp_studlyToStr($studly = '')
     return implode(' ', explode('_', $studly));
 }
 
-function nusp_form($name, $format = '', $bsCols = '')
+function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
 {
     if ($format == '') return '';
 
@@ -142,7 +142,9 @@ function nusp_form($name, $format = '', $bsCols = '')
 
     if (!isset($default)) $default = '';
 
-    $label = '<label class="control-label col-sm-4" for="'.$name.'">'.$caption.'</label>';
+    if ($bslCols == '') $bslCols = 'col-sm-4';
+
+    $label = '<label class="control-label '.$bslCols.'" for="'.$name.'">'.$caption.'</label>';
 
     $caption = strip_tags($caption);
 
@@ -311,19 +313,19 @@ function nusp_form($name, $format = '', $bsCols = '')
 
 }
 
-function nusp_forms($formats = [])
+function nusp_forms($formats = [], $bslCols = '', $bsCols = '')
 {
     if ($formats == '') return '';
     $forms = '';
     foreach ($formats as $name => $format) 
     {
-        $forms .= nusp_form($name, $format);
+        $forms .= nusp_form($name, $format, $bsCols);
     }
 
     return $forms;
 }
 
-function nusp_staticForm($name, $format = '', $bsCols = '')
+function nusp_staticForm($name, $format = '', $bslCols = '', $bsCols = '')
 {
     if ($format == '') return '';
 
@@ -353,7 +355,9 @@ function nusp_staticForm($name, $format = '', $bsCols = '')
 
     if (!isset($default)) $default = '';
 
-    $label = '<label class="control-label col-sm-4" for="'.$name.'">'.$caption.'</label>';
+    if ($bslCols == '') $bslCols = 'col-sm-4';
+
+    $label = '<label class="control-label '.$bslCols.'" for="'.$name.'">'.$caption.'</label>';
 
     $caption = strip_tags($caption);
 
@@ -424,13 +428,13 @@ function nusp_staticForm($name, $format = '', $bsCols = '')
 
 }
 
-function nusp_staticForms($formats = [])
+function nusp_staticForms($formats = [], $bslCols = '', $bsCols = '')
 {
     if ($formats == '') return '';
     $forms = '';
     foreach ($formats as $name => $format) 
     {
-        $forms .= nusp_staticForm($name, $format);
+        $forms .= nusp_staticForm($name, $format, $bslCols, $bsCols);
     }
 
     return $forms;

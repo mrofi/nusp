@@ -31,6 +31,10 @@ class ProfilDesaKelurahan extends BaseModel
         'tipografi_karakteristik',
         'koordinat_latitude',
         'koordinat_longitude',
+        'pendidikan_sd',
+        'pendidikan_smp',
+        'pendidikan_sma',
+        'pendidikan_perguruan_tinggi',
     ];
 
     protected $forms = [
@@ -58,6 +62,10 @@ class ProfilDesaKelurahan extends BaseModel
         'tipografi_karakteristik' => 'type:string|caption:Tipografi / Karakteristik',
         'koordinat_latitude' => 'type:string',
         'koordinat_longitude' => 'type:string',
+        'pendidikan_sd' => 'type:numeric|caption:&sum; SD',
+        'pendidikan_smp' => 'type:numeric|caption:&sum; SMP',
+        'pendidikan_sma' => 'type:numeric|caption:&sum; SMA',
+        'pendidikan_perguruan_tinggi' => 'type:numeric|caption:&sum; > SMA',
     ];
 
     protected $attributes = [
@@ -85,6 +93,10 @@ class ProfilDesaKelurahan extends BaseModel
         'tipografi_karakteristik' => '',
         'koordinat_latitude' => 0,
         'koordinat_longitude' => 0,
+        'pendidikan_sd' => '',
+        'pendidikan_smp' => '',
+        'pendidikan_sma' => '',
+        'pendidikan_perguruan_tinggi' => '',
     ];
 
     public function getWilayahAttribute()

@@ -160,6 +160,10 @@
 	    line-height: .5em;
 	}
 
+	.header-item.small {
+	    font-size: 1em!important;
+	}
+
 @media (min-width: 992px) {
 
 	.navsidebar.affix {
@@ -200,7 +204,7 @@
 		            <ul class="nav sidenav">
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/sosialisasi/') }}" data-deep="2" data-name="sosialisasi" data-attrs="kode_wilayah,tanggal,peserta,peserta_perempuan,foto_id" href="#sosialisasi-kabupaten-kota">Sosialisasi Kabupaten / Kota</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/penetapan-lokasi') }}" data-deep="2" data-name="penetapan" data-attrs="kode_wilayah,tanggal_sk,nomor_sk,jumlah_lokasi,file_id" href="#penetapan-lokasi">Penetapan Lokasi</a></li>
-		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/profil-desa-kelurahan') }}" data-deep="3" data-name="profil" data-attrs="kode_wilayah,luas_wilayah,jumlah_penduduk,jumlah_penduduk_laki_laki,jumlah_penduduk_perempuan,jumlah_kk,jumlah_kk_miskin,jumlah_rw_dusun_lingkungan,jumlah_rt,jumlah_jamban_kk,jumlah_septik_tank,jumlah_mck_unit,jumlah_mck_bilik,jumlah_sumur_gali_unit,jumlah_sumur_pompa_unit,jumlah_kran_umum_unit,jumlah_pah_unit,koordinat_latitude,koordinat_longitude"  href="#profil-desa-kelurahan">Profil Desa / Kelurahan</a></li>
+		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/profil-desa-kelurahan') }}" data-deep="3" data-name="profil" data-attrs="kode_wilayah,luas_wilayah,jumlah_penduduk,jumlah_penduduk_laki_laki,jumlah_penduduk_perempuan,jumlah_kk,jumlah_kk_miskin,jumlah_rw_dusun_lingkungan,jumlah_rt,jumlah_jamban_kk,jumlah_septik_tank,jumlah_mck_unit,jumlah_mck_bilik,jumlah_sumur_gali_unit,jumlah_sumur_pompa_unit,jumlah_kran_umum_unit,jumlah_pah_unit,nama_bkm,status_keberdayaan_bkm,luas_kawasan,tipografi_karakteristik,koordinat_latitude,koordinat_longitude,pendidikan_sd,pendidikan_smp,pendidikan_sma,pendidikan_perguruan_tinggi"  href="#profil-desa-kelurahan">Profil Desa / Kelurahan</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/tahap-kegiatan') }}" href="#tahapan-kegiatan" data-deep="3" data-name="tahapan" data-attrs="kode_wilayah,persiapan,perencanaan,konstruksi,pasca_konstruksi,persentase">Tahapan Kegiatan</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#kontrak-lahan-pemanfaat">Kontrak, Lahan &amp; Pemanfaat</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#fisik-keuangan">Fisik &amp; Keuangan</a></li>
@@ -244,11 +248,12 @@
 			  				<li class="col-md-4 header-item no-left-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
 			  				<li class="col-md-8 row">
 			  					<ul class="list-unstyled">
-					  				<li data-target="#profil-w-p" data-toggle="tab" class="col-md-3 header-item"><i class="fa fa-pie-chart fa-2x"></i><br>Wilayah &amp; Penduduk</li>
-					  				<li data-target="#profil-kk" data-toggle="tab" class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>KK</li>
-					  				<li data-target="#profil-s" data-toggle="tab" class="col-md-3 header-item"><i class="fa fa-leaf fa-2x"></i><br>Sanitasi</li>
-					  				<li data-target="#profil-a" data-toggle="tab" class="col-md-2 header-item"><i class="fa fa-tint fa-2x"></i><br>Air</li>
-					  				<li data-target="#profil-dll" data-toggle="tab" class="col-md-2 header-item"><i class="fa fa-asterisk fa-2x"></i><br>BKM, DLL</li>
+					  				<li data-target="#profil-w-p" data-toggle="tab" class="col-md-2 header-item small"><i class="fa fa-pie-chart fa-2x"></i><br>Wilayah &amp; Penduduk</li>
+					  				<li data-target="#profil-kk" data-toggle="tab" class="col-md-2 header-item small"><i class="fa fa-users fa-2x"></i><br>KK</li>
+					  				<li data-target="#profil-s" data-toggle="tab" class="col-md-2 header-item small"><i class="fa fa-leaf fa-2x"></i><br>Sanitasi</li>
+					  				<li data-target="#profil-a" data-toggle="tab" class="col-md-2 header-item small"><i class="fa fa-tint fa-2x"></i><br>Air</li>
+					  				<li data-target="#profil-e" data-toggle="tab" class="col-md-2 header-item small"><i class="fa fa-graduation-cap fa-2x"></i><br>Pendidikan</li>
+					  				<li data-target="#profil-dll" data-toggle="tab" class="col-md-2 header-item small"><i class="fa fa-asterisk fa-2x"></i><br>BKM, DLL</li>
 			  					</ul>
 			  				</li>
 						</ul>
@@ -276,6 +281,12 @@
 								<div class="col-md-2">&sum; Sumur Pompa (Unit)</div>
 								<div class="col-md-2">&sum; Kran Umum (Unit)</div>
 								<div class="col-md-2">&sum; Penampungan Air Hujan (PAH) (Unit)</div>
+							</div>
+							<div class="tab-pane fade" id="profil-e">
+								<div class="col-md-2 col-md-offset-4">&sum; SD (jiwa)</div>
+								<div class="col-md-2">&sum; SMP (jiwa)</div>
+								<div class="col-md-2">&sum; SMA (jiwa)</div>
+								<div class="col-md-2">&sum; &gt; SMA (jiwa)</div>
 							</div>
 							<div class="tab-pane fade" id="profil-dll">
 								<div class="col-md-2 col-md-offset-4">Nama BKM</div>
@@ -312,6 +323,9 @@
 	  						</div>
 	  						<div class="row visible-xs visible-sm profil-a">
 			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Sumur Gali (Unit)</div><div class="col-xs-7 col-md-12 jumlah_sumur_gali_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Sumur Pompa (Unit)</div><div class="col-xs-7 col-md-12 jumlah_sumur_pompa_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Kran Umum (Unit)</div><div class="col-xs-7 col-md-12 jumlah_kran_umum_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penampungan Air hujan (PAH) (Unit)</div><div class="col-xs-7 col-md-12 jumlah_pah_unit"></div></div></div> 
+	  						</div>
+	  						<div class="row visible-xs visible-sm profil-e">
+			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SD (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_sd"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SMP (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_smp"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SMA (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_sma"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; &gt; SMA</div><div class="col-xs-7 col-md-12 pendidikan_perguruan_tinggi"></div></div></div> 
 	  						</div>
 	  						<div class="row visible-xs visible-sm profil-dll">
 			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Nama BKM</div><div class="col-xs-7 col-md-12 nama_bkm"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Status Keberdayaan BKM</div><div class="col-xs-7 col-md-12 status_keberdayaan_bkm"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Luas Kawasan (Ha)</div><div class="col-xs-7 col-md-12 luas_kawasan"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tipografi / Karakteristik</div><div class="col-xs-7 col-md-12 tipografi_karakteristik"></div></div></div> 
