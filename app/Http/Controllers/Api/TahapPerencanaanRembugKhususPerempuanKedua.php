@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\ProfilDesaKelurahan as Model;
+use App\TahapPerencanaanRembugKhususPerempuanKedua as Model;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\ApiDesaKel;
+use App\Http\Controllers\ApiController;
 
-class ProfilDesaKelurahan extends ApiDesaKel
+class TahapPerencanaanRembugKhususPerempuanKedua extends ApiController
 {
     public function __construct(Model $model)
     {
@@ -56,32 +56,5 @@ class ProfilDesaKelurahan extends ApiDesaKel
         return $propinsis;
     }
 
-    public function download()
-    {
-        $title = 'Profil Desa Atau Kelurahan';
-        
-        $title2 = 'download NUSP 2 '.$title;
-        
-        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
-        {
-            $excel->setTitle(ucwords($title2));
-            // Chain the setters
-            $excel
-                  ->setManager('NUSP 2')
-                  ->setCreator('NUSP 2')
-                  ->setCompany('Kementrian Pekerjaan Umum');
-
-            $excel->sheet(snake_case($title, '_'), function($sheet) use ($title, $title2)
-            {
-                $sheet->fromArray($this->model->excelDesaKel());
-
-                $sheet->prependRow(1, [$title]);
-
-                $sheet->setAutoSize(true);
-
-                $sheet->setWidth('A', 5);
-            });
-
-        })->download('xlsx');
-    }
+   
 }

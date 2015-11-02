@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TahapKonstruksiRembugKhususPerempuanKedua extends Migration
+class TahapKonstruksiRembugKhususPerempuanKetiga extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class TahapKonstruksiRembugKhususPerempuanKedua extends Migration
      */
     public function up()
     {
-        Schema::create('tahap_perencanaan_rembug_khusus_perempuan_keduas', function (Blueprint $table) {
+        Schema::create('tahap_konstruksi_rembug_khusus_perempuan_ketigas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
             $table->date('tanggal_mulai');
@@ -33,6 +33,6 @@ class TahapKonstruksiRembugKhususPerempuanKedua extends Migration
      */
     public function down()
     {
-        Schema::drop('tahap_perencanaan_rembug_khusus_perempuan_keduas');
+        Schema::drop('tahap_konstruksi_rembug_khusus_perempuan_ketigas');
     }
 }

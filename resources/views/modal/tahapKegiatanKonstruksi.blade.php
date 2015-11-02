@@ -25,9 +25,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<div id="tahapkonstruksirembugkhususperempuankedua" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-3-rembug-perempuan-2" data-toggle="modal">
+					<div id="tahapkonstruksirembugkhususperempuanketiga" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-3-rembug-perempuan-3" data-toggle="modal">
 						<span class="pull-left check hide"><i class="fa fa-lg fa-check"></i></span>
-							Rembug Perempuan II <strong class="date pull-right"></strong>
+							Rembug Perempuan III <strong class="date pull-right"></strong>
 					</div>
 				</div>
 			</div>
@@ -99,9 +99,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<div id="tahapkonstruksirembugkhususperempuankedua" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-3-rembug-perempuan-2" data-toggle="modal">
+					<div id="tahapkonstruksirembugkhususperempuanketiga" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-3-rembug-perempuan-3" data-toggle="modal">
 						<span class="pull-left check hide"><i class="fa fa-lg fa-check"></i></span>
-							Rembug Perempuan II <strong class="date pull-right"></strong>
+							Rembug Perempuan III <strong class="date pull-right"></strong>
 					</div>
 				</div>
 			</div>

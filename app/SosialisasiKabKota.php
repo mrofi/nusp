@@ -12,7 +12,7 @@ class SosialisasiKabKota extends BaseModel
     	'kode_wilayah' => 'required|type:hidden',
     	'tanggal' => 'required|type:date',
     	'peserta' => 'required|type:numeric|caption:Jumlah Peserta',
-    	'peserta_perempuan' => 'required|type:numeric|caption:Jumlah Peserta Perempuan',
+    	'peserta_perempuan' => 'required|type:numeric|caption:&sum; Peserta Perempuan',
     	'foto_id' => 'type:image|caption:Foto'
     ];
 

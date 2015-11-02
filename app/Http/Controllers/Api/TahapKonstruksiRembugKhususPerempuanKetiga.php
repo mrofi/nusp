@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\TahapKonstruksiRembugKhususPerempuanKedua as Model;
+use App\TahapKonstruksiRembugKhususPerempuanKetiga as Model;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\ApiController;
 
-class TahapKonstruksiRembugKhususPerempuanKedua extends ApiController
+class TahapKonstruksiRembugKhususPerempuanKetiga extends ApiController
 {
     public function __construct(Model $model)
     {

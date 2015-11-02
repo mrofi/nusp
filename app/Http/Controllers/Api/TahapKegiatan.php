@@ -20,6 +20,7 @@ class TahapKegiatan extends ApiController
     protected $tahapanPerencanaan = [
         \App\TahapPerencanaanPelatihanBkm::class,
         \App\TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis::class,
+        \App\TahapPerencanaanRembugKhususPerempuanKedua::class,
         \App\TahapPerencanaanMusyawarahKelurahanKedua::class,
         \App\TahapPerencanaanPenyusunanDokumenNuap::class,
         \App\TahapPerencanaanVerifikasiDanKonsolidasiNuap::class,
@@ -32,7 +33,7 @@ class TahapKegiatan extends ApiController
     ];
     protected $tahapanKonstruksi = [
         \App\TahapKonstruksiKontrakSp3::class,
-        \App\TahapKonstruksiRembugKhususPerempuanKedua::class,
+        \App\TahapKonstruksiRembugKhususPerempuanKetiga::class,
         \App\TahapKonstruksiMusyawarahKelurahanKeempat::class,
         \App\TahapKonstruksiPelaksanaanFisik::class,
         \App\TahapKonstruksiTahap1::class,

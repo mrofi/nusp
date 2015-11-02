@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapKonstruksiRembugKhususPerempuanKedua extends BaseModel
+class TahapKonstruksiRembugKhususPerempuanKetiga extends BaseModel
 {
     protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'jumlah_peserta', 'jumlah_peserta_perempuan', 'jumlah_peserta_warga_miskin', 'foto_id', 'file_id'];
 

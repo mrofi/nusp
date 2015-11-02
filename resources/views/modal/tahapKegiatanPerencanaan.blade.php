@@ -12,6 +12,12 @@
 					<label class="control-label hidden-sm hidden-xs">Klik salah satu tahapan di samping :</label>
 					<label class="control-label visible-sm visible-xs">Klik salah satu tahapan di bawah :</label>
 				</div>
+			</div>	
+			<div class="row hidden-xs hidden-sm">
+				<div class="col-md-12 text-center">&nbsp;</div>
+				<div class="col-md-12 text-center">
+          			<button type="reset" class="btn btn-block btn-default data-transport pull-left"  data-toggle="modal" data-target="#modal-tahap-kegiatan" ><i class="fa fa-arrow-left"></i> Kembali Ke Tahap Kegiatan</button>
+				</div>
 			</div>		
 		</div>
 		<div class="col-md-7">	
@@ -28,6 +34,14 @@
 					<div id="tahapperencanaansurveykampungsendirireviewpjmpronangkis" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-2-survey-kampung-sendiri-review-pjm-pronangkis" data-toggle="modal">
 						<span class="pull-left check hide"><i class="fa fa-lg fa-check"></i></span>
 							Survey Kampung Sendiri &amp; Review PJM Pronangkis <strong class="date pull-right"></strong>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div id="tahapperencanaanrembugkhususperempuankedua" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-tahap-2-rembug-perempuan-2" data-toggle="modal">
+						<span class="pull-left check hide"><i class="fa fa-lg fa-check"></i></span>
+							Rembug Perempuan II <strong class="date pull-right"></strong>
 					</div>
 				</div>
 			</div>
@@ -126,6 +140,11 @@
 					<label class="control-label hidden-sm hidden-xs">Klik salah satu tahapan di samping :</label>
 					<label class="control-label visible-sm visible-xs">Klik salah satu tahapan di bawah :</label>
 				</div>
+			</div>	
+			<div class="row hidden-xs hidden-sm">
+				<div class="col-md-12 text-center">
+          			<button type="reset" class="btn btn-block btn-default data-transport pull-left"  data-toggle="modal" data-target="#modal-tahap-kegiatan" ><i class="fa fa-arrow-left"></i> Kembali Ke Tahap Kegiatan</button>
+				</div>
 			</div>		
 		</div>
 		<div class="col-md-7">	
@@ -142,6 +161,14 @@
 					<div id="tahapperencanaansurveykampungsendirireviewpjmpronangkis" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-report-tahap-2-survey-kampung-sendiri-review-pjm-pronangkis" data-toggle="modal">
 						<span class="pull-left check hide"><i class="fa fa-lg fa-check"></i></span>
 							Survey Kampung Sendiri &amp; Review PJM Pronangkis <strong class="date pull-right"></strong>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div id="tahapperencanaanrembugkhususperempuankedua" class="btn-input btn btn-lg btn-block data-transport bg-gray-light" data-target="#modal-report-tahap-2-rembug-perempuan-2" data-toggle="modal">
+						<span class="pull-left check hide"><i class="fa fa-lg fa-check"></i></span>
+							Rembug Perempuan II <strong class="date pull-right"></strong>
 					</div>
 				</div>
 			</div>

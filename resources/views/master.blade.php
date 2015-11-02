@@ -47,10 +47,10 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa-fw fa-lg ion ion-android-download"></i> <span class="hidden-sm">Download</span> <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ nusp_asset('') }}">Sosialisasi Kab / Kota</a></li>
-                <li><a href="{{ nusp_asset('') }}">Penetapan Lokasi</a></li>
+                <li><a href="{{ nusp_asset('download/sosialisasi-kabupaten-kota') }}">Sosialisasi Kab / Kota</a></li>
+                <li><a href="{{ nusp_asset('download/penetapan-lokasi') }}">Penetapan Lokasi</a></li>
                 <li class="divider"></li>
-                <li><a href="{{ nusp_asset('') }}">Profil Kelurahan</a></li>
+                <li><a href="{{ nusp_asset('download/profil-desa-kelurahan') }}">Profil Kelurahan</a></li>
                 <li><a href="{{ nusp_asset('') }}">Tahapan Kegiatan</a></li>
                 <li><a href="{{ nusp_asset('') }}">Kontrak, Lahan &amp; Pemanfaat</a></li>
                 <li><a href="{{ nusp_asset('') }}">Fisik &amp; Keuangan</a></li>

@@ -12,26 +12,26 @@
 	<div class="row col-md-12">
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-tahap-persiapan" data-toggle="modal">
-				<input type="text" class="knob" id="persiapan" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Persiapan</h3>
+				<input type="text" class="knob" id="persiapan" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Persiapan</h4>
 			</div>
 		</div>
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-tahap-perencanaan" data-toggle="modal">
-				<input type="text" class="knob" id="perencanaan" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Perencanaan</h3>
+				<input type="text" class="knob" id="perencanaan" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Perencanaan</h4>
 			</div>
 		</div>
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-tahap-konstruksi" data-toggle="modal">
-				<input type="text" class="knob" id="konstruksi" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Konstruksi</h3>
+				<input type="text" class="knob" id="konstruksi" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Konstruksi</h4>
 			</div>
 		</div>
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-tahap-pasca-konstruksi" data-toggle="modal">
-				<input type="text" class="knob" id="pascaKonstruksi" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Pasca Konstruksi</h3>
+				<input type="text" class="knob" id="pascaKonstruksi" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Pasca Konstruksi</h4>
 			</div>
 		</div>
 	</div>
@@ -57,26 +57,26 @@
 	<div class="row col-md-8 col-md-offset-2">
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-report-tahap-persiapan" data-toggle="modal">
-				<input type="text" class="knob" id="persiapan" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Persiapan</h3>
+				<input type="text" class="knob" id="persiapan" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Persiapan</h4>
 			</div>
 		</div>
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-report-tahap-perencanaan" data-toggle="modal">
-				<input type="text" class="knob" id="perencanaan" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Perencanaan</h3>
+				<input type="text" class="knob" id="perencanaan" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Perencanaan</h4>
 			</div>
 		</div>
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-report-tahap-konstruksi" data-toggle="modal">
-				<input type="text" class="knob" id="konstruksi" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Konstruksi</h3>
+				<input type="text" class="knob" id="konstruksi" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Konstruksi</h4>
 			</div>
 		</div>
 		<div class="col-sm-6 text-center">
 			<div class="btn btn-lg data-transport btn-knob" data-target="#modal-report-tahap-pasca-konstruksi" data-toggle="modal">
-				<input type="text" class="knob" id="pascaKonstruksi" value="0" data-width="90" data-height="90" readonly="readonly" data-fgColor="#f56954">
-	            <h3 class="knob-label">Pasca Konstruksi</h3>
+				<input type="text" class="knob" id="pascaKonstruksi" value="0" data-width="70" data-height="70" readonly="readonly" data-fgColor="#f56954">
+	            <h4 class="knob-label">Pasca Konstruksi</h4>
 			</div>
 		</div>
 	</div>

@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\PenetapanLokasi as Model;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ApiKabKota;
 
-class PenetapanLokasi extends ApiController
+class PenetapanLokasi extends ApiKabKota
 {
     public function __construct(Model $model)
     {
@@ -18,28 +18,38 @@ class PenetapanLokasi extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
-        $wilayah =  auth()->user()->wilayah;
-        // return $wilayah;
+        return parent::showIndex('penetapan');
+    }
 
-        $propinsis = [];
-        foreach ($wilayah as $kode_p => $propinsi) 
+    public function download()
+    {
+        $title = 'Penetapan Lokasi';
+        
+        $title2 = 'download NUSP 2 '.$title;
+        
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
         {
-            if (!isset($propinsi['kabKotas'])) continue;
-            $kabKotas = [];
-            foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            $excel->sheet(snake_case($title, '_'), function($sheet) use ($title, $title2)
             {
-                $newKabKota = ['kabKota' => $kabKota['nama_wilayah'], 'slug' => str_slug($kabKota['nama_wilayah']), 'id' => $kabKota['kode'], 'role_id' => $kabKota['role_id'], 'penetapan' => Model::where('kode_wilayah', $kabKota['kode'])->first()];
-                
-                $kabKotas[] = $newKabKota;
-            }
+                $sheet->fromArray($this->model->excelDataKabKota());
 
-            $newPropinsi = ['propinsi' => $propinsi['nama_wilayah'], 'slug' => str_slug('propinsi '.$propinsi['nama_wilayah']), 'id' => $propinsi['kode'], 'role_id' => $propinsi['role_id'], 'kabKotas' => $kabKotas];
+                $sheet->prependRow(1, [$title]);
 
-            $propinsis[] = $newPropinsi;
-        }
+                $sheet->setAutoSize(true);
 
-        return $propinsis;
+                $sheet->setWidth('A', 5);
+            });
+
+        })->download('xlsx');
     }
 }

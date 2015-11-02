@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use Excel;
 use App\SosialisasiKabKota as Model;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ApiKabKota;
 
-class SosialisasiKabKota extends ApiController
+class SosialisasiKabKota extends ApiKabKota
 {
     public function __construct(Model $model)
     {
@@ -20,28 +21,36 @@ class SosialisasiKabKota extends ApiController
      */
     public function index(Request $request)
     {
-        $wilayah =  auth()->user()->wilayah;
-        // return $wilayah;
-
-        $propinsis = [];
-        foreach ($wilayah as $kode_p => $propinsi) 
-        {
-            if (!isset($propinsi['kabKotas'])) continue;
-            $kabKotas = [];
-            foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
-            {
-                $newKabKota = ['kabKota' => $kabKota['nama_wilayah'], 'slug' => str_slug($kabKota['nama_wilayah']), 'id' => $kabKota['kode'], 'role_id' => $kabKota['role_id'], 'sosialisasi' => Model::where('kode_wilayah', $kabKota['kode'])->first()];
-                
-                $kabKotas[] = $newKabKota;
-            }
-
-            $newPropinsi = ['propinsi' => $propinsi['nama_wilayah'], 'slug' => str_slug('propinsi '.$propinsi['nama_wilayah']), 'id' => $propinsi['kode'], 'role_id' => $propinsi['role_id'], 'kabKotas' => $kabKotas];
-
-            $propinsis[] = $newPropinsi;
-        }
-
-        return $propinsis;
+        return parent::showIndex('sosialisasi');
     }
 
+    public function download()
+    {
+        $title = 'Sosialisasi Kabupaten Kota';
+        
+        $title2 = 'download NUSP 2 '.$title;
+        
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+        {
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            $excel->sheet(snake_case($title, '_'), function($sheet) use ($title, $title2)
+            {
+                $sheet->fromArray($this->model->excelDataKabKota());
+
+                $sheet->prependRow(1, [$title]);
+
+                $sheet->setAutoSize(true);
+
+                $sheet->setWidth('A', 5);
+            });
+
+        })->download('xlsx');
+    }
     
 }
