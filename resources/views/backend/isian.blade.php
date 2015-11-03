@@ -95,6 +95,7 @@
 @include('modal.tahapPascaKonstruksiPemanfaatan')
 @include('modal.tahapPascaKonstruksiPemeliharaan')
 @include('modal.tahapPascaKonstruksiTahap3')
+@include('modal.hapus')
 
 
 @include('modal.sosialisasi', ['allowed' => true])

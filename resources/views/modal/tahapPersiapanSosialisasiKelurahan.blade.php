@@ -7,6 +7,8 @@
 	{!! nusp_forms($formTahapPersiapanSosialisasiKelurahan) !!}
 @endsection
 
+@section('tahap1.sosialisasi.modal.delete', 'show')	
+
 @section('tahap1.sosialisasi.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-persiapan"')
 @section('reportOnly.tahap1.sosialisasi.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-persiapan"')
 
