@@ -29,7 +29,7 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.btn-input').removeClass('btn-success').addClass('bg-gray-light').find('.check').addClass('hide');
     form.find('.knob').val('0').trigger('change');
 
-    if (!nuspModal.is('#modal-hapus')) $('#modal-hapus').find('form').attr('action', form.attr('action')).find('button[type=reset]').attr('data-target', '#'+nuspModal.attr('id')).end().find('[name=_method]').val('delete');
+    if (!nuspModal.is('#modal-hapus')) $('#modal-hapus').find('form').attr('action', form.attr('action')).find('button[type=reset]').attr('data-target', '#'+nuspModal.attr('id'));
 
     var dropdown = button.parents('.dropdown-menu').parent();
     if (dropdown.length) button = dropdown;

@@ -8,6 +8,7 @@
 @section('hapus.modal.form.body')
 	<div class="row">
 		<input type="hidden" name="kode_wilayah" id="kode_wilayah">
+		<input type="hidden" name="delete_entry" value="true">
 		<label class="form-label col-md-12">Apakah Anda yakin akan menghapus entry tersebut ?</label>	
 	</div>		
 @endsection

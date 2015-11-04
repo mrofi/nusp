@@ -57,7 +57,9 @@ class ApiController extends Controller
         {
             // validation
             $ada = $this->model->where('kode_wilayah', $kode_wilayah)->first();
-
+            
+            if ($ada && $request->has('delete_entry')) return $this->destroy($request, $ada->id);
+            
             if ($ada) return $this->update($request, $ada->id);
 
             // validation
@@ -80,7 +82,7 @@ class ApiController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Responseh
      */
     public function show(Request $request, $kode_wilayah)
     {        
@@ -143,10 +145,17 @@ class ApiController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        return $this->userAuthorize('destroy', function() use ($request, $id)
+        $request->merge(array_map('trim', $request->all()));
+
+        $kode_wilayah = $request->get('kode_wilayah', null);
+
+        $role = Role::where('role', 'admin')->first();
+     
+      return $this->userAuthorize($role->id, $kode_wilayah, function() use ($request, $id)
         {
             // find record
-            $delete = $this->model->find($id);
+            $delete = $this->model->findOrFail($id);
+
             if (! $delete) return ['error' => 'no data'];
             
             $delete->delete();
