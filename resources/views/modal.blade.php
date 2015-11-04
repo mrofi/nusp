@@ -25,7 +25,7 @@
         <div class="modal-footer bg-navy">
           <input type="hidden" class="input-mask-numeric" name="numeric">
           <button type="reset" class="btn btn-default data-transport pull-left"  @yield($namespace.'.modal.close.prop', 'data-dismiss="modal"') >@yield($namespace.'.modal.close', 'Batal')</button>
-          <a href="#" class="btn btn-danger data-transport pull-left @yield($namespace.'.modal.delete')" data-action="@yield($namespace.'.modal.form.action')" data-target="#modal-hapus" data-toggle="modal">Hapus Entry</a>
+          <a href="#" class="btn btn-danger data-transport pull-left @yield($namespace.'.modal.delete', 'show-delete')" data-action="@yield($namespace.'.modal.form.action')" data-target="#modal-hapus" data-toggle="modal">Hapus Entry</a>
           <button type="submit" class="btn btn-primary @yield($namespace.'.modal.submit.class')">@yield($namespace.'.modal.submit', 'Simpan')</button>
         </div>
       </form>

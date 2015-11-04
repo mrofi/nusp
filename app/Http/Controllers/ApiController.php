@@ -90,7 +90,7 @@ class ApiController extends Controller
         {
             $show =  $this->model->where('kode_wilayah', $kode_wilayah)->first();
             
-            if (!$show) return array_merge((new $this->model(['kode_wilayah' => $kode_wilayah]))->toArray(), ['wilayah' => \App\Wilayah::get_wilayah($kode_wilayah)]);
+            if (!$show) return array_merge((new $this->model(['kode_wilayah' => $kode_wilayah]))->toArray(), ['wilayah' => \App\Wilayah::get_wilayah($kode_wilayah), 'empty' => true]);
             
             $show->wilayah = $show->wilayah;
             

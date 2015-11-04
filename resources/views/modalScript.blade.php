@@ -12,6 +12,7 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.form-control-static').parents('.row').not('.form-group-static').addClass('hide');
     form.find('.modal-body').addClass('hide');
     $('body').css('padding-right', '0');
+    $('.show-delete').removeClass('hide');
   });
 
   nuspModal.on('show.bs.modal', function(e) {
@@ -42,6 +43,9 @@ $('.modal-nusp').each(function(i, e) {
         for (x in data.wilayah) {
           form.find('#'+x).text(data.wilayah[x].nama_wilayah).parents('.row').removeClass('hide');
         }
+
+        if (data.empty) form.find('.show-delete').addClass('hide');
+
         for (x in data) {
           var value = data[x];
           var input = form.find('#'+ x);
