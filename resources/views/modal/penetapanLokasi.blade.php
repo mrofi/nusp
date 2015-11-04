@@ -18,4 +18,4 @@
 	{!! nusp_staticForms($formPenetapanLokasi) !!}
 @endsection
 
-@include('modal', ['namespace' => (isset($allowed) && $allowed == true) ? 'penetapanLokasi' : 'reportOnly.penetapanLokasi'])
+@include('modal_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'penetapanLokasi' : 'reportOnly.penetapanLokasi'])

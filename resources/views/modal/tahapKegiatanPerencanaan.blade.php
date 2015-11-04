@@ -253,4 +253,4 @@
 @section('reportOnly.tahap.perencanaan.modal.submit.class', 'hide')
 
 
-@include('modal_large', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.perencanaan' : 'reportOnly.tahap.perencanaan'])
+@include('modal_large_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.perencanaan' : 'reportOnly.tahap.perencanaan'])

@@ -52,7 +52,7 @@
 
 
 
-@include('modal', ['namespace' => 'tahap.pasca-konstruksi'])
+@include('modal_no_delete', ['namespace' => 'tahap.pasca-konstruksi'])
 
 
  

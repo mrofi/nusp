@@ -85,7 +85,7 @@
 
 
 
-@include('modal', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.kegiatan' : 'reportOnly.tahap.kegiatan'])
+@include('modal_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.kegiatan' : 'reportOnly.tahap.kegiatan'])
 
 
  

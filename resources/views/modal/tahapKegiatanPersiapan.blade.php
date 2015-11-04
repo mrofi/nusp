@@ -102,7 +102,7 @@
 
 
 
-@include('modal', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.persiapan' : 'reportOnly.tahap.persiapan'])
+@include('modal_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.persiapan' : 'reportOnly.tahap.persiapan'])
 
 
  

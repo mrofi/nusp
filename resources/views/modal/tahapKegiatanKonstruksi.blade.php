@@ -149,7 +149,7 @@
 
 
 
-@include('modal_large', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.konstruksi' : 'reportOnly.tahap.konstruksi'])
+@include('modal_large_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'tahap.konstruksi' : 'reportOnly.tahap.konstruksi'])
 
 
  
