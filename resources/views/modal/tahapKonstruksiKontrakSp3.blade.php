@@ -7,13 +7,13 @@
 @endsection
 
 @section('tahap3.kontrak.sp3.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-konstruksi"')
-@section('reportOnly.tahap3.kontrak.sp3.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-konstruksi"')
+@section('reportOnly.tahap3.kontrak.sp3.modal.close.prop', 'data-toggle="modal" data-target="#modal-report-tahap-konstruksi"')
 
 
 @section('reportOnly.tahap3.kontrak.sp3.modal.id', 'modal-report-tahap-3-kontrak-sp3')
 @section('reportOnly.tahap3.kontrak.sp3.modal.title', 'Kontrak SP3')
 @section('reportOnly.tahap3.kontrak.sp3.modal.form.action', nusp_asset('api/tahap-3/kontrak-sp3'))
-@section('reportOnly.tahap3.kontrak.sp3.modal.close', 'Tutup')
+@section('reportOnly.tahap3.kontrak.sp3.modal.close', 'Kembali')
 @section('reportOnly.tahap3.kontrak.sp3.modal.submit.class', 'hide')
 
 @section('reportOnly.tahap3.kontrak.sp3.modal.body')	

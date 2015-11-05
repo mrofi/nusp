@@ -7,13 +7,13 @@
 @endsection
 
 @section('tahap1.musyawarah.kelurahan1.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-persiapan"')
-@section('reportOnly.tahap1.musyawarah.kelurahan1.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-persiapan"')
+@section('reportOnly.tahap1.musyawarah.kelurahan1.modal.close.prop', 'data-toggle="modal" data-target="#modal-report-tahap-persiapan"')
 
 
 @section('reportOnly.tahap1.musyawarah.kelurahan1.modal.id', 'modal-report-tahap-1-musyawarah-kelurahan-1')
 @section('reportOnly.tahap1.musyawarah.kelurahan1.modal.title', 'Musyawarah Kelurahan I')
 @section('reportOnly.tahap1.musyawarah.kelurahan1.modal.form.action', nusp_asset('api/tahap-1/musyawarah-kelurahan-1'))
-@section('reportOnly.tahap1.musyawarah.kelurahan1.modal.close', 'Tutup')
+@section('reportOnly.tahap1.musyawarah.kelurahan1.modal.close', 'Kembali')
 @section('reportOnly.tahap1.musyawarah.kelurahan1.modal.submit.class', 'hide')
 
 @section('reportOnly.tahap1.musyawarah.kelurahan1.modal.body')	

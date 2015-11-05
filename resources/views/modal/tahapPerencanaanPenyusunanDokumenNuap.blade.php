@@ -7,13 +7,13 @@
 @endsection
 
 @section('tahap2.penyusunan.nuap.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-perencanaan"')
-@section('reportOnly.tahap2.penyusunan.nuap.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-perencanaan"')
+@section('reportOnly.tahap2.penyusunan.nuap.modal.close.prop', 'data-toggle="modal" data-target="#modal-report-tahap-perencanaan"')
 
 
 @section('reportOnly.tahap2.penyusunan.nuap.modal.id', 'modal-report-tahap-2-penyusunan-dokumen-nuap')
 @section('reportOnly.tahap2.penyusunan.nuap.modal.title', 'Penyusunan Dokumen NUAP')
 @section('reportOnly.tahap2.penyusunan.nuap.modal.form.action', nusp_asset('api/tahap-2/penyusunan-dokumen-nuap'))
-@section('reportOnly.tahap2.penyusunan.nuap.modal.close', 'Tutup')
+@section('reportOnly.tahap2.penyusunan.nuap.modal.close', 'Kembali')
 @section('reportOnly.tahap2.penyusunan.nuap.modal.submit.class', 'hide')
 
 @section('reportOnly.tahap2.penyusunan.nuap.modal.body')	

@@ -7,13 +7,13 @@
 @endsection
 
 @section('tahap2.pelatihan.bkm.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-perencanaan"')
-@section('reportOnly.tahap2.pelatihan.bkm.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-perencanaan"')
+@section('reportOnly.tahap2.pelatihan.bkm.modal.close.prop', 'data-toggle="modal" data-target="#modal-report-tahap-perencanaan"')
 
 
 @section('reportOnly.tahap2.pelatihan.bkm.modal.id', 'modal-report-tahap-2-pelatihan-bkm')
 @section('reportOnly.tahap2.pelatihan.bkm.modal.title', 'Pelatihan BKM')
 @section('reportOnly.tahap2.pelatihan.bkm.modal.form.action', nusp_asset('api/tahap-2/pelatihan-bkm'))
-@section('reportOnly.tahap2.pelatihan.bkm.modal.close', 'Tutup')
+@section('reportOnly.tahap2.pelatihan.bkm.modal.close', 'Kembali')
 @section('reportOnly.tahap2.pelatihan.bkm.modal.submit.class', 'hide')
 
 @section('reportOnly.tahap2.pelatihan.bkm.modal.body')	

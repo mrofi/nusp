@@ -7,13 +7,13 @@
 @endsection
 
 @section('tahap4.pemeliharaan.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-pasca-konstruksi"')
-@section('reportOnly.tahap4.pemeliharaan.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-pasca-konstruksi"')
+@section('reportOnly.tahap4.pemeliharaan.modal.close.prop', 'data-toggle="modal" data-target="#modal-report-tahap-pasca-konstruksi"')
 
 
 @section('reportOnly.tahap4.pemeliharaan.modal.id', 'modal-report-tahap-4-pemeliharaan')
 @section('reportOnly.tahap4.pemeliharaan.modal.title', 'Pemeliharaan')
 @section('reportOnly.tahap4.pemeliharaan.modal.form.action', nusp_asset('api/tahap-4/pemeliharaan'))
-@section('reportOnly.tahap4.pemeliharaan.modal.close', 'Tutup')
+@section('reportOnly.tahap4.pemeliharaan.modal.close', 'Kembali')
 @section('reportOnly.tahap4.pemeliharaan.modal.submit.class', 'hide')
 
 @section('reportOnly.tahap4.pemeliharaan.modal.body')	

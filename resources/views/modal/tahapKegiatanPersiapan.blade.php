@@ -95,7 +95,7 @@
 @endsection
 
 @section('reportOnly.tahap.persiapan.modal.close', '<i class="fa fa-arrow-left"></i> Kembali Ke Tahap Kegiatan')
-@section('reportOnly.tahap.persiapan.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-kegiatan"')
+@section('reportOnly.tahap.persiapan.modal.close.prop', 'data-toggle="modal" data-target="#modal-report-tahap-kegiatan"')
 @section('reportOnly.tahap.persiapan.modal.submit.class', 'hide')
 
 
