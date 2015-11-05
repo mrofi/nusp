@@ -35,7 +35,6 @@ $('.modal-nusp').each(function(i, e) {
     
     form.find('[data-if]').each(function(i, e) {
       var iff = $(this);
-      console.log(iff)
       var target = iff.data('target');
 
       iff.change(function() {
