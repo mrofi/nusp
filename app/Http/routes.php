@@ -49,7 +49,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function()
 		$formTahapPascaKonstruksiPemanfaatan  = with(new \App\TahapPascaKonstruksiPemanfaatan)->get_forms();
 		$formTahapPascaKonstruksiPemeliharaan  = with(new \App\TahapPascaKonstruksiPemeliharaan)->get_forms();
 		$formTahapPascaKonstruksiTahap3  = with(new \App\TahapPascaKonstruksiTahap3)->get_forms();
-		return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel', 'formTahapPersiapanSosialisasiKelurahan', 'formTahapPersiapanIdentifikasiKelembagaan', 'formTahapPersiapanRembugKhususPerempuanPertama', 'formTahapPersiapanMusyawarahKelurahanPertama', 'formTahapPerencanaanPelatihanBkm', 'formTahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis', 'formTahapPerencanaanRembugKhususPerempuanKedua', 'formTahapPerencanaanMusyawarahKelurahanKedua', 'formTahapPerencanaanPenyusunanDokumenNuap', 'formTahapPerencanaanVerifikasiDanKonsolidasiNuap', 'formTahapPerencanaanRevisiDokumenNuap', 'formTahapPerencanaanMusyawarahKelurahanKetiga', 'formTahapPerencanaanPenyusunanRkm', 'formTahapPerencanaanVerifikasiFinalisasiDokumenRkm', 'formTahapPerencanaanPembentukanTppi', 'formTahapPerencanaanPembentukanKpp', 'formTahapKonstruksiKontrakSp3', 'formTahapKonstruksiRembugKhususPerempuanKetiga', 'formTahapKonstruksiMusyawarahKelurahanKeempat', 'formTahapKonstruksiPelaksanaanFisik', 'formTahapKonstruksiTahap1', 'formTahapKonstruksiTahap2', 'formTahapPascaKonstruksiMusyawarahKelurahanKelima', 'formTahapPascaKonstruksiSerahTerimaPekerjaan', 'formTahapPascaKonstruksiPemanfaatan', 'formTahapPascaKonstruksiPemeliharaan', 'formTahapKonstruksiKontrakSp3', 'formTahapPascaKonstruksiTahap3'));
+		$formDataKontrak = with(new \App\DataKontrak)->get_forms();
+		$formDataLahan = with(new \App\DataLahan)->get_forms();
+		return view('backend.isian', compact('thePage', 'formSosialisasi', 'formPenetapanLokasi', 'formProfilDesaKel', 'formTahapPersiapanSosialisasiKelurahan', 'formTahapPersiapanIdentifikasiKelembagaan', 'formTahapPersiapanRembugKhususPerempuanPertama', 'formTahapPersiapanMusyawarahKelurahanPertama', 'formTahapPerencanaanPelatihanBkm', 'formTahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis', 'formTahapPerencanaanRembugKhususPerempuanKedua', 'formTahapPerencanaanMusyawarahKelurahanKedua', 'formTahapPerencanaanPenyusunanDokumenNuap', 'formTahapPerencanaanVerifikasiDanKonsolidasiNuap', 'formTahapPerencanaanRevisiDokumenNuap', 'formTahapPerencanaanMusyawarahKelurahanKetiga', 'formTahapPerencanaanPenyusunanRkm', 'formTahapPerencanaanVerifikasiFinalisasiDokumenRkm', 'formTahapPerencanaanPembentukanTppi', 'formTahapPerencanaanPembentukanKpp', 'formTahapKonstruksiKontrakSp3', 'formTahapKonstruksiRembugKhususPerempuanKetiga', 'formTahapKonstruksiMusyawarahKelurahanKeempat', 'formTahapKonstruksiPelaksanaanFisik', 'formTahapKonstruksiTahap1', 'formTahapKonstruksiTahap2', 'formTahapPascaKonstruksiMusyawarahKelurahanKelima', 'formTahapPascaKonstruksiSerahTerimaPekerjaan', 'formTahapPascaKonstruksiPemanfaatan', 'formTahapPascaKonstruksiPemeliharaan', 'formTahapKonstruksiKontrakSp3', 'formTahapPascaKonstruksiTahap3', 'formDataKontrak', 'formDataLahan'));
     }]);
 
     Route::get('report', function() 
@@ -107,6 +109,9 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
     Route::resource('tahap-4/pemanfaatan', 'TahapPascaKonstruksiPemanfaatan');
     Route::resource('tahap-4/pemeliharaan', 'TahapPascaKonstruksiPemeliharaan');
     Route::resource('tahap-4/tahap-3', 'TahapPascaKonstruksiTahap3');
+
+    Route::resource('data-kontrak', 'DataKontrak');
+    Route::resource('data-lahan', 'DataLahan');
     
     Route::get('all', function() {
 		$wilayah =  auth()->user()->wilayah;

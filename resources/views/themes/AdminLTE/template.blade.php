@@ -519,12 +519,16 @@
         $.fn.nuspCurrency = {aSep: '.', aDec: ',', aSign: 'Rp. ', lZero: 'deny'};
         $.fn.nuspNumeric = {aSep: '.', aDec: ',', aSign: '', mDec: '0', lZero: 'deny'};
         $.fn.nuspDecimal = {aSep: '.', aDec: ',', aSign: '', mDec: '2', lZero: 'deny'};
+        $.fn.nuspDecimal3 = {aSep: '.', aDec: ',', aSign: '', mDec: '3', lZero: 'deny'};
+        $.fn.nuspDecimal5 = {aSep: '.', aDec: ',', aSign: '', mDec: '5', lZero: 'deny'};
 
         $('select').select2({width: '100%'});              
         
         $('.input-mask-currency').autoNumeric('init', $.fn.nuspCurrency);
         $('.input-mask-numeric').autoNumeric('init', $.fn.nuspNumeric);
         $('.input-mask-decimal').autoNumeric('init', $.fn.nuspDecimal);
+        $('.input-mask-decimal-3').autoNumeric('init', $.fn.nuspDecimal3);
+        $('.input-mask-decimal-5').autoNumeric('init', $.fn.nuspDecimal5);
 
         $(document).ajaxError(function( event, jqxhr, settings, thrownError ) {
           if (jqxhr.status == '401') location.reload();

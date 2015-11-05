@@ -52,7 +52,8 @@
   <li class="active"><a href="javascript:;"></a></li>
   <li><a href="#" data-target_1="#modal-profil-desa-kel" data-target_2="#modal-report-profil-desa-kel" data-toggle="modal">Profil Kelurahan</a></li>
   <li><a href="#" data-target_1="#modal-tahap-kegiatan" data-target_2="#modal-report-tahap-kegiatan" data-toggle="modal">Tahap Kegiatan</a></li>
-  <li><a href="#">Kontrak, Lahan &amp; Pemanfaat</a></li>
+  <li><a href="#" data-target_1="#modal-data-kontrak" data-target_2="#modal-report-data-kontrak" data-toggle="modal">Data Kontrak</a></li>
+  <li><a href="#" data-target_1="#modal-data-lahan" data-target_2="#modal-report-data-lahan" data-toggle="modal">Data Lahan</a></li>
   <li><a href="#">Fisik &amp; Keuangan</a></li>
 </ul>
 </div>
@@ -95,6 +96,8 @@
 @include('modal.tahapPascaKonstruksiPemanfaatan')
 @include('modal.tahapPascaKonstruksiPemeliharaan')
 @include('modal.tahapPascaKonstruksiTahap3')
+@include('modal.dataKontrak')
+@include('modal.dataLahan')
 @include('modal.hapus')
 
 
@@ -133,6 +136,8 @@
 @include('modal.tahapPascaKonstruksiPemanfaatan', ['allowed' => true])
 @include('modal.tahapPascaKonstruksiPemeliharaan', ['allowed' => true])
 @include('modal.tahapPascaKonstruksiTahap3', ['allowed' => true])
+@include('modal.dataKontrak', ['allowed' => true])
+@include('modal.dataLahan', ['allowed' => true])
 
 
 <!-- Main content -->

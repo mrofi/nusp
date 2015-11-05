@@ -14,6 +14,7 @@ class BuatTabelDataLahan extends Migration
     {
         Schema::create('data_lahans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('kode_wilayah', 20);
             $table->string('nama_rt_rw', 20);
             $table->string('jenis_infrastruktur');
             $table->decimal('lahan_luas_m2', 8,3)->unsigned();

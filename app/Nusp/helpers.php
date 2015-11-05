@@ -144,6 +144,16 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
 
     if ($bslCols == '') $bslCols = 'col-sm-4';
 
+    $dataIf = [];
+
+    if (isset($if))
+    {
+        $dIf = explode('=', $if);
+
+        $dataIf['data-target'] = '#'.$dIf[0];
+        $dataIf['data-if'] = $dIf[1];
+    }
+
     $label = '<label class="control-label '.$bslCols.'" for="'.$name.'">'.$caption.'</label>';
 
     $caption = strip_tags($caption);
@@ -158,9 +168,10 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
         if ($bsCols == '') $bsCols = 'col-sm-4';
         return '
             <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['id' => $name, 'class' => 'form-control input-mask-numeric', 'placeholder' => $caption]).'
+                    '.\Form::text((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control input-mask-numeric', 'placeholder' => $caption])).'
                 </div>
             </div>
         ';
@@ -171,9 +182,38 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
         if ($bsCols == '') $bsCols = 'col-sm-4';
         return '
             <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['id' => $name, 'class' => 'form-control input-mask-decimal', 'placeholder' => $caption]).'
+                    '.\Form::text((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control input-mask-decimal', 'placeholder' => $caption])).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'decimal3') 
+    {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::text((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control input-mask-decimal-3', 'placeholder' => $caption])).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'decimal5') 
+    {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        return '
+            <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
+                '.$label.'
+                <div class="'.$bsCols.'">
+                    '.\Form::text((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control input-mask-decimal-5', 'placeholder' => $caption])).'
                 </div>
             </div>
         ';
@@ -184,9 +224,10 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
         if ($bsCols == '') $bsCols = 'col-sm-4';
         return '
             <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['id' => $name, 'class' => 'form-control input-mask-currency', 'placeholder' => $caption]).'
+                    '.\Form::text((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control input-mask-currency', 'placeholder' => $caption])).'
                 </div>
             </div>
         ';
@@ -197,9 +238,10 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
         if ($bsCols == '') $bsCols = 'col-sm-6';
         return '
             <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['id' => $name, 'class' => 'form-control', 'placeholder' => $caption]).'
+                    '.\Form::text((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control', 'placeholder' => $caption])).'
                 </div>
             </div>
         ';
@@ -209,9 +251,10 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
         if ($bsCols == '') $bsCols = 'col-sm-7';
         return '
             <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::textarea($name, $default, ['id' => $name, 'class' => 'form-control', 'placeholder' => $caption]).'
+                    '.\Form::textarea((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control', 'placeholder' => $caption])).'
                 </div>
             </div>
         ';
@@ -221,9 +264,10 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
         if ($bsCols == '') $bsCols = 'col-sm-4';
         return '
             <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::text($name, $default, ['data-provide' => 'datepicker', 'id' => $name, 'class' => 'form-control input-date', 'placeholder' => $caption, 'autocomplete' => 'off']).'
+                    '.\Form::text((isset($if) ? '' : $name), $default, array_merge($dataIf, ['id' => $name, 'data-provide' => 'datepicker', 'class' => 'form-control input-date', 'placeholder' => $caption, 'autocomplete' => 'off'])).'
                 </div>
             </div>
         ';
@@ -244,9 +288,41 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
         }
         return '
             <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    '.\Form::select($name, $list, $default, ['id' => $name, 'class' => 'form-control', 'placeholder' => $caption]).'
+                    '.\Form::select((isset($if) ? '' : $name), $list, $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control', 'placeholder' => $caption])).'
+                </div>
+            </div>
+        ';
+    }
+
+    if ($type == 'combo_plus') {
+        if ($bsCols == '') $bsCols = 'col-sm-4';
+        $list = [];
+        if (isset($value)) 
+        {
+            $values = explode(',', $value);
+            foreach ($values as $v) 
+            {
+                $av = explode('=', $v);
+                $list[$av[0]] = count($av) > 1 ? $av[1] : $av[0];
+
+            }
+            $list['plus_other'] = 'Lainnya';
+        }
+        return '
+            <div class="form-group">
+                '.(count($dataIf) ? \Form::hidden($name, '', ['id' => $name.'_data']) : '').'
+                '.$label.'
+                '.\Form::hidden($name, $default, ['id' => $name.'_data', 'name' => $name]).'
+                <div class="'.$bsCols.'">
+                    <div>
+                        '.\Form::select('', $list, $default, array_merge($dataIf, ['id' => $name, 'class' => 'form-control combo-plus', 'data-value' => $value, 'placeholder' => $caption])).'
+                    </div>
+                    <div>
+                        '.\Form::text('', '', ['id' => $name.'_plus', 'class' => 'form-control combo-plus-target', 'placeholder' => $caption]).'    
+                    </div>
                 </div>
             </div>
         ';

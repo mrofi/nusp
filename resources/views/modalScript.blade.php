@@ -13,11 +13,14 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.modal-body').addClass('hide');
     $('body').css('padding-right', '0');
     $('.show-delete').removeClass('hide');
+    $('.combo-plus-target').addClass('hide');
   });
 
   nuspModal.on('show.bs.modal', function(e) {
     var button = $(e.relatedTarget);
-    
+    $('.combo-plus-target').addClass('hide');
+    $('.combo-plus').val('').trigger('change');
+
 
     var form = $(this).find('form');
     form.find('.error-label').remove().end()
@@ -29,6 +32,24 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.form-control-static.file-placer').addClass('hide').html('');
     form.find('.btn-input').removeClass('btn-success').addClass('bg-gray-light').find('.check').addClass('hide');
     form.find('.knob').val('0').trigger('change');
+    
+    form.find('[data-if]').each(function(i, e) {
+      var iff = $(this);
+      console.log(iff)
+      var target = iff.data('target');
+
+      iff.change(function() {
+        form.find('#'+iff.attr('id')+'_data').val($(this).val());
+      }).trigger('change');
+
+      form.find(target).change(function() {
+          if ($(this).val() == iff.data('if')) iff.parents('.form-group').removeClass('hide');
+          else {
+            form.find('#'+iff.attr('id')+'_data').val('');
+            iff.parents('.form-group').addClass('hide')
+          }
+      }).trigger('change'); 
+    })
 
     if (!nuspModal.is('#modal-hapus')) $('#modal-hapus').find('form').attr('action', form.attr('action')).find('button[type=reset]').attr('data-target', '#'+nuspModal.attr('id'));
 
@@ -60,16 +81,34 @@ $('.modal-nusp').each(function(i, e) {
             fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
             fileinput.find('.fileinput-exists').removeClass('hide');
           }
-          else if (input.is('.input-mask-currency, .input-mask-numeric, .input-mask-decimal')) { input.autoNumeric('set', value); }
+          else if (input.is('.input-mask-currency, .input-mask-numeric, .input-mask-decimal, .input-mask-decimal-3, .input-mask-decimal-5')) { input.autoNumeric('set', value); }
           else if (input.is('.input-date')) {
             var from = value.split("-");
             var f = value == '' ? '' : [from[2], from[1], from[0]].join('-');
             input.is(':input') ? input.val(f) : input.text(f);
           }
           else if (input.is('.knob')) {input.val(value+'%').trigger('change').val(value+'%');}
+          else if (input.is('.combo-plus')) {
+            var plusData = $('#'+input.attr('id')+'_data').val(value);
+            var dataValue = input.data('value').split(',');
+            var hasil = 0;
+            for (v in dataValue) {
+              if (dataValue[v] == value) {
+                  hasil = 1;
+                  input.val(value).trigger('change');
+              }
+            }
+            if (!hasil) {
+              input.val('plus_other').trigger('change');
+              $('#'+input.attr('id')+'_plus').val(value);
+            }
+
+           input.trigger('change');
+          }
           else if (input.is(':input')) {input.val(value);}
           else if (input.is('.form-control-static')) {input.text(value);}
           else if (input.is('.btn-input') && value != null) {input.removeClass('bg-gray-light').addClass('btn-success').find('.check').removeClass('hide')}
+          input.trigger('change')
         }
         
         form.find('.modal-body').removeClass('hide');
@@ -190,6 +229,23 @@ $('.modal-nusp').each(function(i, e) {
   })
 
 });
+
+  $('.combo-plus').each(function(i, e) {
+    var input = $(this);
+      $(this).change(function() {
+        if ($(this).val() == 'plus_other') {
+            $('#'+input.attr('id')+'_data').val($('#'+input.attr('id')+'_plus').val());
+            $('#'+input.attr('id')+'_plus').removeClass('hide')
+        } else {
+            $('#'+input.attr('id')+'_data').val($(this).val());
+            $('#'+input.attr('id')+'_plus').addClass('hide')
+        }
+      })
+
+      $('#'+input.attr('id')+'_plus').change(function(){
+        $('#'+input.attr('id')+'_data').val($(this).val());
+      });
+  });
 
 });
 </script>
