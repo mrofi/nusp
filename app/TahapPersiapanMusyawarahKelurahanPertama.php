@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapPersiapanMusyawarahKelurahanPertama extends BaseModel
+class TahapPersiapanMusyawarahKelurahanPertama extends BaseApiModel
 {
-    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'jumlah_peserta', 'jumlah_peserta_perempuan', 'jumlah_peserta_warga_miskin', 'foto_id', 'file_id'];
+    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'jumlah_peserta', 'jumlah_peserta_perempuan', 'jumlah_peserta_warga_miskin', 'foto_id', 'file_id', 'verified_at'];
 
     protected $forms = [
         'kode_wilayah' => 'required|type:hidden',

@@ -19,6 +19,7 @@ class BuatTabelSosialisasiKabKota extends Migration
             $table->integer('peserta')->unsigned();
             $table->integer('peserta_perempuan')->unsigned();
             $table->integer('foto_id')->unsigned()->nullable();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

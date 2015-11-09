@@ -115,7 +115,6 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
     
     Route::get('all', function() {
 		$wilayah =  auth()->user()->wilayah;
-		// return $wilayah;
 
 		$propinsis = [];
 		foreach ($wilayah as $kode_p => $propinsi) 

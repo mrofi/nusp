@@ -472,12 +472,14 @@
 		window.sosialisasiAction = function(elm, item) {
 			var foto_id = item.foto_id;
 			// if (foto_id != '-') $(elm).find('.foto_id').html('<img src="{{ nusp_asset('api/foto/') }}'+foto_id+'" style="max-height:100%; max-width: 90%;">');
-			if (foto_id != '-') $(elm).find('.foto_id').html('<a target="_blank" href="{{ nusp_asset('api/foto/') }}'+foto_id+'" >Lihat Foto</a>');
+			if (foto_id != '-' && foto_id != '0') $(elm).find('.foto_id').html('<a target="_blank" href="{{ nusp_asset('api/foto/') }}'+foto_id+'" >Lihat Foto</a>');
+			else $(elm).find('.foto_id').html('-');
 		}
 
 		window.penetapanAction = function(elm, item) {
 			var file_id = item.file_id;
-			if (file_id != '-') $(elm).find('.file_id').html('<a href="{{ nusp_asset('api/file/') }}'+file_id+'">Download</a>');
+			if (file_id != '-' && file_id != '0') $(elm).find('.file_id').html('<a href="{{ nusp_asset('api/file/') }}'+file_id+'">Download</a>');
+			else $(elm).find('.file_id').html('-');
 		}
 
 		$('#profil-desa-kelurahan .header-item').on('show.bs.tab', function(e) {
@@ -573,7 +575,7 @@
 			    if (deep == '1') {
 			    	for (a in attrs) {
 				    	var attr = attrs[a];
-			    		dx1[attr] =  (propinsi[name] != null) ? propinsi[name][attr] : '-';
+			    		dx1[attr] =  (propinsi[name] != null && propinsi[name][attr] != null) ? propinsi[name][attr] : '-';
 			    	}	
 				}
 		    	propinsis.push(dx1);
@@ -606,7 +608,7 @@
 			      	if (deep == '2') {
 				    	for (a in attrs) {
 				    		var attr = attrs[a];
-				    		dx2[attr] =  (kabKota[name] != null) ? kabKota[name][attr] : '-';
+				    		dx2[attr] =  (kabKota[name] != null && kabKota[name][attr] != null) ? kabKota[name][attr] : '-';
 				    	}	
 					}
 			      	kabKotas.push(dx2);
@@ -638,7 +640,7 @@
 			        if (deep == '3') {
 				    	for (a in attrs) {
 				    		var attr = attrs[a];
-				    		dx3[attr] =  (desaKel[name] != null) ? desaKel[name][attr] : '-';
+				    		dx3[attr] =  (desaKel[name] != null && desaKel[name][attr] != null) ? desaKel[name][attr] : '-';
 				    	}	
 					}
 			        desaKels.push(dx3);

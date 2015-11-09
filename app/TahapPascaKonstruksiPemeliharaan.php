@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapPascaKonstruksiPemeliharaan extends BaseModel
+class TahapPascaKonstruksiPemeliharaan extends BaseApiModel
 {
     protected $fillable = [
         'kode_wilayah', 
         'tanggal_mulai_digunakan',
-        'apakah_sudah_terbentuk_kpp',
+        'apakah_sudah_terbentuk_kpp', 
+        'verified_at',
     ];
 
     protected $forms = [

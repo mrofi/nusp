@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapPerencanaanPembentukanTppi extends BaseModel
+class TahapPerencanaanPembentukanTppi extends BaseApiModel
 {
     protected $fillable = [
     	'kode_wilayah', 
         'tanggal_pembentukan',
         'nama_tppi',
         'jumlah_pengurus_tppi',
-        'jumlah_perempuan_pengurus_tppi',
+        'jumlah_perempuan_pengurus_tppi', 
+        'verified_at',
     ];
 
     protected $forms = [

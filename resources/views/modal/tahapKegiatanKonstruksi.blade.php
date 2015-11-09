@@ -1,3 +1,4 @@
+@section('tahap.konstruksi.modal.topclass', 'modal-tahapan')
 @section('tahap.konstruksi.modal.id', 'modal-tahap-konstruksi')
 @section('tahap.konstruksi.modal.title', 'Tahap Konstruksi')
 @section('tahap.konstruksi.modal.form.action', nusp_asset('api/tahap-konstruksi'))
@@ -72,6 +73,7 @@
 @section('tahap.konstruksi.modal.submit.class', 'hide')
 
 
+@section('reportOnly.tahap.konstruksi.modal.topclass', 'modal-tahapan')
 @section('reportOnly.tahap.konstruksi.modal.id', 'modal-report-tahap-konstruksi')
 @section('reportOnly.tahap.konstruksi.modal.title', 'Tahap Konstruksi')
 @section('reportOnly.tahap.konstruksi.modal.form.action', nusp_asset('api/tahap-konstruksi'))

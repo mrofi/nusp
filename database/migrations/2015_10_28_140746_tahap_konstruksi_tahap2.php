@@ -24,6 +24,7 @@ class TahapKonstruksiTahap2 extends Migration
             $table->integer('file_sp2d')->unsigned()->nullable();
             $table->integer('file_berita_acara')->unsigned()->nullable();
             $table->integer('file_kuitansi')->unsigned()->nullable();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

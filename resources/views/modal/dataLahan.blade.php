@@ -65,4 +65,4 @@
 
 
 
-@include('modal_large_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'data-lahan' : 'reportOnly.data-lahan'])
+@include('modal_large', ['namespace' => (isset($allowed) && $allowed == true) ? 'data-lahan' : 'reportOnly.data-lahan'])

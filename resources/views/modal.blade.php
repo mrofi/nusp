@@ -4,7 +4,7 @@
 @endsection
 
 
-<div class="modal modal-nusp text-black fade" id="@yield($namespace.'.modal.id')">
+<div class="modal modal-nusp text-black @yield($namespace.'.modal.topclass') fade" id="@yield($namespace.'.modal.id')">
   <div class="modal-dialog @yield($namespace.'.modal.class')">
     <div class="modal-content">
       <div class="modal-header bg-yellow-v2">
@@ -25,8 +25,10 @@
         <div class="modal-footer bg-navy">
           <input type="hidden" class="input-mask-numeric" name="numeric">
           <button type="reset" class="btn btn-default data-transport pull-left"  @yield($namespace.'.modal.close.prop', 'data-dismiss="modal"') >@yield($namespace.'.modal.close', 'Batal')</button>
-          <a href="#" class="btn btn-danger data-transport pull-left @yield($namespace.'.modal.delete', 'show-delete')" data-action="@yield($namespace.'.modal.form.action')" data-target="#modal-hapus" data-toggle="modal">Hapus Entry</a>
-          <button type="submit" class="btn btn-primary @yield($namespace.'.modal.submit.class')">@yield($namespace.'.modal.submit', 'Simpan')</button>
+          <a href="#" class="btn btn-danger data-transport pull-left hide @yield($namespace.'.modal.delete', 'show-delete')" data-action="@yield($namespace.'.modal.form.action')" data-target="#modal-hapus" data-toggle="modal">Hapus Entry</a>
+          <button type="submit" class="btn btn-primary pull-right @yield($namespace.'.modal.submit.class')">@yield($namespace.'.modal.submit', 'Simpan')</button>
+          <a href="#" class="btn btn-success data-transport pull-right btn-verify hide @yield($namespace.'.modal.verify', 'show-verify')" data-action="@yield($namespace.'.modal.form.action')" data-target="#modal-verify" data-toggle="modal">Verifikasi</a>
+          <a href="#" class="btn btn-success data-transport pull-right btn-verify hide @yield($namespace.'.modal.unverify', 'show-unverify')" data-action="@yield($namespace.'.modal.form.action')" data-target="#modal-unverify" data-toggle="modal">Batalkan Verifikasi</a>
         </div>
       </form>
     </div><!-- /.modal-content -->

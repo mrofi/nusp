@@ -196,5 +196,4 @@ class BaseModel extends Model
 
         return $captions;
     }
-
 }

@@ -71,7 +71,7 @@
 
 
 
-@include('modal_large_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'profil' : 'reportOnly.profil'])
+@include('modal_large', ['namespace' => (isset($allowed) && $allowed == true) ? 'profil' : 'reportOnly.profil'])
 
 
  

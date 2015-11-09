@@ -22,6 +22,7 @@ class TahapPascaKonstruksiSerahTerimaPekerjaan extends Migration
             $table->integer('file_tppi_ke_bkm')->unsigned()->nullable();
             $table->integer('file_bkm_ke_staker_ppk_nusp_2')->unsigned()->nullable();
             $table->integer('file_ppk_ke_kpp')->unsigned()->nullable();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

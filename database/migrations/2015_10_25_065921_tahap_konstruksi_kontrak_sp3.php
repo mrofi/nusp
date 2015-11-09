@@ -19,6 +19,7 @@ class TahapKonstruksiKontrakSp3 extends Migration
             $table->date('tanggal_kontrak');
             $table->integer('kontrak_sp3')->unsigned()->nullable(); // file
             $table->integer('ringkasan_kontrak')->unsigned()->nullable(); // file
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

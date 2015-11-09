@@ -16,6 +16,6 @@
 @section('hapus.modal.close.prop', 'data-toggle="modal"')
 
 
-@include('modal_no_delete', ['namespace' => 'hapus'])
+@include('modal_special', ['namespace' => 'hapus'])
 
 

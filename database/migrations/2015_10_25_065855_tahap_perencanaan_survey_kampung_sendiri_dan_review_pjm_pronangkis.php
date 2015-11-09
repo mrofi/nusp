@@ -17,6 +17,7 @@ class TahapPerencanaanSurveyKampungSendiriDanReviewPjmPronangkis extends Migrati
             $table->string('kode_wilayah', 20);
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

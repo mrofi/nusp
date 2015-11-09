@@ -28,6 +28,7 @@ class BuatTabelDataLahan extends Migration
             $table->integer('pemanfaat_jumlah_jiwa')->unsigned();
             $table->integer('pemanfaat_jumlah_perempuan')->unsigned();
             $table->integer('pemanfaat_jumlah_miskin')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

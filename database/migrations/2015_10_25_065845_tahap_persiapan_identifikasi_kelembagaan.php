@@ -27,6 +27,7 @@ class TahapPersiapanIdentifikasiKelembagaan extends Migration
             $table->string('nama_notaris', 50);
             $table->string('nama_bank', 20); 
             $table->string('no_rekening_bank', 20);
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

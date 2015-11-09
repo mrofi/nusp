@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapPerencanaanRevisiDokumenNuap extends BaseModel
+class TahapPerencanaanRevisiDokumenNuap extends BaseApiModel
 {
-    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'hasil_revisi'];
+    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'hasil_revisi', 'verified_at'];
 
     protected $forms = [
         'kode_wilayah' => 'required|type:hidden',

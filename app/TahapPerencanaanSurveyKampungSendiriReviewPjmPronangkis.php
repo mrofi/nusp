@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis extends BaseModel
+class TahapPerencanaanSurveyKampungSendiriReviewPjmPronangkis extends BaseApiModel
 {
     protected $table = 'tahap_perencanaan_survey_kampung_sendiri_review_pjm_pronangkiss';
     
-    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai'];
+    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'verified_at'];
 
     protected $forms = [
         'kode_wilayah' => 'required|type:hidden',

@@ -20,6 +20,7 @@ class TahapKonstruksiPelaksanaanFisik extends Migration
             $table->enum('daftar_hadir_tenaga_kerja', ['ada', 'tidak ada']);
             $table->enum('penggunaan_alat_berat', ['ada', 'tidak ada']);
             $table->bigInteger('biaya_penggunaan_alat_berat')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

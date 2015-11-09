@@ -18,6 +18,7 @@ class TahapPerencanaanRevisiDokumenNuap extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->enum('hasil_revisi', ['layak', 'tidak layak']);
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

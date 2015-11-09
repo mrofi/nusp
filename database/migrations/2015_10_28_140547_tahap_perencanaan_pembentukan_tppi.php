@@ -19,6 +19,7 @@ class TahapPerencanaanPembentukanTppi extends Migration
             $table->string('nama_tppi', 50);
             $table->integer('jumlah_pengurus_tppi')->unsigned();
             $table->integer('jumlah_perempuan_pengurus_tppi')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

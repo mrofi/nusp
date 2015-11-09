@@ -2,7 +2,7 @@
 
 namespace App;
 
-class DataKontrak extends BaseModel
+class DataKontrak extends BaseApiModel
 {
     protected $fillable = [
     	'kode_wilayah',

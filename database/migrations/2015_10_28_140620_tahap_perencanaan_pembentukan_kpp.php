@@ -19,6 +19,7 @@ class TahapPerencanaanPembentukanKpp extends Migration
             $table->string('nama_kpp', 50);
             $table->integer('jumlah_pengurus_kpp')->unsigned();
             $table->integer('jumlah_perempuan_pengurus_kpp')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

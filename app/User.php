@@ -58,6 +58,14 @@ class User extends BaseModel implements AuthenticatableContract,
     {
         if ($role_id == null && $kode_wilayah == null) return false;
 
+        $s_role = ($role_id == null) ? '0' :  $role_id;
+
+        $s_kode = ($kode_wilayah == null) ? '0' :  $kode_wilayah;
+
+        $hasRole = \Session::get('roles.'.auth()->user()->id.'.'.$s_role.'.'.$s_kode, null);
+
+        if ($hasRole !== null) return $hasRole;
+
         $userRole = UserWilayahRole::where('user_id', $this->id);
 
         if ($kode_wilayah == null) return $userRole->where('role_id', $role_id)->first() != null;
@@ -78,7 +86,11 @@ class User extends BaseModel implements AuthenticatableContract,
             $wilayahs = $this->getWilayahPerRole($role_id);
         }
 
-        return array_search($kode_wilayah, array_column($wilayahs, 'kode')) !== false;
+        $hasRole = array_search($kode_wilayah, array_column($wilayahs, 'kode')) !== false;
+        
+        \Session::put('roles.'.auth()->user()->id.'.'.$s_role.'.'.$s_kode, $hasRole);
+
+        return $hasRole; 
     }
 
     public function hasForbidden($role_id = null, $kode_wilayah = null)
@@ -155,12 +167,14 @@ class User extends BaseModel implements AuthenticatableContract,
         $wilayah = [];
 
         $roles = Role::all();
+
         foreach ($roles as $role) 
         {
             $wilayah = array_merge($wilayah, $this->getWilayahPerRole($role->id));    
         }
 
         $wilayahs = [];
+
 
         foreach ($wilayah as $w) 
         {

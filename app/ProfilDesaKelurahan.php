@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProfilDesaKelurahan extends BaseModel
+class ProfilDesaKelurahan extends BaseApiModel
 {
     protected $fillable = [
     	'kode_wilayah',
@@ -35,6 +35,7 @@ class ProfilDesaKelurahan extends BaseModel
         'pendidikan_smp',
         'pendidikan_sma',
         'pendidikan_perguruan_tinggi',
+        'verified_at',
     ];
 
     protected $forms = [

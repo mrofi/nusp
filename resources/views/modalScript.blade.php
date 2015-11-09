@@ -12,8 +12,9 @@ $('.modal-nusp').each(function(i, e) {
     form.find('.form-control-static').parents('.row').not('.form-group-static').addClass('hide');
     form.find('.modal-body').addClass('hide');
     $('body').css('padding-right', '0');
-    $('.show-delete').removeClass('hide');
+    $('.btn-verify').addClass('hide');
     $('.combo-plus-target').addClass('hide');
+    form.find('.btn-input').attr('data-toggle', 'modal');
   });
 
   nuspModal.on('show.bs.modal', function(e) {
@@ -50,7 +51,12 @@ $('.modal-nusp').each(function(i, e) {
       }).trigger('change'); 
     })
 
-    if (!nuspModal.is('#modal-hapus')) $('#modal-hapus').find('form').attr('action', form.attr('action')).find('button[type=reset]').attr('data-target', '#'+nuspModal.attr('id'));
+    if (!nuspModal.is('.modal-special')) {
+      $('#modal-hapus').find('form').attr('action', form.attr('action')).find('button[type=reset]').attr('data-target', '#'+nuspModal.attr('id'));
+      $('#modal-verify').find('form').attr('action', form.attr('action')).find('button[type=reset]').attr('data-target', '#'+nuspModal.attr('id'));
+      $('#modal-unverify').find('form').attr('action', form.attr('action')).find('button[type=reset]').attr('data-target', '#'+nuspModal.attr('id'));
+    }
+
 
     var dropdown = button.parents('.dropdown-menu').parent();
     if (dropdown.length) button = dropdown;
@@ -64,7 +70,27 @@ $('.modal-nusp').each(function(i, e) {
           form.find('#'+x).text(data.wilayah[x].nama_wilayah).parents('.row').removeClass('hide');
         }
 
-        if (data.empty) form.find('.show-delete').addClass('hide');
+        if (data.allowEdit == true && !nuspModal.is('.modal-special') && !nuspModal.is('.modal-tahapan')) {
+          if (data.verified_at != null) {
+            form.find('[type=submit]').addClass('hide');
+            form.find('.show-delete').addClass('hide');
+            form.find(':input').not('[type=reset]').prop('disabled', true);
+          } else {
+            form.find(':input').prop('disabled', false);
+            form.find('[type=submit]').removeClass('hide');
+            if (data.empty == true) form.find('.show-delete').addClass('hide')
+            else form.find('.show-delete').removeClass('hide');
+            
+          }
+        } 
+
+        if (data.allowVerify == true && data.empty !== true && !nuspModal.is('.modal-tahapan') && !nuspModal.is('.modal-special')) {
+          if (data.verified_at == null) form.find('.show-verify').removeClass('hide')
+          else form.find('.show-unverify').removeClass('hide');
+        } else {
+          $('.btn-verify').addClass('hide');
+        }
+
 
         for (x in data) {
           var value = data[x];
@@ -106,7 +132,11 @@ $('.modal-nusp').each(function(i, e) {
           }
           else if (input.is(':input')) {input.val(value);}
           else if (input.is('.form-control-static')) {input.text(value);}
-          else if (input.is('.btn-input') && value != null) {input.removeClass('bg-gray-light').addClass('btn-success').find('.check').removeClass('hide')}
+          else if (input.is('.btn-input') && value != null) {
+            if (data.allowVerify == true && value.verified_at == null) input.removeClass('bg-gray-light btn-success').addClass('btn-warning').find('.check').removeClass('hide')
+            else input.removeClass('bg-gray-light btn-warning').addClass('btn-success').find('.check').removeClass('hide') 
+          }
+          else if (input.is('.btn-input') && value == null && data.allowEdit !== true) {input.attr('data-toggle', 'modal0'); }
           input.trigger('change')
         }
         

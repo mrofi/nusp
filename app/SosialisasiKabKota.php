@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SosialisasiKabKota extends BaseModel
+class SosialisasiKabKota extends BaseApiModel
 {
-    protected $fillable = ['kode_wilayah', 'tanggal', 'peserta', 'peserta_perempuan', 'foto_id'];
+    protected $fillable = ['kode_wilayah', 'tanggal', 'peserta', 'peserta_perempuan', 'foto_id', 'verified_at'];
 
     protected $forms = [
     	'kode_wilayah' => 'required|type:hidden',

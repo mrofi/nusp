@@ -55,7 +55,7 @@
 
 
 
-@include('modal_large_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'data-kontrak' : 'reportOnly.data-kontrak'])
+@include('modal_large', ['namespace' => (isset($allowed) && $allowed == true) ? 'data-kontrak' : 'reportOnly.data-kontrak'])
 
 
  

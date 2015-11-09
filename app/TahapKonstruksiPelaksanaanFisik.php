@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapKonstruksiPelaksanaanFisik extends BaseModel
+class TahapKonstruksiPelaksanaanFisik extends BaseApiModel
 {
     protected $fillable = [
         'kode_wilayah', 
@@ -12,7 +12,8 @@ class TahapKonstruksiPelaksanaanFisik extends BaseModel
         'daftar_bahan_material',
         'daftar_hadir_tenaga_kerja',
         'penggunaan_alat_berat',
-        'biaya_penggunaan_alat_berat',
+        'biaya_penggunaan_alat_berat', 
+        'verified_at',
     ];
 
     protected $forms = [

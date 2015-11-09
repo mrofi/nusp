@@ -51,12 +51,15 @@ class ApiController extends Controller
         
         $kode_wilayah = $request->get('kode_wilayah', null);
 
+        $ada = $this->model->where('kode_wilayah', $kode_wilayah)->first();
+        
+        if ($ada && $request->has('verify')) return $this->verify($request, $ada->id);
+
         $role = Role::where('role', 'admin')->first();
         
-        return $this->userAuthorize($role->id, $kode_wilayah, function() use ($request, $kode_wilayah)
+        return $this->userAuthorize($role->id, $kode_wilayah, function() use ($request, $ada)
         {
             // validation
-            $ada = $this->model->where('kode_wilayah', $kode_wilayah)->first();
             
             if ($ada && $request->has('delete_entry')) return $this->destroy($request, $ada->id);
             
@@ -90,10 +93,8 @@ class ApiController extends Controller
         {
             $show =  $this->model->where('kode_wilayah', $kode_wilayah)->first();
             
-            if (!$show) return array_merge((new $this->model(['kode_wilayah' => $kode_wilayah]))->toArray(), ['wilayah' => \App\Wilayah::get_wilayah($kode_wilayah), 'empty' => true]);
-            
-            $show->wilayah = $show->wilayah;
-            
+            if (!$show || ($this->model->allowEdit != true && $this->model->allowVerify != true && $show->verified_at == null)) return array_merge((new $this->model(['kode_wilayah' => $kode_wilayah]))->toArray(), ['wilayah' => \App\Wilayah::get_wilayah($kode_wilayah), 'empty' => true]);
+                        
             return $show;
         });
     }
@@ -163,6 +164,29 @@ class ApiController extends Controller
             $delete = $delete->toArray();
 
             return ['message' => 'ok', 'deleted' => $delete];
+        });
+    }
+
+    public function verify(Request $request, $id)
+    {
+        $request->merge(array_map('trim', $request->all()));
+
+        $kode_wilayah = $request->get('kode_wilayah', null);
+
+        $role = Role::where('role', 'verifikator')->first();
+     
+      return $this->userAuthorize($role->id, $kode_wilayah, function() use ($request, $id)
+        {
+            // find record
+            $verify = $this->model->findOrFail($id);
+
+            if (! $verify) return ['error' => 'no data'];
+            
+            $verify->update(['verified_at' => $request->get('verify') !== 'false' ? nusp_dateToDB(nusp_dateToShow()) : null]);
+
+            $verify = $verify->toArray();
+
+            return ['message' => 'ok', 'verified' => $verify];
         });
     }
 }

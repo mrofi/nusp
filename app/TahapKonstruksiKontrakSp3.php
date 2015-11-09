@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapKonstruksiKontrakSp3 extends BaseModel
+class TahapKonstruksiKontrakSp3 extends BaseApiModel
 {
-    protected $fillable = ['kode_wilayah', 'no_kontrak', 'tanggal_kontrak', 'kontrak_sp3', 'ringkasan_kontrak'];
+    protected $fillable = ['kode_wilayah', 'no_kontrak', 'tanggal_kontrak', 'kontrak_sp3', 'ringkasan_kontrak', 'verified_at'];
 
     protected $forms = [
         'kode_wilayah' => 'required|type:hidden',

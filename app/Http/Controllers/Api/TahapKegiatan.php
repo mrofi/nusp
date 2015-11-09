@@ -176,7 +176,8 @@ class TahapKegiatan extends ApiController
         	$konstruksi = $this->konstruksi($request, $kode_wilayah, true)['persentase'];
         	$pascaKonstruksi = $this->pascaKonstruksi($request, $kode_wilayah, true)['persentase'];
             $wilayah = Model::get_wilayah($kode_wilayah);
-            return compact('persiapan', 'perencanaan', 'konstruksi', 'pascaKonstruksi', 'wilayah');
+            $allowEdit = auth()->user()->hasRole(1, $kode_wilayah);
+            return compact('persiapan', 'perencanaan', 'konstruksi', 'pascaKonstruksi', 'wilayah', 'allowEdit');
         });
 	}
 
@@ -185,22 +186,36 @@ class TahapKegiatan extends ApiController
 
     	return $this->userAuthorize(null, $kode_wilayah, function() use ($request, $kode_wilayah, $tanpa_wilayah)
         {   
-        	$tahapan = [];
-        	$done = 0;
+            $allowEdit = auth()->user()->hasRole(1, $kode_wilayah);
 
-        	foreach($this->tahapanPersiapan as $tahap)
-        	{
-        		$class = new \ReflectionClass($tahap);
-        		$className = strtolower($class->getShortName());
-        		$tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
-        		if (count($did)) $done++;
-        	}         
+            $allowVerify = auth()->user()->hasRole(3, $kode_wilayah);
 
-        	$persentase = floor($done / count($this->tahapanPersiapan) * 100);
+            $tahapan = [];
+            $done = 0;
 
-        	$wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
+            foreach($this->tahapanPersiapan as $tahap)
+            {
+                $class = new \ReflectionClass($tahap);
+                $className = strtolower($class->getShortName());
+                $tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
+                if (count($did)) 
+                {
+                    if ($did->verified_at == null && !$allowEdit && !$allowVerify) 
+                    {
+                        $tahapan[$className] = null;
+                    }
+                    else
+                    {
+                        $done++;
+                    }
+                }
+            }         
 
-            return array_merge($tahapan, compact('persentase', 'wilayah')); 
+            $persentase = floor($done / count($this->tahapanPersiapan) * 100);
+
+            $wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
+
+            return array_merge($tahapan, compact('persentase', 'wilayah', 'allowEdit', 'allowVerify')); 
         });
     }
 
@@ -209,22 +224,36 @@ class TahapKegiatan extends ApiController
 
     	return $this->userAuthorize(null, $kode_wilayah, function() use ($request, $kode_wilayah, $tanpa_wilayah)
         {   
-        	$tahapan = [];
-        	$done = 0;
+            $allowEdit = auth()->user()->hasRole(1, $kode_wilayah);
 
-        	foreach($this->tahapanPerencanaan as $tahap)
-        	{
-        		$class = new \ReflectionClass($tahap);
-        		$className = strtolower($class->getShortName());
-        		$tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
-        		if (count($did)) $done++;
-        	}         
+            $allowVerify = auth()->user()->hasRole(3, $kode_wilayah);
 
-        	$persentase = floor($done / count($this->tahapanPerencanaan) * 100);
-        	
-        	$wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
+            $tahapan = [];
+            $done = 0;
 
-            return array_merge($tahapan, compact('persentase', 'wilayah')); 
+            foreach($this->tahapanPerencanaan as $tahap)
+            {
+                $class = new \ReflectionClass($tahap);
+                $className = strtolower($class->getShortName());
+                $tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
+                if (count($did)) 
+                {
+                    if ($did->verified_at == null && !$allowEdit && !$allowVerify) 
+                    {
+                        $tahapan[$className] = null;
+                    }
+                    else
+                    {
+                        $done++;
+                    }
+                }
+            }         
+
+            $persentase = floor($done / count($this->tahapanPerencanaan) * 100);
+            
+            $wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
+
+            return array_merge($tahapan, compact('persentase', 'wilayah', 'allowEdit', 'allowVerify')); 
         });
     }
 
@@ -233,22 +262,36 @@ class TahapKegiatan extends ApiController
 
     	return $this->userAuthorize(null, $kode_wilayah, function() use ($request, $kode_wilayah, $tanpa_wilayah)
         {   
-        	$tahapan = [];
-        	$done = 0;
+            $allowEdit = auth()->user()->hasRole(1, $kode_wilayah);
+            
+            $allowVerify = auth()->user()->hasRole(3, $kode_wilayah);
+            
+            $tahapan = [];
+            $done = 0;
 
-        	foreach($this->tahapanKonstruksi as $tahap)
-        	{
-        		$class = new \ReflectionClass($tahap);
-        		$className = strtolower($class->getShortName());
-        		$tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
-        		if (count($did)) $done++;
-        	}         
+            foreach($this->tahapanKonstruksi as $tahap)
+            {
+                $class = new \ReflectionClass($tahap);
+                $className = strtolower($class->getShortName());
+                $tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
+                if (count($did)) 
+                {
+                    if ($did->verified_at == null && !$allowEdit && !$allowVerify) 
+                    {
+                        $tahapan[$className] = null;
+                    }
+                    else
+                    {
+                        $done++;
+                    }
+                }
+            }         
 
-        	$persentase = floor($done / count($this->tahapanKonstruksi) * 100);
+            $persentase = floor($done / count($this->tahapanKonstruksi) * 100);
 
-        	$wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
+            $wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
 
-            return array_merge($tahapan, compact('persentase', 'wilayah')); 
+            return array_merge($tahapan, compact('persentase', 'wilayah', 'allowEdit', 'allowVerify')); 
         });
     }
 
@@ -257,22 +300,36 @@ class TahapKegiatan extends ApiController
 
     	return $this->userAuthorize(null, $kode_wilayah, function() use ($request, $kode_wilayah, $tanpa_wilayah)
         {   
-        	$tahapan = [];
-        	$done = 0;
+            $allowEdit = auth()->user()->hasRole(1, $kode_wilayah);
+            
+            $allowVerify = auth()->user()->hasRole(3, $kode_wilayah);
+            
+            $tahapan = [];
+            $done = 0;
 
-        	foreach($this->tahapanPascaKonstruksi as $tahap)
-        	{
-        		$class = new \ReflectionClass($tahap);
-        		$className = strtolower($class->getShortName());
-        		$tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
-        		if (count($did)) $done++;
-        	}         
+            foreach($this->tahapanPascaKonstruksi as $tahap)
+            {
+                $class = new \ReflectionClass($tahap);
+                $className = strtolower($class->getShortName());
+                $tahapan[$className] = $did = with(new $tahap)->where('kode_wilayah', $kode_wilayah)->first();
+                if (count($did)) 
+                {
+                    if ($did->verified_at == null && !$allowEdit && !$allowVerify) 
+                    {
+                        $tahapan[$className] = null;
+                    }
+                    else
+                    {
+                        $done++;
+                    }
+                }
+            }         
 
-        	$persentase = floor($done / count($this->tahapanPascaKonstruksi) * 100);
+            $persentase = floor($done / count($this->tahapanPascaKonstruksi) * 100);
 
-        	$wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
+            $wilayah = ($tanpa_wilayah) ?: Model::get_wilayah($kode_wilayah);
 
-            return array_merge($tahapan, compact('persentase', 'wilayah')); 
+            return array_merge($tahapan, compact('persentase', 'wilayah', 'allowEdit', 'allowVerify')); 
         });
     }
 }

@@ -1,3 +1,4 @@
+@section('tahap.kegiatan.modal.topclass', 'modal-tahapan')
 @section('tahap.kegiatan.modal.id', 'modal-tahap-kegiatan')
 @section('tahap.kegiatan.modal.title', 'Tahap Kegiatan')
 @section('tahap.kegiatan.modal.form.action', nusp_asset('api/tahap-kegiatan'))
@@ -39,6 +40,7 @@
 
 
 
+@section('reportOnly.tahap.kegiatan.modal.topclass', 'modal-tahapan')
 @section('reportOnly.tahap.kegiatan.modal.id', 'modal-report-tahap-kegiatan')
 @section('reportOnly.tahap.kegiatan.modal.title', 'Tahap Kegiatan')
 @section('reportOnly.tahap.kegiatan.modal.form.action', nusp_asset('api/tahap-kegiatan'))

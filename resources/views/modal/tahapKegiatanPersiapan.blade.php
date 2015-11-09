@@ -1,3 +1,4 @@
+@section('tahap.persiapan.modal.topclass', 'modal-tahapan')
 @section('tahap.persiapan.modal.id', 'modal-tahap-persiapan')
 @section('tahap.persiapan.modal.title', 'Tahap Persiapan')
 @section('tahap.persiapan.modal.form.action', nusp_asset('api/tahap-persiapan'))
@@ -48,6 +49,7 @@
 @section('tahap.persiapan.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-kegiatan"')
 @section('tahap.persiapan.modal.submit.class', 'hide')
 
+@section('reportOnly.tahap.persiapan.modal.topclass', 'modal-tahapan')
 @section('reportOnly.tahap.persiapan.modal.id', 'modal-report-tahap-persiapan')
 @section('reportOnly.tahap.persiapan.modal.title', 'Tahap Persiapan')
 @section('reportOnly.tahap.persiapan.modal.form.action', nusp_asset('api/tahap-persiapan'))

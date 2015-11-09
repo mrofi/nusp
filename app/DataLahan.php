@@ -2,7 +2,7 @@
 
 namespace App;
 
-class DataLahan extends BaseModel
+class DataLahan extends BaseApiModel
 {
 	protected $fillable = [
 		'kode_wilayah',

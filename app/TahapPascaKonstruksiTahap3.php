@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapPascaKonstruksiTahap3 extends BaseModel
+class TahapPascaKonstruksiTahap3 extends BaseApiModel
 {
     protected $fillable = [
     	'kode_wilayah',
@@ -16,7 +16,8 @@ class TahapPascaKonstruksiTahap3 extends BaseModel
         'file_spm',
         'file_sp2d',
         'file_berita_acara',
-        'file_kuitansi',
+        'file_kuitansi', 
+        'verified_at',
     ];
 
     protected $forms = [

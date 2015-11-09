@@ -1,3 +1,4 @@
+@section('tahap.perencanaan.modal.topclass', 'modal-tahapan')
 @section('tahap.perencanaan.modal.id', 'modal-tahap-perencanaan')
 @section('tahap.perencanaan.modal.title', 'Tahap Perencanaan')
 @section('tahap.perencanaan.modal.form.action', nusp_asset('api/tahap-perencanaan'))
@@ -126,6 +127,7 @@
 @section('tahap.perencanaan.modal.submit.class', 'hide')
 
 
+@section('reportOnly.tahap.perencanaan.modal.topclass', 'modal-tahapan')
 @section('reportOnly.tahap.perencanaan.modal.id', 'modal-report-tahap-perencanaan')
 @section('reportOnly.tahap.perencanaan.modal.title', 'Tahap Perencanaan')
 @section('reportOnly.tahap.perencanaan.modal.form.action', nusp_asset('api/tahap-perencanaan'))

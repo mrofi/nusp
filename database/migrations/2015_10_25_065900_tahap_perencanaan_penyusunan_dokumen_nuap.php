@@ -21,6 +21,7 @@ class TahapPerencanaanPenyusunanDokumenNuap extends Migration
             $table->integer('jumlah_peserta_perempuan')->unsigned();
             $table->integer('jumlah_peserta_warga_miskin')->unsigned();
             $table->integer('foto_id')->unsigned()->nullable();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

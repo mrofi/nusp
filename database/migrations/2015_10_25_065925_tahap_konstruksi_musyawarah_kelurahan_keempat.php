@@ -22,6 +22,7 @@ class TahapKonstruksiMusyawarahKelurahanKeempat extends Migration
             $table->integer('jumlah_peserta_warga_miskin')->unsigned();
             $table->integer('foto_id')->unsigned()->nullable();
             $table->integer('file_id')->unsigned()->nullable();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PenetapanLokasi extends BaseModel
+class PenetapanLokasi extends BaseApiModel
 {
-    protected $fillable = ['kode_wilayah', 'tanggal_sk', 'nomor_sk', 'jumlah_lokasi', 'file_id'];
+    protected $fillable = ['kode_wilayah', 'tanggal_sk', 'nomor_sk', 'jumlah_lokasi', 'file_id', 'verified_at'];
 
     protected $forms = [
     	'kode_wilayah' => 'required|type:hidden',

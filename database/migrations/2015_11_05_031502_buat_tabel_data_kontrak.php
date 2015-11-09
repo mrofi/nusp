@@ -23,6 +23,7 @@ class BuatTabelDataKontrak extends Migration
             $table->integer('pelaksanaan_volume_unit')->unsigned;
             $table->bigInteger('dana_nilai_blm')->unsigned();
             $table->bigInteger('dana_nilai_swadaya')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

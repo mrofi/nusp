@@ -20,6 +20,7 @@ class TahapPerencanaanPenyusunanRkm extends Migration
             $table->integer('jumlah_peserta')->unsigned();
             $table->integer('jumlah_peserta_perempuan')->unsigned();
             $table->integer('jumlah_peserta_warga_miskin')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

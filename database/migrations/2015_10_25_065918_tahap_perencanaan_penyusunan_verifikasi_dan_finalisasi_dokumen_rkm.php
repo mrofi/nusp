@@ -19,6 +19,7 @@ class TahapPerencanaanPenyusunanVerifikasiDanFinalisasiDokumenRkm extends Migrat
             $table->date('tanggal_selesai');
             $table->enum('hasil_verifikasi', ['layak', 'tidak layak']);
             $table->text('catatan');
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

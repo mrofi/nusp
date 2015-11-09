@@ -27,6 +27,7 @@ class TahapPascaKonstruksiPemanfaatan extends Migration
             $table->integer('realisasi_jumlah_pemanfaat')->unsigned();
             $table->integer('realisasi_jumlah_perempuan')->unsigned();
             $table->integer('realisasi_jumlah_warga_miskin')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

@@ -18,4 +18,4 @@
 	{!! nusp_staticForms($formSosialisasi) !!}
 @endsection
 
-@include('modal_no_delete', ['namespace' => (isset($allowed) && $allowed == true) ? 'sosialisasi' : 'reportOnly.sosialisasi'])
+@include('modal', ['namespace' => (isset($allowed) && $allowed == true) ? 'sosialisasi' : 'reportOnly.sosialisasi'])

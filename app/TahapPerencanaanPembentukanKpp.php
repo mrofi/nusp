@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TahapPerencanaanPembentukanKpp extends BaseModel
+class TahapPerencanaanPembentukanKpp extends BaseApiModel
 {
     protected $fillable = [
     	'kode_wilayah', 
         'tanggal_pembentukan',
         'nama_tppi',
         'jumlah_pengurus_kpp',
-        'jumlah_perempuan_pengurus_kpp',
+        'jumlah_perempuan_pengurus_kpp', 
+        'verified_at',
     ];
 
     protected $forms = [

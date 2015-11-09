@@ -1,3 +1,4 @@
+@section('tahap.pasca-konstruksi.modal.topclass', 'modal-tahapan')
 @section('tahap.pasca-konstruksi.modal.id', 'modal-tahap-pasca-konstruksi')
 @section('tahap.pasca-konstruksi.modal.title', 'Tahap Pasca Konstruksi')
 @section('tahap.pasca-konstruksi.modal.form.action', nusp_asset('api/tahap-pasca-konstruksi'))
@@ -48,6 +49,7 @@
 @section('tahap.pasca-konstruksi.modal.close.prop', 'data-toggle="modal" data-target="#modal-tahap-kegiatan"')
 @section('tahap.pasca-konstruksi.modal.submit.class', 'hide')
 
+@section('reportOnly.tahap.pasca-konstruksi.modal.topclass', 'modal-tahapan')
 @section('reportOnly.tahap.pasca-konstruksi.modal.id', 'modal-report-tahap-pasca-konstruksi')
 @section('reportOnly.tahap.pasca-konstruksi.modal.title', 'Tahap Pasca Konstruksi')
 @section('reportOnly.tahap.pasca-konstruksi.modal.form.action', nusp_asset('api/tahap-pasca-konstruksi'))

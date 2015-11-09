@@ -17,6 +17,7 @@ class TahapPascaKonstruksiPemeliharaan extends Migration
             $table->string('kode_wilayah', 20);
             $table->date('tanggal_mulai_digunakan');
             $table->enum('apakah_sudah_terbentuk_kpp', ['sudah', 'belum']);
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class BuatTabelPenetapanLokasi extends Migration
             $table->string('nomor_sk', 30);
             $table->integer('jumlah_lokasi')->unsigned();
             $table->integer('file_id')->unsigned()->nullable();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }
