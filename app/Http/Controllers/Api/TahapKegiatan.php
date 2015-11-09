@@ -64,7 +64,7 @@ class TahapKegiatan extends ApiController
         {
             $class = new \ReflectionClass($tahap);
             $className = $class->getShortName();
-            $tahapan = with(new $tahap)->all()->toArray();
+            $tahapan = with(new $tahap)->where('verified_at', '<>', '')->get()->toArray();
     		foreach ($tahapan as $t) 
     		{
                 $t['title'] = $tahap::$title;
@@ -82,7 +82,7 @@ class TahapKegiatan extends ApiController
     	{
     		$class = new \ReflectionClass($tahap);
     		$className = $class->getShortName();
-    		$tahapan = with(new $tahap)->all();
+            $tahapan = with(new $tahap)->where('verified_at', '<>', '')->get()->toArray();
     		foreach ($tahapan as $t) 
     		{
                 $t['title'] = $tahap::$title;
@@ -100,7 +100,7 @@ class TahapKegiatan extends ApiController
     	{
     		$class = new \ReflectionClass($tahap);
     		$className = $class->getShortName();
-    		$tahapan = with(new $tahap)->all();
+            $tahapan = with(new $tahap)->where('verified_at', '<>', '')->get()->toArray();
     		foreach ($tahapan as $t) 
     		{
                 $t['title'] = $tahap::$title;
@@ -118,7 +118,7 @@ class TahapKegiatan extends ApiController
     	{
     		$class = new \ReflectionClass($tahap);
     		$className = $class->getShortName();
-    		$tahapan = with(new $tahap)->all();
+            $tahapan = with(new $tahap)->where('verified_at', '<>', '')->get()->toArray();
     		foreach ($tahapan as $t) 
     		{
                 $t['title'] = $tahap::$title;

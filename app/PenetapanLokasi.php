@@ -13,7 +13,7 @@ class PenetapanLokasi extends BaseApiModel
     	'tanggal_sk' => 'required|type:date',
     	'nomor_sk' => 'required|type:string',
     	'jumlah_lokasi' => 'required|type:numeric',
-    	'file_id' => 'type:file|caption:File'
+    	'file_id' => 'required|type:file|caption:File'
     ];
 
     protected $rules = [
@@ -21,7 +21,7 @@ class PenetapanLokasi extends BaseApiModel
     	'tanggal_sk' => 'required',
     	'nomor_sk' => 'required',
     	'jumlah_lokasi' => 'required|numeric',
-    	'file_id' => 'numeric',
+    	'file_id' => 'required|numeric',
     ];
 
     protected $attributes = [

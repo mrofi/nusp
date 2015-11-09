@@ -30,12 +30,12 @@ class TahapPersiapanIdentifikasiKelembagaan extends BaseApiModel
         'jumlah_pengurus_bkm' => 'required|type:numeric|caption:&sum; Pengurus BKM',
         'jumlah_perempuan_pengurus_bkm' => 'required|type:numeric|caption:&sum; Perempuan Pengurus BKM',
         'alamat_bkm' => 'required|type:text|caption:Alamat BKM',
-        'telepon_hp' => 'type:string|caption:No. Telepon / Hp',
-        'tanggal_pengesahan_notaris' => 'type:date',
-        'nomor_pengesahan' => 'type:string',
-        'nama_notaris' => 'type:string',
-        'nama_bank'  => 'type:string',
-        'no_rekening_bank' => 'type:string',
+        'telepon_hp' => 'required|type:string|caption:No. Telepon / Hp',
+        'tanggal_pengesahan_notaris' => 'required|type:date',
+        'nomor_pengesahan' => 'required|type:string',
+        'nama_notaris' => 'required|type:string',
+        'nama_bank'  => 'required|type:string',
+        'no_rekening_bank' => 'required|type:string',
     ];
 
     protected $rules = [
@@ -46,7 +46,10 @@ class TahapPersiapanIdentifikasiKelembagaan extends BaseApiModel
         'jumlah_pengurus_bkm' => 'required|numeric',
         'jumlah_perempuan_pengurus_bkm' => 'required|numeric',
         'alamat_bkm' => 'required',
-        'tanggal_pengesahan_notaris' => 'date',
+        'tanggal_pengesahan_notaris' => 'required|date',
+        'nama_notaris' => 'required',
+        'nama_bank'  => 'required',
+        'no_rekening_bank' => 'required',
     ];
 
     protected $attributes = [

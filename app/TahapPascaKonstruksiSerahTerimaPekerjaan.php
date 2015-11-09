@@ -23,10 +23,10 @@ class TahapPascaKonstruksiSerahTerimaPekerjaan extends BaseApiModel
         'tppi_ke_bkm' => 'required|type:date',
         'bkm_ke_staker_ppk_nusp_2' => 'required|type:date',
         'ppk_ke_kpp' => 'required|type:date',
-        'foto_id' => 'type:image|caption:Foto',
-        'file_tppi_ke_bkm' => 'type:file|caption:Notulen',
-        'file_bkm_ke_staker_ppk_nusp_2' => 'type:file|caption:Notulen',
-        'file_ppk_ke_kpp' => 'type:file|caption:Notulen',
+        'foto_id' => 'required|type:image|caption:Foto',
+        'file_tppi_ke_bkm' => 'required|type:file|caption:Notulen',
+        'file_bkm_ke_staker_ppk_nusp_2' => 'required|type:file|caption:Notulen',
+        'file_ppk_ke_kpp' => 'required|type:file|caption:Notulen',
     ];
 
     protected $rules = [
@@ -34,10 +34,10 @@ class TahapPascaKonstruksiSerahTerimaPekerjaan extends BaseApiModel
         'tppi_ke_bkm' => 'required',
         'bkm_ke_staker_ppk_nusp_2' => 'required',
         'ppk_ke_kpp' => 'required',
-        'foto_id' => 'numeric',
-        'file_tppi_ke_bkm' => 'numeric',
-        'file_bkm_ke_staker_ppk_nusp_2' => 'numeric',
-        'file_ppk_ke_kpp' => 'numeric',
+        'foto_id' => 'required|numeric',
+        'file_tppi_ke_bkm' => 'required|numeric',
+        'file_bkm_ke_staker_ppk_nusp_2' => 'required|numeric',
+        'file_ppk_ke_kpp' => 'required|numeric',
     ];
 
     protected $attributes = [

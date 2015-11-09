@@ -13,7 +13,7 @@ class SosialisasiKabKota extends BaseApiModel
     	'tanggal' => 'required|type:date',
     	'peserta' => 'required|type:numeric|caption:Jumlah Peserta',
     	'peserta_perempuan' => 'required|type:numeric|caption:&sum; Peserta Perempuan',
-    	'foto_id' => 'type:image|caption:Foto'
+    	'foto_id' => 'required|type:image|caption:Foto'
     ];
 
     protected $rules = [
@@ -21,7 +21,7 @@ class SosialisasiKabKota extends BaseApiModel
     	'tanggal' => 'required',
     	'peserta' => 'required|numeric',
     	'peserta_perempuan' => 'required|numeric',
-    	'foto_id' => 'numeric',
+    	'foto_id' => 'required|numeric',
     ];
 
     protected $attributes = [

@@ -15,7 +15,7 @@ class TahapPerencanaanPenyusunanDokumenNuap extends BaseApiModel
         'jumlah_peserta' => 'required|type:numeric|caption:&sum; Peserta',
         'jumlah_peserta_perempuan' => 'required|type:numeric|caption:&sum; Peserta Perempuan',
         'jumlah_peserta_warga_miskin' => 'required|type:numeric|caption:&sum; Peserta Warga Miskin',
-        'foto_id' => 'type:image|caption:Foto',
+        'foto_id' => 'required|type:image|caption:Foto',
     ];
 
     protected $rules = [
@@ -25,7 +25,7 @@ class TahapPerencanaanPenyusunanDokumenNuap extends BaseApiModel
         'jumlah_peserta' => 'required|numeric',
         'jumlah_peserta_perempuan' => 'required|numeric',
         'jumlah_peserta_warga_miskin' => 'required|numeric',
-        'foto_id' => 'numeric',
+        'foto_id' => 'required|numeric',
     ];
 
     protected $attributes = [

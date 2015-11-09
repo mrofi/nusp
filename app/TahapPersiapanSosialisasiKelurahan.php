@@ -15,8 +15,8 @@ class TahapPersiapanSosialisasiKelurahan extends BaseApiModel
     	'jumlah_peserta' => 'required|type:numeric|caption:&sum; Peserta',
     	'jumlah_peserta_perempuan' => 'required|type:numeric|caption:&sum; Peserta Perempuan',
     	'jumlah_peserta_warga_miskin' => 'required|type:numeric|caption:&sum; Peserta Warga Miskin',
-    	'foto_id' => 'type:image|caption:Foto',
-    	'file_id' => 'type:file|caption:Berita Acara (File Word)',
+    	'foto_id' => 'required|type:image|caption:Foto',
+    	'file_id' => 'required|type:file|caption:Berita Acara (File Word)',
     ];
 
     protected $rules = [
@@ -26,8 +26,8 @@ class TahapPersiapanSosialisasiKelurahan extends BaseApiModel
     	'jumlah_peserta' => 'required|numeric',
     	'jumlah_peserta_perempuan' => 'required|numeric',
     	'jumlah_peserta_warga_miskin' => 'required|numeric',
-    	'foto_id' => 'numeric',
-    	'file_id' => 'numeric',
+    	'foto_id' => 'required|numeric',
+    	'file_id' => 'required|numeric',
     ];
 
     protected $attributes = [

@@ -27,10 +27,10 @@ class TahapKonstruksiTahap2 extends BaseApiModel
         'no_sp2d' => 'required|type:string',
         'tanggal_sp2d' => 'required|type:date',
         'jumlah' => 'required|type:numeric',
-        'file_spm' => 'type:file',
-        'file_sp2d' => 'type:file',
-        'file_berita_acara' => 'type:file',
-        'file_kuitansi' => 'type:file',
+        'file_spm' => 'required|type:file',
+        'file_sp2d' => 'required|type:file',
+        'file_berita_acara' => 'required|type:file',
+        'file_kuitansi' => 'required|type:file',
     ];
 
     protected $rules = [
@@ -40,10 +40,10 @@ class TahapKonstruksiTahap2 extends BaseApiModel
         'no_sp2d' => 'required',
         'tanggal_sp2d' => 'required',
         'jumlah' => 'required|numeric',
-        'file_spm' => 'numeric',
-        'file_sp2d' => 'numeric',
-        'file_berita_acara' => 'numeric',
-        'file_kuitansi' => 'numeric',
+        'file_spm' => 'required|numeric',
+        'file_sp2d' => 'required|numeric',
+        'file_berita_acara' => 'required|numeric',
+        'file_kuitansi' => 'required|numeric',
     ];
 
     protected $attributes = [
