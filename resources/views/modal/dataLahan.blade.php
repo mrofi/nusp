@@ -11,7 +11,7 @@
 				<label class="control-label col-md-4">Lahan :</label>
 			<div class="col-md-8"><hr></div>
 			</div>
-			{!! nusp_forms(array_only($formDataLahan, ['lahan_luas_m2', 'lahan_status', 'lahan_surat_hibah', 'lahan_akses_jalan'])) !!}
+			{!! nusp_forms(array_only($formDataLahan, ['lahan_luas', 'lahan_status', 'lahan_surat_hibah', 'lahan_akses_jalan'])) !!}
 		</div>
 		<div class="col-md-6">
 			<div class="row">	
@@ -45,7 +45,7 @@
 				<label class="control-label col-md-4">Lahan :</label>
 				<div class="col-md-8"><hr></div>
 			</div>
-			{!! nusp_staticForms(array_only($formDataLahan, ['lahan_luas_m2', 'lahan_status', 'lahan_surat_hibah', 'lahan_akses_jalan'])) !!}
+			{!! nusp_staticForms(array_only($formDataLahan, ['lahan_luas', 'lahan_status', 'lahan_surat_hibah', 'lahan_akses_jalan'])) !!}
 		</div>
 		<div class="col-md-6">
 			<div class="row">	
