@@ -164,6 +164,10 @@
 	    font-size: 1em!important;
 	}
 
+	#tahapan-kegiatan .header-item {
+	    cursor: pointer!important;
+	}
+
 @media (min-width: 992px) {
 
 	.navsidebar.affix {
