@@ -101,6 +101,10 @@
 		text-align: right;
 	}
 
+	.report-item .col-xs-5.text-center {
+		text-align: center;
+	}
+
 	.report-header.affix {
 	    position: fixed!important;
 	    width: 66.33%;
@@ -172,7 +176,8 @@
 	    font-size: 1em!important;
 	}
 
-	#tahapan-kegiatan .header-item {
+	#tahapan-kegiatan .header-item, 
+	#tahapan-kegiatan .knob-tab {
 	    cursor: pointer!important;
 	}
 
@@ -324,30 +329,26 @@
 		  							</a>
 		  					</div>
 		  				</div>
-	  					<div class="col-md-2 report-item">
-	  						<div class="row">
-	  							<div class="col-xs-5 visible-xs visible-sm">Tanggal SK</div>
-	  							<div class="col-xs-7 col-md-12 tanggal_sk"></div>
+	  					<div class="col-md-8 detail-content">
+	  						<div class="row profil-w-p">
+			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Luas Wilayah (m<sup>2</sup>)</div><div class="col-xs-7 col-md-12 luas_wilayah"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk</div><div class="col-xs-7 col-md-12 jumlah_penduduk"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Laki-laki</div><div class="col-xs-7 col-md-12 jumlah_penduduk_laki_laki"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Perempuan</div><div class="col-xs-7 col-md-12 jumlah_penduduk_perempuan"></div></div></div> 
 	  						</div>
-	  					</div>
-	  					<div class="col-md-2 report-item">
-	  						<div class="row">
-	  							<div class="col-xs-5 visible-xs visible-sm">Nomor SK</div>
-	  							<div class="col-xs-7 col-md-12 nomor_sk"></div>
+	  						<div class="row visible-xs visible-sm profil-kk">
+			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; KK</div><div class="col-xs-7 col-md-12 jumlah_kk"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; KK Miskin</div><div class="col-xs-7 col-md-12 jumlah_kk_miskin"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; RW / Dusun / Lingkungan</div><div class="col-xs-7 col-md-12 jumlah_rw_dusun_lingkungan"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; RT</div><div class="col-xs-7 col-md-12 jumlah_rt"></div></div></div> 
 	  						</div>
-	  					</div>
-	  					<div class="col-md-2 report-item">
-	  						<div class="row">
-	  							<div class="col-xs-5 visible-xs visible-sm">Jumlah Lokasi</div>
-	  							<div class="col-xs-7 col-md-12 jumlah_lokasi"></div>
+	  						<div class="row visible-xs visible-sm profil-s">
+			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Jamban (KK)</div><div class="col-xs-7 col-md-12 jumlah_jamban_kk"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Septik Tank (KK)</div><div class="col-xs-7 col-md-12 jumlah_septik_tank"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; MCK (Unit)</div><div class="col-xs-7 col-md-12 jumlah_mck_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; MCK (Bilik)</div><div class="col-xs-7 col-md-12 jumlah_mck_bilik"></div></div></div> 
 	  						</div>
-	  					</div>
-	  					<div class="col-md-2 report-item">
-	  						<div class="row">
-	  							<div class="col-xs-5 visible-xs visible-sm">File SK</div>
-	  							<div class="col-xs-7 col-md-12 file_id"></div>
+	  						<div class="row visible-xs visible-sm profil-a">
+			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Sumur Gali (Unit)</div><div class="col-xs-7 col-md-12 jumlah_sumur_gali_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Sumur Pompa (Unit)</div><div class="col-xs-7 col-md-12 jumlah_sumur_pompa_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Kran Umum (Unit)</div><div class="col-xs-7 col-md-12 jumlah_kran_umum_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penampungan Air hujan (PAH) (Unit)</div><div class="col-xs-7 col-md-12 jumlah_pah_unit"></div></div></div> 
 	  						</div>
-	  					</div>
+	  						<div class="row visible-xs visible-sm profil-e">
+			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SD (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_sd"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SMP (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_smp"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SMA (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_sma"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; &gt; SMA</div><div class="col-xs-7 col-md-12 pendidikan_perguruan_tinggi"></div></div></div> 
+	  						</div>
+	  						<div class="row visible-xs visible-sm profil-dll">
+			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Nama BKM</div><div class="col-xs-7 col-md-12 nama_bkm"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Status Keberdayaan BKM</div><div class="col-xs-7 col-md-12 status_keberdayaan_bkm"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Luas Kawasan (Ha)</div><div class="col-xs-7 col-md-12 luas_kawasan"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tipografi / Karakteristik</div><div class="col-xs-7 col-md-12 tipografi_karakteristik"></div></div></div> 
+	  						</div>
+		  				</div>
 	  					<div class="row visible-xs visible-sm">&nbsp;</div>
 		  			</li></div>
 
@@ -680,6 +681,10 @@
 				var tt = tahapans[t];
 				if (item[tt] == '-') item[tt] = null;
 
+				var i = '<div class="col-sm-6 col-md-3 visible-xs visible-sm"><a href="#" class="knob-tab" data-target="#tahap-rekap" data-toggle="tab"><div class="panel panel-info text-center"><small>Tampilkan Semua Tahapan</small></div></a> </div> ';
+				var ii = $(i);
+				$(elm).find('.detail-content > .tahap-'+tt).append(ii);
+
 				for (x in item[tt]) {
 					var p = item[tt][x];
 					var c = '<ul>';
@@ -697,7 +702,7 @@
 				}
 
 				var ps = (item.persentase == undefined || item.persentase.length == 0 || item.persentase[tt] == undefined) ? '0%' : item.persentase[tt]+'%';
-				var f = '<div class="col-sm-6 col-md-3"><input type="text" class="knob" value="'+ps+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <h3 class="knob-label">'+titles[t]+'</h3></div>';
+				var f = '<div class="col-sm-6 col-md-3 knob-tab" data-target="#tahap-'+tt+'" data-toggle="tab"><div class="row"><div class="col-xs-5 col-md-12 text-center"><input type="text" class="knob" value="'+ps+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"></div><div class="col-xs-7 col-md-12"><h3 class="knob-label">'+titles[t]+'</h3></div></div></div>';
 				var ff = $(f);
 				$(elm).find('.detail-content > .tahap-rekap').append(ff);
 
@@ -710,6 +715,15 @@
 			$('[data-toggle=popover]').popover();
 
 			$('#tahapan-kegiatan .header-item').eq(0).tab('show');
+
+			$(elm).find('.knob-tab').each(function(i, e) {
+				var k = $(this);
+				var t = k.data('target');
+				k.click(function(e) {
+					$('#tahapan-kegiatan').find('li[data-target='+t+']').tab('show');
+				})
+
+			})
 
 		}
 
