@@ -407,7 +407,7 @@
 		  				<div class="col-md-4 report-item text-left no-left-border no-top-border">
 		  					<div class="desakel"></div>
 		  				</div>
-		  				<div class="col-md-2 report-item detail-content">
+		  				<div class="col-md-2 report-item detail-content data-kontrak">
 		  					<div class="row">
 		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Kontrak</div>
 		  						<div class="col-xs-7 col-sm-8 col-md-12">
@@ -422,7 +422,7 @@
 		  						</div>
 		  					</div>
 		  				</div>
-		  				<div class="col-md-2 report-item detail-content">
+		  				<div class="col-md-2 report-item detail-content data-tanggal">
 		  					<div class="row">
 		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Tanggal</div>
 		  						<div class="col-xs-7 col-sm-8 col-md-12">
@@ -437,7 +437,7 @@
 		  						</div>
 		  					</div>
 		  				</div>
-		  				<div class="col-md-2 report-item detail-content">
+		  				<div class="col-md-2 report-item detail-content data-pelaksanaan">
 		  					<div class="row">
 		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Pelaksanaan</div>
 		  						<div class="col-xs-7 col-sm-8 col-md-12">
@@ -452,7 +452,7 @@
 		  						</div>
 		  					</div>
 		  				</div>
-		  				<div class="col-md-2 report-item detail-content">
+		  				<div class="col-md-2 report-item detail-content data-dana">
 		  					<div class="row">
 		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Dana</div>
 		  						<div class="col-xs-7 col-sm-8 col-md-12">
@@ -711,6 +711,24 @@
 
 			$('#tahapan-kegiatan .header-item').eq(0).tab('show');
 
+		}
+
+		window.data_kontrakAction = function(elm, item) {
+			if (item.no_kontrak == '-' && item.tanggal_kontrak == '-') {
+				$(elm).find('.detail-content.data-kontrak').html('-');
+			}
+
+			if (item.pelaksanaan_tanggal_mulai == '-' && item.pelaksanaan_tanggal_selesai == '-') {
+				$(elm).find('.detail-content.data-tanggal').html('-');
+			}
+
+			if (item.pelaksanaan_jenis_infrastruktur == '-' && item.pelaksanaan_volume_unit == '-') {
+				$(elm).find('.detail-content.data-pelaksanaan').html('-');
+			}
+
+			if (item.dana_nilai_blm == '-' && item.dana_nilai_swadaya == '-') {
+				$(elm).find('.detail-content.data-dana').html('-');
+			}
 		}
 
 		window.data_lahanAction = function(elm, item) {
