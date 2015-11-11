@@ -20,7 +20,6 @@ class TahapPascaKonstruksiPemanfaatan extends BaseApiModel
         'realisasi_jumlah_pemanfaat',
         'realisasi_jumlah_perempuan',
         'realisasi_jumlah_warga_miskin', 
-        'verified_at',
     ];
 
     protected $forms = [

@@ -35,7 +35,6 @@ class ProfilDesaKelurahan extends BaseApiModel
         'pendidikan_smp',
         'pendidikan_sma',
         'pendidikan_perguruan_tinggi',
-        'verified_at',
     ];
 
     protected $forms = [

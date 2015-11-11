@@ -19,7 +19,6 @@ class DataLahan extends BaseApiModel
         'pemanfaat_jumlah_jiwa',
         'pemanfaat_jumlah_perempuan',
         'pemanfaat_jumlah_miskin',
-        'verified_at',
     ];
 
 

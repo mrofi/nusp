@@ -17,7 +17,6 @@ class TahapKonstruksiTahap2 extends BaseApiModel
         'file_sp2d',
         'file_berita_acara',
         'file_kuitansi', 
-        'verified_at',
     ];
 
     protected $forms = [

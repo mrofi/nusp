@@ -19,7 +19,6 @@ class TahapPersiapanIdentifikasiKelembagaan extends BaseApiModel
         'nama_notaris',
         'nama_bank' ,
         'no_rekening_bank', 
-        'verified_at',
     ];
 
     protected $forms = [

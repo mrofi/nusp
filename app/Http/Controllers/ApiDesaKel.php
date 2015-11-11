@@ -34,7 +34,7 @@ class ApiDesaKel extends ApiController
                     if (!isset($kec['desaKels'])) continue;
                     foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
                     {
-                		$data = isset($allData[$desaKel['kode']]) ? $allData[$desaKel['kode']] : [];
+                		$data = isset($allData[$desaKel['kode']]) && $allData[$desaKel['kode']]['verified_at'] != null ? $allData[$desaKel['kode']] : [];
 
                         $newDesaKel = ['desaKel' => $desaKel['nama_wilayah'], 'slug' => str_slug('wilayah '.$desaKel['nama_wilayah'], '-'), 'id' => $desaKel['kode'], 'role_id' => $desaKel['role_id'], $identifier => $data ];
 

@@ -12,7 +12,6 @@ class TahapPerencanaanPembentukanKpp extends BaseApiModel
         'nama_tppi',
         'jumlah_pengurus_kpp',
         'jumlah_perempuan_pengurus_kpp', 
-        'verified_at',
     ];
 
     protected $forms = [

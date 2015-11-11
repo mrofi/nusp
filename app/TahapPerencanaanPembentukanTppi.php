@@ -12,7 +12,6 @@ class TahapPerencanaanPembentukanTppi extends BaseApiModel
         'nama_tppi',
         'jumlah_pengurus_tppi',
         'jumlah_perempuan_pengurus_tppi', 
-        'verified_at',
     ];
 
     protected $forms = [

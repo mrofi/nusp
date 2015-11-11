@@ -182,8 +182,10 @@ class ApiController extends Controller
 
             if (! $verify) return ['error' => 'no data'];
             
-            $verify->update(['verified_at' => $request->get('verify') !== 'false' ? nusp_dateToDB(nusp_dateToShow()) : null]);
+            $verify->verified_at = $request->get('verify') !== 'false' ? nusp_dateToDB(nusp_dateToShow()) : null;
 
+            $verify->save();
+            
             $verify = $verify->toArray();
 
             return ['message' => 'ok', 'verified' => $verify];

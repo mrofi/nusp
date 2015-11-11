@@ -29,7 +29,7 @@ class ApiKabKota extends ApiController
             
             foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
             {
-                $data = isset($allData[$kabKota['kode']]) ? $allData[$kabKota['kode']] : [];
+                $data = isset($allData[$kabKota['kode']]) && $allData[$kabKota['kode']]['verified_at'] != null ? $allData[$kabKota['kode']] : [];
             
                 $newKabKota = ['kabKota' => $kabKota['nama_wilayah'], 'slug' => str_slug($kabKota['nama_wilayah']), 'id' => $kabKota['kode'], 'role_id' => $kabKota['role_id'], $identifier => $data ];
                 

@@ -15,7 +15,6 @@ class TahapPascaKonstruksiSerahTerimaPekerjaan extends BaseApiModel
         'file_tppi_ke_bkm',
         'file_bkm_ke_staker_ppk_nusp_2',
         'file_ppk_ke_kpp', 
-        'verified_at',
     ];
 
     protected $forms = [

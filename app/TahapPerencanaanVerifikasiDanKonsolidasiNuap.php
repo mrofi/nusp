@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TahapPerencanaanVerifikasiDanKonsolidasiNuap extends BaseApiModel
 {
-    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'hasil_verifikasi', 'catatan', 'verified_at'];
+    protected $fillable = ['kode_wilayah', 'tanggal_mulai', 'tanggal_selesai', 'hasil_verifikasi', 'catatan'];
 
     protected $forms = [
         'kode_wilayah' => 'required|type:hidden',

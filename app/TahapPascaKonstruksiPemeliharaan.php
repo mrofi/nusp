@@ -10,7 +10,6 @@ class TahapPascaKonstruksiPemeliharaan extends BaseApiModel
         'kode_wilayah', 
         'tanggal_mulai_digunakan',
         'apakah_sudah_terbentuk_kpp', 
-        'verified_at',
     ];
 
     protected $forms = [

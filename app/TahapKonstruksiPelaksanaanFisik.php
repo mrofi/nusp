@@ -13,7 +13,6 @@ class TahapKonstruksiPelaksanaanFisik extends BaseApiModel
         'daftar_hadir_tenaga_kerja',
         'penggunaan_alat_berat',
         'biaya_penggunaan_alat_berat', 
-        'verified_at',
     ];
 
     protected $forms = [
