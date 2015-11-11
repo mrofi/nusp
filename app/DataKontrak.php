@@ -14,6 +14,7 @@ class DataKontrak extends BaseApiModel
         'pelaksanaan_volume_unit',
         'dana_nilai_blm',
         'dana_nilai_swadaya',
+        'verified_at',
     ];
 
 

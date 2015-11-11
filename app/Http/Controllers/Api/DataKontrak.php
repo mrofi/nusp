@@ -16,6 +16,6 @@ class DataKontrak extends ApiDesaKel
 
     public function index(Request $request)
     {
-        return $this->showIndex('data_kontak');
+        return $this->showIndex('data_kontrak');
     }
 }

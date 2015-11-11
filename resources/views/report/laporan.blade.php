@@ -146,12 +146,16 @@
 	    cursor: pointer;
 	}
 
-	#profil-desa-kelurahan .report-item .desakel {
+	#profil-desa-kelurahan .report-item .desakel,
+	#data-kontrak .report-item .desakel,
+	#data-lahan-pemanfaat .report-item .desakel {
 		font-size: 1.1em;
 		font-weight: 600;
 	}
 
-	#profil-desa-kelurahan .report-item .koordinat {
+	#profil-desa-kelurahan .report-item .koordinat,
+	#data-kontrak .report-item .koordinat,
+	#data-lahan-pemanfaat .report-item .koordinat {
 		font-size: 0.9em;
 	}
 
@@ -210,7 +214,8 @@
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/penetapan-lokasi') }}" data-deep="2" data-name="penetapan" data-attrs="kode_wilayah,tanggal_sk,nomor_sk,jumlah_lokasi,file_id" href="#penetapan-lokasi">Penetapan Lokasi</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/profil-desa-kelurahan') }}" data-deep="3" data-name="profil" data-attrs="kode_wilayah,luas_wilayah,jumlah_penduduk,jumlah_penduduk_laki_laki,jumlah_penduduk_perempuan,jumlah_kk,jumlah_kk_miskin,jumlah_rw_dusun_lingkungan,jumlah_rt,jumlah_jamban_kk,jumlah_septik_tank,jumlah_mck_unit,jumlah_mck_bilik,jumlah_sumur_gali_unit,jumlah_sumur_pompa_unit,jumlah_kran_umum_unit,jumlah_pah_unit,nama_bkm,status_keberdayaan_bkm,luas_kawasan,tipografi_karakteristik,koordinat_latitude,koordinat_longitude,pendidikan_sd,pendidikan_smp,pendidikan_sma,pendidikan_perguruan_tinggi"  href="#profil-desa-kelurahan">Profil Desa / Kelurahan</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/tahap-kegiatan') }}" href="#tahapan-kegiatan" data-deep="3" data-name="tahapan" data-attrs="kode_wilayah,persiapan,perencanaan,konstruksi,pasca_konstruksi,persentase">Tahapan Kegiatan</a></li>
-		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#kontrak-lahan-pemanfaat">Kontrak, Lahan &amp; Pemanfaat</a></li>
+		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/data-kontrak') }}" href="#data-kontrak"  data-name="data_kontrak" data-deep="3" data-attrs="kode_wilayah,no_kontrak,tanggal_kontrak,pelaksanaan_tanggal_mulai,pelaksanaan_tanggal_selesai,pelaksanaan_jenis_infrastruktur,pelaksanaan_volume_unit,dana_nilai_blm,dana_nilai_swadaya">Data Kontrak</a></li>
+		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/data-lahan') }}" href="#data-lahan-pemanfaat"  data-name="data_lahan" data-deep="3" data-attrs="kode_wilayah,nama_rt_rw,jenis_infrastruktur,lahan_luas,lahan_status,lahan_surat_hibah,lahan_akses_jalan,koordinat_latitude,koordinat_longitude,pemanfaat_jumlah_kk,pemanfaat_jumlah_kk_miskin,pemanfaat_jumlah_jiwa,pemanfaat_jumlah_perempuan,pemanfaat_jumlah_miskin">Data Lahan &amp; Pemanfaat</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#fisik-keuangan">Fisik &amp; Keuangan</a></li>
 					</ul>
 				</nav>  			
@@ -315,26 +320,30 @@
 		  							</a>
 		  					</div>
 		  				</div>
-	  					<div class="col-md-8 detail-content">
-	  						<div class="row profil-w-p">
-			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Luas Wilayah (m<sup>2</sup>)</div><div class="col-xs-7 col-md-12 luas_wilayah"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk</div><div class="col-xs-7 col-md-12 jumlah_penduduk"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Laki-laki</div><div class="col-xs-7 col-md-12 jumlah_penduduk_laki_laki"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penduduk Perempuan</div><div class="col-xs-7 col-md-12 jumlah_penduduk_perempuan"></div></div></div> 
+	  					<div class="col-md-2 report-item">
+	  						<div class="row">
+	  							<div class="col-xs-5 visible-xs visible-sm">Tanggal SK</div>
+	  							<div class="col-xs-7 col-md-12 tanggal_sk"></div>
 	  						</div>
-	  						<div class="row visible-xs visible-sm profil-kk">
-			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; KK</div><div class="col-xs-7 col-md-12 jumlah_kk"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; KK Miskin</div><div class="col-xs-7 col-md-12 jumlah_kk_miskin"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; RW / Dusun / Lingkungan</div><div class="col-xs-7 col-md-12 jumlah_rw_dusun_lingkungan"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; RT</div><div class="col-xs-7 col-md-12 jumlah_rt"></div></div></div> 
+	  					</div>
+	  					<div class="col-md-2 report-item">
+	  						<div class="row">
+	  							<div class="col-xs-5 visible-xs visible-sm">Nomor SK</div>
+	  							<div class="col-xs-7 col-md-12 nomor_sk"></div>
 	  						</div>
-	  						<div class="row visible-xs visible-sm profil-s">
-			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Jamban (KK)</div><div class="col-xs-7 col-md-12 jumlah_jamban_kk"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Septik Tank (KK)</div><div class="col-xs-7 col-md-12 jumlah_septik_tank"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; MCK (Unit)</div><div class="col-xs-7 col-md-12 jumlah_mck_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; MCK (Bilik)</div><div class="col-xs-7 col-md-12 jumlah_mck_bilik"></div></div></div> 
+	  					</div>
+	  					<div class="col-md-2 report-item">
+	  						<div class="row">
+	  							<div class="col-xs-5 visible-xs visible-sm">Jumlah Lokasi</div>
+	  							<div class="col-xs-7 col-md-12 jumlah_lokasi"></div>
 	  						</div>
-	  						<div class="row visible-xs visible-sm profil-a">
-			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Sumur Gali (Unit)</div><div class="col-xs-7 col-md-12 jumlah_sumur_gali_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Sumur Pompa (Unit)</div><div class="col-xs-7 col-md-12 jumlah_sumur_pompa_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Kran Umum (Unit)</div><div class="col-xs-7 col-md-12 jumlah_kran_umum_unit"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; Penampungan Air hujan (PAH) (Unit)</div><div class="col-xs-7 col-md-12 jumlah_pah_unit"></div></div></div> 
+	  					</div>
+	  					<div class="col-md-2 report-item">
+	  						<div class="row">
+	  							<div class="col-xs-5 visible-xs visible-sm">File SK</div>
+	  							<div class="col-xs-7 col-md-12 file_id"></div>
 	  						</div>
-	  						<div class="row visible-xs visible-sm profil-e">
-			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SD (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_sd"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SMP (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_smp"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; SMA (jiwa)</div><div class="col-xs-7 col-md-12 pendidikan_sma"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">&sum; &gt; SMA</div><div class="col-xs-7 col-md-12 pendidikan_perguruan_tinggi"></div></div></div> 
-	  						</div>
-	  						<div class="row visible-xs visible-sm profil-dll">
-			  					<div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Nama BKM</div><div class="col-xs-7 col-md-12 nama_bkm"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Status Keberdayaan BKM</div><div class="col-xs-7 col-md-12 status_keberdayaan_bkm"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Luas Kawasan (Ha)</div><div class="col-xs-7 col-md-12 luas_kawasan"></div></div></div><div class="col-md-3 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tipografi / Karakteristik</div><div class="col-xs-7 col-md-12 tipografi_karakteristik"></div></div></div> 
-	  						</div>
-		  				</div>
+	  					</div>
 	  					<div class="row visible-xs visible-sm">&nbsp;</div>
 		  			</li></div>
 
@@ -375,6 +384,150 @@
 		  				</div>
 	  					<div class="row visible-xs visible-sm">&nbsp;</div>
 		  			</li></div>
+	  			</div>
+	  			<div id="data-kontrak" class="tab-pane fade">	  				
+		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
+						<ul class="row list-unstyled">
+			  				<li class="col-md-4 header-item no-left-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-file-o fa-2x"></i><br>Kontrak</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-calendar fa-2x"></i><br>Tanggal</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-refresh fa-2x"></i><br>Pelaksanaan</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-money fa-2x"></i><br>Dana</li>
+						</ul>
+		  			</div>
+		  			<ul class="report-content list-unstyled">
+		  			</ul>
+		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+					<div class="list-format-2 hide"><li class="report-item-kabkota"><h2 class="kabkota"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+		  			<div class="list-format-3 hide"><li>
+		  				<div class="col-md-4 report-item text-left no-left-border no-top-border">
+		  					<div class="desakel"></div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Kontrak</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12">
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>No. Kontrak</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 no_kontrak"></div>
+		  							</div>
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Tanggal Kontrak</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 tanggal_kontrak"></div>
+		  							</div>
+		  						</div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Tanggal</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12">
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Tanggal Mulai</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 pelaksanaan_tanggal_mulai"></div>
+		  							</div>
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Tanggal Selesai</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 pelaksanaan_tanggal_selesai"></div>
+		  							</div>
+		  						</div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Pelaksanaan</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12">
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Jenis Infrastruktur</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 pelaksanaan_jenis_infrastruktur"></div>
+		  							</div>
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Volume (Unit)</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 pelaksanaan_volume_unit"></div>
+		  							</div>
+		  						</div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Dana</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12">
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>BLM</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 dana_nilai_blm"></div>
+		  							</div>
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Swadaya</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 dana_nilai_swadaya"></div>
+		  							</div>
+		  						</div>
+		  					</div>
+		  				</div>
+	  					<div class="row visible-xs visible-sm">&nbsp;</div>
+		  			</li></div>
+
+	  			</div>
+	  			<div id="data-lahan-pemanfaat" class="tab-pane fade">	  				
+		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
+						<ul class="row list-unstyled">
+			  				<li class="col-md-4 header-item no-left-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-globe fa-2x"></i><br>Lahan</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>KK Miskin</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-female fa-2x"></i><br>Perempuan</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-user fa-2x"></i><br>Warga Miskin</li>
+						</ul>
+		  			</div>
+		  			<ul class="report-content list-unstyled">
+		  			</ul>
+		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+					<div class="list-format-2 hide"><li class="report-item-kabkota"><h2 class="kabkota"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+		  			<div class="list-format-3 hide"><li>
+		  				<div class="col-md-4 report-item text-left no-left-border no-top-border">
+		  					<div class="desakel"></div>
+		  					<div class="koordinat">
+		  						Koordinat : 	
+		  							<a href="#">
+				  						Lat : <span class="koordinat_latitude"></span> | 
+				  						Long : <span class="koordinat_longitude"></span>
+		  							</a>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Lahan</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12">
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>No. Kontrak</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 no_kontrak"></div>
+		  							</div>
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Tanggal Kontrak</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 tanggal_kontrak"></div>
+		  							</div>
+		  						</div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">KK Miskin</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12 area-kk_miskin"></div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Perempuan</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12 area-perempuan"></div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Warga Miskin</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12 area-warga_miskin"></div>
+		  					</div>
+		  				</div>
+	  					<div class="row visible-xs visible-sm">&nbsp;</div>
+		  			</li></div>
+
 	  			</div>
 	  			<div id="kontrak-lahan-pemanfaat" class="tab-pane fade">	  				
 		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">

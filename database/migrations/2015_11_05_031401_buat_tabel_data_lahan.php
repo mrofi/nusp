@@ -17,7 +17,7 @@ class BuatTabelDataLahan extends Migration
             $table->string('kode_wilayah', 20);
             $table->string('nama_rt_rw', 20);
             $table->string('jenis_infrastruktur');
-            $table->decimal('lahan_luas_m2', 8,3)->unsigned();
+            $table->decimal('lahan_luas', 8,3)->unsigned();
             $table->string('lahan_status');
             $table->enum('lahan_surat_hibah', ['ada', 'tidak ada']);
             $table->string('lahan_akses_jalan');
