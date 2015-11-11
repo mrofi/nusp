@@ -122,6 +122,10 @@
 	    background-color: #ddd;
 	}
 
+	small.bold {
+		font-weight: 700;
+	}
+
 	#profil-desa-kelurahan .tab-content {
 	    background-color: #ddd;
 	    padding: 0;
@@ -485,6 +489,12 @@
 		  				<div class="col-md-4 report-item text-left no-left-border no-top-border">
 		  					<div class="desakel"></div>
 		  					<div class="koordinat">
+		  						<small>	RT / RW :</small> <span class="nama_rt_rw"></span>
+		  					</div>
+		  					<div class="koordinat">
+		  						<small>	Jenis Infrastruktur :</small> <span class="jenis_infrastruktur"></span>		  						
+		  					</div>
+		  					<div class="koordinat">
 		  						Koordinat : 	
 		  							<a href="#">
 				  						Lat : <span class="koordinat_latitude"></span> | 
@@ -497,12 +507,16 @@
 		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Lahan</div>
 		  						<div class="col-xs-7 col-sm-8 col-md-12">
 		  							<div class="row">
-			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>No. Kontrak</small></div>
-			  							<div class="col-xs-12 col-sm-8 col-md-12 no_kontrak"></div>
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small class="bold">Luas (Ha) :</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 lahan_luas"></div>
 		  							</div>
 		  							<div class="row">
-			  							<div class="col-xs-12 col-sm-4 col-md-12"><small>Tanggal Kontrak</small></div>
-			  							<div class="col-xs-12 col-sm-8 col-md-12 tanggal_kontrak"></div>
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small class="bold">Status :</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 lahan_status"></div>
+		  							</div>
+		  							<div class="row">
+			  							<div class="col-xs-12 col-sm-4 col-md-12"><small class="bold">Akses Jalan :</small></div>
+			  							<div class="col-xs-12 col-sm-8 col-md-12 lahan_akses_jalan"></div>
 		  							</div>
 		  						</div>
 		  					</div>
@@ -697,6 +711,35 @@
 
 			$('#tahapan-kegiatan .header-item').eq(0).tab('show');
 
+		}
+
+		window.data_lahanAction = function(elm, item) {
+			console.log(elm)
+			console.log(item)
+
+			// kk miskin
+			if (item.pemanfaat_jumlah_kk_miskin !=  '-') {
+				var knob = '<input type="text" class="knob" data-min="0" data-max="'+item.pemanfaat_jumlah_kk+'" value="'+item.pemanfaat_jumlah_kk_miskin+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <div><small>Jumlah KK Miskin : <br>'+item.pemanfaat_jumlah_kk_miskin+' dari '+item.pemanfaat_jumlah_kk+' KK</small></div>';
+				$(elm).find('.area-kk_miskin').append(knob);
+
+				$(elm).find('.area-kk_miskin .knob').knob().trigger('change');
+			}
+
+			// warga perempuan
+			if (item.pemanfaat_jumlah_perempuan !=  '-') {
+				var knob = '<input type="text" class="knob" data-min="0" data-max="'+item.pemanfaat_jumlah_jiwa+'" value="'+item.pemanfaat_jumlah_perempuan+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <div><small>Jumlah Perempuan : <br>'+item.pemanfaat_jumlah_perempuan+' dari '+item.pemanfaat_jumlah_jiwa+' Warga</small></div>';
+				$(elm).find('.area-perempuan').append(knob);
+
+				$(elm).find('.area-perempuan .knob').knob().trigger('change');
+			}
+
+			// warga miskin
+			if (item.pemanfaat_jumlah_perempuan !=  '-') {
+				var knob = '<input type="text" class="knob" data-min="0" data-max="'+item.pemanfaat_jumlah_jiwa+'" value="'+item.pemanfaat_jumlah_miskin+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <div><small>Jumlah Warga Miskin : <br>'+item.pemanfaat_jumlah_miskin+' dari '+item.pemanfaat_jumlah_jiwa+' Warga</small></div>';
+				$(elm).find('.area-warga_miskin').append(knob);
+
+				$(elm).find('.area-warga_miskin .knob').knob().trigger('change');
+			}
 		}
 
 		window.allList = [];

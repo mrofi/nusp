@@ -53,7 +53,7 @@
   <li><a href="#" data-target_1="#modal-profil-desa-kel" data-target_2="#modal-report-profil-desa-kel"  data-target_3="#modal-report-profil-desa-kel" data-toggle="modal">Profil Kelurahan</a></li>
   <li><a href="#" data-target_1="#modal-tahap-kegiatan" data-target_2="#modal-report-tahap-kegiatan" data-target_3="#modal-report-tahap-kegiatan" data-toggle="modal">Tahap Kegiatan</a></li>
   <li><a href="#" data-target_1="#modal-data-kontrak" data-target_2="#modal-report-data-kontrak" data-target_3="#modal-report-data-kontrak" data-toggle="modal">Data Kontrak</a></li>
-  <li><a href="#" data-target_1="#modal-data-lahan" data-target_2="#modal-report-data-lahan" data-target_3="#modal-report-data-lahan" data-toggle="modal">Data Lahan</a></li>
+  <li><a href="#" data-target_1="#modal-data-lahan" data-target_2="#modal-report-data-lahan" data-target_3="#modal-report-data-lahan" data-toggle="modal">Data Lahan &amp; Pemanfaat</a></li>
   <li><a href="#">Fisik &amp; Keuangan</a></li>
 </ul>
 </div>
