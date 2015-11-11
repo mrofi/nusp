@@ -503,7 +503,7 @@
 		  							</a>
 		  					</div>
 		  				</div>
-		  				<div class="col-md-2 report-item detail-content">
+		  				<div class="col-md-2 report-item detail-content area-lahan">
 		  					<div class="row">
 		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Lahan</div>
 		  						<div class="col-xs-7 col-sm-8 col-md-12">
@@ -664,6 +664,10 @@
 
 		window.profilAction = function(elm, item) {
 			$('#profil-desa-kelurahan .header-item').eq(1).tab('show');
+
+			if (item.nama_bkm == '-' && item.luas_wilayah == '-' && item.koordinat_latitude == '-' && item.koordinat_longitude == '-') {
+				$(elm).find('.koordinat').html('');
+			}
 		}
 
 		$('#tahapan-kegiatan .header-item').on('show.bs.tab', function(e) {
@@ -746,8 +750,15 @@
 		}
 
 		window.data_lahanAction = function(elm, item) {
-			console.log(elm)
-			console.log(item)
+			// keterangan
+			if (item.nama_rt_rw == '-' && item.jenis_infrastruktur == '-' && item.koordinat_latitude == '-' && item.koordinat_longitude == '-') {
+				$(elm).find('.koordinat').html('');
+			}
+
+			// lahan
+			if (item.lahan_luas == '-' && item.lahan_status == '-' && item.lahan_akses_jalan == '-') {
+				$(elm).find('.detail-content.area-lahan').html('-');
+			}
 
 			// kk miskin
 			if (item.pemanfaat_jumlah_kk_miskin !=  '-') {
@@ -755,6 +766,8 @@
 				$(elm).find('.area-kk_miskin').append(knob);
 
 				$(elm).find('.area-kk_miskin .knob').knob().trigger('change');
+			} else {
+				$(elm).find('.detail-content.area-kk_miskin').html('-');
 			}
 
 			// warga perempuan
@@ -763,6 +776,8 @@
 				$(elm).find('.area-perempuan').append(knob);
 
 				$(elm).find('.area-perempuan .knob').knob().trigger('change');
+			} else {
+				$(elm).find('.detail-content.area-perempuan').html('-');
 			}
 
 			// warga miskin
@@ -771,6 +786,8 @@
 				$(elm).find('.area-warga_miskin').append(knob);
 
 				$(elm).find('.area-warga_miskin .knob').knob().trigger('change');
+			} else {
+				$(elm).find('.detail-content.area-warga_miskin').html('-');
 			}
 		}
 

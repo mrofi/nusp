@@ -183,5 +183,184 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
 	Route::get('profil-desa-kelurahan', 'ProfilDesaKelurahan@download');
 
+	Route::get('kontrak-lahan-pemanfaat', function()
+	{
+		$title = 'Kontrak, Lahan dan Pemanfaat';
+        
+        $title2 = 'download NUSP 2 '.$title;
+        
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+        {
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            $sheetTitle = 'Data Kontrak';
+
+            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle)
+            {
+                $sheet->fromArray(with(new \App\DataKontrak)->excelDesaKel());
+
+                $sheet->prependRow(1, [$sheetTitle]);
+
+                $sheet->setAutoSize(true);
+
+                $sheet->setWidth('A', 5);
+            });
+
+            $sheetTitle = 'Data Lahan Dan Pemanfaat';
+
+            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle)
+            {
+                $sheet->fromArray(with(new \App\DataLahan)->excelDesaKel());
+
+                $sheet->prependRow(1, [$sheetTitle]);
+
+                $sheet->setAutoSize(true);
+
+                $sheet->setWidth('A', 5);
+            });
+
+        })->download('xlsx');
+	});
+
+	Route::get('tahap-persiapan', function()
+	{
+		$title = 'Tahap Persiapan';
+        
+        $title2 = 'download NUSP 2 '.$title;
+        
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+        {
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            foreach(with(new \App\TahapKegiatan)->getPersiapan() as $tahapan)
+            {	            
+	            $sheetTitle = substr(html_entity_decode($tahapan::$title), 0, 30);
+
+	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
+	            {
+	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
+
+	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
+
+	                $sheet->setAutoSize(true);
+
+	                $sheet->setWidth('A', 5);
+	            });
+            }
+
+        })->download('xlsx');
+	});
+
+	Route::get('tahap-perencanaan', function()
+	{
+		$title = 'Tahap Perencanaan';
+        
+        $title2 = 'download NUSP 2 '.$title;
+        
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+        {
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            foreach(with(new \App\TahapKegiatan)->getPerencanaan() as $tahapan)
+            {	            
+	            $sheetTitle = substr(html_entity_decode($tahapan::$title), 0, 30);
+
+	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
+	            {
+	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
+
+	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
+
+	                $sheet->setAutoSize(true);
+
+	                $sheet->setWidth('A', 5);
+	            });
+            }
+
+        })->download('xlsx');
+	});
+
+	Route::get('tahap-konstruksi', function()
+	{
+		$title = 'Tahap Konstruksi';
+        
+        $title2 = 'download NUSP 2 '.$title;
+        
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+        {
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            foreach(with(new \App\TahapKegiatan)->getKonstruksi() as $tahapan)
+            {	            
+	            $sheetTitle = substr(html_entity_decode($tahapan::$title), 0, 30);
+
+	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
+	            {
+	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
+
+	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
+
+	                $sheet->setAutoSize(true);
+
+	                $sheet->setWidth('A', 5);
+	            });
+            }
+
+        })->download('xlsx');
+	});
+	
+	Route::get('tahap-pasca-konstruksi', function()
+	{
+		$title = 'Tahap Pasca Konstruksi';
+        
+        $title2 = 'download NUSP 2 '.$title;
+        
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+        {
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            foreach(with(new \App\TahapKegiatan)->getPascaKonstruksi() as $tahapan)
+            {	            
+	            $sheetTitle = substr(html_entity_decode($tahapan::$title), 0, 30);
+
+	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
+	            {
+	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
+
+	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
+
+	                $sheet->setAutoSize(true);
+
+	                $sheet->setWidth('A', 5);
+	            });
+            }
+
+        })->download('xlsx');
+	});
 });
 

@@ -19,6 +19,7 @@ class TahapKegiatan extends Wilayah
 		\App\TahapPerencanaanPenyusunanDokumenNuap::class,
 		\App\TahapPerencanaanVerifikasiDanKonsolidasiNuap::class,
 		\App\TahapPerencanaanRevisiDokumenNuap::class,
+		\App\TahapPerencanaanRembugKhususPerempuanKedua::class,
 		\App\TahapPerencanaanMusyawarahKelurahanKetiga::class,
 		\App\TahapPerencanaanPenyusunanRkm::class,
 		\App\TahapPerencanaanVerifikasiFinalisasiDokumenRkm::class,
@@ -27,7 +28,6 @@ class TahapKegiatan extends Wilayah
 	];
 	protected $tahapanKonstruksi = [
 		\App\TahapKonstruksiKontrakSp3::class,
-		\App\TahapKonstruksiRembugKhususPerempuanKedua::class,
 		\App\TahapKonstruksiMusyawarahKelurahanKeempat::class,
 		\App\TahapKonstruksiPelaksanaanFisik::class,
 		\App\TahapKonstruksiTahap1::class,
@@ -46,4 +46,23 @@ class TahapKegiatan extends Wilayah
 		return ['wilayah' => parent::get_wilayah($kode_wilayah)];
 	}
 
+	public function getPersiapan()
+	{
+		return $this->tahapanPersiapan;
+	}
+
+	public function getPerencanaan()
+	{
+		return $this->tahapanPerencanaan;
+	}
+
+	public function getKonstruksi()
+	{
+		return $this->tahapanKonstruksi;
+	}
+
+	public function getPascaKonstruksi()
+	{
+		return $this->tahapanPascaKonstruksi;
+	}
 }

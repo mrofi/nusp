@@ -51,8 +51,11 @@
                 <li><a href="{{ nusp_asset('download/penetapan-lokasi') }}">Penetapan Lokasi</a></li>
                 <li class="divider"></li>
                 <li><a href="{{ nusp_asset('download/profil-desa-kelurahan') }}">Profil Kelurahan</a></li>
-                <li><a href="{{ nusp_asset('') }}">Tahapan Kegiatan</a></li>
-                <li><a href="{{ nusp_asset('') }}">Kontrak, Lahan &amp; Pemanfaat</a></li>
+                <li><a href="{{ nusp_asset('download/tahap-persiapan') }}">Tahapan Persiapan</a></li>
+                <li><a href="{{ nusp_asset('download/tahap-perencanaan') }}">Tahapan Perencanaan</a></li>
+                <li><a href="{{ nusp_asset('download/tahap-konstruksi') }}">Tahapan Konstruksi</a></li>
+                <li><a href="{{ nusp_asset('download/tahap-pasca-konstruksi') }}">Tahapan Pasca Konstruksi</a></li>
+                <li><a href="{{ nusp_asset('download/kontrak-lahan-pemanfaat') }}">Kontrak, Lahan &amp; Pemanfaat</a></li>
                 <li><a href="{{ nusp_asset('') }}">Fisik &amp; Keuangan</a></li>
               </ul>
             </li>

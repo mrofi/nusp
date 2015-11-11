@@ -103,7 +103,7 @@ class BaseModel extends Model
 
             foreach ($propinsi['kabKotas'] as $kode_kk => $kabKota) 
             {
-                $data = isset($allData[$kabKota['kode']]) ? $allData[$kabKota['kode']] : [];
+                $data = isset($allData[$kabKota['kode']]) && $allData[$kabKota['kode']]['verified_at'] != null ? $allData[$kabKota['kode']] : [];
 
                 if (count($data)) $data = array_combine($this->get_captions(), array_only($data, $this->get_fields()));
 
@@ -146,7 +146,7 @@ class BaseModel extends Model
 
                     foreach ($kec['desaKels'] as $kode_dk => $desaKel) 
                     {
-                        $data = isset($allData[$desaKel['kode']]) ? $allData[$desaKel['kode']] : [];
+                        $data = isset($allData[$desaKel['kode']])  && $allData[$desaKel['kode']]['verified_at'] != null ? $allData[$desaKel['kode']] : [];
 
                         if (count($data)) $data = array_combine($this->get_captions(), array_only($data, $this->get_fields()));
                         
