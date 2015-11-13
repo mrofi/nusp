@@ -285,9 +285,9 @@
 @section('footer')
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>v.</b> 0.3.0 alpha <b><a href="https://twitter.com/m_rofi">MR</a></b>
+          <b>v.</b> 0.3.0 alpha <b><a no-href="https://twitter.com/m_rofi">MR</a></b>
         </div>
-        <strong class="hidden-xs">&copy; 2015 {!! 2015 < ($year = \Carbon::now()->format('Y')) ? "- $year" : ""  !!} - Supported by <a href="https://github.com/mrofi/nusp">AMRI</a>.</strong>
+        <strong class="hidden-xs">&copy; 2015 {!! 2015 < ($year = \Carbon::now()->format('Y')) ? "- $year" : ""  !!} - Supported by <a no-href="https://github.com/mrofi/nusp">AMRI</a>.</strong>
       </footer>
 @endsection
 
