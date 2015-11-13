@@ -96,12 +96,12 @@ $('.modal-nusp').each(function(i, e) {
           var value = data[x];
           var input = form.find('#'+ x);
           
-          if (input.is('#foto_id') && value != '') {
+          if (input.is('.form-photo') && value != '') {
             form.find('.fileinput-preview').removeClass('hide').html('<img src="{{ nusp_asset('api/foto/') }}'+value+'" style="max-height: 140px;">');
             fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
             fileinput.find('.fileinput-exists').removeClass('hide');
           }
-          else if (input.is('#file_id') && value != '') {
+          else if (input.is('.form-file') && value != '') {
             form.find('.form-control-static.file-placer').removeClass('hide').html('<a href="{{ nusp_asset('api/file/') }}'+value+'" target="_blank">Download SK</a>');
             fileinput.addClass('fileinput-exists').removeClass('fileinput-new');
             fileinput.find('.fileinput-exists').removeClass('hide');

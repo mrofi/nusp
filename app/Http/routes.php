@@ -362,5 +362,60 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
         })->download('xlsx');
 	});
+
+	Route::get('form-penyerapan-blm', function()
+	{
+		$title = 'Form Penyerapan BLM';
+
+        $title2 = 'download NUSP 2 '.$title;
+
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+		{
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+            $sheetTitle = $title;
+
+            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle)
+            {
+
+                $data1 = with(new \App\TahapPersiapanIdentifikasiKelembagaan)->excelDesaKel();
+
+                $data2 = with(new \App\TahapKonstruksiKontrakSp3)->excelDesaKel();
+
+                $data3 = with(new \App\TahapKonstruksiTahap1)->excelDesaKel();
+
+                $data4 = with(new \App\TahapKonstruksiTahap2)->excelDesaKel();
+                
+                $data5 = with(new \App\TahapPascaKonstruksiTahap3)->excelDesaKel();
+
+                $allData = [];
+
+                for ($i = 0; $i < count($data1); $i++)
+                {
+                	$jumlahDana = (isset($data3[$i]['Jumlah']) ? $data3[$i]['Jumlah'] : 0) + (isset($data4[$i]['Jumlah']) ? $data4[$i]['Jumlah'] : 0) + (isset($data5[$i]['Jumlah']) ? $data5[$i]['Jumlah'] : 0);
+
+                	$persentase = isset($data2[$i]['Nilai Kontrak']) ? $jumlahDana / $data2[$i]['Nilai Kontrak'] * 100 : 0;
+
+                	$data = array_merge(array_only($data1[$i], ['Nama BKM']), $data2[$i], $data3[$i], $data4[$i], $data5[$i], ['Total Dana' => $jumlahDana, 'Total Dana (%)' => $persentase]);
+
+                	$allData[] = $data;
+                }
+
+                $sheet->fromArray($allData);
+
+                $sheet->prependRow(1, [$sheetTitle]);
+
+                $sheet->setAutoSize(true);
+
+                $sheet->setWidth('A', 5);
+
+			});
+        })->download('xlsx');
+	});
 });
 

@@ -334,7 +334,7 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
             <div class="form-group">
                 '.$label.'
                 <div class="'.$bsCols.'">
-                    <input type="hidden" name="foto_id" id="foto_id">           
+                    <input type="hidden" name="'.$name.'" id="'.$name.'"  class="form-photo">           
                     <div class="fileinput fileinput-new" data-provides="fileinput" data-action="'.nusp_asset('api/foto').'" data-target="#foto_id">
                         <div class="fileinput-preview thumbnail hide" data-trigger="fileinput" style="max-height: 150px;"> </div>
                         <div>
@@ -366,7 +366,7 @@ function nusp_form($name, $format = '', $bslCols = '', $bsCols = '')
                 '.$label.'
                 <div class="'.$bsCols.'">
                     <p class="form-control-static file-placer hide" id="file"></p>
-                    <input type="hidden" name="file_id" id="file_id">           
+                    <input type="hidden" name="'.$name.'" id="'.$name.'" class="form-file">           
                     <div class="fileinput fileinput-new" data-provides="fileinput" data-action="'.nusp_asset('api/file').'" data-target="#file_id">
                       <div class="fileinput-preview thumbnail hide" data-trigger="fileinput" style="max-height: 150px;"></div>
                       <div>
@@ -479,7 +479,7 @@ function nusp_staticForm($name, $format = '', $bslCols = '', $bsCols = '')
         <div class="row form-group-static">
             '.$label.'
             <div class="col-sm-6">
-                <div id="foto_id" class="form-control-static fileinput-preview hide" data-trigger="fileinput" style="max-height: 150px;"></div>
+                <div id="'.$name.'" class="form-control-static form-photo fileinput-preview hide" data-trigger="fileinput" style="max-height: 150px;"></div>
             </div>
         </div>
     ';    
@@ -488,7 +488,7 @@ function nusp_staticForm($name, $format = '', $bslCols = '', $bsCols = '')
         <div class="row form-group-static">
             '.$label.'
             <div class="col-sm-6">
-                <p class="form-control-static file-placer hide" id="file_id"></p>
+                <p class="form-control-static form-file file-placer hide" id="'.$name.'"></p>
             </div>
         </div>
     ';    
