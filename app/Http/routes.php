@@ -462,7 +462,7 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
                 	$persentase = isset($data2[$i]['Nilai Kontrak']) && $data2[$i]['Nilai Kontrak'] > 0 ? $jumlahDana / $data2[$i]['Nilai Kontrak'] * 100 : 0;
 
-                	$data = array_merge($data1[$i], $data2[$i], $data3[$i], $data4[$i], $data5[$i], ['Total Dana' => $jumlahDana, 'Total Dana (%)' => $persentase]);
+                	$data = array_merge($data1[$i], $data2[$i], $data3[$i], $data4[$i], $data5[$i], ['Total Dana' => $jumlahDana, 'Persentase (%)' => $persentase]);
 
                 	$allData[] = $data	;
                 }
