@@ -80,7 +80,7 @@ class BaseModel extends Model
         return $this->fillable;
     }
 
-    public function excelDataKabKota()
+    public function excelDataKabKota(\Closure  $callback = null)
     {
 
         $allData = [];
@@ -105,7 +105,9 @@ class BaseModel extends Model
             {
                 $data = isset($allData[$kabKota['kode']]) && $allData[$kabKota['kode']]['verified_at'] != null ? $allData[$kabKota['kode']] : [];
 
-                if (count($data)) $data = array_combine($this->get_captions(), array_only($data, $this->get_fields()));
+                $data = ($callback !== null) ? $callback($data) : $data;
+
+                $data = array_combine($this->get_captions(), count($data) ? array_only($data, $this->get_fields()) : $this->get_attributes());
 
                 $newKabKota = array_merge(['No' => ++$no, 'Propinsi' => $propinsi['nama_wilayah'], 'Kabupaten / Kota' => $kabKota['nama_wilayah']], $data);
                 
@@ -116,7 +118,7 @@ class BaseModel extends Model
         return $datas;
     }
 
-    public function excelDesaKel()
+    public function excelDesaKel(\Closure  $callback = null, \Closure  $callback2 = null)
     {
 
         $allData = [];
@@ -148,7 +150,11 @@ class BaseModel extends Model
                     {
                         $data = isset($allData[$desaKel['kode']])  && $allData[$desaKel['kode']]['verified_at'] != null ? $allData[$desaKel['kode']] : [];
 
-                        if (count($data)) $data = array_combine($this->get_captions(), array_only($data, $this->get_fields()));
+                        $data = ($callback !== null) ? $callback($data) : $data;
+
+                        $data = array_combine($this->get_captions(), count($data) ? array_only($data, $this->get_fields()) : $this->get_attributes());
+                        
+                        $data = ($callback2 !== null) ? $callback2($data) : $data;
                         
                         $newDesaKel = array_merge(['No' => ++$no, 'Propinsi' => $propinsi['nama_wilayah'], 'Kabupaten / Kota' => $kabKota['nama_wilayah'], 'Kecamatan' => isset($kec['nama_wilayah']) ? $kec['nama_wilayah'] : '', 'Desa / Kelurahan' => $desaKel['nama_wilayah']], $data);
                 

@@ -41,7 +41,12 @@ class SosialisasiKabKota extends ApiKabKota
 
             $excel->sheet(snake_case($title, '_'), function($sheet) use ($title, $title2)
             {
-                $sheet->fromArray($this->model->excelDataKabKota());
+                $sheet->fromArray($this->model->excelDataKabKota(function($data = []) 
+                {
+                  if (isset($data['foto_id'])) $data['foto_id'] = ($data['foto_id'] != null) ? 'Ada' : 'Tidak Ada';
+
+                  return $data;
+                }));
 
                 $sheet->prependRow(1, [$title]);
 

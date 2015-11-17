@@ -59,7 +59,7 @@ class DataLahan extends BaseApiModel
 
     ];
 
-    protected $attribbutes = [
+    protected $attributes = [
     	'kode_wilayah' => '',
     	'nama_rt_rw' => '',
         'jenis_infrastruktur' => '',

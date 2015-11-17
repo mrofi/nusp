@@ -248,7 +248,13 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
 	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
 	            {
-	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
+	                $sheet->fromArray(with(new $tahapan)->excelDataKabKota(function($data = []) 
+	                {
+	                  if (isset($data['file_id'])) $data['file_id'] = ($data['file_id'] != null) ? 'Ada' : 'Tidak Ada';
+	                  if (isset($data['foto_id'])) $data['foto_id'] = ($data['foto_id'] != null) ? 'Ada' : 'Tidak Ada';
+
+	                  return $data;
+	                }));
 
 	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
 
@@ -282,8 +288,13 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
 	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
 	            {
-	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
-
+					$sheet->fromArray(with(new $tahapan)->excelDataKabKota(function($data = []) 
+	                {
+		                if (isset($data['file_id'])) $data['file_id'] = ($data['file_id'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['foto_id'])) $data['foto_id'] = ($data['foto_id'] != null) ? 'Ada' : 'Tidak Ada';
+		                
+		                return $data;
+	                }));
 	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
 
 	                $sheet->setAutoSize(true);
@@ -316,7 +327,19 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
 	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
 	            {
-	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
+	                $sheet->fromArray(with(new $tahapan)->excelDataKabKota(function($data = []) 
+	                {
+		                if (isset($data['file_id'])) $data['file_id'] = ($data['file_id'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['foto_id'])) $data['foto_id'] = ($data['foto_id'] != null) ? 'Ada' : 'Tidak Ada';
+						if (isset($data['kontrak_sp3'])) $data['kontrak_sp3'] = ($data['kontrak_sp3'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['ringkasan_kontrak'])) $data['ringkasan_kontrak'] = ($data['ringkasan_kontrak'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['file_spm'])) $data['file_spm'] = ($data['file_spm'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['file_sp2d'])) $data['file_sp2d'] = ($data['file_sp2d'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['file_berita_acara'])) $data['file_berita_acara'] = ($data['file_berita_acara'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['file_kuitansi'])) $data['file_kuitansi'] = ($data['file_kuitansi'] != null) ? 'Ada' : 'Tidak Ada';
+		                
+		                return $data;
+	                }));
 
 	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
 
@@ -350,7 +373,16 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
 	            $excel->sheet(snake_case($sheetTitle, '_'), function($sheet) use ($sheetTitle, $tahapan)
 	            {
-	                $sheet->fromArray(with(new $tahapan)->excelDesaKel());
+	            	$sheet->fromArray(with(new $tahapan)->excelDataKabKota(function($data = []) 
+	                {
+		                if (isset($data['file_id'])) $data['file_id'] = ($data['file_id'] != null) ? 'Ada' : 'Tidak Ada';
+		                if (isset($data['foto_id'])) $data['foto_id'] = ($data['foto_id'] != null) ? 'Ada' : 'Tidak Ada';
+						if (isset($data['file_tppi_ke_bkm'])) $data['file_tppi_ke_bkm'] = ($data['file_tppi_ke_bkm'] != null) ? 'Ada' : 'Tidak Ada';
+						if (isset($data['file_bkm_ke_staker_ppk_nusp_2'])) $data['file_bkm_ke_staker_ppk_nusp_2'] = ($data['file_bkm_ke_staker_ppk_nusp_2'] != null) ? 'Ada' : 'Tidak Ada';
+						if (isset($data['file_ppk_ke_kpp'])) $data['file_ppk_ke_kpp'] = ($data['file_ppk_ke_kpp'] != null) ? 'Ada' : 'Tidak Ada';
+		                
+		                return $data;
+	                }));
 
 	                $sheet->prependRow(1, [html_entity_decode($tahapan::$title)]);
 
@@ -387,28 +419,160 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 
                 $data2 = with(new \App\TahapKonstruksiKontrakSp3)->excelDesaKel();
 
-                $data3 = with(new \App\TahapKonstruksiTahap1)->excelDesaKel();
+                $data3 = with(new \App\TahapKonstruksiTahap1)->excelDesaKel(null, function($data = [])
+            	{
+            		foreach ($data as $key => $value) 
+            		{
+            			$data[$key.'_3'] = $value;
+            			unset($data[$key]);
+            		}
+            		return array_only($data, ['No Spm_3','Tanggal Spm_3','No Sp2d_3','Tanggal Sp2d_3','Jumlah_3']);
+            	});
 
-                $data4 = with(new \App\TahapKonstruksiTahap2)->excelDesaKel();
+                $data4 = with(new \App\TahapKonstruksiTahap2)->excelDesaKel(null, function($data = [])
+            	{
+            		foreach ($data as $key => $value) 
+            		{
+            			$data[$key.'_4'] = $value;
+            			unset($data[$key]);
+            		}
+            		return array_only($data, ['No Spm_4','Tanggal Spm_4','No Sp2d_4','Tanggal Sp2d_4','Jumlah_4']);
+            	});
                 
-                $data5 = with(new \App\TahapPascaKonstruksiTahap3)->excelDesaKel();
+                $data5 = with(new \App\TahapPascaKonstruksiTahap3)->excelDesaKel(null, function($data = [])
+            	{
+            		foreach ($data as $key => $value) 
+            		{
+            			$data[$key.'_5'] = $value;
+            			unset($data[$key]);
+            		}
+            		return array_only($data, ['No Spm_5','Tanggal Spm_5','No Sp2d_5','Tanggal Sp2d_5','Jumlah_5']);
+            	});
 
                 $allData = [];
 
                 for ($i = 0; $i < count($data1); $i++)
                 {
-                	$jumlahDana = (isset($data3[$i]['Jumlah']) ? $data3[$i]['Jumlah'] : 0) + (isset($data4[$i]['Jumlah']) ? $data4[$i]['Jumlah'] : 0) + (isset($data5[$i]['Jumlah']) ? $data5[$i]['Jumlah'] : 0);
 
-                	$persentase = isset($data2[$i]['Nilai Kontrak']) ? $jumlahDana / $data2[$i]['Nilai Kontrak'] * 100 : 0;
+                	$data1[$i] = array_only($data1[$i], ['No','Propinsi','Kabupaten / Kota','Kecamatan','Desa / Kelurahan','Kode Wilayah','Nama BKM']);
 
-                	$data = array_merge(array_only($data1[$i], ['Nama BKM']), $data2[$i], $data3[$i], $data4[$i], $data5[$i], ['Total Dana' => $jumlahDana, 'Total Dana (%)' => $persentase]);
+                	$data2[$i] = array_only($data2[$i], ['Paket Pekerjaan','No Kontrak','Tanggal Kontrak','Nilai Kontrak','Tanggal Mulai','Tanggal Selesai']);
 
-                	$allData[] = $data;
+                	$jumlahDana = (isset($data3[$i]['Jumlah_3']) ? $data3[$i]['Jumlah_3'] : 0) + (isset($data4[$i]['Jumlah_4']) ? $data4[$i]['Jumlah_4'] : 0) + (isset($data5[$i]['Jumlah_5']) ? $data5[$i]['Jumlah_5'] : 0);
+
+                	$persentase = isset($data2[$i]['Nilai Kontrak']) && $data2[$i]['Nilai Kontrak'] > 0 ? $jumlahDana / $data2[$i]['Nilai Kontrak'] * 100 : 0;
+
+                	$data = array_merge($data1[$i], $data2[$i], $data3[$i], $data4[$i], $data5[$i], ['Total Dana' => $jumlahDana, 'Total Dana (%)' => $persentase]);
+
+                	$allData[] = $data	;
                 }
 
-                $sheet->fromArray($allData);
+                $header = array_map(function($v) 
+            	{
+            		return trim($v, '_345');
+            	}, array_keys($allData[0]));
+
+                $sheet->fromArray($allData, null, 'A1', false, false);
+
+                $sheet->prependRow(1, $header);
+
+                $header[7] = 'Kontrak SP3';
+                $header[8] = 'Kontrak SP3';
+                $header[9] = 'Kontrak SP3';
+                $header[10] = 'Kontrak SP3';
+                $header[11] = 'Kontrak SP3';
+                $header[12] = 'Kontrak SP3';
+                $header[13] = 'SPM';
+                $header[14] = 'SPM';
+                $header[15] = 'SP2D';
+                $header[16] = 'SP2D';
+                $header[17] = 'Jumlah Dana';
+                $header[18] = 'SPM';
+                $header[19] = 'SPM';
+                $header[20] = 'SP2D';
+                $header[21] = 'SP2D';
+                $header[22] = 'Jumlah Dana';
+                $header[23] = 'SPM';
+                $header[24] = 'SPM';
+                $header[25] = 'SP2D';
+                $header[26] = 'SP2D';
+                $header[27] = 'Jumlah Dana';
+
+                $sheet->prependRow(1, $header);
+
+                $header[13] = 'TAHAP-1 (40%)';
+                $header[14] = 'TAHAP-1 (40%)';
+                $header[15] = 'TAHAP-1 (40%)';
+                $header[16] = 'TAHAP-1 (40%)';
+                $header[17] = 'TAHAP-1 (40%)';
+                $header[18] = 'TAHAP-2 (30%)';
+                $header[19] = 'TAHAP-2 (30%)';
+                $header[20] = 'TAHAP-2 (30%)';
+                $header[21] = 'TAHAP-2 (30%)';
+                $header[22] = 'TAHAP-2 (30%)';
+                $header[23] = 'TAHAP-3 (30%)';
+                $header[24] = 'TAHAP-3 (30%)';
+                $header[25] = 'TAHAP-3 (30%)';
+                $header[26] = 'TAHAP-3 (30%)';
+                $header[27] = 'TAHAP-3 (30%)';
+
+                $sheet->prependRow(1, $header);
+
+                $header[13] = 'PENCAIRAN BLM';
+                $header[14] = 'PENCAIRAN BLM';
+                $header[15] = 'PENCAIRAN BLM';
+                $header[16] = 'PENCAIRAN BLM';
+                $header[17] = 'PENCAIRAN BLM';
+                $header[18] = 'PENCAIRAN BLM';
+                $header[19] = 'PENCAIRAN BLM';
+                $header[20] = 'PENCAIRAN BLM';
+                $header[21] = 'PENCAIRAN BLM';
+                $header[22] = 'PENCAIRAN BLM';
+                $header[23] = 'PENCAIRAN BLM';
+                $header[24] = 'PENCAIRAN BLM';
+                $header[25] = 'PENCAIRAN BLM';
+                $header[26] = 'PENCAIRAN BLM';
+                $header[27] = 'PENCAIRAN BLM';
+                $header[28] = 'TOTAL';
+                $header[29] = 'TOTAL';
+
+                $sheet->prependRow(1, $header);
+
 
                 $sheet->prependRow(1, [$sheetTitle]);
+
+                $sheet->setMergeColumn([
+                	'columns' => ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+                	'rows' => [[2, 5]]
+                ]);
+
+                $sheet->setMergeColumn([
+                	'columns' => ['AC','AD'],
+                	'rows' => [[3, 5]]
+                ]);
+
+                $sheet->setMergeColumn([
+                	'columns' => ['R','W','AB'],
+                	'rows' => [[4, 5]]
+                ]);
+
+                $sheet->mergeCells('H2:M4');
+                $sheet->mergeCells('N2:AB2');
+                $sheet->mergeCells('N3:R3');
+                $sheet->mergeCells('S3:W3');
+                $sheet->mergeCells('X3:AB3');
+                $sheet->mergeCells('N4:O4');
+                $sheet->mergeCells('P4:Q4');
+                $sheet->mergeCells('S4:T4');
+                $sheet->mergeCells('U4:V4');
+                $sheet->mergeCells('X4:Y4');
+                $sheet->mergeCells('Z4:AA4');
+                
+                $sheet->cells('A2:AD5', function($cell)
+                {
+                	$cell->setAlignment('center');
+                	$cell->setValignment('middle');
+                });
 
                 $sheet->setAutoSize(true);
 

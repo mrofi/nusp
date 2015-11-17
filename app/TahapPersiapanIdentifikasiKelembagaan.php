@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TahapPersiapanIdentifikasiKelembagaan extends BaseApiModel
 {
     protected $fillable = [
+        'kode_wilayah',
         'nama_bkm',
         'tanggal_pembentukan',
         'nama_koordinator',
