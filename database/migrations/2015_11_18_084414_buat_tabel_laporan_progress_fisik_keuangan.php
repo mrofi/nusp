@@ -15,7 +15,8 @@ class BuatTabelLaporanProgressFisikKeuangan extends Migration
         Schema::create('laporan_progress_fisik_keuangans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('kode_wilayah', 20);
-            $table->date('periode')
+            $table->integer('progress_fisik_keuangan_id')->unsigned();
+            $table->date('periode');
             $table->bigInteger('blm')->unsigned();
             $table->bigInteger('swadaya')->unsigned();
             $table->text('swadaya_in_kind_material');

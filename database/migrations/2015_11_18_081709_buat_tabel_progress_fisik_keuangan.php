@@ -23,7 +23,7 @@ class BuatTabelProgressFisikKeuangan extends Migration
             $table->bigInteger('rab_swadaya_operasional')->unsigned();
             $table->text('swadaya_in_kind_material');
             $table->bigInteger('swadaya_in_kind_material_rp')->unsigned();
-            $table->decimal('swadaya_in_kind_lahan_m2', 12, 3);
+            $table->decimal('swadaya_in_kind_lahan_ha', 12, 3);
             $table->bigInteger('swadaya_in_kind_lahan_rp')->unsigned();
             $table->integer('swadaya_in_kind_hok')->unsigned();
             $table->bigInteger('swadaya_in_kind_hok_rp')->unsigned();
