@@ -54,7 +54,7 @@
   <li><a href="#" data-target_1="#modal-tahap-kegiatan" data-target_2="#modal-report-tahap-kegiatan" data-target_3="#modal-report-tahap-kegiatan" data-toggle="modal">Tahap Kegiatan</a></li>
   <li><a href="#" data-target_1="#modal-data-kontrak" data-target_2="#modal-report-data-kontrak" data-target_3="#modal-report-data-kontrak" data-toggle="modal">Data Kontrak</a></li>
   <li><a href="#" data-target_1="#modal-data-lahan" data-target_2="#modal-report-data-lahan" data-target_3="#modal-report-data-lahan" data-toggle="modal">Data Lahan &amp; Pemanfaat</a></li>
-  <li><a href="#">Fisik &amp; Keuangan</a></li>
+  <li><a href="#" data-target_1="#modal-fisik-keuangan" data-target_2="#modal-report-fisik-keuangan" data-target_3="#modal-report-fisik-keuangan" data-toggle="modal">Fisik &amp; Keuangan</a></li>
 </ul>
 </div>
 
@@ -101,6 +101,7 @@
 @include('modal.hapus')
 @include('modal.verifikasi')
 @include('modal.unverifikasi')
+@include('modal.progressFisikKeuangan')
 
 
 @include('modal.sosialisasi', ['allowed' => true])
@@ -140,6 +141,7 @@
 @include('modal.tahapPascaKonstruksiTahap3', ['allowed' => true])
 @include('modal.dataKontrak', ['allowed' => true])
 @include('modal.dataLahan', ['allowed' => true])
+@include('modal.progressFisikKeuangan', ['allowed' => true])
 
 
 <!-- Main content -->
@@ -408,90 +410,6 @@ $('#regional-wrapper').on('click', '.nusp-data-link', function(e) {
 
 })
 
-// var regionalList = [
-//   { 
-//     propinsi: 'Jawa Tengah', 
-//     slug: 'content-jawa-tengah',
-//     id: '1',
-//     kabKotas: [
-//       {
-//         kabKota: 'Kota Semarang',
-//         slug: 'content-kota-semarang',
-//         id: '1',
-//         desaKels: [
-//           {
-//             desaKel: 'Desa Gemuk',
-//             slug: 'content-desa-gemuk',
-//             id: '1',
-//           },
-//           {
-//             desaKel: 'Desa Podoudan',
-//             slug: 'content-desa-podoudan',
-//             id: '1',
-//           },
-//         ]
-//       },
-//       {
-//         kabKota: 'Kota Pekalongan',
-//         slug: 'content-kota-pekalongan',
-//         id: '1',
-//         desaKels:  [
-//           {
-//             desaKel: 'Desa Kandang Panjang',
-//             slug: 'content-desa-kandang-panjang',
-//             id: '1',
-//           },
-//           {
-//             desaKel: 'Desa Kraton Pasir Sari',
-//             slug: 'content-desa-kraton-pasir-sari',
-//             id: '1',
-//           },
-//         ]
-//       }
-//     ]
-//   },
-//   { 
-//     propinsi: 'Jawa Barat', 
-//     slug: 'content-jawa-barat',
-//     id: '1',
-//     kabKotas: [
-//       {
-//         kabKota: 'Kota Bandung',
-//         slug: 'content-kota-bandung',
-//         id: '1',
-//         desaKels: [
-//           {
-//             desaKel: 'Desa Anyar',
-//             slug: 'content-desa-anyar',
-//             id: '1',
-//           },
-//           {
-//             desaKel: 'Desa Lama',
-//             slug: 'content-desa-lama',
-//             id: '1',
-//           },
-//         ]
-//       },
-//       {
-//         kabKota: 'Kota Sukabumi',
-//         slug: 'content-kota-sukabumi',
-//         id: '1',
-//         desaKels:  [
-//           {
-//             desaKel: 'Desa SUka sari',
-//             slug: 'content-desa-suka-sari',
-//             id: '1',
-//           },
-//           {
-//             desaKel: 'Desa Prambanan',
-//             slug: 'content-desa-prambanan',
-//             id: '1',
-//           },
-//         ]
-//       }
-//     ]
-//   }
-// ];
 </script>
 
 @endpush

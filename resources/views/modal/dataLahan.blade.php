@@ -1,5 +1,5 @@
 @section('data-lahan.modal.id', 'modal-data-lahan')
-@section('data-lahan.modal.title', 'Data Lahan')
+@section('data-lahan.modal.title', 'Data Lahan &amp; Pemanfaat')
 @section('data-lahan.modal.form.action', nusp_asset('api/data-lahan'))
 
 @section('data-lahan.modal.form.body')	
@@ -31,7 +31,7 @@
 
 
 @section('reportOnly.data-lahan.modal.id', 'modal-report-data-lahan')
-@section('reportOnly.data-lahan.modal.title', 'Data Lahan')
+@section('reportOnly.data-lahan.modal.title', 'Data Lahan &amp; Pemanfaat')
 @section('reportOnly.data-lahan.modal.form.action', nusp_asset('api/data-lahan'))
 @section('reportOnly.data-lahan.modal.close', 'Tutup')
 @section('reportOnly.data-lahan.modal.submit.class', 'hide')
