@@ -156,14 +156,16 @@
 
 	#profil-desa-kelurahan .report-item .desakel,
 	#data-kontrak .report-item .desakel,
-	#data-lahan-pemanfaat .report-item .desakel {
+	#data-lahan-pemanfaat .report-item .desakel,
+	#penyerapan-blm .report-item .desakel {
 		font-size: 1.1em;
 		font-weight: 600;
 	}
 
 	#profil-desa-kelurahan .report-item .koordinat,
 	#data-kontrak .report-item .koordinat,
-	#data-lahan-pemanfaat .report-item .koordinat {
+	#data-lahan-pemanfaat .report-item .koordinat,
+	#penyerapan-blm .report-item .koordinat {
 		font-size: 0.9em;
 	}
 
@@ -225,6 +227,7 @@
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/tahap-kegiatan') }}" href="#tahapan-kegiatan" data-deep="3" data-name="tahapan" data-attrs="kode_wilayah,persiapan,perencanaan,konstruksi,pasca_konstruksi,persentase">Tahapan Kegiatan</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/data-kontrak') }}" href="#data-kontrak"  data-name="data_kontrak" data-deep="3" data-attrs="kode_wilayah,no_kontrak,tanggal_kontrak,pelaksanaan_tanggal_mulai,pelaksanaan_tanggal_selesai,pelaksanaan_jenis_infrastruktur,pelaksanaan_volume_unit,dana_nilai_blm,dana_nilai_swadaya">Data Kontrak</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/data-lahan') }}" href="#data-lahan-pemanfaat"  data-name="data_lahan" data-deep="3" data-attrs="kode_wilayah,nama_rt_rw,jenis_infrastruktur,lahan_luas,lahan_status,lahan_surat_hibah,lahan_akses_jalan,koordinat_latitude,koordinat_longitude,pemanfaat_jumlah_kk,pemanfaat_jumlah_kk_miskin,pemanfaat_jumlah_jiwa,pemanfaat_jumlah_perempuan,pemanfaat_jumlah_miskin">Data Lahan &amp; Pemanfaat</a></li>
+		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/penyerapan-blm') }}" href="#penyerapan-blm" data-name="penyerapan_blm" data-deep="3" data-attrs="kode_wilayah,data1_nama_bkm,data2_paket_pekerjaan,data2_no_kontrak,data2_tanggal_kontrak,data2_nilai_kontrak,data2_tanggal_mulai,data2_tanggal_selesai,data3_no_spm,data3_tanggal_spm,data3_no_sp2d,data3_tanggal_sp2d,data3_jumlah,data4_no_spm,data4_tanggal_spm,data4_no_sp2d,data4_tanggal_sp2d,data4_jumlah,data5_no_spm,data5_tanggal_spm,data5_no_sp2d,data5_tanggal_sp2d,data5_jumlah,">Penyerapan BLM</a></li> 
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#fisik-keuangan">Fisik &amp; Keuangan</a></li>
 					</ul>
 				</nav>  			
@@ -466,6 +469,58 @@
 			  							<div class="col-xs-12 col-sm-8 col-md-12 dana_nilai_swadaya"></div>
 		  							</div>
 		  						</div>
+		  					</div>
+		  				</div>
+	  					<div class="row visible-xs visible-sm">&nbsp;</div>
+		  			</li></div>
+
+	  			</div>
+	  			<div id="penyerapan-blm" class="tab-pane fade">	  				
+		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
+						<ul class="row list-unstyled">
+			  				<li class="col-md-4 header-item no-left-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-globe fa-2x"></i><br>Tahap 1</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>Tahap 2</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-female fa-2x"></i><br>Tahap 3</li>
+			  				<li class="col-md-2 header-item"><i class="fa fa-user fa-2x"></i><br>Total</li>
+						</ul>
+		  			</div>
+		  			<ul class="report-content list-unstyled">
+		  			</ul>
+		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+					<div class="list-format-2 hide"><li class="report-item-kabkota"><h2 class="kabkota"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+		  			<div class="list-format-3 hide"><li>
+		  				<div class="col-md-4 report-item text-left no-left-border no-top-border">
+		  					<div class="desakel"></div>
+		  					<div class="koordinat">
+		  						<small>	Nama BKM :</small> <span class="data1_nama_bkm"></span>
+		  					</div>
+		  					<div class="koordinat">
+		  						<small>	Nilai Kontrak :</small> <span class="data2_nilai_kontrak"></span>		  						
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Tahap 1</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12 area-tahap_1"></div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Tahap 2</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12 area-tahap_2"></div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Tahap 3</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12 area-tahap_3"></div>
+		  					</div>
+		  				</div>
+		  				<div class="col-md-2 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Total</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12 area-total"></div>
 		  					</div>
 		  				</div>
 	  					<div class="row visible-xs visible-sm">&nbsp;</div>
@@ -788,6 +843,42 @@
 				$(elm).find('.area-warga_miskin .knob').knob().trigger('change');
 			} else {
 				$(elm).find('.detail-content.area-warga_miskin').html('-');
+			}
+		}
+
+		window.penyerapan_blmAction = function(elm, item) {
+			if (item.data1_nama_bkm == '-' && item.data2_nilai_kontrak == '-') {
+				$(elm).find('.koordinat').html('');
+			}
+
+			// tahap 1
+			if (item.data3_jumlah != '-') {
+				var knob = '<input type="text" class="knob" data-min="0" data-max="'+item.data2_nilai_kontrak+'" value="'+item.data3_jumlah+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <div><small>Dana Terserap : <br>'+item.data3_jumlah+'</small></div>';
+				$(elm).find('.area-tahap_1').append(knob);
+
+				$(elm).find('.area-tahap_1 .knob').knob().trigger('change');
+			} else {
+				$(elm).find('.detail-content.area-tahap_1').html('-');
+			}
+
+			// tahap 2
+			if (item.data4_jumlah != '-') {
+				var knob = '<input type="text" class="knob" data-min="0" data-max="'+item.data2_nilai_kontrak+'" value="'+item.data4_jumlah+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <div><small>Dana Terserap : <br>'+item.data4_jumlah+'</small></div>';
+				$(elm).find('.area-tahap_2').append(knob);
+
+				$(elm).find('.area-tahap_2 .knob').knob().trigger('change');
+			} else {
+				$(elm).find('.detail-content.area-tahap_2').html('-');
+			}
+
+			// tahap 3
+			if (item.data5_jumlah != '-') {
+				var knob = '<input type="text" class="knob" data-min="0" data-max="'+item.data2_nilai_kontrak+'" value="'+item.data5_jumlah+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <div><small>Dana Terserap : <br>'+item.data5_jumlah+'</small></div>';
+				$(elm).find('.area-tahap_3').append(knob);
+
+				$(elm).find('.area-tahap_3 .knob').knob().trigger('change');
+			} else {
+				$(elm).find('.detail-content.area-tahap_3').html('-');
 			}
 		}
 

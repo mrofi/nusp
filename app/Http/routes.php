@@ -112,6 +112,7 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api', 'middleware' => 'auth.api
 
     Route::resource('data-kontrak', 'DataKontrak');
     Route::resource('data-lahan', 'DataLahan');
+    Route::resource('penyerapan-blm', 'PenyerapanBlm');
     
     Route::get('all', function() {
 		$wilayah =  auth()->user()->wilayah;
