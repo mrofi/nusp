@@ -38,7 +38,7 @@ class LaporanProgressFisikKeuangan extends BaseApiModel
         'periode' => 'required|type:date',
         'blm' => 'required|type:numeric',
         'swadaya' => 'required|type:numeric',
-        'swadaya_in_kind_material' => 'required',
+        'swadaya_in_kind_material' => 'required|type:string',
         'swadaya_in_kind_material_rp' => 'required|type:currency',
         'swadaya_in_kind_lahan_m2' => 'required|type:decimal3',
         'swadaya_in_kind_lahan_rp' => 'required|type:currency',
@@ -53,8 +53,8 @@ class LaporanProgressFisikKeuangan extends BaseApiModel
         'daftar_peserta_hadir' => 'required|type:combo|value:ada=Ada,tidak ada=Tidak Ada',
         'pencatatan_dalam_bku' => 'required|type:combo|value:ada=Ada,tidak ada=Tidak Ada',
         'kelengkapan_bukti_lainnya' => 'required|type:combo|value:ada=Ada,tidak ada=Tidak Ada',
-        'masalah_pelaksanaan' => 'required|type:combo|value:ada=Ada,tidak ada=Tidak Ada',
-        'tindak_lanjut' => 'required|type:combo|value:ada=Ada,tidak ada=Tidak Ada',
+        'masalah_pelaksanaan' => 'required|type:text',
+        'tindak_lanjut' => 'required|type:text',
 
     ];
 
@@ -71,7 +71,7 @@ class LaporanProgressFisikKeuangan extends BaseApiModel
         'swadaya_in_kind_lahan_rp' => 'required|numeric',
         'swadaya_in_kind_hok' => 'required|numeric',
         'swadaya_in_kind_hok_rp' => 'required|numeric',
-        'progress_fisik_persentase' => 'required|type:decimal',
+        'progress_fisik_persentase' => 'required|numeric',
         'tenaga_kerja_laki_laki' => 'required|numeric',
         'tenaga_kerja_perempuan' => 'required|numeric',
         'hari_orang_kerja' => 'required|numeric',

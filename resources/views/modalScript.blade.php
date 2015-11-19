@@ -15,6 +15,7 @@ $('.modal-nusp').each(function(i, e) {
     $('.btn-verify').addClass('hide');
     $('.combo-plus-target').addClass('hide');
     form.find('.btn-input').attr('data-toggle', 'modal');
+    form.find('.report-area .btn-modal').remove();
   });
 
   nuspModal.on('show.bs.modal', function(e) {
@@ -65,7 +66,14 @@ $('.modal-nusp').each(function(i, e) {
 
       form.find('.data-transport').data(button.data());
 
-      $.get(form.attr('action')+'/'+button.data().id, function( data ) {
+      $.get(form.attr('action')+'/'+(button.data().id ? button.data().id : button.data().kode_wilayah), function( data ) {
+
+        if (nuspModal.is('.laporan-detail')) {
+          for (x in data.detail) {
+            form.find('.report-area').append('<div class="col-sm-6 col-sm-4 btn-modal"> <a href="#" class="btn btn-lg btn-block btn-default" data-target="#modal-laporan-fisik-keuangan" data-id="'+data.detail[x].id+'" data-toggle="modal">'+data.detail[x].periode+'</a> </div> ');
+          }
+        }
+
         for (x in data.wilayah) {
           form.find('#'+x).text(data.wilayah[x].nama_wilayah).parents('.row').removeClass('hide');
         }

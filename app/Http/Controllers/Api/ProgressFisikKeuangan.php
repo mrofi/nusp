@@ -18,4 +18,18 @@ class ProgressFisikKeuangan extends ApiDesaKel
     {
         return $this->showIndex('fisik_keuangan');
     }
+
+    public function show(Request $request, $kode_wilayah)
+    {        
+        return $this->userAuthorize(null, $kode_wilayah, function() use ($request, $kode_wilayah)
+        {
+            $show =  $this->model->where('kode_wilayah', $kode_wilayah)->first();
+            
+            if (!$show || ($this->model->allowEdit != true && $this->model->allowVerify != true && $show->verified_at == null)) $show = array_merge((new $this->model(['kode_wilayah' => $kode_wilayah]))->toArray(), ['wilayah' => \App\Wilayah::get_wilayah($kode_wilayah), 'empty' => true]);
+                  
+            $show['detail'] = with(new LaporanProgressFisikKeuangan(new \App\LaporanProgressFisikKeuangan()))->showAll($request, $kode_wilayah);
+
+            return $show;
+        });
+    }
 }

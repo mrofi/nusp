@@ -102,6 +102,8 @@
 @include('modal.verifikasi')
 @include('modal.unverifikasi')
 @include('modal.progressFisikKeuangan')
+@include('modal.laporanProgressFisikKeuangan')
+@include('modal.progressFisikKeuanganDetail')
 
 
 @include('modal.sosialisasi', ['allowed' => true])
@@ -142,6 +144,8 @@
 @include('modal.dataKontrak', ['allowed' => true])
 @include('modal.dataLahan', ['allowed' => true])
 @include('modal.progressFisikKeuangan', ['allowed' => true])
+@include('modal.laporanProgressFisikKeuangan', ['allowed' => true])
+@include('modal.progressFisikKeuanganDetail', ['allowed' => true])
 
 
 <!-- Main content -->
