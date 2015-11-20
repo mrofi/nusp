@@ -59,7 +59,7 @@
                 <li class="divider"></li>
                 <li><a href="{{ nusp_asset('download/kontrak-lahan-pemanfaat') }}">Kontrak, Lahan &amp; Pemanfaat</a></li>
                 <li><a href="{{ nusp_asset('download/form-penyerapan-blm') }}">Form Penyerapan BLM</a></li>
-                <li><a href="{{ nusp_asset('') }}">Fisik &amp; Keuangan</a></li>
+                <li><a href="{{ nusp_asset('download/fisik-keuangan') }}">Fisik &amp; Keuangan</a></li>
               </ul>
             </li>
           

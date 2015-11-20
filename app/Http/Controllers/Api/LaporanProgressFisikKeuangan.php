@@ -15,6 +15,8 @@ class LaporanProgressFisikKeuangan extends ApiDesaKel
         $this->model = $model;
     }
 
+    
+
     public function index(Request $request)
     {
         return $this->showIndex('fisik_keuangan');

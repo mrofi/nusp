@@ -590,5 +590,37 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
 			});
         })->download('xlsx');
 	});
+
+	Route::get('fisik-keuangan', function()
+	{
+		$title = 'Laporan Kemauan Progress Fisik';
+
+        $title2 = 'download NUSP 2 '.$title;
+
+
+
+        \Excel::create(camel_case($title2), function($excel) use ($title, $title2)
+		{
+            $excel->setTitle(ucwords($title2));
+            // Chain the setters
+            $excel
+                  ->setManager('NUSP 2')
+                  ->setCreator('NUSP 2')
+                  ->setCompany('Kementrian Pekerjaan Umum');
+
+	        $progress =  with(new \App\ProgressFisikKeuangan)->excelDesaKel();
+	        
+	        $laporan =  with(new \App\LaporanProgressFisikKeuangan)->excelDesaKel();
+
+        	foreach ($progress as $key => $w) 
+        	{
+        		$excel->sheet(snake_case($w['Desa / Kelurahan'], '_'), function($sheet) use ($w)
+        		{
+        			$sheet->fromArray($w);
+        		});
+        	}
+
+		})->download('xlsx');
+	});
 });
 

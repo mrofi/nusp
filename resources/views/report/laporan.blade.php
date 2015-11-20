@@ -157,7 +157,8 @@
 	#profil-desa-kelurahan .report-item .desakel,
 	#data-kontrak .report-item .desakel,
 	#data-lahan-pemanfaat .report-item .desakel,
-	#penyerapan-blm .report-item .desakel {
+	#penyerapan-blm .report-item .desakel,
+	#fisik-keuangan .report-item .desakel {
 		font-size: 1.1em;
 		font-weight: 600;
 	}
@@ -166,6 +167,10 @@
 	#data-kontrak .report-item .koordinat,
 	#data-lahan-pemanfaat .report-item .koordinat,
 	#penyerapan-blm .report-item .koordinat {
+		font-size: 0.9em;
+	}
+
+	#fisik-keuangan .report-item .list-unstyled {
 		font-size: 0.9em;
 	}
 
@@ -228,7 +233,7 @@
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/data-kontrak') }}" href="#data-kontrak"  data-name="data_kontrak" data-deep="3" data-attrs="kode_wilayah,no_kontrak,tanggal_kontrak,pelaksanaan_tanggal_mulai,pelaksanaan_tanggal_selesai,pelaksanaan_jenis_infrastruktur,pelaksanaan_volume_unit,dana_nilai_blm,dana_nilai_swadaya">Data Kontrak</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/data-lahan') }}" href="#data-lahan-pemanfaat"  data-name="data_lahan" data-deep="3" data-attrs="kode_wilayah,nama_rt_rw,jenis_infrastruktur,lahan_luas,lahan_status,lahan_surat_hibah,lahan_akses_jalan,koordinat_latitude,koordinat_longitude,pemanfaat_jumlah_kk,pemanfaat_jumlah_kk_miskin,pemanfaat_jumlah_jiwa,pemanfaat_jumlah_perempuan,pemanfaat_jumlah_miskin">Data Lahan &amp; Pemanfaat</a></li>
 		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/penyerapan-blm') }}" href="#penyerapan-blm" data-name="penyerapan_blm" data-deep="3" data-attrs="kode_wilayah,data1_nama_bkm,data2_paket_pekerjaan,data2_no_kontrak,data2_tanggal_kontrak,data2_nilai_kontrak,data2_tanggal_mulai,data2_tanggal_selesai,data3_no_spm,data3_tanggal_spm,data3_no_sp2d,data3_tanggal_sp2d,data3_jumlah,data4_no_spm,data4_tanggal_spm,data4_no_sp2d,data4_tanggal_sp2d,data4_jumlah,data5_no_spm,data5_tanggal_spm,data5_no_sp2d,data5_tanggal_sp2d,data5_jumlah,">Penyerapan BLM</a></li> 
-		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/') }}" href="#fisik-keuangan">Fisik &amp; Keuangan</a></li>
+		            	<li><a data-toggle="tab" data-action="{{ nusp_asset('api/fisik-keuangan') }}" href="#fisik-keuangan" data-name="fisik_keuangan" data-deep="3" data-attrs="kode_wilayah,jenis_infrastruktur,dimensi,rab_blm_operasional,rab_blm_pekerjaan_sipil,rab_swadaya_operasional,rab_swadaya_pekerjaan_sipil,detail">Fisik &amp; Keuangan</a></li>
 					</ul>
 				</nav>  			
 	  		</div>
@@ -598,68 +603,45 @@
 	  					<div class="row visible-xs visible-sm">&nbsp;</div>
 		  			</li></div>
 
-	  			</div>
-	  			<div id="kontrak-lahan-pemanfaat" class="tab-pane fade">	  				
-		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
-						<ul class="row list-unstyled">
-			  				<li class="col-md-4 header-item no-left-border no-top-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-calendar fa-2x"></i><br>Tanggal</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>Peserta</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-female fa-2x"></i><br>Peserta Perempuan</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-image fa-2x"></i><br>Foto</li>
-						</li>
-		  			</div>
-		  			<ul class="report-content list-unstyled">
-		  				<li class="report-item-propinsi">
-		  					<h2>Jawa Tengah</h2>
-		  					<ul class="list-unstyled report-row row">
-			  					<li class="col-md-4 report-item text-left no-left-border">Kota Pekalongan</li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-		  					</ul>
-		  					<ul class="list-unstyled report-row row">
-			  					<li class="col-md-4 report-item text-left no-left-border">Kota Semarang</li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-		  					</ul>
-		  				</li>
-		  			</ul>
-	  			</div>
+	  			</div>	  
+
 	  			<div id="fisik-keuangan" class="tab-pane fade">	  				
 		  			<div class="report-header bg-gray-light text-navy hidden-xs hidden-sm" data-spy="affix" data-offset-top="120" data-offset-bottom="100">
 						<ul class="row list-unstyled">
 			  				<li class="col-md-4 header-item no-left-border"><i class="fa fa-2x ion ion-ios-location"></i> <br>Wilayah</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-calendar fa-2x"></i><br>Tanggal</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-users fa-2x"></i><br>Peserta</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-female fa-2x"></i><br>Peserta Perempuan</li>
-			  				<li class="col-md-2 header-item"><i class="fa fa-image fa-2x"></i><br>Foto</li>
-						</li>
+			  				<li class="col-md-8 header-item"><i class="fa fa-globe fa-2x"></i><br>Progress</li>
+						</ul>
 		  			</div>
 		  			<ul class="report-content list-unstyled">
-		  				<li class="report-item-propinsi">
-		  					<h2>Jawa Tengah</h2>
-		  					<ul class="list-unstyled report-row row">
-			  					<li class="col-md-4 report-item text-left no-left-border">Kota Pekalongan</li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-		  					</ul>
-		  					<ul class="list-unstyled report-row row">
-			  					<li class="col-md-4 report-item text-left no-left-border">Kota Semarang</li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-			  					<li class="col-md-2 report-item"><div class="row"><div class="col-xs-5 visible-xs visible-sm">Tanggal</div><div class="col-xs-7 col-md-12">2 Okt 2015</div></div></li>	
-		  					</ul>
-		  				</li>
 		  			</ul>
-	  			</div>
-	  			
+		  			<div class="list-format-1 hide"><li class="report-item-propinsi"><h2 class="propinsi"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+					<div class="list-format-2 hide"><li class="report-item-kabkota"><h2 class="kabkota"></h2><ul class="list-unstyled report-row row"></ul></li></div>
+		  			<div class="list-format-3 hide"><li>
+		  				<div class="col-md-4 report-item text-left no-left-border no-top-border">
+		  					<div class="desakel"></div>
+		  				</div>
+		  				<div class="col-md-8 report-item detail-content">
+		  					<div class="row">
+		  						<div class="col-xs-5 col-sm-4 visible-xs visible-sm">Progress Fisik &amp; Keuangan</div>
+		  						<div class="col-xs-7 col-sm-8 col-md-12">
+		  							<div class="row">
+		  								<div class="col-md-7 area-keterangan text-left">
+		  									<ul class="list-unstyled">
+		  										<li><strong>Jenis Insfrastruktur</strong> : <span class="jenis_infrastruktur"></span></li>
+		  										<li><strong>Dimensi</strong> : <span class="dimensi"></span></li>
+		  										<li><strong>BLM (RAB)</strong> : <span class="rab_blm"></span></li>
+		  										<li><strong>Swadaya (RAB)</strong> : <span class="rab_swadaya"></span></li>
+		  									</ul>
+		  								</div>
+		  								<div class="col-md-5 area-knob"></div>
+		  							</div>
+		  						</div>
+		  					</div>
+		  				</div>
+	  					<div class="row visible-xs visible-sm">&nbsp;</div>
+		  			</li></div>
+
+	  			</div>	  			
 	  		</div>
 	    </div><!-- /.box-body -->
 	    <div class="box-footer">
@@ -880,6 +862,28 @@
 			} else {
 				$(elm).find('.detail-content.area-tahap_3').html('-');
 			}
+		}
+
+		window.fisik_keuanganAction = function(elm, item) {
+			if (item.rab_blm_operasional == '-' && item.rab_swadaya_operasional == '-' && item.rab_blm_pekerjaan_sipil == '-' && item.rab_swadaya_pekerjaan_sipil == '-') {
+				$(elm).find('.area-keterangan').addClass('hide');
+			} else {
+				$(elm).find('.area-keterangan').removeClass('hide');
+				$(elm).find('.rab_blm').text(item.rab_blm_operasional + item.rab_blm_pekerjaan_sipil);
+				$(elm).find('.rab_swadaya').text(item.rab_swadaya_operasional + item.rab_swadaya_pekerjaan_sipil);
+			}
+
+			if (item.detail[0] != undefined && item.detail[0].progress_fisik_persentase != undefined) {
+				$(elm).find('.area-knob').removeClass('hide');
+				var knob = '<input type="text" class="knob" data-min="0" data-max="100" value="'+item.detail[0].progress_fisik_persentase+'" data-width="60" data-height="60" readonly="readonly" data-fgColor="#f56954" data-bg-color="#333333"> <div><small>Progress : <br>'+item.detail[0].progress_fisik_persentase+'%</small></div>';
+				$(elm).find('.area-knob').append(knob);
+
+				$(elm).find('.area-knob .knob').knob().trigger('change');
+				$(elm).find('.area-knob .knob').val($(elm).find('.area-knob .knob').val() + '%');
+			} else {
+				$(elm).find('.area-knob').addClass('hide');
+			}
+
 		}
 
 		window.allList = [];

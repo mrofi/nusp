@@ -27,6 +27,7 @@ class BuatTabelProgressFisikKeuangan extends Migration
             $table->bigInteger('swadaya_in_kind_lahan_rp')->unsigned();
             $table->integer('swadaya_in_kind_hok')->unsigned();
             $table->bigInteger('swadaya_in_kind_hok_rp')->unsigned();
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

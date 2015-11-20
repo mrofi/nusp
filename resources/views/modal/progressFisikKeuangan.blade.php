@@ -11,6 +11,11 @@
 		{!! nusp_forms($formProgressFisikKeuangan) !!}
 		</div>
 		<div class="col-md-6">
+			@include('modal.formPlain')
+			<div class="row">
+				<h3>Pelaporan</h3>
+				<hr>
+			</div>
 			<div class="row report-area">
 				<div class="col-sm-6 col-sm-4">
 					<a href="#" class="btn btn-lg btn-block btn-default data-transport" data-target="#modal-laporan-fisik-keuangan" data-toggle="modal"><span class="fa fa-plus"></span></a>
@@ -33,6 +38,11 @@
 		{!! nusp_staticForms($formProgressFisikKeuangan) !!}
 		</div>
 		<div class="col-md-6">
+			@include('modal.formPlain')
+			<div class="row">
+				<h3>Pelaporan</h3>
+				<hr>
+			</div>
 			<div class="row report-area">
 			</div>
 		</div>	

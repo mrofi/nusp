@@ -66,11 +66,14 @@ $('.modal-nusp').each(function(i, e) {
 
       form.find('.data-transport').data(button.data());
 
-      $.get(form.attr('action')+'/'+(button.data().id ? button.data().id : button.data().kode_wilayah), function( data ) {
+      var params = button.data().kode_wilayah ? button.data().kode_wilayah : button.data().id;
+      $.get(form.attr('action')+'/'+params, function( data ) {
+
+
 
         if (nuspModal.is('.laporan-detail')) {
           for (x in data.detail) {
-            form.find('.report-area').append('<div class="col-sm-6 col-sm-4 btn-modal"> <a href="#" class="btn btn-lg btn-block btn-default" data-target="#modal-laporan-fisik-keuangan" data-id="'+data.detail[x].id+'" data-toggle="modal">'+data.detail[x].periode+'</a> </div> ');
+            form.find('.report-area').append('<div class="col-sm-6 col-sm-4 btn-modal"> <a href="#" class="btn btn-lg btn-block btn-success" data-target="#modal-laporan-fisik-keuangan" data-id="'+data.detail[x].id+'" data-toggle="modal">'+data.detail[x].periode+'</a> </div> ');
           }
         }
 
@@ -175,6 +178,7 @@ $('.modal-nusp').each(function(i, e) {
     })
     $.post(form.attr('action'), form.autoNumeric('getString'), function( data ) {
       if (data.message == 'ok') {
+        if (nuspModal.is('#modal-hapus')) $('#modal-hapus').find('button[type=reset]').data('id', data.kode_wilayah);
         form.find('button[type=reset]').click();
       } else {
         error_handling(form, data);

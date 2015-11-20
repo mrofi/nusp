@@ -21,7 +21,7 @@ class BuatTabelLaporanProgressFisikKeuangan extends Migration
             $table->bigInteger('swadaya')->unsigned();
             $table->text('swadaya_in_kind_material');
             $table->bigInteger('swadaya_in_kind_material_rp')->unsigned();
-            $table->decimal('swadaya_in_kind_lahan_m2', 12, 3);
+            $table->decimal('swadaya_in_kind_lahan_ha', 12, 3);
             $table->bigInteger('swadaya_in_kind_lahan_rp')->unsigned();
             $table->integer('swadaya_in_kind_hok')->unsigned();
             $table->bigInteger('swadaya_in_kind_hok_rp')->unsigned();
@@ -36,6 +36,7 @@ class BuatTabelLaporanProgressFisikKeuangan extends Migration
             $table->enum('kelengkapan_bukti_lainnya', ['ada', 'tidak ada']);
             $table->text('masalah_pelaksanaan');
             $table->text('tindak_lanjut');
+            $table->date('verified_at')->nullable();
             $table->timestamps();
         });
     }

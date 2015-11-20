@@ -7,6 +7,8 @@
 	<input type="hidden" name="id" id="id">
 	{!! nusp_forms($formLaporanProgressFisikKeuangan) !!}
 @endsection
+@section('laporan-fisik-keuangan.modal.close.prop', 'data-toggle="modal" data-target="#modal-fisik-keuangan"')
+@section('reportOnly.laporan-fisik-keuangan.modal.close.prop', 'data-toggle="modal" data-target="#modal-report-fisik-keuangan"')
 
 @section('reportOnly.laporan-fisik-keuangan.modal.id', 'modal-report-laporan-fisik-keuangan')
 @section('reportOnly.laporan-fisik-keuangan.modal.title', 'Progress Fisik &amp; Keuangan')
