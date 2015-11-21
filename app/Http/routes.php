@@ -608,15 +608,81 @@ Route::group(['prefix' => 'download', 'namespace' => 'Api', 'middleware' => 'aut
                   ->setCreator('NUSP 2')
                   ->setCompany('Kementrian Pekerjaan Umum');
 
-	        $progress =  with(new \App\ProgressFisikKeuangan)->excelDesaKel();
-	        
-	        $laporan =  with(new \App\LaporanProgressFisikKeuangan)->excelDesaKel();
+	        $kontrak =  with(new \App\TahapKonstruksiKontrakSp3)->excelDesaKel();
 
-        	foreach ($progress as $key => $w) 
+	        $progress =  with(new \App\ProgressFisikKeuangan)->get();
+
+	        $progresss = [];
+			
+			foreach ($progress as $kode => $row) 
+			{
+	        	$progresss[$kode] = $row;
+	        }	        
+	        
+	        $laporan =  with(new \App\LaporanProgressFisikKeuangan)->orderBy('periode', 'DESC')->get();
+
+	        $laporans = [];
+			
+			foreach ($laporan as $kode => $row) 
+			{
+				if (!isset($laporans[$kode])) $laporans[$kode] = [];
+	        	$laporans[$kode][] = $row;
+	        }	
+	        
+
+	        // $laporan =  with(new \App\Http\Controllers\Api\LaporanProgressFisikKeuangan(new \App\LaporanProgressFisikKeuangan))->index(request());
+
+        	foreach ($kontrak as $key => $w) 
         	{
-        		$excel->sheet(snake_case($w['Desa / Kelurahan'], '_'), function($sheet) use ($w)
+        		$excel->sheet(snake_case($w['Desa / Kelurahan'], '_'), function($sheet) use ($w, $progresss, $laporans)
         		{
-        			$sheet->fromArray($w);
+        			$kontrak = array_only($w, ['No', 'Propinsi', 'Kabupaten / Kota', 'Kecamatan', 'Desa / Kelurahan', 'Kode Wilayah', 'No Kontrak', 'Tanggal', 'Nilai Kontrak', 'Tanggal Mulai', 'Tanggal Selesai']);	
+
+        			$progress = ['Jenis Infrastruktur' => '', 'Dimensi' => '', 'BLM' => '', 'Swadaya In Cash' => '', 'Total' => ''];
+
+        			if (isset($progresss[$kontrak['Kode Wilayah']]))
+    				{
+    					$pro = $progresss[$kontrak['Kode Wilayah']];
+
+    					$progress['Jenis Infrastruktur'] = $pro['jenis_infrastruktur']; 
+    					$progress['Dimensi'] = $pro['dimensi']; 
+    					$progress['BLM'] = $pro['rab_blm_pekerjaan_sipil'] + $pro['rab_blm_operasional'];
+    					$progress['Swadaya In Cash'] = $pro['rab_swadaya_pekerjaan_sipil'] + $pro['rab_swadaya_operasional'];
+    					$progress['Total'] = $progress['BLM'] + $progress['Swadaya In Cash'];
+    				}
+
+    				$laporan = ['Bulan Lalu' => '', 'Bulan Ini' => '', 'Progress' => '', 'Laporan Penggunaan Material' => '', 'Daftar Hadir Pekerja (HOK)' => '', 'Masalah Pelaksanaan' => '', 'Tindak Lanjut' => ''];
+
+    				$data = [];
+
+    				if (isset($laporans[$kontrak['Kode Wilayah']]))
+    				{
+    					$i = 1;
+    					$bulanLalu = 0;
+    					foreach ($progresss[$kontrak['Kode Wilayah']] as $lap) 
+    					{
+    						$laporan['Bulan Lalu'] = $bulanLalu;
+    						$laporan['Bulan Ini'] = $lap['progress_fisik_persentase'];
+    						$laporan['Progress'] = $lap['progress_fisik_persentase'] - $bulanLalu;
+    						$laporan['Laporan Penggunaan Material'] = $lap['laporan_penggunaan_material'];
+    						$laporan['Daftar Hadir Pekerja (HOK)'] = $lap['daftar_peserta_hadir'];
+    						$laporan['Masalah Pelaksanaan'] = $lap['masalah_pelaksanaan'];
+    						$laporan['Tindak Lanjut'] = $lap['tindak_lanjut'];
+
+    						$kontrak['No'] = $i;
+
+    						$data[] = array_merge($kontrak, $progress, $laporan);
+    						$i++;
+    						$bulanLalu = $laporan['Bulan Ini'];
+    					}
+    				} 
+    				else 
+    				{
+    					$kontrak['No'] = 1;
+    					$data[] = array_merge($kontrak, $progress, $laporan);
+    				}
+
+        			$sheet->fromArray($data);
         		});
         	}
 
